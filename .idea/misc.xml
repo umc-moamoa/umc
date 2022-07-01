@@ -4,9 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/USER/AndroidStudioProjects/umc_hackathon/app/src/main/res/drawable/button_background.xml" value="0.1" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/umc_hackathon/app/src/main/res/drawable/round.xml" value="0.16" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/umc_hackathon/app/src/main/res/font/fontstyle.xml" value="0.1925925925925926" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/umc_hackathon/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/umc_hackathon/app/src/main/res/layout/board_list_item.xml" value="0.2" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/umc_hackathon/app/src/main/res/layout/survey_check.xml" value="0.264" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/umc_hackathon/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.104" />
       </map>
     </option>

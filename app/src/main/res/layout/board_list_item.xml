@@ -27,7 +27,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/title_ser_text"
+                android:id="@+id/title_item_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="11개의 항목 ㅣ 선택형"
