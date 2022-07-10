@@ -5,11 +5,12 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
+    <color name="black">#151515</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="startColor">#bfd4ff</color>
-    <color name="endColor">#b8abfc</color>
+    <color name="lightPeriwinkle">#bfd4ff</color>
+    <color name="paleViolet">#b8abfc</color>
 
-    <color name="startColor2">#F0F1F6</color>
+    <color name="paleGrey">#f2f3f7</color>
+    <color name="greyisBrown">#4e4e4e</color>
 </resources>

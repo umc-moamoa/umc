@@ -61,7 +61,7 @@
                     android:layout_marginStart="3dp"
                     android:text="300P"
                     android:fontFamily="@font/roboto_medium"
-                    android:textColor="@color/endColor"
+                    android:textColor="@color/paleViolet"
                     android:textSize="9sp" />
             </LinearLayout>
         </LinearLayout>
