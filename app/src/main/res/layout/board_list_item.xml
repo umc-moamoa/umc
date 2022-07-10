@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="사회현상에 대한 소비자 인식"
-            android:textSize="23sp" />
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
