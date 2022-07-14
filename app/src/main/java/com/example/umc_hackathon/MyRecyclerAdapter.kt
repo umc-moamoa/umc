@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 class MyRecyclerAdapter(val surveyList: ArrayList<MySurvey>): RecyclerView.Adapter<MyRecyclerAdapter.MyViewHolder>() {
@@ -13,14 +14,19 @@ class MyRecyclerAdapter(val surveyList: ArrayList<MySurvey>): RecyclerView.Adapt
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.board_list_item, parent, false)
-        return MyViewHolder(view)
+        return MyViewHolder(view).apply {
+            itemView.setOnClickListener {
+                val currentPosition: Int = adapterPosition
+                val survey: MySurvey = surveyList.get(currentPosition)
+                Toast.makeText(parent.context, "설문조사 제목: ${survey.title}", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     override fun getItemCount(): Int {
         return surveyList.size
     }
 
-    // 뷰와 뷰홀더가 묶였을때
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         Log.d(TAG, " - onBindViewHolder() called / position: $position")
         holder.title.text = surveyList.get(position).title

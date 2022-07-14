@@ -21,8 +21,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="사회현상에 대한 소비자 인식"
-            android:textSize="16sp"
-            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textColor="#151515"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -36,8 +36,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="11개의 항목 ㅣ 선택형"
-                android:textColor="@color/black"
-                android:textSize="13sp" />
+                android:textColor="#151515"
+                android:textSize="11sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -48,7 +48,7 @@
 
                 <ImageView
                     android:id="@+id/coin_img"
-                    android:layout_width="13dp"
+                    android:layout_width="12dp"
                     android:layout_height="match_parent"
                     android:src="@mipmap/coin" />
 
@@ -59,7 +59,7 @@
                     android:layout_marginStart="3dp"
                     android:text="300P"
                     android:textColor="#B8ABFC"
-                    android:textSize="13sp" />
+                    android:textSize="9sp" />
             </LinearLayout>
 
         </LinearLayout>
