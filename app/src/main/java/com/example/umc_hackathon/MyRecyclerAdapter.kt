@@ -18,7 +18,8 @@ class MyRecyclerAdapter(val surveyList: ArrayList<MySurvey>): RecyclerView.Adapt
             itemView.setOnClickListener {
                 val currentPosition: Int = adapterPosition
                 val survey: MySurvey = surveyList.get(currentPosition)
-                Toast.makeText(parent.context, "설문조사 제목: ${survey.title}", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(parent.context, "설문조사 제목: ${survey.title}", Toast.LENGTH_SHORT).show()
+
             }
         }
     }
