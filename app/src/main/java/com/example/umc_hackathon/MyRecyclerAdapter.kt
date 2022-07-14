@@ -24,6 +24,7 @@ class MyRecyclerAdapter(val surveyList: ArrayList<MySurvey>): RecyclerView.Adapt
 //                Toast.makeText(parent.context, "설문조사 제목: ${survey.title}", Toast.LENGTH_SHORT).show()
 
                 val intent = Intent(itemView?.context, FormDetailActivity::class.java)
+                intent.putExtra("list_title", survey.title.toString())
                 ContextCompat.startActivity(itemView.context, intent, null)
             }
         }

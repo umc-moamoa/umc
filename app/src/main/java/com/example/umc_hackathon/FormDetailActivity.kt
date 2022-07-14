@@ -13,5 +13,9 @@ class FormDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityFormDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        if(intent.hasExtra("list_title")) {
+            binding.tvSurveyTitle.text = intent.getStringExtra("list_title")
+        }
     }
 }
