@@ -8,9 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="startColor">#bfd4ff</color>
-    <color name="endColor">#b8abfc</color>
-
-    <color name="startColor2">#F0F1F6</color>
-    <color name="endColor2">#FFFFFF</color>
+    <!-- 추가한 색깔-->
+    <color name="light_periwinkle">#bfd4ff</color>
+    <color name="pale_violet">#b8abfc</color>
 </resources>
