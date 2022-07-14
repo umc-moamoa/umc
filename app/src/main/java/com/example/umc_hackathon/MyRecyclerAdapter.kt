@@ -2,47 +2,38 @@ package com.example.umc_hackathon
 
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
-class MyRecyclerAdapter(myRecyclerviewInterface: MyRecyclerviewInterface): RecyclerView.Adapter<MyViewHolder>() {
+class MyRecyclerAdapter(val surveyList: ArrayList<MySurvey>): RecyclerView.Adapter<MyRecyclerAdapter.MyViewHolder>() {
 
-    val TAG: String = "log"
+    val TAG: String = "<MyRecycleAdapter>"
 
-    private var modelList = ArrayList<MyModel>()
-
-    private var myRecyclerviewInterface :MyRecyclerviewInterface? = null
-
-    // 생성자
-    init {
-        this.myRecyclerviewInterface = myRecyclerviewInterface
-    }
-
-    // 뷰홀더가 생성 되었을때
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-
-        // 연결할 레이아웃 설정
-        return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.board_list_item, parent, false), this.myRecyclerviewInterface!!)
-    }
-
-    // 목록의 아이템수
-    override fun getItemCount(): Int {
-        return this.modelList.size
-    }
-
-    // 뷰와 뷰홀더가 묶였을때
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        Log.d(TAG, "MyRecyclerAdapter - onBindViewHolder() called / position: $position")
-        holder.bind(this.modelList[position])
-        //클릭 설정
-        holder.itemView.setOnClickListener {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.board_list_item, parent, false)
+        return MyViewHolder(view).apply {
+            itemView.setOnClickListener {
+                val currentPosition: Int = adapterPosition
+                val survey: MySurvey = surveyList.get(currentPosition)
+                Toast.makeText(parent.context, "설문조사 제목: ${survey.title}", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
-    // 외부에서 데이터 넘기기
-    fun submitList(modelList: ArrayList<MyModel>){
-        this.modelList = modelList
+    override fun getItemCount(): Int {
+        return surveyList.size
+    }
+
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        Log.d(TAG, " - onBindViewHolder() called / position: $position")
+        holder.title.text = surveyList.get(position).title
+    }
+
+    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val title = itemView.findViewById<TextView>(R.id.title_main_text)
     }
 
 }

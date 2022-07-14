@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="30dp"
-    app:cardCornerRadius="20dp"
+    android:layout_marginStart="40dp"
+    android:layout_marginEnd="40dp"
+    android:layout_marginTop="20dp"
+    app:cardCornerRadius="15dp"
     app:cardElevation="20dp" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/list_style"
+        android:background="@drawable/list_item_style"
         android:padding="30dp" >
 
         <TextView
@@ -19,7 +21,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="사회현상에 대한 소비자 인식"
-            android:textSize="20sp" />
+            android:textSize="14sp"
+            android:textColor="#151515"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,31 +36,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="11개의 항목 ㅣ 선택형"
-                android:textSize="15sp" />
+                android:textColor="#151515"
+                android:textSize="11sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_marginStart="15dp"
+                android:gravity="right"
                 android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/coin_img"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="12dp"
+                    android:layout_height="match_parent"
                     android:src="@mipmap/coin" />
 
                 <TextView
                     android:id="@+id/coin_point_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="3dp"
                     android:text="300P"
                     android:textColor="#B8ABFC"
-                    android:textSize="15sp" />
+                    android:textSize="9sp" />
             </LinearLayout>
+
         </LinearLayout>
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
