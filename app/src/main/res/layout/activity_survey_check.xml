@@ -25,8 +25,8 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="60dp"
             android:text="사회현상에 대한 소비자인식"
-            android:textSize="23sp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="23sp" />
 
         <TextView
             android:id="@+id/survey_day_text"
