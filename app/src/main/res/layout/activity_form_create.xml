@@ -34,5 +34,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_form_create"
+        android:layout_marginTop="20dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
