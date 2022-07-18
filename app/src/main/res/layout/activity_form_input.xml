@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/paleGrey"
+    android:background="@color/pale_grey"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="-1dp">
 
@@ -30,7 +30,7 @@
                 android:layout_height="26dp"
                 android:layout_marginStart="21dp"
                 android:layout_marginTop="19dp"
-                android:background="@color/paleGrey"
+                android:background="@color/pale_grey"
                 android:fontFamily="@font/roboto_regular"
                 android:onClick="onClick"
                 android:text="취소"
@@ -170,6 +170,7 @@
                             android:layout_marginBottom="5dp"
                             android:fontFamily="@font/roboto_regular"
                             android:background="@drawable/list_round"
+                            android:theme="@style/CustomRadioButton"
                             android:text="한달에 1-2번"
                             android:textSize="11sp" />
 
@@ -180,6 +181,7 @@
                             android:layout_marginBottom="5dp"
                             android:fontFamily="@font/roboto_regular"
                             android:background="@drawable/list_round"
+                            android:theme="@style/CustomRadioButton"
                             android:text="일주일에 1번"
                             android:textSize="11sp" />
 
@@ -190,6 +192,7 @@
                             android:layout_marginBottom="5dp"
                             android:fontFamily="@font/roboto_regular"
                             android:background="@drawable/list_round"
+                            android:theme="@style/CustomRadioButton"
                             android:text="일주일에 3-4번"
                             android:textSize="11sp" />
 
@@ -200,6 +203,7 @@
                             android:layout_marginBottom="5dp"
                             android:fontFamily="@font/roboto_regular"
                             android:background="@drawable/list_round"
+                            android:theme="@style/CustomRadioButton"
                             android:text="매일"
                             android:textSize="11sp" />
 
@@ -210,6 +214,7 @@
                             android:layout_marginBottom="5dp"
                             android:fontFamily="@font/roboto_regular"
                             android:background="@drawable/list_round"
+                            android:theme="@style/CustomRadioButton"
                             android:text="기타"
                             android:textSize="11sp" />
 

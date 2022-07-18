@@ -5,12 +5,14 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#151515</color>
+    <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="lightPeriwinkle">#bfd4ff</color>
-    <color name="paleViolet">#b8abfc</color>
+    <!-- 추가한 색깔-->
+    <color name="light_periwinkle">#bfd4ff</color>
+    <color name="pale_violet">#b8abfc</color>
 
-    <color name="paleGrey">#f2f3f7</color>
-    <color name="greyisBrown">#4e4e4e</color>
+    <color name="pale_grey">#f2f3f7</color>
+    <color name="greyish_brown">#4e4e4e</color>
+    <color name="very_light_pink">#d1d1d1</color>
 </resources>
