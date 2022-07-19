@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.rvListItem.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.rvListItem.setHasFixedSize(true)
-
         binding.rvListItem.adapter = MyRecyclerAdapter(modelList)
     }
 
