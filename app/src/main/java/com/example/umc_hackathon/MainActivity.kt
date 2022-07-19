@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         binding.rvListItem.adapter = MyRecyclerAdapter(modelList)
 
         // 이벤트 리스너
-        binding.btn.setOnClickListener {
+        binding.mainButton.setOnClickListener {
             val intent = Intent(this, FormCreateActivity::class.java)
             startActivity(intent)
         }
