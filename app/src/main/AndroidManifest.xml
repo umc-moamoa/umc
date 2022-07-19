@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Umc_hackathon">
         <activity
+            android:name=".FormInputActivity"
+            android:exported="false" />
+        <activity
             android:name=".FormDetailActivity"
             android:exported="false" />
         <activity

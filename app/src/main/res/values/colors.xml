@@ -11,4 +11,8 @@
     <!-- 추가한 색깔-->
     <color name="light_periwinkle">#bfd4ff</color>
     <color name="pale_violet">#b8abfc</color>
+    
+    <color name="pale_grey">#f2f3f7</color>
+    <color name="greyish_brown">#4e4e4e</color>
+    <color name="very_light_pink">#d1d1d1</color>
 </resources>
