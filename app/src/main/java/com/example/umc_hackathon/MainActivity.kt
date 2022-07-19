@@ -1,5 +1,6 @@
 package com.example.umc_hackathon
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,8 +24,13 @@ class MainActivity : AppCompatActivity() {
 
         binding.rvListItem.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.rvListItem.setHasFixedSize(true)
-
         binding.rvListItem.adapter = MyRecyclerAdapter(modelList)
+
+        // 이벤트 리스너
+        binding.mainButton.setOnClickListener {
+            val intent = Intent(this, FormCreateActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 }

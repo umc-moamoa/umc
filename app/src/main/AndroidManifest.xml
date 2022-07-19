@@ -11,6 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Umc_hackathon">
+
+        <activity
+            android:name=".FormCreateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FormInputActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FormDetailActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

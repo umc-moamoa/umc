@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="40dp"
-    android:layout_marginEnd="40dp"
-    android:layout_marginTop="20dp"
+    android:layout_margin="30dp"
     app:cardCornerRadius="15dp"
     app:cardElevation="20dp" >
 
@@ -21,9 +20,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="사회현상에 대한 소비자 인식"
-            android:textSize="14sp"
-            android:textColor="#151515"
-            android:textStyle="bold" />
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,14 +35,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="11개의 항목 ㅣ 선택형"
-                android:textColor="#151515"
+                android:fontFamily="@font/roboto_light"
+                android:textColor="@color/black"
                 android:textSize="11sp" />
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:gravity="right"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -58,7 +61,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="3dp"
                     android:text="300P"
-                    android:textColor="#B8ABFC"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/pale_violet"
                     android:textSize="9sp" />
             </LinearLayout>
 
