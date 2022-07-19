@@ -12,7 +12,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="642dp"
+        android:layout_height="500dp"
         android:background="@drawable/round"
         android:orientation="vertical"
         android:text="text"
