@@ -16,10 +16,10 @@ class PostService {
         this.postView = postView
     }
 
-    fun allPost() {
+    fun allPost(category: Int) {
         val allPostService = getRetrofit().create(PostRetrofitInterface::class.java)
 
-        allPostService.getAllPosts().enqueue(object : retrofit2.Callback<List<Post>> {
+        allPostService.getAllPosts(category).enqueue(object : retrofit2.Callback<List<Post>> {
             override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
                 if (response.isSuccessful) {
                     val postList = response.body()!!
