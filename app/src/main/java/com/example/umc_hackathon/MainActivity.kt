@@ -3,7 +3,6 @@ package com.example.umc_hackathon
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.umc_hackathon.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

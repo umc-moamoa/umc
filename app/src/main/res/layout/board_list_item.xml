@@ -65,7 +65,9 @@
                     android:textColor="@color/pale_violet"
                     android:textSize="9sp" />
             </LinearLayout>
+
         </LinearLayout>
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
