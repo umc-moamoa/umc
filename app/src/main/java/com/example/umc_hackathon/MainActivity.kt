@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         // 이벤트 리스너
         binding.mainButton.setOnClickListener {
-            val intent = Intent(this, FormCreateActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
     }

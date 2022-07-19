@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Umc_hackathon">
-
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
+        </activity>
         <activity
             android:name=".FormCreateActivity"
             android:exported="false" />
