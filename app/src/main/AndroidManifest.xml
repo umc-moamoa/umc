@@ -10,10 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Umc_hackathon">
         <activity
-            android:name=".FormInputActivity"
-            android:exported="false" />
-        <activity
-            android:name=".FormDetailActivity"
+            android:name=".MyPageActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -24,6 +21,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".JoinActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".FormCreateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FormInputActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FormDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FormListActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
