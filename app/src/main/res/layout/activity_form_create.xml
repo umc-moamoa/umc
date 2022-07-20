@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F2F3F7"
+    android:background="@color/pale_grey"
     tools:context=".FormCreateActivity">
 
     <LinearLayout
@@ -24,6 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="취소"
+            android:fontFamily="@font/roboto_regular"
             android:textSize="14sp"
             android:textColor="@color/black" />
 
@@ -32,6 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="저장"
+            android:fontFamily="@font/roboto_regular"
             android:textSize="14sp"
             android:textColor="@color/black"
             android:gravity="right" />
@@ -45,6 +47,7 @@
         android:layout_marginBottom="15dp"
         android:textSize="22sp"
         android:text="설문 작성"
+        android:fontFamily="@font/roboto_bold"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/btns_form_create"
@@ -56,18 +59,20 @@
         android:id="@+id/rv_form_create"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title_form_create" />
+        app:layout_constraintTop_toBottomOf="@id/tv_title_form_create"
+        tools:listitem="@layout/question_item" />
 
     <Button
         android:id="@+id/btn_save_form_create"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="30dp"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
         android:text="질문 추가하기"
         android:fontFamily="@font/roboto_bold"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

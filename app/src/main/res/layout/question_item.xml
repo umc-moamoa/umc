@@ -26,29 +26,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="1. 질문 입력"
+                android:fontFamily="@font/roboto_medium"
+                android:textSize="14sp"
                 tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
                 android:layout_width="87dp"
                 android:layout_height="28dp"
+                android:layout_marginTop="13dp"
                 android:text="객관식"
-                android:gravity="center" />
+                android:gravity="center_vertical" />
 
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp">
+                android:layout_marginTop="13dp">
 
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="옵션 1"
+                    android:fontFamily="@font/roboto_medium"
+                    android:theme="@style/CustomRadioButton"
                     android:textSize="11sp" />
 
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="옵션 추가 또는 '기타' 추가"
+                    android:fontFamily="@font/roboto_medium"
+                    android:theme="@style/CustomRadioButton"
                     android:textSize="11sp" />
 
             </RadioGroup>

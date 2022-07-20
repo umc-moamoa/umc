@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Umc_hackathon">
         <activity
+            android:name=".MyPageActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true" >
             <intent-filter>
@@ -36,7 +39,6 @@
         <activity
             android:name=".FormListActivity"
             android:exported="false" />
-
     </application>
 
 </manifest>
