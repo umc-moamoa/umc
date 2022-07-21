@@ -10,7 +10,7 @@
     tools:context=".FormListActivity">
 
     <LinearLayout
-        android:id="@+id/form_list_go_back_ll"
+        android:id="@+id/form_list_go_main_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -22,14 +22,14 @@
         android:gravity="center_vertical" >
 
         <ImageView
-            android:id="@+id/form_list_go_back_iv"
+            android:id="@+id/form_list_go_main_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_chevron_left_lilac"
             android:layout_marginEnd="7dp"/>
 
         <TextView
-            android:id="@+id/form_list_go_back_tv"
+            android:id="@+id/form_list_go_main_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="메인으로"
@@ -53,7 +53,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/form_list_go_back_ll"
+        app:layout_constraintTop_toBottomOf="@id/form_list_go_main_ll"
         app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
@@ -139,7 +139,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/main_button"
+        android:id="@+id/form_list_form_create_btn"
         android:layout_width="160dp"
         android:layout_height="40dp"
         android:background="@drawable/btn_style"
