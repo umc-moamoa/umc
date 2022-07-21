@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_hackathon.FormCreateActivity
 import com.example.umc_hackathon.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), PostView {
+class MainActivity : AppCompatActivity() {
 
     val TAG: String = "<MainActivity>"
 //    var postList = ArrayList<MySurvey>()
@@ -15,33 +15,13 @@ class MainActivity : AppCompatActivity(), PostView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        // 리스트 생성
-//        for (i in 1..10){
-//            val mySurvey = MySurvey(title = "사회현상에 대한 소비자 인식 $i")
-//            this.postList.add(mySurvey)
-//        }
-
-        binding.rvListItem.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        binding.rvListItem.setHasFixedSize(true)
-        getAllPosts()
-
-        // 이벤트 리스너
-        binding.mainButton.setOnClickListener {
-            val intent = Intent(this, FormCreateActivity::class.java)
+        binding.waitingSurveyListSeeMore.setOnClickListener {
+            val intent = Intent(this, FormListActivity::class.java)
             startActivity(intent)
         }
     }
 
-    private fun getAllPosts() {
-        val postService = PostService()
-        postService.setPostView(this)
-
-        postService.getAllPost(1) //카테고리는 추후 받아오는 걸로 수정
-    }
-
-    override fun onGetAllPostSuccess(postList: List<Post>) {
-        binding.rvListItem.adapter = MyRecyclerAdapter(postList)
-    }
 }

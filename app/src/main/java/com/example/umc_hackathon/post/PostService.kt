@@ -4,7 +4,6 @@ import android.util.Log
 import com.example.umc_hackathon.getRetrofit
 import retrofit2.Call
 import retrofit2.Response
-import retrofit2.create
 
 class PostService {
     private lateinit var postView: PostView
@@ -14,9 +13,9 @@ class PostService {
     }
 
     fun getAllPost(category: Int) {
-        val allPostService = getRetrofit().create(PostRetrofitInterface::class.java)
+        val getAllPostService = getRetrofit().create(PostRetrofitInterface::class.java)
 
-        allPostService.getAllPosts(category).enqueue(object : retrofit2.Callback<List<Post>> {
+        getAllPostService.getAllPosts(category).enqueue(object : retrofit2.Callback<List<Post>> {
             override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
                 if (response.isSuccessful) {
                     val postList = response.body()!!

@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 
 import androidx.recyclerview.widget.RecyclerView
-import com.example.umc_hackathon.FormDetailActivity
 import com.example.umc_hackathon.R
 
 
@@ -26,7 +25,9 @@ class MyRecyclerAdapter(private val surveyList: List<Post>): RecyclerView.Adapte
 //                Toast.makeText(parent.context, "설문조사 제목: ${survey.title}", Toast.LENGTH_SHORT).show()
 
                 val intent = Intent(itemView?.context, FormDetailActivity::class.java)
-                //intent.putExtra("list_title", survey)
+                intent.putExtra("title", survey.title)
+                intent.putExtra("content", survey.content)
+                intent.putExtra("deadline", survey.deadline)
                 ContextCompat.startActivity(itemView.context, intent, null)
             }
         }

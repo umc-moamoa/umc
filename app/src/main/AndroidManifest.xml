@@ -36,19 +36,11 @@
             android:name=".FormInputActivity"
             android:exported="false" />
         <activity
-            android:name=".FormDetailActivity"
+            android:name=".post.FormDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".FormListActivity"
+            android:name=".post.FormListActivity"
             android:exported="false" />
-            android:name=".post.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.example.umc_hackathon
+package com.example.umc_hackathon.post
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,8 +14,8 @@ class FormDetailActivity : AppCompatActivity() {
         val binding = ActivityFormDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if(intent.hasExtra("list_title")) {
-            binding.tvSurveyTitle.text = intent.getStringExtra("list_title")
+        if(intent.hasExtra("title")) {
+            binding.tvSurveyTitle.text = intent.getStringExtra("title")
         }
     }
 }

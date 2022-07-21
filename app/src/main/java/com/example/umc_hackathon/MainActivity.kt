@@ -3,8 +3,8 @@ package com.example.umc_hackathon
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.umc_hackathon.databinding.ActivityFormListBinding
 import com.example.umc_hackathon.databinding.ActivityMainBinding
+import com.example.umc_hackathon.post.FormListActivity
 
 class MainActivity : AppCompatActivity() {
 
