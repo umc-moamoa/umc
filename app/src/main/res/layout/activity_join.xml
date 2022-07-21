@@ -189,7 +189,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_login_submit"
+        android:id="@+id/login_page_submit_btn"
         android:layout_width="160dp"
         android:layout_height="40dp"
         android:layout_marginTop="42dp"
