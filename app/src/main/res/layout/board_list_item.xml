@@ -34,7 +34,7 @@
                 android:id="@+id/title_item_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="11개의 항목 ㅣ 선택형"
+                android:text="11개의 항목"
                 android:fontFamily="@font/roboto_light"
                 android:textColor="@color/black"
                 android:textSize="11sp" />
