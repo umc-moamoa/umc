@@ -7,57 +7,47 @@
     android:background="@color/pale_grey"
     tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/main_page_profile"
+    <LinearLayout
+        android:id="@+id/title_linear_layout_main"
         android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:layout_marginTop="18dp"
-        android:orientation="vertical"
-
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal" >
 
         <TextView
-            android:id="@+id/survey_textView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="20dp"
-            android:fontFamily="@font/roboto_bold"
+            android:id="@+id/tv_title_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="설문 ZIP"
-            android:textColor="@color/pale_violet"
             android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="@color/pale_violet"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            />
 
         <ImageView
-            android:id="@+id/btn_profile"
-            android:layout_width="25dp"
-            android:layout_height="0dp"
-            android:layout_gravity="right"
-            android:layout_marginEnd="20dp"
-            android:src="@mipmap/ic_main_profile"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/survey_textView"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/iv_profile_main"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/ic_main_profile" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/main_cardView"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="22dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_page_profile"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_linear_layout_main"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp" >
 
         <ImageView
             android:id="@+id/btn_main_list"
@@ -69,102 +59,136 @@
 
     </androidx.cardview.widget.CardView>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/main_like_survey"
-        android:layout_width="467dp"
+    <LinearLayout
+        android:id="@+id/popular_survey_list_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/main_cardView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_cardView">
-
-        <TextView
-            android:id="@+id/like_survey_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:fontFamily="@font/roboto_bold"
-            android:text="인기있는 설문조사"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/linear_layout_btns_social_login"
+            android:id="@+id/popular_survey_list_layout_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/like_survey_textView">
+            android:layout_marginHorizontal="40dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/popular_survey_list_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="인기있는 설문조사"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_weight="1"/>
 
             <ImageView
-                android:id="@+id/btn_fold_1"
-                android:layout_width="150dp"
-                android:layout_height="133dp"
-                android:src="@mipmap/main_fold_1" />
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:src="@mipmap/ic_arrow_left" />
 
-            <ImageView
-                android:id="@+id/btn_fold_2"
-                android:layout_width="150dp"
-                android:layout_height="133dp"
-                android:src="@mipmap/main_fold_2" />
-
-            <ImageView
-                android:id="@+id/btn_fold_3"
-                android:layout_width="150dp"
-                android:layout_height="133dp"
-                android:src="@mipmap/main_fold_3" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:text="더 보기"
+                android:textSize="11sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/main_join_survey"
-        android:layout_width="match_parent"
-        android:layout_height="122dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="323dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_like_survey"
-        app:layout_constraintVertical_bias="1.0">
-
-        <TextView
-            android:id="@+id/like_join_textView"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/popular_survey_list_folders"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:fontFamily="@font/roboto_bold"
-            android:text="참여를 기다리는 설문조사"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal" >
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="5dp"
+                android:src="@mipmap/main_folder_1" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="5dp"
+                android:src="@mipmap/main_folder_2" />
+
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="5dp"
+                android:src="@mipmap/main_folder_3" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/waiting_survey_list_layuout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="폼 목록 페이지 보기"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintTop_toBottomOf="@id/popular_survey_list_layout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_join_survey" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="35dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/waiting_survey_list_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/waiting_survey_list_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="참여를 기다리는 설문조사"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:src="@mipmap/ic_arrow_left" />
+
+            <TextView
+                android:id="@+id/waiting_survey_list_see_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:text="더 보기"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/waiting_survey_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_waiting_survey_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
