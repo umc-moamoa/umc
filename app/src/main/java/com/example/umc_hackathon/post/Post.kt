@@ -1,4 +1,4 @@
-package com.example.umc_hackathon
+package com.example.umc_hackathon.post
 
 import com.google.gson.annotations.SerializedName
 import java.util.*

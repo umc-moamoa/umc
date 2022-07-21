@@ -1,4 +1,4 @@
-package com.example.umc_hackathon
+package com.example.umc_hackathon.post
 
 import android.content.Intent
 import android.util.Log
@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 
 import androidx.recyclerview.widget.RecyclerView
+import com.example.umc_hackathon.FormDetailActivity
+import com.example.umc_hackathon.R
 
 
 class MyRecyclerAdapter(private val surveyList: List<Post>): RecyclerView.Adapter<MyRecyclerAdapter.MyViewHolder>() {
@@ -26,7 +26,7 @@ class MyRecyclerAdapter(private val surveyList: List<Post>): RecyclerView.Adapte
 //                Toast.makeText(parent.context, "설문조사 제목: ${survey.title}", Toast.LENGTH_SHORT).show()
 
                 val intent = Intent(itemView?.context, FormDetailActivity::class.java)
-                intent.putExtra("list_title", survey.title.toString())
+                //intent.putExtra("list_title", survey)
                 ContextCompat.startActivity(itemView.context, intent, null)
             }
         }

@@ -1,9 +1,10 @@
-package com.example.umc_hackathon
+package com.example.umc_hackathon.post
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.umc_hackathon.FormCreateActivity
 import com.example.umc_hackathon.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), PostView {
@@ -11,7 +12,6 @@ class MainActivity : AppCompatActivity(), PostView {
     val TAG: String = "<MainActivity>"
 //    var postList = ArrayList<MySurvey>()
     val binding = ActivityMainBinding.inflate(layoutInflater)
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,12 +38,10 @@ class MainActivity : AppCompatActivity(), PostView {
         val postService = PostService()
         postService.setPostView(this)
 
-        postService.allPost(1) //카테고리는 추후 받아오는 걸로 수정
+        postService.getAllPost(1) //카테고리는 추후 받아오는 걸로 수정
     }
 
-    override fun onAllPostSuccess(postList: List<Post>) {
+    override fun onGetAllPostSuccess(postList: List<Post>) {
         binding.rvListItem.adapter = MyRecyclerAdapter(postList)
     }
-
-
 }

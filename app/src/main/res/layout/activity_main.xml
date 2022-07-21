@@ -7,7 +7,7 @@
     android:layout_gravity="center_horizontal"
     android:background="@color/pale_grey"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".post.MainActivity">
 
     <TextView
         android:id="@+id/tv_title"
