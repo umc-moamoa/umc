@@ -1,5 +1,6 @@
 package com.example.umc_hackathon
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.umc_hackathon.databinding.ActivityFormDetailBinding
@@ -16,6 +17,12 @@ class FormDetailActivity : AppCompatActivity() {
 
         if(intent.hasExtra("list_title")) {
             binding.tvSurveyTitle.text = intent.getStringExtra("list_title")
+        }
+
+        binding.goBackToMain.setOnClickListener{
+            val intent = Intent(this, FormListActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }

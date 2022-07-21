@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Umc_hackathon">
         <activity
-            android:name=".MyPageActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true" >
             <intent-filter>
@@ -22,11 +19,14 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".MyPageActivity"
+            android:exported="false" />
+        <activity
             android:name=".JoinActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".FormCreateActivity"
             android:exported="false" />

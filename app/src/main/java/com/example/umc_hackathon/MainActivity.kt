@@ -15,8 +15,13 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.popularSurveyListSeeMore.setOnClickListener {
+        binding.popularSurveyListLayoutHeader.setOnClickListener {
             val intent = Intent(this, FormListActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.ivProfileMain.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
     }
