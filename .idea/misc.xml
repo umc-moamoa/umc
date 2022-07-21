@@ -35,12 +35,15 @@
         <entry key="..\:/Users/yoonm/umc/app/src/main/res/drawable/btn_off_style.xml" value="0.1625" />
         <entry key="..\:/Users/yoonm/umc/app/src/main/res/drawable/btn_style.xml" value="0.1625" />
         <entry key="..\:/Users/yoonm/umc/app/src/main/res/drawable/color_round.xml" value="0.1625" />
+        <entry key="..\:/Users/yoonm/umc/app/src/main/res/drawable/ic_main_profile.xml" value="0.1" />
         <entry key="..\:/Users/yoonm/umc/app/src/main/res/drawable/round.xml" value="0.1625" />
-        <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_form_create.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_form_create.xml" value="0.4" />
         <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_form_detail.xml" value="0.264" />
+        <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_form_input.xml" value="0.264" />
+        <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_form_list.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_join.xml" value="0.264" />
-        <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_login.xml" value="0.176" />
-        <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_main.xml" value="0.536" />
         <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_my_page.xml" value="0.264" />
         <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/board_list_item.xml" value="0.17604166666666668" />
       </map>
