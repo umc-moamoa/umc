@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.waitingSurveyListSeeMore.setOnClickListener {
+        binding.popularSurveyListSeeMore.setOnClickListener {
             val intent = Intent(this, FormListActivity::class.java)
             startActivity(intent)
         }
