@@ -28,7 +28,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_title_join"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -82,10 +82,10 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/join_page_id_cv"
                 android:layout_width="188dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="65dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="40dp"
                 android:layout_marginVertical="10dp"
-                app:cardCornerRadius="30dp"
+                app:cardCornerRadius="20dp"
                 app:cardElevation="10dp">
 
                 <EditText
@@ -103,10 +103,10 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/join_page_id_duplicate_check_cv"
                 android:layout_width="82dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginVertical="10dp"
-                app:cardCornerRadius="30dp"
+                app:cardCornerRadius="20dp"
                 app:cardElevation="10dp">
 
                 <EditText
@@ -126,10 +126,10 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/et_nickname_join"
             android:layout_width="281dp"
-            android:layout_height="51dp"
+            android:layout_height="40dp"
             android:layout_marginHorizontal="40dp"
             android:layout_marginVertical="10dp"
-            app:cardCornerRadius="30dp"
+            app:cardCornerRadius="20dp"
             app:cardElevation="10dp">
 
             <EditText
@@ -147,8 +147,8 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/et_password_join"
             android:layout_width="281dp"
-            android:layout_height="51dp"
-            app:cardCornerRadius="30dp"
+            android:layout_height="40dp"
+            app:cardCornerRadius="20dp"
             app:cardElevation="10dp"
             android:layout_marginHorizontal="40dp"
             android:layout_marginVertical="10dp">
@@ -168,8 +168,8 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/et_password_check_join"
             android:layout_width="281dp"
-            android:layout_height="51dp"
-            app:cardCornerRadius="30dp"
+            android:layout_height="40dp"
+            app:cardCornerRadius="20dp"
             app:cardElevation="10dp"
             android:layout_marginHorizontal="40dp"
             android:layout_marginVertical="10dp">
