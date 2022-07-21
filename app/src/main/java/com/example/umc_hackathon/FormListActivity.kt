@@ -27,9 +27,15 @@ class FormListActivity : AppCompatActivity() {
         binding.rvListItem.adapter = MyRecyclerAdapter(modelList)
 
         // 이벤트 리스너
-        binding.mainButton.setOnClickListener {
+        binding.formListFormCreateBtn.setOnClickListener {
             val intent = Intent(this, FormCreateActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.formListGoMainLl.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 
