@@ -16,7 +16,7 @@ class FormDetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         if(intent.hasExtra("list_title")) {
-            binding.tvSurveyTitle.text = intent.getStringExtra("list_title")
+            binding.formDetailTitleTv.text = intent.getStringExtra("list_title")
         }
 
         binding.goBackToMain.setOnClickListener{
