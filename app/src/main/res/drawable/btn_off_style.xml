@@ -11,7 +11,7 @@
                 android:bottom="10dp" />
             <stroke
                 android:color="#dadce5"
-                android:width="1pt" />
+                android:width="0.7pt" />
         </shape>
     </item>
 </selector>

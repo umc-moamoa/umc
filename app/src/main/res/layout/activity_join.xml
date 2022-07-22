@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/linear_layout_btns_join"
+        android:id="@+id/login_page_tabs_ll"
         app:layout_constraintTop_toBottomOf="@id/tv_title_join"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,10 +63,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linear_layout_et_join"
+        android:id="@+id/login_page_input_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/linear_layout_btns_join"
+        app:layout_constraintTop_toBottomOf="@id/login_page_tabs_ll"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:orientation="vertical"
@@ -200,7 +200,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear_layout_et_join"
+        app:layout_constraintTop_toBottomOf="@id/login_page_input_ll"
         tools:ignore="TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
