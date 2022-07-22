@@ -37,6 +37,7 @@ class FormListActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
     }
 
 }
