@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_chevron_left_lilac"
-            android:layout_marginEnd="7dp"/>
+            android:layout_marginEnd="13dp"/>
 
         <TextView
             android:id="@+id/form_list_go_main_tv"
@@ -34,6 +34,7 @@
             android:layout_height="wrap_content"
             android:text="메인으로"
             android:textSize="14sp"
+            android:textColor="@color/black"
             android:fontFamily="@font/roboto_regular" />
 
     </LinearLayout>
@@ -68,44 +69,43 @@
         app:layout_constraintEnd_toEndOf="parent" >
 
         <Button
-            android:id="@+id/btn_market"
+            android:id="@+id/form_list_marketing_btn"
             android:layout_width="80dp"
             android:layout_height="38dp"
             android:text="마케팅"
             android:fontFamily="@font/roboto_regular"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="16sp"
             android:background="@drawable/btn_style" />
 
         <Button
-            android:id="@+id/btn_social"
+            android:id="@+id/form_list_social_phenomenon_btn"
             android:layout_width="80dp"
             android:layout_height="38dp"
             android:text="사회현상"
             android:fontFamily="@font/roboto_regular"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="16sp"
             android:background="@color/transparent" />
 
         <Button
-            android:id="@+id/btn_brand"
+            android:id="@+id/form_list_brand_btn"
             android:layout_width="80dp"
             android:layout_height="38dp"
-
             android:text="브랜드"
             android:fontFamily="@font/roboto_regular"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="16sp"
             android:background="@color/transparent" />
 
         <Button
-            android:id="@+id/btn_idea"
+            android:id="@+id/form_list_idea_btn"
             android:layout_width="80dp"
             android:layout_height="38dp"
             android:text="아이디어"
             android:fontFamily="@font/roboto_regular"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="16sp"
             android:background="@color/transparent" />
 
     </LinearLayout>
