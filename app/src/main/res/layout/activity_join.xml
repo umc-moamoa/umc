@@ -67,7 +67,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:orientation="vertical"
         android:layout_marginTop="32dp"
-        android:paddingHorizontal="45dp"
+        android:paddingHorizontal="40dp"
         android:gravity="center">
 
         <LinearLayout
