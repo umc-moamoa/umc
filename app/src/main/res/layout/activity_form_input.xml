@@ -24,7 +24,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/btn_form_input_cancel"
+                android:id="@+id/form_input_cancel_btn"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="26dp"
@@ -32,7 +32,6 @@
                 android:layout_marginTop="19dp"
                 android:background="@color/pale_grey"
                 android:fontFamily="@font/roboto_regular"
-                android:onClick="onClick"
                 android:text="취소"
                 android:textAlignment="textStart"
                 android:textColor="@color/black"
@@ -234,7 +233,6 @@
                 android:layout_marginBottom="13dp"
                 android:background="@drawable/btn_style"
                 android:fontFamily="@font/roboto_bold"
-                android:onClick="onClick"
                 android:text="제출"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
