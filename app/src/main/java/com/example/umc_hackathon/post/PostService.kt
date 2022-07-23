@@ -25,7 +25,7 @@ class PostService {
             }
 
             override fun onFailure(call: Call<List<Post>>, t: Throwable) {
-                Log.d("postlist-retrofit", t.toString())
+                Log.d("postlist-retrofit-error", t.toString())
             }
         })
 

@@ -8,7 +8,7 @@ import retrofit2.http.Query
 interface PostRetrofitInterface {
     @GET("/posts")
     fun getAllPosts(
-        @Query("category") category: Int
+        @Query("categoryId") category: Int
     ): Call<List<Post>>
 
     @GET("/posts/content/{postId}")

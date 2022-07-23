@@ -11,12 +11,12 @@ import com.example.umc_hackathon.databinding.ActivityFormListBinding
 class FormListActivity : AppCompatActivity(), PostView {
 
     val TAG: String = "<FormListActivity>"
-//    var modelList = ArrayList<MySurvey>()
 
-    val binding = ActivityFormListBinding.inflate(layoutInflater)
+    private lateinit var binding : ActivityFormListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityFormListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // 리스트 생성
