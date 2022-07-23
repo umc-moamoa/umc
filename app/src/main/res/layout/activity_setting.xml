@@ -128,11 +128,6 @@
                     android:fontFamily="@font/roboto_regular"
                     android:layout_weight="1"/>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_chevron_right_black" />
-
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
@@ -157,11 +152,6 @@
                     android:textColor="@color/black"
                     android:fontFamily="@font/roboto_regular"
                     android:layout_weight="1"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_chevron_right_black" />
 
             </LinearLayout>
 
