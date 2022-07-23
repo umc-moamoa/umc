@@ -70,14 +70,15 @@
         android:id="@+id/btn_save_form_create"
         android:layout_width="160dp"
         android:layout_height="40dp"
-        android:text="질문 추가하기"
+        android:background="@drawable/btn_style"
         android:fontFamily="@font/roboto_bold"
+        android:text="질문 추가하기"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.955"
-        android:background="@drawable/btn_style"/>
+        tools:ignore="TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

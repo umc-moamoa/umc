@@ -33,7 +33,7 @@
             android:id="@+id/iv_profile_main"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@mipmap/ic_main_profile" />
+            android:src="@drawable/ic_main_profile" />
 
     </LinearLayout>
 
@@ -93,6 +93,7 @@
                 android:src="@mipmap/ic_arrow_left" />
 
             <TextView
+                android:id="@+id/popular_survey_list_see_more"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
