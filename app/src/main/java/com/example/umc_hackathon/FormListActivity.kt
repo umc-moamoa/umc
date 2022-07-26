@@ -24,7 +24,7 @@ class FormListActivity : AppCompatActivity() {
 
         binding.rvListItem.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.rvListItem.setHasFixedSize(true)
-        binding.rvListItem.adapter = MyRecyclerAdapter(modelList)
+        binding.rvListItem.adapter = FormListRAdapter(modelList)
 
         // 이벤트 리스너
         binding.formListFormCreateBtn.setOnClickListener {
@@ -37,7 +37,6 @@ class FormListActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
     }
 
 }

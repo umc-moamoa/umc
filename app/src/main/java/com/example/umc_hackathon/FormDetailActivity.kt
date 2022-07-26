@@ -3,6 +3,7 @@ package com.example.umc_hackathon
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.umc_hackathon.databinding.ActivityFormDetailBinding
 
 class FormDetailActivity : AppCompatActivity() {
@@ -28,5 +29,8 @@ class FormDetailActivity : AppCompatActivity() {
             val intent = Intent(this, FormInputActivity::class.java)
             startActivity(intent)
         }
+
+        // 관심 버튼 하트 색깔
+
     }
 }

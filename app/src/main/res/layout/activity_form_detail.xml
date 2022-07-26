@@ -30,7 +30,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="메인으로"
+            android:text="목록으로"
             android:textSize="14sp"
             android:textColor="@color/black" />
 
@@ -110,10 +110,20 @@
             android:layout_marginTop="40dp"/>
 
         <ImageView
-            android:id="@+id/heart_img"
+            android:id="@+id/form_detail_like_unselected_iv"
             android:layout_width="13dp"
             android:layout_height="11dp"
-            android:src="@mipmap/heart"
+            android:src="@drawable/ic_like_unselected"
+            app:layout_constraintStart_toStartOf="@id/form_detail_background_view"
+            app:layout_constraintTop_toTopOf="@id/form_detail_background_view"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"/>
+
+        <ImageView
+            android:id="@+id/form_detail_like_selected_iv"
+            android:layout_width="13dp"
+            android:layout_height="11dp"
+            android:src="@drawable/ic_like_selected"
             app:layout_constraintStart_toStartOf="@id/form_detail_background_view"
             app:layout_constraintTop_toTopOf="@id/form_detail_background_view"
             android:layout_marginTop="10dp"
@@ -129,7 +139,7 @@
             app:layout_constraintStart_toStartOf="@id/form_detail_background_view"
             app:layout_constraintTop_toTopOf="@id/form_detail_background_view"
             android:layout_marginTop="8dp"
-            android:layout_marginStart="27dp"/>
+            android:layout_marginStart="25dp"/>
 
 
         <Button

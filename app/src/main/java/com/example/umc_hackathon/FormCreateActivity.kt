@@ -1,10 +1,10 @@
 package com.example.umc_hackathon
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_hackathon.databinding.ActivityFormCreateBinding
-import com.example.umc_hackathon.databinding.ActivityFormDetailBinding
 
 class FormCreateActivity : AppCompatActivity() {
 
@@ -24,6 +24,18 @@ class FormCreateActivity : AppCompatActivity() {
 
         binding.rvFormCreate.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.rvFormCreate.setHasFixedSize(true)
-        binding.rvFormCreate.adapter = MyRecyclerAdapter2(modelList)
+        binding.rvFormCreate.adapter = FormCreateRAdapter(modelList)
+
+        binding.tvCancelFormCreate.setOnClickListener {
+            val intent = Intent(this, FormListActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        binding.tvSaveFormCreate.setOnClickListener {
+            val intent = Intent(this, FormListActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }
