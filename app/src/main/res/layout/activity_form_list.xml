@@ -13,29 +13,29 @@
         android:id="@+id/form_list_go_main_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:paddingHorizontal="20dp"
         android:paddingTop="15dp"
-        android:gravity="center_vertical" >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/form_list_go_main_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_chevron_left_lilac"
-            android:layout_marginEnd="13dp"/>
+            android:layout_marginEnd="13dp"
+            android:src="@drawable/ic_chevron_left_lilac" />
 
         <TextView
             android:id="@+id/form_list_go_main_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
             android:text="메인으로"
-            android:textSize="14sp"
             android:textColor="@color/black"
-            android:fontFamily="@font/roboto_regular" />
+            android:textSize="14sp" />
 
     </LinearLayout>
 
@@ -61,52 +61,52 @@
         android:id="@+id/form_list_category_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" >
+        app:layout_constraintTop_toBottomOf="@id/tv_title">
 
         <Button
             android:id="@+id/form_list_marketing_btn"
             android:layout_width="80dp"
             android:layout_height="38dp"
-            android:text="마케팅"
+            android:background="@drawable/btn_style"
             android:fontFamily="@font/roboto_regular"
+            android:text="마케팅"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            android:background="@drawable/btn_style" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/form_list_social_phenomenon_btn"
             android:layout_width="80dp"
             android:layout_height="38dp"
-            android:text="사회현상"
+            android:background="@color/transparent"
             android:fontFamily="@font/roboto_regular"
+            android:text="사회현상"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            android:background="@color/transparent" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/form_list_brand_btn"
             android:layout_width="80dp"
             android:layout_height="38dp"
-            android:text="브랜드"
+            android:background="@color/transparent"
             android:fontFamily="@font/roboto_regular"
+            android:text="브랜드"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            android:background="@color/transparent" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/form_list_idea_btn"
             android:layout_width="80dp"
             android:layout_height="38dp"
-            android:text="아이디어"
+            android:background="@color/transparent"
             android:fontFamily="@font/roboto_regular"
+            android:text="아이디어"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            android:background="@color/transparent" />
+            android:textSize="16sp" />
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -125,14 +125,14 @@
             android:id="@+id/rv_list_item"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingTop="20dp"
+            android:paddingBottom="70dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/board_list_item"
-            android:clipToPadding="false"
-            android:paddingTop="20dp"
-            android:paddingBottom="70dp"/>
+            tools:listitem="@layout/board_list_item" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
