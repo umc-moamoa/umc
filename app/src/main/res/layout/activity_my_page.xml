@@ -30,7 +30,7 @@
             <ImageView
                 android:layout_width="9dp"
                 android:layout_height="15dp"
-                android:layout_marginEnd="7dp"
+                android:layout_marginEnd="10dp"
                 android:src="@drawable/ic_chevron_left_white" />
 
             <TextView
@@ -47,11 +47,12 @@
             android:id="@+id/my_page_member_ll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="31dp"
+            android:layout_marginTop="28dp"
             android:gravity="bottom"
             android:orientation="horizontal"
             android:paddingHorizontal="40dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/my_page_go_main_ll">
 
@@ -97,8 +98,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingHorizontal="79dp"
             android:paddingTop="35dp"
+            android:paddingHorizontal="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/my_page_member_ll">
@@ -116,7 +117,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_marginBottom="13dp"
-                    android:src="@mipmap/ic_mypage_point_white" />
+                    android:src="@drawable/ic_mypage_point_black" />
 
                 <TextView
                     android:id="@+id/my_page_member_point_tv"
@@ -169,9 +170,10 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="280dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="220dp"
+        android:layout_marginHorizontal="20dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="10dp"
         app:layout_constraintEnd_toEndOf="parent"
