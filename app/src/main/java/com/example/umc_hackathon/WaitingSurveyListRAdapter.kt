@@ -15,17 +15,8 @@ class WaitingSurveyListRAdapter(val surveyList: ArrayList<MySurvey>): RecyclerVi
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WaitingSurveyListRAdapter.MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.waiting_survey_board_item, parent, false)
-        return MyViewHolder(view)
 
-//            .apply {
-//            itemView.setOnClickListener {
-//                val currentPosition: Int = adapterPosition
-//                val survey: MySurvey = surveyList.get(currentPosition)
-//                val intent = Intent(itemView?.context, FormDetailActivity::class.java)
-//                intent.putExtra("list_title", survey.title.toString())
-//                ContextCompat.startActivity(itemView.context, intent, null)
-//            }
-//        }
+        return MyViewHolder(view)
     }
 
     override fun getItemCount(): Int {

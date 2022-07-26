@@ -26,6 +26,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.waitingSurveyListHeader.setOnClickListener {
+            val intent = Intent(this, FormListActivity::class.java)
+            startActivity(intent)
+        }
+
         // 리스트 생성
         for (i in 1..10){
             val mySurvey = MySurvey(title = "사회현상에 대한 소비자 인식 $i")
