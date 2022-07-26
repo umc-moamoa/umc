@@ -3,8 +3,10 @@ package com.example.umc_hackathon
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_hackathon.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,6 +31,11 @@ class MainActivity : AppCompatActivity() {
         binding.waitingSurveyListHeader.setOnClickListener {
             val intent = Intent(this, FormListActivity::class.java)
             startActivity(intent)
+        }
+
+        // 스크롤뷰 시작 위치 상단으로 고정하기
+        binding.mainScrollview.post {
+            binding.mainScrollview.fullScroll(ScrollView.FOCUS_UP)
         }
 
         // 리스트 생성
