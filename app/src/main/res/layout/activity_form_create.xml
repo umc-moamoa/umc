@@ -32,11 +32,11 @@
             android:id="@+id/tv_save_form_create"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="저장"
             android:fontFamily="@font/roboto_regular"
-            android:textSize="14sp"
+            android:gravity="right"
+            android:text="저장"
             android:textColor="@color/black"
-            android:gravity="right" />
+            android:textSize="14sp" />
 
     </LinearLayout>
 

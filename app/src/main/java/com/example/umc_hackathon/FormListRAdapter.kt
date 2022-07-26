@@ -6,14 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 
 import androidx.recyclerview.widget.RecyclerView
 
 
-class MyRecyclerAdapter(val surveyList: ArrayList<MySurvey>): RecyclerView.Adapter<MyRecyclerAdapter.MyViewHolder>() {
+class FormListRAdapter(val surveyList: ArrayList<MySurvey>): RecyclerView.Adapter<FormListRAdapter.MyViewHolder>() {
 
     val TAG: String = "<MyRecycleAdapter>"
 
