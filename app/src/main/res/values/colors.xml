@@ -15,4 +15,6 @@
     <color name="greyish_brown">#4e4e4e</color>
     <color name="very_light_pink">#d1d1d1</color>
     <color name="transparent">#00000000</color>
+    <color name="lavender_pink">#e279be</color>
+    <color name="soft_blue">#7798dd</color>
 </resources>
