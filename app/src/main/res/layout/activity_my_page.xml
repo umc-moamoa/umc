@@ -181,6 +181,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/my_page_participated_survey_ll"
             android:layout_width="match_parent"
             android:layout_height="244dp"
             android:orientation="vertical"
