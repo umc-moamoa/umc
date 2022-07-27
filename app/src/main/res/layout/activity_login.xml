@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,6 +9,7 @@
     tools:context=".LoginActivity">
 
     <View
+        android:id="@+id/login_title_view"
         android:layout_width="50dp"
         android:layout_height="40dp"
         android:layout_marginTop="30dp"
@@ -18,7 +20,7 @@
         android:background="@drawable/ic_folder_purple" />
 
     <TextView
-        android:id="@+id/join_page_title_tv"
+        android:id="@+id/login_join_title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -31,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/login_page_tabs_ll"
+        android:id="@+id/login_join_tabs_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="55dp"
@@ -39,10 +41,10 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/join_page_title_tv">
+        app:layout_constraintTop_toBottomOf="@id/login_join_title_tv">
 
         <Button
-            android:id="@+id/login_page_login_btn"
+            android:id="@+id/login_login_btn"
             android:layout_width="120dp"
             android:layout_height="40dp"
             android:layout_marginVertical="5dp"
@@ -55,7 +57,7 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/login_page_join_btn"
+            android:id="@+id/login_join_btn"
             android:layout_width="120dp"
             android:layout_height="40dp"
             android:layout_marginVertical="5dp"
@@ -70,7 +72,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/join_page_input_ll"
+        android:id="@+id/setting_login_join_input_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="29dp"
@@ -79,15 +81,17 @@
         android:paddingVertical="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login_page_tabs_ll">
+        app:layout_constraintTop_toBottomOf="@id/login_join_tabs_ll">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/login_email_cv"
             android:layout_width="280dp"
             android:layout_height="50dp"
             android:layout_marginVertical="10dp"
             app:cardCornerRadius="25dp">
 
             <LinearLayout
+                android:id="@+id/login_email_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -96,7 +100,7 @@
                 android:paddingEnd="25dp">
 
                 <ImageView
-                    android:id="@+id/iv_login_mail"
+                    android:id="@+id/login_email_iv"
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:layout_gravity="center"
@@ -104,6 +108,7 @@
                     android:src="@mipmap/ic_login_mail" />
 
                 <EditText
+                    android:id="@+id/login_email_et"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -117,6 +122,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/login_password_cv"
             android:layout_width="280dp"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
@@ -124,6 +130,7 @@
             app:cardCornerRadius="25dp">
 
             <LinearLayout
+                android:id="@+id/login_password_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -132,7 +139,7 @@
                 android:paddingEnd="25dp">
 
                 <ImageView
-                    android:id="@+id/iv_login_password"
+                    android:id="@+id/login_password_iv"
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:layout_gravity="center"
@@ -140,6 +147,7 @@
                     android:src="@mipmap/ic_login_lock" />
 
                 <EditText
+                    android:id="@+id/login_password_et"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -156,7 +164,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/login_page_submit_btn"
+        android:id="@+id/login_submit_btn"
         android:layout_width="160dp"
         android:layout_height="40dp"
         android:layout_marginTop="35dp"
@@ -168,10 +176,10 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/join_page_input_ll" />
+        app:layout_constraintTop_toBottomOf="@id/setting_login_join_input_ll" />
 
     <LinearLayout
-        android:id="@+id/linear_layout_btns_social_login"
+        android:id="@+id/login_social_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
@@ -179,30 +187,31 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login_page_submit_btn">
+        app:layout_constraintTop_toBottomOf="@id/login_submit_btn">
 
         <ImageView
-            android:id="@+id/login_by_kakao"
+            android:id="@+id/login_kakao_iv"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@drawable/ic_bt_login_kakao" />
+            android:src="@mipmap/btn_login_kakao" />
 
         <ImageView
-            android:id="@+id/login_by_naver"
+            android:id="@+id/login_naver_iv"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginHorizontal="22dp"
             android:src="@drawable/ic_bt_login_naver" />
 
         <ImageView
-            android:id="@+id/login_by_facebook"
+            android:id="@+id/login_facebook_iv"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@drawable/ic_bt_login_facebook" />
+            android:src="@mipmap/btn_login_facebook" />
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/login_join_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="49dp"
@@ -210,10 +219,10 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear_layout_btns_social_login">
+        app:layout_constraintTop_toBottomOf="@id/login_social_ll">
 
         <TextView
-            android:id="@+id/recommend_signup_login"
+            android:id="@+id/login_recommend_signup_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="2.5dp"
@@ -223,7 +232,7 @@
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/go_signup_login"
+            android:id="@+id/login_go_signup_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2.5dp"

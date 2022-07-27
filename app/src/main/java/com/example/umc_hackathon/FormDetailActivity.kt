@@ -19,7 +19,7 @@ class FormDetailActivity : AppCompatActivity() {
             binding.formDetailTitleTv.text = intent.getStringExtra("list_title")
         }
 
-        binding.goBackToMain.setOnClickListener{
+        binding.formDetailBackMainLl.setOnClickListener{
             val intent = Intent(this, FormListActivity::class.java)
             startActivity(intent)
             finish()

@@ -22,9 +22,9 @@ class FormListActivity : AppCompatActivity() {
             this.modelList.add(mySurvey)
         }
 
-        binding.rvListItem.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        binding.rvListItem.setHasFixedSize(true)
-        binding.rvListItem.adapter = FormListRAdapter(modelList)
+        binding.formListListItemRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.formListListItemRv.setHasFixedSize(true)
+        binding.formListListItemRv.adapter = FormListRAdapter(modelList)
 
         // 이벤트 리스너
         binding.formListFormCreateBtn.setOnClickListener {

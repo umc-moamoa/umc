@@ -18,17 +18,17 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.ivProfileMain.setOnClickListener {
+        binding.mainProfileIv.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 
-        binding.popularSurveyListLayoutHeader.setOnClickListener {
+        binding.mainPopularSurveyLl.setOnClickListener {
             val intent = Intent(this, FormListActivity::class.java)
             startActivity(intent)
         }
 
-        binding.waitingSurveyListHeader.setOnClickListener {
+        binding.mainWaitingSurveyListHeaderLl.setOnClickListener {
             val intent = Intent(this, FormListActivity::class.java)
             startActivity(intent)
         }
@@ -44,8 +44,8 @@ class MainActivity : AppCompatActivity() {
             this.modelList.add(mySurvey)
         }
 
-        binding.rvWaitingSurveyList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        binding.rvWaitingSurveyList.setHasFixedSize(true)
-        binding.rvWaitingSurveyList.adapter = WaitingSurveyListRAdapter(modelList)
+        binding.mainWaitingSurveyListRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.mainWaitingSurveyListRv.setHasFixedSize(true)
+        binding.mainWaitingSurveyListRv.adapter = WaitingSurveyListRAdapter(modelList)
     }
 }

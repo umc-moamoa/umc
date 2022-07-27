@@ -22,17 +22,17 @@ class FormCreateActivity : AppCompatActivity() {
             this.modelList.add(myQuestion)
         }
 
-        binding.rvFormCreate.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        binding.rvFormCreate.setHasFixedSize(true)
-        binding.rvFormCreate.adapter = FormCreateRAdapter(modelList)
+        binding.formCreateListRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.formCreateListRv.setHasFixedSize(true)
+        binding.formCreateListRv.adapter = FormCreateRAdapter(modelList)
 
-        binding.tvCancelFormCreate.setOnClickListener {
+        binding.formCreateCancelTv.setOnClickListener {
             val intent = Intent(this, FormListActivity::class.java)
             startActivity(intent)
             finish()
         }
 
-        binding.tvSaveFormCreate.setOnClickListener {
+        binding.formCreateSaveTv.setOnClickListener {
             val intent = Intent(this, FormListActivity::class.java)
             startActivity(intent)
             finish()

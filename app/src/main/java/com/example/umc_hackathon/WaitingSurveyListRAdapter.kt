@@ -14,8 +14,7 @@ class WaitingSurveyListRAdapter(val surveyList: ArrayList<MySurvey>): RecyclerVi
     val TAG: String = "<WaitingSLRAdapter>"
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WaitingSurveyListRAdapter.MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.waiting_survey_board_item, parent, false)
-
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.board_waiting_survey_item, parent, false)
         return MyViewHolder(view)
     }
 
@@ -24,7 +23,7 @@ class WaitingSurveyListRAdapter(val surveyList: ArrayList<MySurvey>): RecyclerVi
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title = itemView.findViewById<TextView>(R.id.waiting_survey_board_item_title_tv)
+        val title = itemView.findViewById<TextView>(R.id.waiting_survey_item_title_tv)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {

@@ -14,7 +14,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/title_linear_layout_main"
+            android:id="@+id/main_title_ll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
@@ -26,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/tv_title_main"
+                android:id="@+id/main_title_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -36,13 +36,14 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/main_profile_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="000님! 반갑습니다"
                 android:textSize="11sp" />
 
             <ImageView
-                android:id="@+id/iv_profile_main"
+                android:id="@+id/main_profile_iv"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginStart="8dp"
@@ -52,7 +53,7 @@
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/main_cardView"
+            android:id="@+id/main_banner_cv"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginHorizontal="20dp"
@@ -61,10 +62,10 @@
             app:cardElevation="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title_linear_layout_main">
+            app:layout_constraintTop_toBottomOf="@id/main_title_ll">
 
             <ImageView
-                android:id="@+id/btn_main_list"
+                android:id="@+id/main_banner_iv"
                 android:layout_width="70dp"
                 android:layout_height="10dp"
                 android:layout_gravity="center_horizontal"
@@ -74,17 +75,17 @@
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
-            android:id="@+id/popular_survey_list_layout"
+            android:id="@+id/main_popular_survey_ll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/main_cardView">
+            app:layout_constraintTop_toBottomOf="@id/main_banner_cv">
 
             <LinearLayout
-                android:id="@+id/popular_survey_list_layout_header"
+                android:id="@+id/main_popular_survey_title_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -92,7 +93,7 @@
                 android:paddingHorizontal="20dp">
 
                 <TextView
-                    android:id="@+id/popular_survey_list_title"
+                    android:id="@+id/main_popular_survey_title_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -102,7 +103,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/popular_survey_list_see_more"
+                    android:id="@+id/main_popular_survey_see_more_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
@@ -111,6 +112,7 @@
                     android:textStyle="bold" />
 
                 <ImageView
+                    android:id="@+id/main_popular_survey_see_more_iv"
                     android:layout_width="12dp"
                     android:layout_height="12dp"
                     android:src="@mipmap/ic_arrow_left" />
@@ -119,12 +121,13 @@
 
 
             <HorizontalScrollView
+                android:id="@+id/main_popular_survey_hsv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="none">
 
                 <LinearLayout
-                    android:id="@+id/popular_survey_list_folders"
+                    android:id="@+id/main_popular_survey_folders_ll"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -137,12 +140,14 @@
                         android:layout_marginEnd="20dp">
 
                         <View
+                            android:id="@+id/main_social_phenomenon_folder_view"
                             android:layout_width="120dp"
                             android:layout_height="100dp"
                             android:layout_marginEnd="10dp"
                             android:background="@drawable/ic_folder_blue" />
 
                         <LinearLayout
+                            android:id="@+id/main_social_phenomenon_folder_ll"
                             android:layout_width="120dp"
                             android:layout_height="100dp"
                             android:orientation="vertical"
@@ -150,6 +155,7 @@
                             android:paddingTop="23dp">
 
                             <TextView
+                                android:id="@+id/main_social_phenomenon_title_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="5dp"
@@ -159,6 +165,7 @@
                                 android:textSize="20sp" />
 
                             <TextView
+                                android:id="@+id/main_social_phenomenon_count_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/roboto_light"
@@ -175,6 +182,7 @@
                                 android:paddingEnd="12dp">
 
                                 <TextView
+                                    android:id="@+id/main_social_phenomenon_type_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto_light"
@@ -183,6 +191,7 @@
                                     android:textSize="11sp" />
 
                                 <TextView
+                                    android:id="@+id/main_social_phenomenon_point_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -204,12 +213,14 @@
                         android:layout_marginEnd="20dp">
 
                         <View
+                            android:id="@+id/main_marketing_folder_view"
                             android:layout_width="120dp"
                             android:layout_height="100dp"
                             android:layout_marginEnd="10dp"
                             android:background="@drawable/ic_folder_white" />
 
                         <LinearLayout
+                            android:id="@+id/main_marketing_folder_ll"
                             android:layout_width="120dp"
                             android:layout_height="100dp"
                             android:orientation="vertical"
@@ -217,6 +228,7 @@
                             android:paddingTop="23dp">
 
                             <TextView
+                                android:id="@+id/main_marketing_title_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="5dp"
@@ -226,6 +238,7 @@
                                 android:textSize="20sp" />
 
                             <TextView
+                                android:id="@+id/main_marketing_count_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/roboto_light"
@@ -242,6 +255,7 @@
                                 android:paddingEnd="12dp">
 
                                 <TextView
+                                    android:id="@+id/main_marketing_type_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto_light"
@@ -250,6 +264,7 @@
                                     android:textSize="11sp" />
 
                                 <TextView
+                                    android:id="@+id/main_marketing_point_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -271,12 +286,14 @@
                         android:layout_marginEnd="20dp">
 
                         <View
+                            android:id="@+id/main_brand_folder_view"
                             android:layout_width="120dp"
                             android:layout_height="100dp"
                             android:layout_marginEnd="10dp"
                             android:background="@drawable/ic_folder_purple" />
 
                         <LinearLayout
+                            android:id="@+id/main_brand_folder_ll"
                             android:layout_width="120dp"
                             android:layout_height="100dp"
                             android:orientation="vertical"
@@ -284,6 +301,7 @@
                             android:paddingTop="23dp">
 
                             <TextView
+                                android:id="@+id/main_brand_title_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="5dp"
@@ -293,6 +311,7 @@
                                 android:textSize="20sp" />
 
                             <TextView
+                                android:id="@+id/main_brand_count_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/roboto_light"
@@ -309,6 +328,7 @@
                                 android:paddingEnd="12dp">
 
                                 <TextView
+                                    android:id="@+id/main_brand_type_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto_light"
@@ -317,6 +337,7 @@
                                     android:textSize="11sp" />
 
                                 <TextView
+                                    android:id="@+id/main_brand_point_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -339,17 +360,17 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/waiting_survey_list_layuout"
+            android:id="@+id/main_waiting_survey_list_ll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/popular_survey_list_layout">
+            app:layout_constraintTop_toBottomOf="@id/main_popular_survey_ll">
 
             <LinearLayout
-                android:id="@+id/waiting_survey_list_header"
+                android:id="@+id/main_waiting_survey_list_header_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -358,7 +379,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/waiting_survey_list_title"
+                    android:id="@+id/main_waiting_survey_list_title_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -368,7 +389,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/waiting_survey_list_see_more"
+                    android:id="@+id/main_waiting_survey_list_see_more_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
@@ -377,6 +398,7 @@
                     android:textStyle="bold" />
 
                 <ImageView
+                    android:id="@+id/main_waiting_survey_list_see_more_iv"
                     android:layout_width="12dp"
                     android:layout_height="12dp"
                     android:src="@mipmap/ic_arrow_left" />
@@ -384,13 +406,13 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/waiting_survey_list"
+                android:id="@+id/main_waiting_survey_list_item_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_waiting_survey_list"
+                    android:id="@+id/main_waiting_survey_list_rv"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:clipToPadding="false"

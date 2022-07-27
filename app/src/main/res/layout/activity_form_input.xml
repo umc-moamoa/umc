@@ -7,7 +7,7 @@
     android:background="@color/pale_grey">
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/form_input_sv"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -16,6 +16,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
+            android:id="@+id/form_input_all_ll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -37,6 +38,7 @@
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/form_input_title_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -50,7 +52,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cv1_form_input"
+                android:id="@+id/form_input_q1_cv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="21dp"
@@ -63,13 +65,14 @@
                 app:contentPadding="20dp">
 
                 <LinearLayout
+                    android:id="@+id/form_input_q1_ll"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/q1_form_input"
+                        android:id="@+id/form_input_q1_tv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
@@ -78,7 +81,7 @@
                         android:textSize="14sp" />
 
                     <EditText
-                        android:id="@+id/a1_form_input"
+                        android:id="@+id/form_input_a1_et"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#d1d1d1"
@@ -89,7 +92,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cv2_form_input"
+                android:id="@+id/form_input_q2_cv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="21dp"
@@ -102,13 +105,14 @@
                 app:contentPadding="20dp">
 
                 <LinearLayout
+                    android:id="@+id/form_input_q2_ll"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/q2_form_input"
+                        android:id="@+id/form_input_q2_tv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
@@ -117,7 +121,7 @@
                         android:textSize="14sp" />
 
                     <EditText
-                        android:id="@+id/a2_form_input"
+                        android:id="@+id/form_input_a2_et"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#d1d1d1"
@@ -128,7 +132,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cv3_form_input"
+                android:id="@+id/form_input_q3_cv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="21dp"
@@ -141,13 +145,14 @@
                 app:contentPadding="20dp">
 
                 <LinearLayout
+                    android:id="@+id/form_input_q3_ll"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/q3_form_input"
+                        android:id="@+id/form_input_q3_tv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
@@ -156,13 +161,13 @@
                         android:textSize="14sp" />
 
                     <RadioGroup
-                        android:id="@+id/a3_form_input"
+                        android:id="@+id/form_input_a3_rg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp">
 
                         <RadioButton
-                            android:id="@+id/a3_rb1"
+                            android:id="@+id/form_input_a3_rb1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
@@ -173,7 +178,7 @@
                             android:theme="@style/CustomRadioButton" />
 
                         <RadioButton
-                            android:id="@+id/a3_rb2"
+                            android:id="@+id/form_input_a3_rb2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
@@ -184,7 +189,7 @@
                             android:theme="@style/CustomRadioButton" />
 
                         <RadioButton
-                            android:id="@+id/a3_rb3"
+                            android:id="@+id/form_input_a3_rb3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
@@ -195,7 +200,7 @@
                             android:theme="@style/CustomRadioButton" />
 
                         <RadioButton
-                            android:id="@+id/a3_rb4"
+                            android:id="@+id/form_input_a3_rb4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
@@ -206,7 +211,7 @@
                             android:theme="@style/CustomRadioButton" />
 
                         <RadioButton
-                            android:id="@+id/a3_rb5"
+                            android:id="@+id/form_input_a3_rb5"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
@@ -216,12 +221,24 @@
                             android:textSize="11sp"
                             android:theme="@style/CustomRadioButton" />
 
-
                     </RadioGroup>
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/form_input_submit_btn"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/btn_style"
+                android:fontFamily="@font/roboto_bold"
+                android:text="제출"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
         </LinearLayout>
 

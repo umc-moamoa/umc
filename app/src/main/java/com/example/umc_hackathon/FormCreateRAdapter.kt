@@ -12,7 +12,7 @@ class FormCreateRAdapter(val questionList: ArrayList<MyQuestion>): RecyclerView.
     val TAG: String = "<MyRecycleAdapter2>"
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.question_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.board_question_item, parent, false)
         return MyViewHolder(view)
     }
 
@@ -26,7 +26,7 @@ class FormCreateRAdapter(val questionList: ArrayList<MyQuestion>): RecyclerView.
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title = itemView.findViewById<EditText>(R.id.et_question)
+        val title = itemView.findViewById<EditText>(R.id.question_item_input_question_et)
     }
 
 }

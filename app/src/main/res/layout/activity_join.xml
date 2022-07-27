@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,6 +9,7 @@
     tools:context=".JoinActivity">
 
     <View
+        android:id="@+id/join_title_view"
         android:layout_width="50dp"
         android:layout_height="40dp"
         android:layout_marginTop="30dp"
@@ -18,7 +20,7 @@
         android:background="@drawable/ic_folder_purple" />
 
     <TextView
-        android:id="@+id/join_page_title_tv"
+        android:id="@+id/login_join_title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -31,17 +33,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/login_page_tabs_ll"
+        android:id="@+id/login_join_tabs_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="55dp"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/join_page_title_tv">
+        app:layout_constraintTop_toBottomOf="@id/login_join_title_tv">
 
         <Button
-            android:id="@+id/join_page_login_btn"
+            android:id="@+id/join_login_btn"
             android:layout_width="120dp"
             android:layout_height="40dp"
             android:layout_marginVertical="5dp"
@@ -54,7 +56,7 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/join_page_join_btn"
+            android:id="@+id/join_join_btn"
             android:layout_width="120dp"
             android:layout_height="40dp"
             android:layout_marginVertical="5dp"
@@ -69,7 +71,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/join_page_input_ll"
+        android:id="@+id/setting_login_join_input_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
@@ -77,16 +79,16 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login_page_tabs_ll">
+        app:layout_constraintTop_toBottomOf="@id/login_join_tabs_ll">
 
         <LinearLayout
-            android:id="@+id/join_page_id_duplicate_check_ll"
+            android:id="@+id/join_id_duplicate_check_ll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/join_page_id_cv"
+                android:id="@+id/join_id_cv"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginVertical="10dp"
@@ -96,6 +98,7 @@
                 app:cardCornerRadius="25dp">
 
                 <EditText
+                    android:id="@+id/join_id_et"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginVertical="8dp"
@@ -108,7 +111,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/join_page_id_duplicate_check_cv"
+                android:id="@+id/join_id_duplicate_check_cv"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginVertical="10dp"
@@ -118,6 +121,7 @@
                 app:cardCornerRadius="25dp">
 
                 <EditText
+                    android:id="@+id/join_id_duplicate_check_et"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
@@ -131,7 +135,7 @@
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/et_nickname_join"
+            android:id="@+id/setting_nickname_cv"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginHorizontal="40dp"
@@ -139,6 +143,7 @@
             app:cardCornerRadius="25dp">
 
             <EditText
+                android:id="@+id/join_nickname_et"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginVertical="8dp"
@@ -151,7 +156,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/et_password_join"
+            android:id="@+id/setting_notice_cv"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginHorizontal="40dp"
@@ -159,6 +164,7 @@
             app:cardCornerRadius="25dp">
 
             <EditText
+                android:id="@+id/join_password_et"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginVertical="8dp"
@@ -171,7 +177,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/et_password_check_join"
+            android:id="@+id/setting_secession_cv"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginHorizontal="40dp"
@@ -179,6 +185,7 @@
             app:cardCornerRadius="25dp">
 
             <EditText
+                android:id="@+id/join_password_check_et"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginVertical="8dp"
@@ -193,7 +200,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/join_page_submit_btn"
+        android:id="@+id/join_submit_btn"
         android:layout_width="160dp"
         android:layout_height="40dp"
         android:layout_marginTop="42dp"
@@ -204,7 +211,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/join_page_input_ll"
+        app:layout_constraintTop_toBottomOf="@id/setting_login_join_input_ll"
         tools:ignore="TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
