@@ -22,14 +22,20 @@ class FormListActivity : AppCompatActivity() {
             this.modelList.add(mySurvey)
         }
 
-        binding.rvListItem.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        binding.rvListItem.setHasFixedSize(true)
-        binding.rvListItem.adapter = MyRecyclerAdapter(modelList)
+        binding.formListListItemRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.formListListItemRv.setHasFixedSize(true)
+        binding.formListListItemRv.adapter = FormListRAdapter(modelList)
 
         // 이벤트 리스너
-        binding.mainButton.setOnClickListener {
+        binding.formListFormCreateBtn.setOnClickListener {
             val intent = Intent(this, FormCreateActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.formListGoMainLl.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 

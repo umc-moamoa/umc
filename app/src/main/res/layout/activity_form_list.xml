@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,8 +10,38 @@
     android:orientation="vertical"
     tools:context=".FormListActivity">
 
+    <LinearLayout
+        android:id="@+id/form_list_go_main_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/form_list_go_main_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="13dp"
+            android:src="@drawable/ic_chevron_left_lilac" />
+
+        <TextView
+            android:id="@+id/form_list_go_main_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:text="메인으로"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
     <TextView
-        android:id="@+id/tv_title"
+        android:id="@+id/form_list_title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -24,66 +55,63 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/form_list_go_main_ll"
         app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
-        android:id="@+id/linear_layout_btns_form"
-        app:layout_constraintTop_toBottomOf="@id/tv_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"
+        android:id="@+id/form_list_category_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:gravity="center">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/form_list_title_tv">
 
         <Button
-            android:id="@+id/btn_market"
-            android:layout_width="76dp"
+            android:id="@+id/form_list_marketing_btn"
+            android:layout_width="80dp"
             android:layout_height="38dp"
+            android:background="@drawable/btn_style"
+            android:fontFamily="@font/roboto_regular"
             android:text="마케팅"
-            android:fontFamily="@font/roboto_regular"
             android:textColor="@color/black"
-            android:textSize="15sp"
-            android:background="@drawable/btn_style" />
+            android:textSize="16sp" />
 
         <Button
-            android:id="@+id/btn_social"
-            android:layout_width="76dp"
+            android:id="@+id/form_list_social_phenomenon_btn"
+            android:layout_width="80dp"
             android:layout_height="38dp"
-            android:layout_marginStart="17dp"
+            android:background="@color/transparent"
+            android:fontFamily="@font/roboto_regular"
             android:text="사회현상"
-            android:fontFamily="@font/roboto_regular"
             android:textColor="@color/black"
-            android:textSize="15sp"
-            android:background="@drawable/btn_style" />
+            android:textSize="16sp" />
 
         <Button
-            android:id="@+id/btn_brand"
-            android:layout_width="76dp"
+            android:id="@+id/form_list_brand_btn"
+            android:layout_width="80dp"
             android:layout_height="38dp"
-            android:layout_marginStart="17dp"
+            android:background="@color/transparent"
+            android:fontFamily="@font/roboto_regular"
             android:text="브랜드"
-            android:fontFamily="@font/roboto_regular"
             android:textColor="@color/black"
-            android:textSize="15sp"
-            android:background="@drawable/btn_style" />
+            android:textSize="16sp" />
 
         <Button
-            android:id="@+id/btn_idea"
-            android:layout_width="76dp"
+            android:id="@+id/form_list_idea_btn"
+            android:layout_width="80dp"
             android:layout_height="38dp"
-            android:layout_marginStart="17dp"
-            android:text="아이디어"
+            android:background="@color/transparent"
             android:fontFamily="@font/roboto_regular"
+            android:text="아이디어"
             android:textColor="@color/black"
-            android:textSize="15sp"
-            android:background="@drawable/btn_style" />
-
+            android:textSize="16sp" />
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/form_list_list_cl"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="#F2F3F7"
@@ -92,22 +120,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linear_layout_btns_form">
+        app:layout_constraintTop_toBottomOf="@+id/form_list_category_ll">
+
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_list_item"
+            android:id="@+id/form_list_list_item_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingTop="20dp"
+            android:paddingBottom="70dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:listitem="@layout/board_list_item" />
 
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/main_button"
+        android:id="@+id/form_list_form_create_btn"
         android:layout_width="160dp"
         android:layout_height="40dp"
         android:background="@drawable/btn_style"

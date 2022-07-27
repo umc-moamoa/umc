@@ -6,14 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 
 import androidx.recyclerview.widget.RecyclerView
 
 
-class MyRecyclerAdapter(val surveyList: ArrayList<MySurvey>): RecyclerView.Adapter<MyRecyclerAdapter.MyViewHolder>() {
+class FormListRAdapter(val surveyList: ArrayList<MySurvey>): RecyclerView.Adapter<FormListRAdapter.MyViewHolder>() {
 
     val TAG: String = "<MyRecycleAdapter>"
 
@@ -42,7 +40,7 @@ class MyRecyclerAdapter(val surveyList: ArrayList<MySurvey>): RecyclerView.Adapt
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title = itemView.findViewById<TextView>(R.id.title_main_text)
+        val title = itemView.findViewById<TextView>(R.id.list_item_title_tv)
     }
 
 }

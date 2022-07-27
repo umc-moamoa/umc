@@ -10,11 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Umc_hackathon">
         <activity
+            android:name=".SettingActivity"
+            android:exported="false" />
+        <activity
             android:name=".MyPageActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,7 +29,7 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".FormCreateActivity"
             android:exported="false" />

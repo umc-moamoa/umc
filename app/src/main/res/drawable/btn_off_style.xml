@@ -2,10 +2,6 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape>
-            <gradient
-                android:startColor="@color/light_periwinkle"
-                android:endColor="@color/pale_violet"
-                android:angle="315" />
             <corners
                 android:radius="20dp" />
             <padding
@@ -13,9 +9,9 @@
                 android:top="10dp"
                 android:right="10dp"
                 android:bottom="10dp" />
-            <!--stroke
-                android:color="@color/stroke"
-                android:width="1pt"/-->
+            <stroke
+                android:color="#dadce5"
+                android:width="0.7pt" />
         </shape>
     </item>
 </selector>
