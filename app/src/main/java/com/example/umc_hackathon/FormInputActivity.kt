@@ -17,7 +17,7 @@ class FormInputActivity : AppCompatActivity() {
             finish()
         }
 
-        binding.btnFormInputSubmit.setOnClickListener {
+        binding.formInputSubmitBtn.setOnClickListener {
             val intent = Intent(this, FormDetailActivity::class.java)
             startActivity(intent)
             finish()
