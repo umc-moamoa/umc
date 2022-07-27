@@ -23,8 +23,18 @@ class MyPageActivity : AppCompatActivity() {
             finish()
         }
 
+        binding.myPageMySurveyLl.setOnClickListener {
+            val intent = Intent(this, MySurveyActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.myPageInterestSurveyLl.setOnClickListener {
             val intent = Intent(this, InterestSurveyActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.myPageParticipatedSurveyLl.setOnClickListener {
+            val intent = Intent(this, ParticipatedSurveyActivity::class.java)
             startActivity(intent)
         }
 
