@@ -200,7 +200,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginHorizontal="22dp"
-            android:src="@mipmap/btn_login_naver" />
+            android:src="@drawable/ic_bt_login_naver" />
 
         <ImageView
             android:id="@+id/login_facebook_iv"

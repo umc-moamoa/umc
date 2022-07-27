@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/pale_grey"
-    tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="-1dp">
+    android:background="@color/pale_grey">
 
     <ScrollView
         android:id="@+id/form_input_sv"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:id="@+id/form_input_all_ll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:clipToPadding="false"
+            android:paddingBottom="70dp">
 
             <Button
                 android:id="@+id/form_input_cancel_btn"
@@ -57,13 +56,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="21dp"
-                android:layout_marginEnd="21dp"
                 android:layout_marginTop="30dp"
+                android:layout_marginEnd="21dp"
                 android:clickable="true"
                 android:focusable="true"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="20dp"
-                app:contentPadding="20dp" >
+                app:contentPadding="20dp">
 
                 <LinearLayout
                     android:id="@+id/form_input_q1_ll"
@@ -97,13 +96,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="21dp"
-                android:layout_marginEnd="21dp"
                 android:layout_marginTop="30dp"
+                android:layout_marginEnd="21dp"
                 android:clickable="true"
                 android:focusable="true"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="20dp"
-                app:contentPadding="20dp" >
+                app:contentPadding="20dp">
 
                 <LinearLayout
                     android:id="@+id/form_input_q2_ll"
@@ -137,13 +136,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="21dp"
-                android:layout_marginEnd="21dp"
                 android:layout_marginTop="30dp"
+                android:layout_marginEnd="21dp"
                 android:clickable="true"
                 android:focusable="true"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="20dp"
-                app:contentPadding="20dp" >
+                app:contentPadding="20dp">
 
                 <LinearLayout
                     android:id="@+id/form_input_q3_ll"
@@ -172,55 +171,55 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
-                            android:fontFamily="@font/roboto_regular"
                             android:background="@drawable/list_round"
-                            android:theme="@style/CustomRadioButton"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="한달에 1-2번"
-                            android:textSize="11sp" />
+                            android:textSize="11sp"
+                            android:theme="@style/CustomRadioButton" />
 
                         <RadioButton
                             android:id="@+id/form_input_a3_rb2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
-                            android:fontFamily="@font/roboto_regular"
                             android:background="@drawable/list_round"
-                            android:theme="@style/CustomRadioButton"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="일주일에 1번"
-                            android:textSize="11sp" />
+                            android:textSize="11sp"
+                            android:theme="@style/CustomRadioButton" />
 
                         <RadioButton
                             android:id="@+id/form_input_a3_rb3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
-                            android:fontFamily="@font/roboto_regular"
                             android:background="@drawable/list_round"
-                            android:theme="@style/CustomRadioButton"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="일주일에 3-4번"
-                            android:textSize="11sp" />
+                            android:textSize="11sp"
+                            android:theme="@style/CustomRadioButton" />
 
                         <RadioButton
                             android:id="@+id/form_input_a3_rb4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
-                            android:fontFamily="@font/roboto_regular"
                             android:background="@drawable/list_round"
-                            android:theme="@style/CustomRadioButton"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="매일"
-                            android:textSize="11sp" />
+                            android:textSize="11sp"
+                            android:theme="@style/CustomRadioButton" />
 
                         <RadioButton
                             android:id="@+id/form_input_a3_rb5"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
-                            android:fontFamily="@font/roboto_regular"
                             android:background="@drawable/list_round"
-                            android:theme="@style/CustomRadioButton"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="기타"
-                            android:textSize="11sp" />
+                            android:textSize="11sp"
+                            android:theme="@style/CustomRadioButton" />
 
                     </RadioGroup>
 
@@ -244,5 +243,29 @@
         </LinearLayout>
 
     </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/transparent_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/form_input_submit_btn"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="13dp"
+        android:background="@drawable/btn_style"
+        android:fontFamily="@font/roboto_bold"
+        android:text="제출"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

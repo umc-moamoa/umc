@@ -134,10 +134,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/board_list_item" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/transparent_bottom"/>
+
 
     <Button
         android:id="@+id/form_list_form_create_btn"

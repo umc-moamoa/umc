@@ -1,10 +1,12 @@
 package com.example.umc_hackathon
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 
 class WaitingSurveyListRAdapter(val surveyList: ArrayList<MySurvey>): RecyclerView.Adapter<WaitingSurveyListRAdapter.MyViewHolder>()  {
@@ -13,7 +15,6 @@ class WaitingSurveyListRAdapter(val surveyList: ArrayList<MySurvey>): RecyclerVi
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WaitingSurveyListRAdapter.MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.board_waiting_survey_item, parent, false)
-
         return MyViewHolder(view)
     }
 
