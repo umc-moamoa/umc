@@ -22,5 +22,10 @@ class MyPageActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        binding.myPageMyPointLl.setOnClickListener {
+            val intent = Intent(this, MyPointActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

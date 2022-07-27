@@ -117,7 +117,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_marginBottom="13dp"
-                    android:src="@drawable/ic_mypage_point_black" />
+                    android:src="@drawable/ic_mypage_point_white" />
 
                 <TextView
                     android:id="@+id/my_page_member_point_tv"
@@ -278,6 +278,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/my_page_my_point_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
