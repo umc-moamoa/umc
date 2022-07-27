@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Umc_hackathon">
         <activity
+            android:name=".InterestSurveyActivity"
+            android:exported="false" />
+        <activity
             android:name=".MyPointActivity"
             android:exported="false" />
         <activity
