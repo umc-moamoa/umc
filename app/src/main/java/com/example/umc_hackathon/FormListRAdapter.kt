@@ -40,7 +40,7 @@ class FormListRAdapter(val surveyList: ArrayList<MySurvey>): RecyclerView.Adapte
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title = itemView.findViewById<TextView>(R.id.list_item_title_tv)
+        val title = itemView.findViewById<TextView>(R.id.board_list_item_title_tv)
     }
 
 }

@@ -34,8 +34,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         // 스크롤뷰 시작 위치 상단으로 고정하기
-        binding.mainScrollview.post {
-            binding.mainScrollview.fullScroll(ScrollView.FOCUS_UP)
+        binding.mainSv.post {
+            binding.mainSv.fullScroll(ScrollView.FOCUS_UP)
         }
 
         // 리스트 생성

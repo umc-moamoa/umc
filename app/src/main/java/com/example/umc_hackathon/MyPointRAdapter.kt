@@ -14,7 +14,7 @@ class MyPointRAdapter(val pointList: ArrayList<MyPoint>): RecyclerView.Adapter<M
     val TAG: String = "<MyPointRAdapter>"
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.point_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.board_point_item, parent, false)
 
         return MyViewHolder(view)
     }
@@ -31,9 +31,9 @@ class MyPointRAdapter(val pointList: ArrayList<MyPoint>): RecyclerView.Adapter<M
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val state = itemView.findViewById<TextView>(R.id.point_item_state_tv)
-        val date = itemView.findViewById<TextView>(R.id.point_item_date_tv)
-        val point = itemView.findViewById<TextView>(R.id.point_item_point_tv)
+        val state = itemView.findViewById<TextView>(R.id.board_point_item_state_tv)
+        val date = itemView.findViewById<TextView>(R.id.board_point_item_date_tv)
+        val point = itemView.findViewById<TextView>(R.id.board_point_item_point_tv)
     }
 
 }

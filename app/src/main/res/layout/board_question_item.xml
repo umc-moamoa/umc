@@ -2,20 +2,21 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/board_question_item_cv"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="20dp"
     android:layout_marginHorizontal="21dp"
-    android:layout_marginVertical="15dp">
+    android:layout_marginVertical="15dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="20dp">
 
     <RelativeLayout
-        android:id="@+id/question_item_rl"
+        android:id="@+id/board_question_item_rl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:id="@+id/question_item_ll"
+            android:id="@+id/board_question_item_ll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -23,58 +24,58 @@
             android:paddingVertical="30dp">
 
             <EditText
-                android:id="@+id/question_item_input_question_et"
+                android:id="@+id/board_question_item_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="1. 질문 입력"
                 android:fontFamily="@font/roboto_medium"
+                android:hint="1. 질문 입력"
                 android:textSize="14sp"
                 tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
-                android:id="@+id/question_item_question_type_tv"
+                android:id="@+id/board_question_item_type_tv"
                 android:layout_width="87dp"
                 android:layout_height="28dp"
                 android:layout_marginTop="13dp"
-                android:text="객관식"
-                android:gravity="center_vertical" />
+                android:gravity="center_vertical"
+                android:text="객관식" />
 
             <RadioGroup
-                android:id="@+id/question_item_question_rg"
+                android:id="@+id/board_question_item_rg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="13dp">
 
                 <RadioButton
-                    android:id="@+id/question_item_question_rb1"
+                    android:id="@+id/board_question_item_rb1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="옵션 1"
                     android:fontFamily="@font/roboto_medium"
-                    android:theme="@style/CustomRadioButton"
-                    android:textSize="11sp" />
+                    android:text="옵션 1"
+                    android:textSize="11sp"
+                    android:theme="@style/CustomRadioButton" />
 
                 <RadioButton
-                    android:id="@+id/question_item_question_rb2"
+                    android:id="@+id/board_question_item_rb2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="옵션 추가 또는 '기타' 추가"
                     android:fontFamily="@font/roboto_medium"
-                    android:theme="@style/CustomRadioButton"
-                    android:textSize="11sp" />
+                    android:text="옵션 추가 또는 '기타' 추가"
+                    android:textSize="11sp"
+                    android:theme="@style/CustomRadioButton" />
 
             </RadioGroup>
 
         </LinearLayout>
 
         <Button
-            android:id="@+id/question_item_delete_btn"
+            android:id="@+id/board_question_item_delete_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="20dp"
             android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="130dp"
+            android:layout_marginEnd="20dp"
             android:text="삭제" />
 
     </RelativeLayout>

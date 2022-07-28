@@ -22,11 +22,11 @@ class ParticipatedSurveyActivity : AppCompatActivity() {
             this.modelList.add(mySurvey)
         }
 
-        binding.interestSurveyFormListRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        binding.interestSurveyFormListRv.setHasFixedSize(true)
-        binding.interestSurveyFormListRv.adapter = FormListRAdapter(modelList)
+        binding.ppsListRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.ppsListRv.setHasFixedSize(true)
+        binding.ppsListRv.adapter = FormListRAdapter(modelList)
 
-        binding.interestSurveyGoMyPageLl.setOnClickListener {
+        binding.ppsGoMyPageLl.setOnClickListener {
             val intent = Intent(this, MyPageActivity::class.java)
             startActivity(intent)
             finish()

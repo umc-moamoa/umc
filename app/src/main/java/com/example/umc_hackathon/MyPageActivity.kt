@@ -33,12 +33,12 @@ class MyPageActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.myPageParticipatedSurveyLl.setOnClickListener {
+        binding.myPageJoinSurveyLl.setOnClickListener {
             val intent = Intent(this, ParticipatedSurveyActivity::class.java)
             startActivity(intent)
         }
 
-        binding.myPageMyPointLl.setOnClickListener {
+        binding.myPagePointLl.setOnClickListener {
             val intent = Intent(this, MyPointActivity::class.java)
             startActivity(intent)
         }
