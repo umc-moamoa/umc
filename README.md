@@ -35,5 +35,6 @@
 
 
 ### 디자인
-Tool: Zeplin
-<https://app.zeplin.io/project/62bd81f503110135b9ea6bdc>
+Tool:
+
+Zeplin -> <https://app.zeplin.io/project/62bd81f503110135b9ea6bdc>
