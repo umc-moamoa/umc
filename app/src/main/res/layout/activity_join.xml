@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/join_cl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pale_grey"
@@ -12,15 +12,15 @@
         android:id="@+id/join_title_view"
         android:layout_width="50dp"
         android:layout_height="40dp"
-        android:layout_marginTop="30dp"
         android:layout_marginStart="20dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/ic_folder_purple"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/ic_folder_purple" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/login_join_title_tv"
+        android:id="@+id/login_title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -33,14 +33,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/login_join_tabs_ll"
+        android:id="@+id/login_tabs_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="55dp"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login_join_title_tv">
+        app:layout_constraintTop_toBottomOf="@id/login_title_tv">
 
         <Button
             android:id="@+id/join_login_btn"
@@ -71,7 +71,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/setting_login_join_input_ll"
+        android:id="@+id/setting_tabs_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
@@ -79,7 +79,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login_join_tabs_ll">
+        app:layout_constraintTop_toBottomOf="@id/login_tabs_ll">
 
         <LinearLayout
             android:id="@+id/join_id_duplicate_check_ll"
@@ -135,7 +135,7 @@
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/setting_nickname_cv"
+            android:id="@+id/setting_nickname_modify_cv"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginHorizontal="40dp"
@@ -156,7 +156,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/setting_notice_cv"
+            android:id="@+id/setting_alarm_cv"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginHorizontal="40dp"
@@ -177,7 +177,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/setting_secession_cv"
+            android:id="@+id/setting_quit_cv"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginHorizontal="40dp"
@@ -211,7 +211,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/setting_login_join_input_ll"
+        app:layout_constraintTop_toBottomOf="@id/setting_tabs_ll"
         tools:ignore="TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
