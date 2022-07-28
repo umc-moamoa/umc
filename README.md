@@ -32,3 +32,8 @@
 ~~- 포인트 내역 페이지~~
 
 ~~- 설정 페이지~~
+
+
+### 디자인
+Tool: Zeplin
+<https://app.zeplin.io/project/62bd81f503110135b9ea6bdc>
