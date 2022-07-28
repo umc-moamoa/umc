@@ -1,12 +1,12 @@
 # UMC MOAMOA ANDROID
-#### 아이디 규칙
+### 아이디 규칙
 1. `xml 파일 이름 + 역할 + 뷰 이름`
 
     ex) form_create_save_tv
 2. snake case
 
 
-#### 레이아웃
+### 레이아웃
 ~~- 로그인 페이지~~
 
 ~~- 회원가입 페이지~~
