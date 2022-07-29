@@ -19,8 +19,14 @@ class PostService {
             override fun onResponse(call: Call<PostListResponse>, response: Response<PostListResponse>) {
                 if (response.isSuccessful) {
                     val postList = response.body()!!
-                    postView.onGetAllPostSuccess(postList)
-                    Log.d("postlist-retrofit", postList.toString())
+                    when(postList.code) {
+                        4000 -> Log.d("postlist-retrofit", "db connect failed")
+                        2012 -> Log.d("postlist-retrofit", "category id error")
+                        1000 -> {
+                            postView.onGetAllPostSuccess(postList)
+                            Log.d("postlist-retrofit", "success")
+                        }
+                    }
                 }
             }
 
