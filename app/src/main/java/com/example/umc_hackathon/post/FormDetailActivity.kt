@@ -3,6 +3,8 @@ package com.example.umc_hackathon.post
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContextCompat.startActivity
+import com.example.umc_hackathon.FormInputActivity
 import com.example.umc_hackathon.databinding.ActivityFormDetailBinding
 
 class FormDetailActivity : AppCompatActivity() {
