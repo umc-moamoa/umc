@@ -193,7 +193,7 @@
             android:id="@+id/login_kakao_iv"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@mipmap/btn_login_kakao" />
+            android:src="@drawable/ic_bt_login_kakao" />
 
         <ImageView
             android:id="@+id/login_naver_iv"
@@ -206,7 +206,7 @@
             android:id="@+id/login_facebook_iv"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@mipmap/btn_login_facebook" />
+            android:src="@drawable/ic_bt_login_facebook" />
 
     </LinearLayout>
 
