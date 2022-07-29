@@ -4,8 +4,8 @@ import com.google.gson.annotations.SerializedName
 import java.util.*
 
 data class Post(
-    @SerializedName(value = "postId") var postId: Long,
-    @SerializedName(value = "userId") var userId: Long,
+    @SerializedName(value = "postId") var postId: Int,
+    @SerializedName(value = "userId") var userId: Int,
     @SerializedName(value = "point") var point: Int,
     @SerializedName(value = "title") var title: String,
     /*

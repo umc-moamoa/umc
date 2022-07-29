@@ -5,7 +5,7 @@
             <gradient
                 android:startColor="@color/light_periwinkle"
                 android:endColor="@color/pale_violet"
-                android:angle="270" />
+                android:angle="315" />
             <corners
                 android:radius="20dp" />
             <padding

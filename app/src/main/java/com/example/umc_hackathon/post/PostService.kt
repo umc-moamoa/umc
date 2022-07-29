@@ -15,8 +15,8 @@ class PostService {
     fun getAllPost(category: Int) {
         val getAllPostService = getRetrofit().create(PostRetrofitInterface::class.java)
 
-        getAllPostService.getAllPosts(category).enqueue(object : retrofit2.Callback<List<Post>> {
-            override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
+        getAllPostService.getAllPosts(category).enqueue(object : retrofit2.Callback<PostListResponse> {
+            override fun onResponse(call: Call<PostListResponse>, response: Response<PostListResponse>) {
                 if (response.isSuccessful) {
                     val postList = response.body()!!
                     postView.onGetAllPostSuccess(postList)
@@ -24,7 +24,7 @@ class PostService {
                 }
             }
 
-            override fun onFailure(call: Call<List<Post>>, t: Throwable) {
+            override fun onFailure(call: Call<PostListResponse>, t: Throwable) {
                 Log.d("postlist-retrofit-error", t.toString())
             }
         })

@@ -11,13 +11,14 @@ class LoginActivity : AppCompatActivity() {
         val binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.loginPageJoinBtn.setOnClickListener {
+        binding.loginJoinBtn.setOnClickListener {
             val intent = Intent(this, JoinActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
             finish()
         }
 
-        binding.loginPageSubmitBtn.setOnClickListener {
+        binding.loginSubmitBtn.setOnClickListener {
             val intent = Intent(this, MyPageActivity::class.java)
             startActivity(intent)
             finish()

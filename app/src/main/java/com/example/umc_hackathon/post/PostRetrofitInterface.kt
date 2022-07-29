@@ -9,7 +9,7 @@ interface PostRetrofitInterface {
     @GET("/posts")
     fun getAllPosts(
         @Query("categoryId") category: Int
-    ): Call<List<Post>>
+    ): Call<PostListResponse>
 
     @GET("/posts/content/{postId}")
     fun getPostDetail(

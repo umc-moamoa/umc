@@ -1,4 +1,4 @@
-package com.example.umc_hackathon.post
+package com.example.umc_hackathon
 
 import android.content.Intent
 import android.util.Log
@@ -9,10 +9,10 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 
 import androidx.recyclerview.widget.RecyclerView
-import com.example.umc_hackathon.R
+import com.example.umc_hackathon.post.Post
 
 
-class MyRecyclerAdapter(private val surveyList: List<Post>): RecyclerView.Adapter<MyRecyclerAdapter.MyViewHolder>() {
+class FormListRAdapter(val surveyList: List<Post>): RecyclerView.Adapter<FormListRAdapter.MyViewHolder>() {
 
     val TAG: String = "<MyRecycleAdapter>"
 
@@ -43,7 +43,7 @@ class MyRecyclerAdapter(private val surveyList: List<Post>): RecyclerView.Adapte
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title = itemView.findViewById<TextView>(R.id.title_main_text)
+        val title = itemView.findViewById<TextView>(R.id.board_list_item_title_tv)
     }
 
 }

@@ -12,8 +12,9 @@ class JoinActivity : AppCompatActivity() {
         val binding = ActivityJoinBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.joinPageLoginBtn.setOnClickListener {
+        binding.joinLoginBtn.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
             finish()
         }

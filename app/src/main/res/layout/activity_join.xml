@@ -2,130 +2,148 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/join_cl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pale_grey"
     tools:context=".JoinActivity">
 
+    <View
+        android:id="@+id/join_title_view"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/ic_folder_purple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
-        android:id="@+id/join_page_title_tv"
+        android:id="@+id/login_title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="40dp"
-        android:text="설문 ZIP"
-        android:textSize="18sp"
         android:fontFamily="@font/roboto_bold"
-        android:textColor="@color/black" />
+        android:text="설문 ZIP"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/login_page_tabs_ll"
-        app:layout_constraintTop_toBottomOf="@id/join_page_title_tv"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:paddingVertical="5dp"
-        android:layout_marginTop="55dp"
+        android:id="@+id/login_tabs_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:layout_marginTop="55dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_title_tv">
 
         <Button
-            android:id="@+id/join_page_login_btn"
+            android:id="@+id/join_login_btn"
             android:layout_width="120dp"
             android:layout_height="40dp"
+            android:layout_marginVertical="5dp"
             android:layout_marginEnd="10dp"
-            android:text="로그인"
+            android:background="@drawable/btn_off_style"
             android:fontFamily="@font/roboto_bold"
+            android:text="로그인"
             android:textColor="#dadce5"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:background="@drawable/btn_off_style" />
+            android:textStyle="bold" />
 
         <Button
-            android:id="@+id/join_page_join_btn"
+            android:id="@+id/join_join_btn"
             android:layout_width="120dp"
             android:layout_height="40dp"
+            android:layout_marginVertical="5dp"
             android:layout_marginStart="10dp"
-            android:text="회원가입"
+            android:background="@drawable/btn_style"
             android:fontFamily="@font/roboto_bold"
+            android:text="회원가입"
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:background="@drawable/btn_style" />
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/join_page_input_ll"
+        android:id="@+id/setting_tabs_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/login_page_tabs_ll"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="22dp"
+        android:gravity="center"
         android:orientation="vertical"
-        android:layout_marginTop="32dp"
-        android:paddingHorizontal="40dp"
-        android:gravity="center">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_tabs_ll">
 
         <LinearLayout
-            android:id="@+id/join_page_id_duplicate_check_ll"
+            android:id="@+id/join_id_duplicate_check_ll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/join_page_id_cv"
+                android:id="@+id/join_id_cv"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginStart="40dp"
                 android:layout_marginEnd="5dp"
-                app:cardCornerRadius="25dp"
-                android:layout_weight="2">
+                android:layout_weight="2"
+                app:cardCornerRadius="25dp">
 
                 <EditText
+                    android:id="@+id/join_id_et"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="20dp"
                     android:layout_marginVertical="8dp"
+                    android:layout_marginStart="20dp"
                     android:background="@android:color/transparent"
-                    android:hint="아이디"
                     android:fontFamily="@font/roboto_medium"
+                    android:hint="아이디"
                     android:textSize="14sp" />
 
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/join_page_id_duplicate_check_cv"
+                android:id="@+id/join_id_duplicate_check_cv"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginVertical="10dp"
                 android:layout_marginStart="5dp"
-                app:cardCornerRadius="25dp"
-                android:layout_weight="5">
+                android:layout_marginEnd="40dp"
+                android:layout_weight="5"
+                app:cardCornerRadius="25dp">
 
                 <EditText
+                    android:id="@+id/join_id_duplicate_check_et"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
-                    android:hint="중복확인"
                     android:fontFamily="@font/roboto_medium"
-                    android:textSize="14sp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:hint="중복확인"
+                    android:textSize="14sp" />
 
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/et_nickname_join"
+            android:id="@+id/setting_nickname_modify_cv"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginBottom="20dp"
-            app:cardCornerRadius="20dp">
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginVertical="10dp"
+            app:cardCornerRadius="25dp">
 
             <EditText
+                android:id="@+id/join_nickname_et"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginVertical="8dp"
@@ -138,38 +156,43 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/et_password_join"
+            android:id="@+id/setting_alarm_cv"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginBottom="20dp"
-            app:cardCornerRadius="20dp" >
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginVertical="10dp"
+            app:cardCornerRadius="25dp">
 
             <EditText
+                android:id="@+id/join_password_et"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="20dp"
                 android:layout_marginVertical="8dp"
+                android:layout_marginStart="20dp"
                 android:background="@android:color/transparent"
-                android:hint="비밀번호"
                 android:fontFamily="@font/roboto_medium"
+                android:hint="비밀번호"
                 android:textSize="14sp" />
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/et_password_check_join"
+            android:id="@+id/setting_quit_cv"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            app:cardCornerRadius="20dp" >
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginVertical="10dp"
+            app:cardCornerRadius="25dp">
 
             <EditText
+                android:id="@+id/join_password_check_et"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="20dp"
                 android:layout_marginVertical="8dp"
+                android:layout_marginStart="20dp"
                 android:background="@android:color/transparent"
-                android:hint="비밀번호 확인"
                 android:fontFamily="@font/roboto_medium"
+                android:hint="비밀번호 확인"
                 android:textSize="14sp" />
 
         </androidx.cardview.widget.CardView>
@@ -177,18 +200,18 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/join_page_submit_btn"
+        android:id="@+id/join_submit_btn"
         android:layout_width="160dp"
         android:layout_height="40dp"
         android:layout_marginTop="42dp"
         android:background="@drawable/btn_style"
-        android:text="회원가입"
         android:fontFamily="@font/roboto_bold"
+        android:text="회원가입"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/join_page_input_ll"
+        app:layout_constraintTop_toBottomOf="@id/setting_tabs_ll"
         tools:ignore="TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

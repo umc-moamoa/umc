@@ -12,6 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Umc_hackathon">
         <activity
+            android:name=".MySurveyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ParticipatedSurveyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InterestSurveyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyPointActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettingActivity"
+            android:exported="false" />
+        <activity
             android:name=".MyPageActivity"
             android:exported="false" />
         <activity
