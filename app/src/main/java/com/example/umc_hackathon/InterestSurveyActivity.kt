@@ -25,7 +25,7 @@ class InterestSurveyActivity : AppCompatActivity() {
 
         binding.interestSurveyListRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.interestSurveyListRv.setHasFixedSize(true)
-        binding.interestSurveyListRv.adapter = FormListRAdapter(modelList)
+//        binding.interestSurveyListRv.adapter = FormListRAdapter(modelList)
 
         binding.interestSurveyGoMyPageLl.setOnClickListener {
             val intent = Intent(this, MyPageActivity::class.java)

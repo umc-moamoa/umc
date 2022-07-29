@@ -9,9 +9,10 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 
 import androidx.recyclerview.widget.RecyclerView
+import com.example.umc_hackathon.post.Post
 
 
-class FormListRAdapter(val surveyList: ArrayList<MySurvey>): RecyclerView.Adapter<FormListRAdapter.MyViewHolder>() {
+class FormListRAdapter(val surveyList: List<Post>): RecyclerView.Adapter<FormListRAdapter.MyViewHolder>() {
 
     val TAG: String = "<MyRecycleAdapter>"
 
@@ -20,11 +21,13 @@ class FormListRAdapter(val surveyList: ArrayList<MySurvey>): RecyclerView.Adapte
         return MyViewHolder(view).apply {
             itemView.setOnClickListener {
                 val currentPosition: Int = adapterPosition
-                val survey: MySurvey = surveyList.get(currentPosition)
+                val survey: Post = surveyList.get(currentPosition)
 //                Toast.makeText(parent.context, "설문조사 제목: ${survey.title}", Toast.LENGTH_SHORT).show()
 
                 val intent = Intent(itemView?.context, FormDetailActivity::class.java)
-                intent.putExtra("list_title", survey.title.toString())
+                intent.putExtra("title", survey.title)
+                intent.putExtra("content", survey.content)
+                intent.putExtra("deadline", survey.deadline)
                 ContextCompat.startActivity(itemView.context, intent, null)
             }
         }

@@ -8,7 +8,7 @@
     android:layout_gravity="center_horizontal"
     android:background="@color/pale_grey"
     android:orientation="vertical"
-    tools:context=".FormListActivity">
+    tools:context=".post.FormListActivity">
 
     <LinearLayout
         android:id="@+id/form_list_go_main_ll"
