@@ -6,12 +6,14 @@ import android.os.Bundle
 import android.widget.ScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_hackathon.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.umc_hackathon.post.FormListActivity
+import kotlinx.android.synthetic.main.activity_main.* //삭제
 
 class MainActivity : AppCompatActivity() {
 
     val TAG: String = "<MainActivity>"
     var modelList = ArrayList<MySurvey>()
+    // 서버 값으로 변경
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

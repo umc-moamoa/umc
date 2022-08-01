@@ -24,7 +24,7 @@ class ParticipatedSurveyActivity : AppCompatActivity() {
 
         binding.ppsListRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.ppsListRv.setHasFixedSize(true)
-        binding.ppsListRv.adapter = FormListRAdapter(modelList)
+//        binding.ppsListRv.adapter = FormListRAdapter(modelList)
 
         binding.ppsGoMyPageLl.setOnClickListener {
             val intent = Intent(this, MyPageActivity::class.java)

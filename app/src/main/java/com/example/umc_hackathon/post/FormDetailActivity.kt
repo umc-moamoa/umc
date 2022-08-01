@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.umc_hackathon.databinding.ActivityFormDetailBinding
+import com.example.umc_hackathon.post.FormListActivity
 
 class FormDetailActivity : AppCompatActivity() {
 

@@ -8,17 +8,16 @@
     android:layout_gravity="center_horizontal"
     android:background="@color/pale_grey"
     android:orientation="vertical"
-    tools:context=".FormListActivity">
+    tools:context=".post.FormListActivity">
 
     <LinearLayout
         android:id="@+id/form_list_go_main_ll"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingHorizontal="20dp"
         android:paddingTop="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -110,35 +109,14 @@
             android:textSize="16sp" />
     </LinearLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/form_list_list_cl"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/form_list_fv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#F2F3F7"
-        android:paddingVertical="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/form_list_category_ll"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/form_list_category_ll">
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/form_list_list_item_rv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:paddingTop="20dp"
-            android:paddingBottom="70dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/board_list_item" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <View
         android:layout_width="match_parent"
