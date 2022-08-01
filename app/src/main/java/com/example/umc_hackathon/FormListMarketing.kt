@@ -28,10 +28,6 @@ class FormListMarketing : Fragment() {
             this.modelList.add(mySurvey)
         }
 
-//        binding.fragmentMarketingRv.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-//        binding.fragmentMarketingRv.setHasFixedSize(true)
-//        binding.fragmentMarketingRv.adapter = WaitingSurveyListRAdapter(modelList)
-
         val view = inflater!!.inflate(R.layout.fragment_form_list_marketing, container, false)
         val recyclerView: RecyclerView = view.findViewById(R.id.fragment_marketing_rv)
 
@@ -40,6 +36,7 @@ class FormListMarketing : Fragment() {
 
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = recyclerAdapter
+        recyclerView.setHasFixedSize(true)
 
         return view
     }

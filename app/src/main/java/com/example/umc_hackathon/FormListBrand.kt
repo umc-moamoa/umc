@@ -38,6 +38,7 @@ class FormListBrand : Fragment() {
 
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = recyclerAdapter
+        recyclerView.setHasFixedSize(true)
 
         return view
     }
