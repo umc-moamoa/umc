@@ -120,8 +120,6 @@ class FormListActivity : AppCompatActivity(), PostView {
             transaction.replace(R.id.form_list_fv, ideaFragment)
             transaction.commit()
         }
-
-
     }
 
     private fun getAllPosts() {

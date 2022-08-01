@@ -4,13 +4,45 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.inflate
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.umc_hackathon.databinding.ActivityFormCreateBinding.inflate
+import com.example.umc_hackathon.databinding.ActivityMainBinding
+import com.example.umc_hackathon.databinding.FragmentFormListMarketingBinding
+import com.example.umc_hackathon.databinding.FragmentFormListSocialBinding
 
 class FormListSocial : Fragment() {
 
+    var modelList = ArrayList<MySurvey>()
+    private var linearLayoutManager: RecyclerView.LayoutManager? = null
+    private var recyclerAdapter: RecyclerView.Adapter<WaitingSurveyListRAdapter.MyViewHolder>? = null
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_form_list_social, container, false)
+
+        val binding = FragmentFormListSocialBinding.inflate(layoutInflater)
+
+        // 리스트 생성
+        for (i in 1..10){
+            val mySurvey = MySurvey(title = "사회현상 $i")
+            this.modelList.add(mySurvey)
+        }
+
+//        binding.fragmentMarketingRv.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+//        binding.fragmentMarketingRv.setHasFixedSize(true)
+//        binding.fragmentMarketingRv.adapter = WaitingSurveyListRAdapter(modelList)
+
+        val view = inflater!!.inflate(R.layout.fragment_form_list_social, container, false)
+        val recyclerView: RecyclerView = view.findViewById(R.id.fragment_social_rv)
+
+        recyclerAdapter = WaitingSurveyListRAdapter(modelList)
+        linearLayoutManager = LinearLayoutManager(activity)
+
+        recyclerView.layoutManager = linearLayoutManager
+        recyclerView.adapter = recyclerAdapter
+
+        return view
     }
 
 }
