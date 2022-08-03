@@ -37,34 +37,7 @@ class FormListActivity : AppCompatActivity(), PostView {
             startActivity(intent)
             finish()
         }
-
-//        binding.formListMarketingBtn.setOnClickListener {
-//            binding.formListMarketingBtn.setBackgroundResource(R.drawable.btn_style)
-//            binding.formListSocialPhenomenonBtn.setBackgroundResource(R.color.transparent)
-//            binding.formListBrandBtn.setBackgroundResource(R.color.transparent)
-//            binding.formListIdeaBtn.setBackgroundResource(R.color.transparent)
-//        }
-//
-//        binding.formListSocialPhenomenonBtn.setOnClickListener {
-//            binding.formListMarketingBtn.setBackgroundResource(R.color.transparent)
-//            binding.formListSocialPhenomenonBtn.setBackgroundResource(R.drawable.btn_style)
-//            binding.formListBrandBtn.setBackgroundResource(R.color.transparent)
-//            binding.formListIdeaBtn.setBackgroundResource(R.color.transparent)
-//        }
-//
-//        binding.formListBrandBtn.setOnClickListener {
-//            binding.formListMarketingBtn.setBackgroundResource(R.color.transparent)
-//            binding.formListSocialPhenomenonBtn.setBackgroundResource(R.color.transparent)
-//            binding.formListBrandBtn.setBackgroundResource(R.drawable.btn_style)
-//            binding.formListIdeaBtn.setBackgroundResource(R.color.transparent)
-//        }
-//
-//        binding.formListIdeaBtn.setOnClickListener {
-//            binding.formListMarketingBtn.setBackgroundResource(R.color.transparent)
-//            binding.formListSocialPhenomenonBtn.setBackgroundResource(R.color.transparent)
-//            binding.formListBrandBtn.setBackgroundResource( R.color.transparent)
-//            binding.formListIdeaBtn.setBackgroundResource(R.drawable.btn_style)
-//        }
+        
     }
 
     fun initTransactionEvent() {
