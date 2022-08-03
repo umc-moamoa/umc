@@ -3,8 +3,6 @@ package com.example.umc_hackathon.post
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_hackathon.*
 import com.example.umc_hackathon.databinding.ActivityFormListBinding
 
@@ -19,6 +17,8 @@ class FormListActivity : AppCompatActivity(), PostView {
         super.onCreate(savedInstanceState)
         binding = ActivityFormListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        
+        // 첫 화면은 마케팅 탭으로 초기화
         initTransactionEvent()
 
 //        binding.formListListItemRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -37,9 +37,9 @@ class FormListActivity : AppCompatActivity(), PostView {
             startActivity(intent)
             finish()
         }
-        
     }
 
+    // 카테고리 변환
     fun initTransactionEvent() {
         val marketingFragment = FormListMarketing()
         val socialFragment = FormListSocial()
@@ -95,11 +95,11 @@ class FormListActivity : AppCompatActivity(), PostView {
         }
     }
 
-    private fun getAllPosts() {
-        val postService = PostService()
-        postService.setPostView(this)
-        postService.getAllPost(1) //카테고리는 추후 받아오는 걸로 수정
-    }
+//    private fun getAllPosts() {
+//        val postService = PostService()
+//        postService.setPostView(this)
+//        postService.getAllPost(1) //카테고리는 추후 받아오는 걸로 수정
+//    }
 
     override fun onGetAllPostSuccess(postList: PostListResponse) {
 //        this.postList = postList

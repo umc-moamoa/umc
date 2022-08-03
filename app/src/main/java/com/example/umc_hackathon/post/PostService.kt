@@ -9,10 +9,12 @@ class PostService {
     private lateinit var postView: PostView
 
     fun setPostView(postView: PostView) {
+        Log.d("PostService/", "set Post View")
         this.postView = postView
     }
 
     fun getAllPost(category: Int) {
+        Log.d("GET_ALL_POST/", "메소드 실행")
         val getAllPostService = getRetrofit().create(PostRetrofitInterface::class.java)
 
         getAllPostService.getAllPosts(category).enqueue(object : retrofit2.Callback<PostListResponse> {
@@ -34,7 +36,7 @@ class PostService {
                 Log.d("[F]GET_ALL_POST/ ", t.toString())
             }
         })
-
+        Log.d("GET_ALL_POST/", "메소드 실행완료")
     }
 
     fun getPostDetail(postId: Int) {

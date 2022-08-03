@@ -3,7 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FormListMarketing">
+    tools:context=".post.FormListMarketing">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="마케팅 프래그먼트" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragment_marketing_rv"

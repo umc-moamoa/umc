@@ -3,6 +3,7 @@ package com.example.umc_hackathon.post
 import com.google.gson.annotations.SerializedName
 import java.util.*
 
+
 data class Post(
     @SerializedName(value = "postId") var postId: Int,
     @SerializedName(value = "userId") var userId: Int,
