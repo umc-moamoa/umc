@@ -17,6 +17,7 @@ data class SurveyList(
     @SerializedName("postId") val postId: Int,
     @SerializedName("userId") val userId: Int,
     @SerializedName("point") val point: Int,
+    @SerializedName("title") val title: String,
     @SerializedName("content") val content: String,
     @SerializedName("deadline") val deadline: Int
 )

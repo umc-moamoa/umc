@@ -22,21 +22,21 @@ class FormListBrand : Fragment() {
 
         val binding = FragmentFormListBrandBinding.inflate(layoutInflater)
 
-        // 리스트 생성
-        for (i in 1..10){
-            val mySurvey = MySurvey(title = "브랜드 $i")
-            this.modelList.add(mySurvey)
-        }
-
-        val view = inflater!!.inflate(R.layout.fragment_form_list_brand, container, false)
-        val recyclerView: RecyclerView = view.findViewById(R.id.fragment_brand_rv)
-
-        recyclerAdapter = WaitingSurveyListRAdapter(modelList)
-        linearLayoutManager = LinearLayoutManager(activity)
-
-        recyclerView.layoutManager = linearLayoutManager
-        recyclerView.adapter = recyclerAdapter
-        recyclerView.setHasFixedSize(true)
+//        // 리스트 생성
+//        for (i in 1..10){
+//            val mySurvey = MySurvey(title = "브랜드 $i")
+//            this.modelList.add(mySurvey)
+//        }
+//
+//        val view = inflater!!.inflate(R.layout.fragment_form_list_brand, container, false)
+//        val recyclerView: RecyclerView = view.findViewById(R.id.fragment_brand_rv)
+//
+//        recyclerAdapter = WaitingSurveyListRAdapter(modelList)
+//        linearLayoutManager = LinearLayoutManager(activity)
+//
+//        recyclerView.layoutManager = linearLayoutManager
+//        recyclerView.adapter = recyclerAdapter
+//        recyclerView.setHasFixedSize(true)
 
         return view
     }

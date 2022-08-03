@@ -9,11 +9,12 @@ import retrofit2.Response
 class SurveyListService() {
     private lateinit var surveyListView: SurveyListView
 
-    fun setSurveyListView(surveyList: SurveyList) {
+    fun setSurveyListView(surveyListView: SurveyListView) {
         this.surveyListView = surveyListView
     }
 
     fun getSurveyList() {
+        Log.d("getSurveyList()", "메소드 실행")
         val surveyListService = getRetrofit().create(SurveyListRetrofitInterface::class.java)
 
         surveyListService.getSurveyList().enqueue(object: Callback<SurveyListResponse> {
@@ -21,7 +22,7 @@ class SurveyListService() {
                 if(response.isSuccessful) {
                     val surveyListResponse: SurveyListResponse = response.body()!!
 
-                    Log.d("SURVEYLIST_RESPONSE", surveyListResponse.toString())
+                    Log.d("getSurveyList()", surveyListResponse.toString())
 
                     when(val code = surveyListResponse.code) {
                         1000 -> {
@@ -36,5 +37,7 @@ class SurveyListService() {
                 surveyListView.onGetSurveyListFailure(400, "네트워크 오류가 발생했습니다.")
             }
         })
+
+        Log.d("getSurveyList()", "메소드 완료")
     }
 }

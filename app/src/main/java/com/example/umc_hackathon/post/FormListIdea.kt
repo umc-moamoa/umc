@@ -20,23 +20,23 @@ class FormListIdea : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        val binding = FragmentFormListIdeaBinding.inflate(layoutInflater)
-
-        // 리스트 생성
-        for (i in 1..10){
-            val mySurvey = MySurvey(title = "아이디어 $i")
-            this.modelList.add(mySurvey)
-        }
-
-        val view = inflater!!.inflate(R.layout.fragment_form_list_idea, container, false)
-        val recyclerView: RecyclerView = view.findViewById(R.id.fragment_idea_rv)
-
-        recyclerAdapter = WaitingSurveyListRAdapter(modelList)
-        linearLayoutManager = LinearLayoutManager(activity)
-
-        recyclerView.layoutManager = linearLayoutManager
-        recyclerView.adapter = recyclerAdapter
-        recyclerView.setHasFixedSize(true)
+//        val binding = FragmentFormListIdeaBinding.inflate(layoutInflater)
+//
+//        // 리스트 생성
+//        for (i in 1..10){
+//            val mySurvey = MySurvey(title = "아이디어 $i")
+//            this.modelList.add(mySurvey)
+//        }
+//
+//        val view = inflater!!.inflate(R.layout.fragment_form_list_idea, container, false)
+//        val recyclerView: RecyclerView = view.findViewById(R.id.fragment_idea_rv)
+//
+//        recyclerAdapter = WaitingSurveyListRAdapter(modelList)
+//        linearLayoutManager = LinearLayoutManager(activity)
+//
+//        recyclerView.layoutManager = linearLayoutManager
+//        recyclerView.adapter = recyclerAdapter
+//        recyclerView.setHasFixedSize(true)
 
         return view
     }

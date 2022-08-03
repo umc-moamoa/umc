@@ -20,27 +20,27 @@ class FormListSocial : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        val binding = FragmentFormListSocialBinding.inflate(layoutInflater)
-
-        // 리스트 생성
-        for (i in 1..10){
-            val mySurvey = MySurvey(title = "사회현상 $i")
-            this.modelList.add(mySurvey)
-        }
-
-//        binding.fragmentMarketingRv.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-//        binding.fragmentMarketingRv.setHasFixedSize(true)
-//        binding.fragmentMarketingRv.adapter = WaitingSurveyListRAdapter(modelList)
-
-        val view = inflater!!.inflate(R.layout.fragment_form_list_social, container, false)
-        val recyclerView: RecyclerView = view.findViewById(R.id.fragment_social_rv)
-
-        recyclerAdapter = WaitingSurveyListRAdapter(modelList)
-        linearLayoutManager = LinearLayoutManager(activity)
-
-        recyclerView.layoutManager = linearLayoutManager
-        recyclerView.adapter = recyclerAdapter
-        recyclerView.setHasFixedSize(true)
+//        val binding = FragmentFormListSocialBinding.inflate(layoutInflater)
+//
+//        // 리스트 생성
+//        for (i in 1..10){
+//            val mySurvey = MySurvey(title = "사회현상 $i")
+//            this.modelList.add(mySurvey)
+//        }
+//
+////        binding.fragmentMarketingRv.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+////        binding.fragmentMarketingRv.setHasFixedSize(true)
+////        binding.fragmentMarketingRv.adapter = WaitingSurveyListRAdapter(modelList)
+//
+//        val view = inflater!!.inflate(R.layout.fragment_form_list_social, container, false)
+//        val recyclerView: RecyclerView = view.findViewById(R.id.fragment_social_rv)
+//
+//        recyclerAdapter = WaitingSurveyListRAdapter(modelList)
+//        linearLayoutManager = LinearLayoutManager(activity)
+//
+//        recyclerView.layoutManager = linearLayoutManager
+//        recyclerView.adapter = recyclerAdapter
+//        recyclerView.setHasFixedSize(true)
 
         return view
     }

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.umc_hackathon.MySurvey
 import com.example.umc_hackathon.R
 
-class WaitingSurveyListRAdapter(val surveyList: ArrayList<MySurvey>): RecyclerView.Adapter<WaitingSurveyListRAdapter.MyViewHolder>()  {
+class WaitingSurveyListRAdapter(val surveyList: SurveyListResult): RecyclerView.Adapter<WaitingSurveyListRAdapter.MyViewHolder>()  {
 
     val TAG: String = "<WaitingSLRAdapter>"
 
@@ -19,16 +19,15 @@ class WaitingSurveyListRAdapter(val surveyList: ArrayList<MySurvey>): RecyclerVi
     }
 
     override fun getItemCount(): Int {
-        return surveyList.size
+        return surveyList.surveys.size
+    }
+
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        Log.d(TAG, " - onBindViewHolder() called / position: $position")
+        holder.title.text = surveyList.surveys[position].title
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title = itemView.findViewById<TextView>(R.id.board_waiting_survey_item_title_tv)
     }
-
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        Log.d(TAG, " - onBindViewHolder() called / position: $position")
-        holder.title.text = surveyList.get(position).title
-    }
-
 }
