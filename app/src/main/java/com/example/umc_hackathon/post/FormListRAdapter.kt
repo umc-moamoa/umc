@@ -14,7 +14,7 @@ import com.example.umc_hackathon.FormDetailActivity
 import com.example.umc_hackathon.R
 
 
-class FormListRAdapter(val surveyList: List<Post>): RecyclerView.Adapter<FormListRAdapter.MyViewHolder>() {
+class FormListRAdapter(val postList: List<Post>): RecyclerView.Adapter<FormListRAdapter.MyViewHolder>() {
 
     val TAG: String = "<FormListRAdapter>"
 
@@ -23,7 +23,7 @@ class FormListRAdapter(val surveyList: List<Post>): RecyclerView.Adapter<FormLis
         return MyViewHolder(view).apply {
             itemView.setOnClickListener {
                 val currentPosition: Int = adapterPosition
-                val survey: Post = surveyList.get(currentPosition)
+                val survey: Post = postList.get(currentPosition)
                 Toast.makeText(parent.context, "설문조사 제목: ${survey.title}", Toast.LENGTH_SHORT).show()
 
                 val intent = Intent(itemView?.context, FormDetailActivity::class.java)
@@ -36,12 +36,12 @@ class FormListRAdapter(val surveyList: List<Post>): RecyclerView.Adapter<FormLis
     }
 
     override fun getItemCount(): Int {
-        return surveyList.size
+        return postList.size
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         Log.d(TAG, " - onBindViewHolder() called / position: $position")
-        holder.title.text = surveyList.get(position).title
+        holder.title.text = postList.get(position).title
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

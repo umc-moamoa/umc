@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.umc_hackathon.MySurvey
 import com.example.umc_hackathon.R
-import com.example.umc_hackathon.WaitingSurveyListRAdapter
+import com.example.umc_hackathon.temporary.WaitingSurveyListRAdapter
 import com.example.umc_hackathon.databinding.FragmentFormListIdeaBinding
 
 class FormListIdea : Fragment() {

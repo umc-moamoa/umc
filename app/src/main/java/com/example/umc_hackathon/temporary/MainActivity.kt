@@ -1,15 +1,16 @@
-package com.example.umc_hackathon
+package com.example.umc_hackathon.temporary
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.umc_hackathon.LoginActivity
+import com.example.umc_hackathon.MySurvey
 import com.example.umc_hackathon.databinding.ActivityMainBinding
 import com.example.umc_hackathon.post.FormListActivity
-import kotlinx.android.synthetic.main.activity_main.* //삭제
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SurveyListView {
 
     val TAG: String = "<MainActivity>"
     var modelList = ArrayList<MySurvey>()
@@ -49,5 +50,13 @@ class MainActivity : AppCompatActivity() {
         binding.mainWaitingSurveyListRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.mainWaitingSurveyListRv.setHasFixedSize(true)
         binding.mainWaitingSurveyListRv.adapter = WaitingSurveyListRAdapter(modelList)
+    }
+
+    override fun onGetSurveyListSuccess(code: Int, result: SurveyListResult) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetSurveyListFailure(code: Int, message: String) {
+        TODO("Not yet implemented")
     }
 }

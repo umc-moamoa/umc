@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.umc_hackathon.databinding.ActivityMyPageBinding
+import com.example.umc_hackathon.temporary.MainActivity
 
 class MyPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
