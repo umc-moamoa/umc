@@ -14,7 +14,6 @@ import com.example.umc_hackathon.post.FormListActivity
 class MainActivity : AppCompatActivity(), SurveyListView {
 
     val TAG: String = "<MainActivity>"
-    var modelList = ArrayList<MySurvey>()
     // 서버 값으로 변경
 
     private lateinit var binding: ActivityMainBinding
@@ -44,17 +43,6 @@ class MainActivity : AppCompatActivity(), SurveyListView {
         binding.mainSv.post {
             binding.mainSv.fullScroll(ScrollView.FOCUS_UP)
         }
-
-
-//        // 리스트 생성
-//        for (i in 1..10){
-//            val mySurvey = MySurvey(title = "사회현상에 대한 소비자 인식 $i")
-//            this.modelList.add(mySurvey)
-//        }
-//
-//        binding.mainWaitingSurveyListRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-//        binding.mainWaitingSurveyListRv.setHasFixedSize(true)
-//        binding.mainWaitingSurveyListRv.adapter = WaitingSurveyListRAdapter(modelList)
     }
 
     override fun onStart() {
@@ -63,8 +51,10 @@ class MainActivity : AppCompatActivity(), SurveyListView {
     }
 
     private fun initRecyclerView(result: SurveyListResult) {
+        Log.d("initRecyclerView()/", "메소드 실행")
         surveyListAdapter = WaitingSurveyListRAdapter(result)
         binding.mainWaitingSurveyListRv.adapter = surveyListAdapter
+        Log.d("initRecyclerView()/", "메소드 완료")
     }
 
     private fun getSurveyList() {

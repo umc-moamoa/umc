@@ -19,6 +19,7 @@ class WaitingSurveyListRAdapter(val surveyList: SurveyListResult): RecyclerView.
     }
 
     override fun getItemCount(): Int {
+        Log.d("getItemCount()", "/ " + surveyList.surveys.size)
         return surveyList.surveys.size
     }
 
