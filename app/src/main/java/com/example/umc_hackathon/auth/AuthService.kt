@@ -22,10 +22,10 @@ class AuthService {
     fun join(user: User) {
         val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
 
-        authService.join(user).enqueue(object: Callback<AuthResponse> {
-            override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
+        authService.join(user).enqueue(object: Callback<JoinResponse> {
+            override fun onResponse(call: Call<JoinResponse>, response: Response<JoinResponse>) {
                 Log.d("JOIN/SUCCESS", response.toString())
-                val resp: AuthResponse = response.body()!!
+                val resp: JoinResponse = response.body()!!
 
                 when(resp.code) {
                     1000 -> joinView.onJoinSuccess()
@@ -33,7 +33,7 @@ class AuthService {
                 }
             }
 
-            override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
+            override fun onFailure(call: Call<JoinResponse>, t: Throwable) {
                 Log.d("JOIN/FAILURE", t.message.toString())
             }
         })
@@ -44,10 +44,11 @@ class AuthService {
     fun login(user: User) {
         val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
 
-        authService.login(user).enqueue(object : Callback<AuthResponse> {
-            override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
+        authService.login(user).enqueue(object : Callback<LoginResponse> {
+            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 Log.d("LOGIN/SUCCESS", response.toString())
-                val resp: AuthResponse = response.body()!!
+                Log.d("RESP/", " " + response.body()!!)
+                val resp: LoginResponse = response.body()!!
 
                 when (val code = resp.code) {
                     1000 -> loginView.onLoginSuccess(code, resp.result!!)
@@ -55,7 +56,7 @@ class AuthService {
                 }
             }
 
-            override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                 Log.d("LOGIN/FAILURE", t.message.toString())
             }
         })

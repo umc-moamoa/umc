@@ -26,9 +26,6 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
         binding.loginSubmitBtn.setOnClickListener {
             login()
-//            val intent = Intent(this, MyPageActivity::class.java)
-//            startActivity(intent)
-//            finish()
         }
 
         Log.d("LOGIN/JWT_TO_SERVICE/", " ")
@@ -60,16 +57,16 @@ class LoginActivity : AppCompatActivity(), LoginView {
             return
         }
 
-        val email = binding.loginIdEt.text.toString()
+        val id = binding.loginIdEt.text.toString()
         val password = binding.loginPasswordEt.text.toString()
 
         val authService = AuthService()
         authService.setLoginView(this)
-        authService.login(User(email, "", password))
+        authService.login(User(id, "", password))
     }
 
     // LoginView 상속
-    override fun onLoginSuccess(code: Int, result: Result) {
+    override fun onLoginSuccess(code: Int, result: LoginResult) {
         when(code) {
             1000 -> {
                 val intent = Intent(this, MyPageActivity::class.java)
