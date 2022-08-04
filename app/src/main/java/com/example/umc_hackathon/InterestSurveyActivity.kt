@@ -4,8 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.umc_hackathon.auth.MyPageActivity
 import com.example.umc_hackathon.databinding.ActivityInterestSurveyBinding
-import com.example.umc_hackathon.databinding.ActivityJoinBinding
 
 class InterestSurveyActivity : AppCompatActivity() {
 

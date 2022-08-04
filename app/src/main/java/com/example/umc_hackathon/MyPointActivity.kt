@@ -1,10 +1,10 @@
 package com.example.umc_hackathon
 
 import android.content.Intent
-import android.graphics.PointF.length
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.umc_hackathon.auth.MyPageActivity
 import com.example.umc_hackathon.databinding.ActivityMyPointBinding
 
 class MyPointActivity : AppCompatActivity() {

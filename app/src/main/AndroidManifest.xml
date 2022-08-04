@@ -27,7 +27,7 @@
             android:name=".SettingActivity"
             android:exported="false" />
         <activity
-            android:name=".MyPageActivity"
+            android:name=".auth.MyPageActivity"
             android:exported="false" />
         <activity
             android:name=".temporary.MainActivity"
@@ -38,10 +38,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".JoinActivity"
+            android:name=".auth.JoinActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".auth.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".FormCreateActivity"

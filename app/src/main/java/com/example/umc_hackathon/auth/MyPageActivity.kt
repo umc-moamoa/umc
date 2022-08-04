@@ -1,8 +1,9 @@
-package com.example.umc_hackathon
+package com.example.umc_hackathon.auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.umc_hackathon.*
 import com.example.umc_hackathon.databinding.ActivityMyPageBinding
 import com.example.umc_hackathon.temporary.MainActivity
 

@@ -1,4 +1,4 @@
-package com.example.umc_hackathon
+package com.example.umc_hackathon.auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
