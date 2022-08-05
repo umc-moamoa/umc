@@ -11,37 +11,36 @@ import androidx.core.content.ContextCompat
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.umc_hackathon.FormDetailActivity
+import com.example.umc_hackathon.MySurvey
 import com.example.umc_hackathon.R
 
 
-class FormListRAdapter(val postList: List<Post>): RecyclerView.Adapter<FormListRAdapter.MyViewHolder>() {
+class FormListRAdapter(val surveyList: ArrayList<MySurvey>): RecyclerView.Adapter<FormListRAdapter.MyViewHolder>() {
 
-    val TAG: String = "<FormListRAdapter>"
+    val TAG: String = "<MyRecycleAdapter>"
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.board_list_item, parent, false)
         return MyViewHolder(view).apply {
             itemView.setOnClickListener {
                 val currentPosition: Int = adapterPosition
-                val survey: Post = postList.get(currentPosition)
-                Toast.makeText(parent.context, "설문조사 제목: ${survey.title}", Toast.LENGTH_SHORT).show()
+                val survey: MySurvey = surveyList.get(currentPosition)
+//                Toast.makeText(parent.context, "설문조사 제목: ${survey.title}", Toast.LENGTH_SHORT).show()
 
                 val intent = Intent(itemView?.context, FormDetailActivity::class.java)
                 intent.putExtra("title", survey.title)
-                intent.putExtra("content", survey.content)
-                intent.putExtra("deadline", survey.deadline)
                 ContextCompat.startActivity(itemView.context, intent, null)
             }
         }
     }
 
     override fun getItemCount(): Int {
-        return postList.size
+        return surveyList.size
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         Log.d(TAG, " - onBindViewHolder() called / position: $position")
-        holder.title.text = postList.get(position).title
+        holder.title.text = surveyList.get(position).title
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

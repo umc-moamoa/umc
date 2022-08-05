@@ -5,13 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.umc_hackathon.*
 import com.example.umc_hackathon.databinding.ActivityFormListBinding
+import com.example.umc_hackathon.temporary.MainActivity
 
-class FormListActivity : AppCompatActivity(), PostView {
+class FormListActivity : AppCompatActivity(){
 
     val tag: String = "<FormListActivity>"
-
     private lateinit var binding : ActivityFormListBinding
-    //private lateinit var postList : List<Post>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,11 +19,6 @@ class FormListActivity : AppCompatActivity(), PostView {
         
         // 첫 화면은 마케팅 탭으로 초기화
         initTransactionEvent()
-
-//        binding.formListListItemRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-//        binding.formListListItemRv.setHasFixedSize(true)
-//        getAllPosts()
-        //binding.formListListItemRv.adapter = FormListRAdapter(postList)
 
         // 이벤트 리스너
         binding.formListFormCreateBtn.setOnClickListener {
@@ -93,21 +87,6 @@ class FormListActivity : AppCompatActivity(), PostView {
             transaction.replace(R.id.form_list_fv, ideaFragment)
             transaction.commit()
         }
-    }
-
-//    private fun getAllPosts() {
-//        val postService = PostService()
-//        postService.setPostView(this)
-//        postService.getAllPost(1) //카테고리는 추후 받아오는 걸로 수정
-//    }
-
-    override fun onGetAllPostSuccess(postList: PostListResponse) {
-//        this.postList = postList
-//        binding.formListListItemRv.adapter = FormListRAdapter(postList.result)
-    }
-
-    override fun onGetPostDetail(post: Post) {
-        TODO("Not yet implemented")
     }
 
 }
