@@ -1,8 +1,7 @@
 package com.example.umc_hackathon.auth
 
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface AuthRetrofitInterface {
     @POST("/users")
@@ -10,4 +9,9 @@ interface AuthRetrofitInterface {
 
     @POST("/auth/login")
     fun login(@Body user:User): Call<LoginResponse>
+
+    @HTTP(method = "GET", path = "/users", hasBody = true)
+    fun userInfo(
+        @Body userInfoRequest: UserInfoRequest
+    ): Call<UserInfoResponse>
 }
