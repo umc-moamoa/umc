@@ -1,6 +1,9 @@
 package com.example.umc_hackathon.auth
 
+import android.app.Activity
+import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import com.example.umc_hackathon.getRetrofit
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,12 +27,14 @@ class AuthService {
 
         authService.join(user).enqueue(object: Callback<JoinResponse> {
             override fun onResponse(call: Call<JoinResponse>, response: Response<JoinResponse>) {
-                Log.d("JOIN/SUCCESS", response.toString())
-                val resp: JoinResponse = response.body()!!
+                if(response.body() != null) {
+                    Log.d("JOIN/SUCCESS", response.toString())
 
-                when(resp.code) {
-                    1000 -> joinView.onJoinSuccess()
-                    else -> joinView.onJoinFailure()
+                    val resp: JoinResponse = response.body()!!
+                    when(resp.code) {
+                        1000 -> joinView.onJoinSuccess()
+                        else -> joinView.onJoinFailure()
+                    }
                 }
             }
 
@@ -46,13 +51,14 @@ class AuthService {
 
         authService.login(user).enqueue(object : Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                Log.d("LOGIN/SUCCESS", response.toString())
-                Log.d("RESP/", " " + response.body())
-                val resp: LoginResponse = response.body()!!
+                if(response.body() != null) {
+                    Log.d("LOGIN/SUCCESS", response.toString())
 
-                when (val code = resp.code) {
-                    1000 -> loginView.onLoginSuccess(code, resp.result!!)
-                    else -> loginView.onLoginFailure(code)
+                    val resp: LoginResponse = response.body()!!
+                    when (val code = resp.code) {
+                        1000 -> loginView.onLoginSuccess(code, resp.result!!)
+                        else -> loginView.onLoginFailure(code)
+                    }
                 }
             }
 

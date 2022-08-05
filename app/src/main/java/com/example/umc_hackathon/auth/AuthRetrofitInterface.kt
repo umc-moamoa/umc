@@ -8,6 +8,6 @@ interface AuthRetrofitInterface {
     @POST("/users")
     fun join(@Body user:User): Call<JoinResponse>
 
-    @POST("/users/login")
+    @POST("/auth/login")
     fun login(@Body user:User): Call<LoginResponse>
 }

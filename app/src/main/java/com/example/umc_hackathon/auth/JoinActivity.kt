@@ -30,19 +30,6 @@ class JoinActivity : AppCompatActivity(), JoinView {
         Log.d("JOIN/JWT_TO_SERVICE/", " ")
     }
 
-//    private fun getJwt(): String? {
-//        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-//        return spf!!.getString("jwt", "")
-//    }
-//
-//    private fun saveJwt(jwt: String) {
-//        val spf = getSharedPreferences("auth", MODE_PRIVATE)
-//        val editor = spf.edit()
-//
-//        editor.putString("jwt", jwt)
-//        editor.apply()
-//    }
-
     private fun getUser(): User {
         val id: String = binding.joinIdEt.text.toString()
         val nick: String = binding.joinNicknameEt.text.toString()

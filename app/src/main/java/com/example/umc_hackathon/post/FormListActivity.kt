@@ -8,7 +8,7 @@ import com.example.umc_hackathon.databinding.ActivityFormListBinding
 
 class FormListActivity : AppCompatActivity(), PostView {
 
-    val TAG: String = "<FormListActivity>"
+    val tag: String = "<FormListActivity>"
 
     private lateinit var binding : ActivityFormListBinding
     //private lateinit var postList : List<Post>
@@ -40,7 +40,7 @@ class FormListActivity : AppCompatActivity(), PostView {
     }
 
     // 카테고리 변환
-    fun initTransactionEvent() {
+    private fun initTransactionEvent() {
         val marketingFragment = FormListMarketing()
         val socialFragment = FormListSocial()
         val brandFragment = FormListBrand()
