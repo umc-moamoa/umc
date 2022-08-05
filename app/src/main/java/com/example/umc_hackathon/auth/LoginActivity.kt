@@ -69,7 +69,9 @@ class LoginActivity : AppCompatActivity(), LoginView {
     override fun onLoginSuccess(code: Int, result: LoginResult) {
         when(code) {
             1000 -> {
+//                Toast.makeText(this, result.userId.toString(), Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, MyPageActivity::class.java)
+                intent.putExtra("userId", result.userId)
                 startActivity(intent)
                 finish()
 

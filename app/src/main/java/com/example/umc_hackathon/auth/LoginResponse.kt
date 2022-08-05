@@ -11,5 +11,5 @@ data class LoginResponse (
 
 data class LoginResult (
     @SerializedName("jwt") val jwt: String,
-    @SerializedName("userIdx") val userIdx: Int
+    @SerializedName("userId") val userId: Long
 )

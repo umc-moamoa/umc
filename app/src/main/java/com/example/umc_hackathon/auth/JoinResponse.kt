@@ -11,5 +11,5 @@ data class JoinResponse (
 
 data class JoinResult (
     @SerializedName("jwt") val jwt: String,
-    @SerializedName("userId") val userId: Int
+    @SerializedName("userId") val userId: Long
 )
