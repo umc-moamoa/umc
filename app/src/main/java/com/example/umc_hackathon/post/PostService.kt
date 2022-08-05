@@ -9,10 +9,12 @@ class PostService {
     private lateinit var postView: PostView
 
     fun setPostView(postView: PostView) {
+        Log.d("PostService/", "set Post View")
         this.postView = postView
     }
 
     fun getAllPost(category: Int) {
+        Log.d("GET_ALL_POST/", "메소드 실행")
         val getAllPostService = getRetrofit().create(PostRetrofitInterface::class.java)
 
         getAllPostService.getAllPosts(category).enqueue(object : retrofit2.Callback<PostListResponse> {
@@ -20,21 +22,21 @@ class PostService {
                 if (response.isSuccessful) {
                     val postList = response.body()!!
                     when(postList.code) {
-                        4000 -> Log.d("postlist-retrofit", "db connect failed")
-                        2012 -> Log.d("postlist-retrofit", "category id error")
+                        4000 -> Log.d("GET_ALL_POST/", "데이터베이스 연결에 실패하였습니다.")
+                        2012 -> Log.d("GET_ALL_POST/", "카테고리 아이디 값을 확인해주세요.")
                         1000 -> {
                             postView.onGetAllPostSuccess(postList)
-                            Log.d("postlist-retrofit", "success")
+                            Log.d("GET_ALL_POST/", "성공했습니다.")
                         }
                     }
                 }
             }
 
             override fun onFailure(call: Call<PostListResponse>, t: Throwable) {
-                Log.d("postlist-retrofit-error", t.toString())
+                Log.d("[F]GET_ALL_POST/ ", t.toString())
             }
         })
-
+        Log.d("GET_ALL_POST/", "메소드 실행완료")
     }
 
     fun getPostDetail(postId: Int) {
@@ -45,12 +47,12 @@ class PostService {
                 if (response.isSuccessful) {
                     val post = response.body()!!
                     postView.onGetPostDetail(post)
-                    Log.d("post-detail", postId.toString())
+                    Log.d("GET_POST_DETAIL/", postId.toString())
                 }
             }
 
             override fun onFailure(call: Call<Post>, t: Throwable) {
-                Log.d("post-detail-fail", t.toString())
+                Log.d("[F]GET_POST_DETAIL/", t.toString())
             }
         })
     }
