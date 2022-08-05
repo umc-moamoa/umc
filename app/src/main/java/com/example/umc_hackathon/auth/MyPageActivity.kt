@@ -21,7 +21,6 @@ class MyPageActivity : AppCompatActivity(), UserInfoView {
         setContentView(binding.root)
 
         userId = intent.getLongExtra("userId", 1)
-        Toast.makeText(this, "userId: " + userId, Toast.LENGTH_SHORT).show()
 
         // UserInfo api 호출
         userInfo()
@@ -64,6 +63,7 @@ class MyPageActivity : AppCompatActivity(), UserInfoView {
 
         val authService = AuthService()
         authService.setUserInfoView(this)
+        // 서버에서 사용자 정보 조회 api 수정하면 parameter 을 userId로 바꿀 것
         authService.userInfo(UserInfoRequest(1))
     }
 
