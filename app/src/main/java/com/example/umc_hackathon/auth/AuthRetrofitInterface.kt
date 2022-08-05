@@ -10,8 +10,8 @@ interface AuthRetrofitInterface {
     @POST("/auth/login")
     fun login(@Body user:User): Call<LoginResponse>
 
-    @HTTP(method = "GET", path = "/users", hasBody = true)
+    @GET("/users")
     fun userInfo(
-        @Body userInfoRequest: UserInfoRequest
+        @Query("userId") userId: Long
     ): Call<UserInfoResponse>
 }

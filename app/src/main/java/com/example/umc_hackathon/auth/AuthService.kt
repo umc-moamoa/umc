@@ -78,10 +78,10 @@ class AuthService {
     fun userInfo(userInfoRequest: UserInfoRequest) {
         val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
 
-        authService.userInfo(userInfoRequest).enqueue(object : Callback<UserInfoResponse> {
+        authService.userInfo(userInfoRequest.userId).enqueue(object : Callback<UserInfoResponse> {
             override fun onResponse(call: Call<UserInfoResponse>, response: Response<UserInfoResponse>) {
                 if(response.body() != null) {
-                    Log.d("USERINFO/SUCCESS", response.toString())
+                    Log.d("USERINFO/성공", response.toString())
 
                     val resp: UserInfoResponse = response.body()!!
                     when(val code = resp.code) {
@@ -92,7 +92,7 @@ class AuthService {
             }
 
             override fun onFailure(call: Call<UserInfoResponse>, t: Throwable) {
-                Log.d("USERINFO/FAILURE", t.message.toString())
+                Log.d("USERINFO/실패", t.message.toString())
             }
         })
 

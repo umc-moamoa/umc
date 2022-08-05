@@ -60,7 +60,7 @@ class MyPageActivity : AppCompatActivity(), UserInfoView {
     }
 
     private fun userInfo() {
-        Log.d("userInfo()", "메소드")
+        Log.d("activity/userInfo()", "메소드")
 
         val authService = AuthService()
         authService.setUserInfoView(this)
@@ -68,7 +68,11 @@ class MyPageActivity : AppCompatActivity(), UserInfoView {
     }
 
     override fun onUserInfoSuccess(code: Int, result: UserInfoResult) {
-        Toast.makeText(this, "회원정보 불러오기에 성공했습니다: " + result.nickName, Toast.LENGTH_SHORT).show()
+        Log.d("onUserInfoSuccess/성공", "회원 정보 불러오기에 성공했습니다")
+
+        binding.myPageMemberNameTv.text = result.nickName
+        binding.myPageMemberPointTv.text = result.point.toString() + "P 포인트"
+        binding.myPageMemberSurveyTv.text = "진행 중인 설문조사 " + result.postCount.toString() + "개"
     }
 
     override fun onUserInfoFailure(code: Int) {
