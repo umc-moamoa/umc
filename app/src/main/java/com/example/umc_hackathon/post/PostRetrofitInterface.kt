@@ -7,7 +7,5 @@ import retrofit2.http.Query
 
 interface PostRetrofitInterface {
     @GET("/posts")
-    fun getPostList(
-        @Query("categoryId") category: Int
-    ): Call<PostListResponse>
+    fun getPostList(@Query("categoryId") category: Long): Call<PostListResponse>
 }

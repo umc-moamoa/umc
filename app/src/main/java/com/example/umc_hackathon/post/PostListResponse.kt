@@ -10,10 +10,13 @@ data class PostListResponse(
 )
 
 data class PostListResult(
+    @SerializedName("posts") val posts: List<PostList>
+)
+
+data class PostList (
     @SerializedName("postId") val postId: Int,
-    @SerializedName("userId") val userId: Int,
     @SerializedName("point") val point: Int,
     @SerializedName("title") val title: String,
-    @SerializedName("content") val content: String,
-    @SerializedName("deadline") val deadline: Int
+    @SerializedName("status") val status: String,
+    @SerializedName("qCount") val qCount: Int
 )

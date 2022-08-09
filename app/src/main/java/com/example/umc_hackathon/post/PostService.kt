@@ -1,7 +1,6 @@
 package com.example.umc_hackathon.post
 
 import android.util.Log
-import com.example.umc_hackathon.auth.UserInfoResponse
 import com.example.umc_hackathon.getRetrofit
 import retrofit2.Call
 import retrofit2.Callback
@@ -14,27 +13,26 @@ class PostService {
         this.postListView = postListView
     }
 
-    fun getPostList(postListRequest: PostListRequest) {
+    fun getPostList(category: Long) {
         val postService = getRetrofit().create(PostRetrofitInterface::class.java)
 
-        postService.getPostList(postListRequest.categoryId).enqueue(object: Callback<PostListResponse> {
+        postService.getPostList(category).enqueue(object: Callback<PostListResponse> {
             override fun onResponse(call: Call<PostListResponse>, response: Response<PostListResponse>) {
-                if(response.body() != null) {
-                    Log.d("getPostList()/성공", response.toString())
+               if(response != null) {
+                   val postList: PostListResponse = response.body()!!
 
-                    val resp: PostListResponse = response.body()!!
-                    when(val code = resp.code) {
-                        1000 -> postListView.onPostListSuccess(code, resp.result!!)
-                        else -> postListView.onPostListFailure(code, resp.message)
-                    }
-                }
+                   when(postList.code) {
+                       1000 -> postListView.onGetPostListSuccess(postList)
+                       else -> postListView.onGetPostListFailure()
+                   }
+               }
             }
 
             override fun onFailure(call: Call<PostListResponse>, t: Throwable) {
-                Log.d("getPostList()/실패", t.message.toString())
+                Log.d("getPostList() / ", t.message.toString())
             }
         })
         
-        Log.d("getPostList()/", "메소드")
+        Log.d("getPostList() / ", "PostService에서 메소드")
     }
 }

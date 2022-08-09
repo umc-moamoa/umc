@@ -9,7 +9,6 @@ import com.example.umc_hackathon.temporary.MainActivity
 
 class FormListActivity : AppCompatActivity(){
 
-    val tag: String = "<FormListActivity>"
     private lateinit var binding : ActivityFormListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
