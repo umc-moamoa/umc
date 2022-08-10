@@ -23,6 +23,7 @@ class FormListRAdapter(val postList: List<PostList>): RecyclerView.Adapter<FormL
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         Log.d("onBindViewHolder() / ", " called / position: $position")
+
         holder.title.text = postList[position].title
         holder.qCount.text = postList[position].qCount.toString() + "개의 항목"
         holder.point.text = postList[position].point.toString() + "P"

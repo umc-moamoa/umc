@@ -1,6 +1,7 @@
 package com.example.umc_hackathon.post
 
 import android.util.Log
+import android.widget.Toast
 import com.example.umc_hackathon.getRetrofit
 import retrofit2.Call
 import retrofit2.Callback
@@ -18,7 +19,8 @@ class PostService {
 
         postService.getPostList(category).enqueue(object: Callback<PostListResponse> {
             override fun onResponse(call: Call<PostListResponse>, response: Response<PostListResponse>) {
-               if(response != null) {
+               if(response.body() != null) {
+                   Log.d("postService()", " / " + response.body())
                    val postList: PostListResponse = response.body()!!
 
                    when(postList.code) {
@@ -29,7 +31,7 @@ class PostService {
             }
 
             override fun onFailure(call: Call<PostListResponse>, t: Throwable) {
-                Log.d("getPostList() / ", t.message.toString())
+                Log.d("getPostList() 실패 /  ", t.message.toString())
             }
         })
         
