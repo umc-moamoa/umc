@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pale_grey"
-    tools:context=".InterestSurveyActivity">
+    tools:context=".post.InterestSurveyActivity">
 
     <LinearLayout
         android:id="@+id/pps_go_my_page_ll"

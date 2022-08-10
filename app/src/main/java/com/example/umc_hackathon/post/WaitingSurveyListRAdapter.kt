@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.umc_hackathon.R
-import com.example.umc_hackathon.temporary.SurveyListResult
 
 class WaitingSurveyListRAdapter(val postList: List<PostList>): RecyclerView.Adapter<WaitingSurveyListRAdapter.MyViewHolder>()  {
 

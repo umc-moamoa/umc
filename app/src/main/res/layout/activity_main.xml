@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/pale_grey"
     android:scrollbars="none"
-    tools:context=".temporary.MainActivity">
+    tools:context=".post.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_cl"

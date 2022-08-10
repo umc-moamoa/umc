@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pale_grey"
-    tools:context=".InterestSurveyActivity">
+    tools:context=".post.InterestSurveyActivity">
 
     <LinearLayout
         android:id="@+id/interest_survey_go_my_page_ll"
@@ -42,7 +42,7 @@
         android:id="@+id/interest_survey_header_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="27dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,8 +53,8 @@
             android:id="@+id/interest_survey_heart_iv"
             android:layout_width="15dp"
             android:layout_height="27dp"
-            android:layout_marginEnd="14dp"
-            android:src="@drawable/heart" />
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_detail_like_selected" />
 
         <TextView
             android:id="@+id/interest_survey_title_tv"

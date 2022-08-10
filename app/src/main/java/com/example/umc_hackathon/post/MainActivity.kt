@@ -1,4 +1,4 @@
-package com.example.umc_hackathon.temporary
+package com.example.umc_hackathon.post
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
