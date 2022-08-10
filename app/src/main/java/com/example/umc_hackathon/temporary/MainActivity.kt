@@ -5,24 +5,26 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ScrollView
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_hackathon.auth.LoginActivity
 import com.example.umc_hackathon.databinding.ActivityMainBinding
-import com.example.umc_hackathon.post.FormListActivity
-import com.example.umc_hackathon.post.WaitingSurveyListRAdapter
+import com.example.umc_hackathon.post.*
 
-class MainActivity : AppCompatActivity(), SurveyListView {
-
-    val TAG: String = "<MainActivity>"
-    // 서버 값으로 변경
+class MainActivity : AppCompatActivity(), PostListView {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var surveyListAdapter: WaitingSurveyListRAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // 어댑터
+        binding.mainWaitingSurveyListRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.mainWaitingSurveyListRv.setHasFixedSize(true)
+        getPostList(1)
+
+        // 이벤트 리스너
         binding.mainProfileIv.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
@@ -44,30 +46,24 @@ class MainActivity : AppCompatActivity(), SurveyListView {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        getSurveyList()
+//    override fun onStart() {
+//        super.onStart()
+//        getPostList(1) // param 추후에 변경
+//    }
+
+    private fun getPostList(category: Long) {
+        val postService = PostService()
+        postService.setPostListView(this)
+        postService.getPostList(category)
     }
 
-    private fun initRecyclerView(result: SurveyListResult) {
-        Log.d("initRecyclerView()/", "메소드 실행")
-        surveyListAdapter = WaitingSurveyListRAdapter(result)
-        binding.mainWaitingSurveyListRv.adapter = surveyListAdapter
-        Log.d("initRecyclerView()/", "메소드 완료")
+    override fun onGetPostListSuccess(postList: PostListResponse) {
+        binding.mainWaitingSurveyListRv.adapter = WaitingSurveyListRAdapter(postList.result)
+        Log.d("참여를 기다리는 설문조사 / ", "MainActivity, 참여를 기다리는 설문조사 폼 목록을 불러오는데 성공했습니다")
     }
 
-    private fun getSurveyList() {
-        val surveyListService = SurveyListService()
-        surveyListService.setSurveyListView(this)
-        surveyListService.getSurveyList()
+    override fun onGetPostListFailure() {
+        Log.d("참여를 기다리는 설문조사 / ", "MainActivity, 참여를 기다리는 설문조사 폼 목록을 불러오는데 실패했습니다")
     }
 
-    override fun onGetSurveyListSuccess(code: Int, result: SurveyListResult) {
-        Log.d("SurveyList/Success", result.toString())
-        initRecyclerView(result)
-    }
-
-    override fun onGetSurveyListFailure(code: Int, message: String) {
-        Log.d("SurveyList/Fail", message)
-    }
 }
