@@ -46,11 +46,6 @@ class MainActivity : AppCompatActivity(), PostListView {
         }
     }
 
-//    override fun onStart() {
-//        super.onStart()
-//        getPostList(1) // param 추후에 변경
-//    }
-
     private fun getPostList(category: Long) {
         val postService = PostService()
         postService.setPostListView(this)
