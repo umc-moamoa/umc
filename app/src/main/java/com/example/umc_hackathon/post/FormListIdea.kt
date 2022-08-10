@@ -6,13 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.umc_hackathon.MySurvey
-import com.example.umc_hackathon.R
-import com.example.umc_hackathon.databinding.FragmentFormListBrandBinding
-import com.example.umc_hackathon.temporary.WaitingSurveyListRAdapter
 import com.example.umc_hackathon.databinding.FragmentFormListIdeaBinding
 
 class FormListIdea : Fragment(), PostListView {
@@ -40,11 +34,11 @@ class FormListIdea : Fragment(), PostListView {
 
     override fun onGetPostListSuccess(postList: PostListResponse) {
         binding.fragmentIdeaRv.adapter = FormListRAdapter(postList.result)
-        Toast.makeText(activity, "폼 목록을 불러오는데 성공했습니다", Toast.LENGTH_SHORT).show()
+        Log.d("FormListIdea / ", "아이디어 폼 목록을 불러오는데 성공했습니다")
     }
 
     override fun onGetPostListFailure() {
-        Toast.makeText(activity, "폼 목록을 불러오는데 실패했습니다", Toast.LENGTH_SHORT).show()
+        Log.d("FormListIdea / ", "아이디어 폼 목록을 불러오는데 실패했습니다")
     }
 
 }

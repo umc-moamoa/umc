@@ -8,6 +8,7 @@ import android.widget.ScrollView
 import com.example.umc_hackathon.auth.LoginActivity
 import com.example.umc_hackathon.databinding.ActivityMainBinding
 import com.example.umc_hackathon.post.FormListActivity
+import com.example.umc_hackathon.post.WaitingSurveyListRAdapter
 
 class MainActivity : AppCompatActivity(), SurveyListView {
 
