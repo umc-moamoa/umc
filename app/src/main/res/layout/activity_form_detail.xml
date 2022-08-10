@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".post.MainActivity"
+    tools:context=".temporary.MainActivity"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="-1dp">
 
@@ -26,7 +26,7 @@
             android:layout_width="12dp"
             android:layout_height="12dp"
             android:layout_marginEnd="7dp"
-            android:src="@mipmap/chevron_right" />
+            android:src="@drawable/ic_chevron_right_black" />
 
         <TextView
             android:id="@+id/form_detail_go_form_list_tv"

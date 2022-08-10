@@ -105,7 +105,7 @@
                     android:layout_height="18dp"
                     android:layout_gravity="center"
                     android:layout_marginEnd="15dp"
-                    android:src="@mipmap/ic_login_mail" />
+                    android:src="@drawable/ic_login_mail" />
 
                 <EditText
                     android:id="@+id/login_id_et"
@@ -144,7 +144,7 @@
                     android:layout_height="18dp"
                     android:layout_gravity="center"
                     android:layout_marginEnd="15dp"
-                    android:src="@mipmap/ic_login_lock" />
+                    android:src="@drawable/ic_login_lock" />
 
                 <EditText
                     android:id="@+id/login_password_et"
