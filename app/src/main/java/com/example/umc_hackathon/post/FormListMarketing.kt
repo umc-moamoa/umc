@@ -6,55 +6,41 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.umc_hackathon.R
 import com.example.umc_hackathon.databinding.FragmentFormListMarketingBinding
 import kotlinx.android.synthetic.main.fragment_form_list_marketing.*
 
-class FormListMarketing : Fragment(), PostView {
+class FormListMarketing : Fragment(), PostListView {
 
-    private lateinit var postList : List<Post>
-    private var linearLayoutManager: RecyclerView.LayoutManager? = null
-    private var formListAdapter: RecyclerView.Adapter<FormListRAdapter.MyViewHolder>? = null
+    private val categoryId: Long = 1
+    private lateinit var binding: FragmentFormListMarketingBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val binding = FragmentFormListMarketingBinding.inflate(layoutInflater)
-        val view = inflater!!.inflate(R.layout.fragment_form_list_marketing, container, false)
-        val recyclerView: RecyclerView = view.findViewById(R.id.fragment_marketing_rv)
+        binding = FragmentFormListMarketingBinding.inflate(layoutInflater)
 
-        linearLayoutManager = LinearLayoutManager(activity)
+        binding.fragmentMarketingRv.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        binding.fragmentMarketingRv.setHasFixedSize(true)
+        getPostList(categoryId)
 
-        recyclerView.layoutManager = linearLayoutManager
-        recyclerView.setHasFixedSize(true)
-        getAllPosts()
-
-        return view
+        return binding.root
     }
 
-//    override fun onStart() {
-//        super.onStart()
-//        getAllPosts()
-//    }
-
-    private fun initRecyclerView(result: PostListResponse) {
-        formListAdapter = FormListRAdapter(postList)
-        fragment_marketing_rv.adapter = formListAdapter
-    }
-
-    private fun getAllPosts() {
+    private fun getPostList(category: Long) {
         val postService = PostService()
-        postService.setPostView(this)
-        postService.getAllPost(1) //카테고리는 추후 받아오는 걸로 수정
+        postService.setPostListView(this)
+        postService.getPostList(category)
+        
+        Log.d("getPostList() / ", "FormListMarketing에서 메소드")
     }
 
-    override fun onGetAllPostSuccess(result: PostListResponse) {
-        this.postList = postList
-        initRecyclerView(result)
+    override fun onGetPostListSuccess(postList: PostListResponse) {
+        binding.fragmentMarketingRv.adapter = FormListRAdapter(postList.result)
+        Toast.makeText(activity, "폼 목록을 불러오는데 성공했습니다", Toast.LENGTH_SHORT).show()
     }
 
-    override fun onGetPostDetail(post: Post) {
-        Log.d("ON_GET_POST_DETAIL/", "onGetPostDetail")
+    override fun onGetPostListFailure() {
+        Toast.makeText(activity, "폼 목록을 불러오는데 실패했습니다", Toast.LENGTH_SHORT).show()
     }
 
 }

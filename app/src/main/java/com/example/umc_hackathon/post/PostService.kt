@@ -1,59 +1,40 @@
 package com.example.umc_hackathon.post
 
 import android.util.Log
+import android.widget.Toast
 import com.example.umc_hackathon.getRetrofit
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 class PostService {
-    private lateinit var postView: PostView
+    private lateinit var postListView: PostListView
 
-    fun setPostView(postView: PostView) {
-        Log.d("PostService/", "set Post View")
-        this.postView = postView
+    fun setPostListView(postListView: PostListView) {
+        this.postListView = postListView
     }
 
-    fun getAllPost(category: Int) {
-        Log.d("GET_ALL_POST/", "메소드 실행")
-        val getAllPostService = getRetrofit().create(PostRetrofitInterface::class.java)
+    fun getPostList(category: Long) {
+        val postService = getRetrofit().create(PostRetrofitInterface::class.java)
 
-        getAllPostService.getAllPosts(category).enqueue(object : retrofit2.Callback<PostListResponse> {
+        postService.getPostList(category).enqueue(object: Callback<PostListResponse> {
             override fun onResponse(call: Call<PostListResponse>, response: Response<PostListResponse>) {
-                if (response.isSuccessful) {
-                    val postList = response.body()!!
-                    when(postList.code) {
-                        4000 -> Log.d("GET_ALL_POST/", "데이터베이스 연결에 실패하였습니다.")
-                        2012 -> Log.d("GET_ALL_POST/", "카테고리 아이디 값을 확인해주세요.")
-                        1000 -> {
-                            postView.onGetAllPostSuccess(postList)
-                            Log.d("GET_ALL_POST/", "성공했습니다.")
-                        }
-                    }
-                }
+               if(response.body() != null) {
+                   Log.d("postService()", " / " + response.body())
+                   val postList: PostListResponse = response.body()!!
+
+                   when(postList.code) {
+                       1000 -> postListView.onGetPostListSuccess(postList)
+                       else -> postListView.onGetPostListFailure()
+                   }
+               }
             }
 
             override fun onFailure(call: Call<PostListResponse>, t: Throwable) {
-                Log.d("[F]GET_ALL_POST/ ", t.toString())
+                Log.d("getPostList() 실패 /  ", t.message.toString())
             }
         })
-        Log.d("GET_ALL_POST/", "메소드 실행완료")
-    }
-
-    fun getPostDetail(postId: Int) {
-        val postDetailService = getRetrofit().create(PostRetrofitInterface::class.java)
-
-        postDetailService.getPostDetail(postId).enqueue(object : retrofit2.Callback<Post>{
-            override fun onResponse(call: Call<Post>, response: Response<Post>) {
-                if (response.isSuccessful) {
-                    val post = response.body()!!
-                    postView.onGetPostDetail(post)
-                    Log.d("GET_POST_DETAIL/", postId.toString())
-                }
-            }
-
-            override fun onFailure(call: Call<Post>, t: Throwable) {
-                Log.d("[F]GET_POST_DETAIL/", t.toString())
-            }
-        })
+        
+        Log.d("getPostList() / ", "PostService에서 메소드")
     }
 }

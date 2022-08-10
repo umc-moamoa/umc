@@ -13,6 +13,7 @@ class AuthService {
 
     private lateinit var joinView: JoinView
     private lateinit var loginView: LoginView
+    private lateinit var userInfoView: UserInfoView
 
     fun setJoinView(joinView: JoinView) {
         this.joinView = joinView
@@ -20,6 +21,10 @@ class AuthService {
 
     fun setLoginView(loginView: LoginView) {
         this.loginView = loginView
+    }
+
+    fun setUserInfoView(userInfoView: UserInfoView) {
+        this.userInfoView = userInfoView
     }
 
     fun join(user: User) {
@@ -68,5 +73,29 @@ class AuthService {
         })
 
         Log.d("LOGIN()/", "메소드")
+    }
+
+    fun userInfo(userInfoRequest: UserInfoRequest) {
+        val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
+
+        authService.userInfo(userInfoRequest.userId).enqueue(object : Callback<UserInfoResponse> {
+            override fun onResponse(call: Call<UserInfoResponse>, response: Response<UserInfoResponse>) {
+                if(response.body() != null) {
+                    Log.d("USERINFO/성공", response.toString())
+
+                    val resp: UserInfoResponse = response.body()!!
+                    when(val code = resp.code) {
+                        1000 -> userInfoView.onUserInfoSuccess(code, resp.result!!)
+                        else -> userInfoView.onUserInfoFailure(code)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<UserInfoResponse>, t: Throwable) {
+                Log.d("USERINFO/실패", t.message.toString())
+            }
+        })
+
+        Log.d("service/userInfo()", "메소드")
     }
 }

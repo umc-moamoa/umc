@@ -61,12 +61,21 @@ class JoinActivity : AppCompatActivity(), JoinView {
         authService.join(getUser())
     }
 
+    private fun clearInputText() {
+        binding.joinIdEt.setText("")
+        binding.joinNicknameEt.setText("")
+        binding.joinPasswordEt.setText("")
+        binding.joinPasswordCheckEt.setText("")
+    }
+
     // JoinView 상속
     override fun onJoinSuccess() {
         Toast.makeText(this, "회원가입에 성공했습니다", Toast.LENGTH_SHORT).show()
+        clearInputText()
     }
 
     override fun onJoinFailure() {
         Toast.makeText(this, "회원가입에 실패했습니다", Toast.LENGTH_SHORT).show()
+        clearInputText()
     }
 }

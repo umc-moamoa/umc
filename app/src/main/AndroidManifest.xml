@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Umc_hackathon">
+
         <activity
             android:name=".MySurveyActivity"
             android:exported="false" />
@@ -37,6 +38,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".auth.JoinActivity"
             android:exported="false" />
@@ -50,7 +52,7 @@
             android:name=".FormInputActivity"
             android:exported="false" />
         <activity
-            android:name=".post.FormDetailActivity"
+            android:name=".FormDetailActivity"
             android:exported="false" />
         <activity
             android:name=".post.FormListActivity"

@@ -1,38 +1,20 @@
 package com.example.umc_hackathon.post
 
-import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
-import androidx.core.content.ContextCompat
-
 import androidx.recyclerview.widget.RecyclerView
-import com.example.umc_hackathon.FormDetailActivity
 import com.example.umc_hackathon.R
 
-
-class FormListRAdapter(val postList: List<Post>): RecyclerView.Adapter<FormListRAdapter.MyViewHolder>() {
-
-    val TAG: String = "<FormListRAdapter>"
+class FormListRAdapter(val postList: List<PostList>): RecyclerView.Adapter<FormListRAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.board_list_item, parent, false)
-        return MyViewHolder(view).apply {
-            itemView.setOnClickListener {
-                val currentPosition: Int = adapterPosition
-                val survey: Post = postList.get(currentPosition)
-                Toast.makeText(parent.context, "설문조사 제목: ${survey.title}", Toast.LENGTH_SHORT).show()
+        Log.d("onCreateViewHolder() / ", "메소드 called")
 
-                val intent = Intent(itemView?.context, FormDetailActivity::class.java)
-                intent.putExtra("title", survey.title)
-                intent.putExtra("content", survey.content)
-                intent.putExtra("deadline", survey.deadline)
-                ContextCompat.startActivity(itemView.context, intent, null)
-            }
-        }
+        return MyViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -40,12 +22,17 @@ class FormListRAdapter(val postList: List<Post>): RecyclerView.Adapter<FormListR
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        Log.d(TAG, " - onBindViewHolder() called / position: $position")
-        holder.title.text = postList.get(position).title
+        Log.d("onBindViewHolder() / ", " called / position: $position")
+
+        holder.title.text = postList[position].title
+        holder.qCount.text = postList[position].qCount.toString() + "개의 항목"
+        holder.point.text = postList[position].point.toString() + "P"
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title = itemView.findViewById<TextView>(R.id.board_list_item_title_tv)
+        val title: TextView = itemView.findViewById(R.id.board_list_item_title_tv)
+        val qCount: TextView = itemView.findViewById(R.id.board_list_item_count_tv)
+        val point: TextView = itemView.findViewById(R.id.board_list_item_coin_tv)
     }
 
 }
