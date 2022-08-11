@@ -150,6 +150,7 @@
             android:fontFamily="@font/roboto_bold"
             android:text="설문 참여하기"
             android:textSize="16sp"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
