@@ -52,10 +52,10 @@
         android:id="@+id/setting_tabs_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="14dp"
         android:gravity="center"
         android:orientation="vertical"
-        android:paddingVertical="10dp"
+        android:paddingVertical="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/login_tabs_ll">
@@ -64,7 +64,6 @@
             android:id="@+id/login_id_cv"
             android:layout_width="280dp"
             android:layout_height="50dp"
-            android:layout_marginVertical="10dp"
             app:cardCornerRadius="25dp"
             app:cardElevation="0dp">
 
@@ -103,8 +102,7 @@
             android:id="@+id/login_password_cv"
             android:layout_width="280dp"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
             app:cardCornerRadius="25dp"
             app:cardElevation="0dp">
 
@@ -147,7 +145,7 @@
         android:id="@+id/login_submit_btn"
         android:layout_width="160dp"
         android:layout_height="40dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="65dp"
         android:background="@drawable/category_selected"
         android:fontFamily="@font/roboto_bold"
         android:text="로그인"
@@ -159,47 +157,15 @@
         app:layout_constraintTop_toBottomOf="@id/setting_tabs_ll" />
 
     <LinearLayout
-        android:id="@+id/login_social_ll"
+        android:id="@+id/login_join_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="50dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/login_submit_btn">
-
-        <ImageView
-            android:id="@+id/login_kakao_iv"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/ic_bt_login_kakao" />
-
-        <ImageView
-            android:id="@+id/login_naver_iv"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginHorizontal="22dp"
-            android:src="@drawable/ic_bt_login_naver" />
-
-        <ImageView
-            android:id="@+id/login_facebook_iv"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/ic_bt_login_facebook" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/login_join_ll"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="49dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login_social_ll">
 
         <TextView
             android:id="@+id/login_recommend_signup_tv"
