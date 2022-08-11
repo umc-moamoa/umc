@@ -12,7 +12,7 @@
         android:id="@+id/my_page_background_cl"
         android:layout_width="match_parent"
         android:layout_height="277dp"
-        android:background="@drawable/color_round"
+        android:background="@drawable/background_round"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -84,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="40dp"
-            android:src="@drawable/ic_mypage_settings"
+            android:src="@drawable/ic_mypage_setting"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/my_page_member_ll" />
 

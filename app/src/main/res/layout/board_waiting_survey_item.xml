@@ -53,7 +53,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:gravity="right"
                 android:text="300P"
-                android:textColor="@color/pale_violet"
+                android:textColor="@color/dodger_blue"
                 android:textSize="9sp" />
 
         </LinearLayout>

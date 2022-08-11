@@ -35,11 +35,11 @@ class FormListBrand : Fragment(), PostListView {
 
     override fun onGetPostListSuccess(postList: PostListResponse) {
         binding.fragmentBrandRv.adapter = FormListRAdapter(postList.result)
-        Toast.makeText(activity, "폼 목록을 불러오는데 성공했습니다", Toast.LENGTH_SHORT).show()
+        Log.d("FormListBrand / ", "브랜드 폼 목록을 불러오는데 성공했습니다")
     }
 
     override fun onGetPostListFailure() {
-        Toast.makeText(activity, "폼 목록을 불러오는데 실패했습니다", Toast.LENGTH_SHORT).show()
+        Log.d("FormListBrand / ", "브랜드 폼 목록을 불러오는데 실패했습니다")
     }
 
 }

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/pale_grey"
     android:scrollbars="none"
-    tools:context=".temporary.MainActivity">
+    tools:context=".post.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_cl"
@@ -18,7 +18,7 @@
             android:id="@+id/main_title_ll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
+            android:layout_marginHorizontal="30dp"
             android:layout_marginTop="20dp"
             android:gravity="bottom"
             android:orientation="horizontal"
@@ -26,12 +26,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
+            <ImageView
                 android:id="@+id/main_title_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="72dp"
+                android:layout_height="18dp"
                 android:text="설문 ZIP"
+                android:src="@drawable/ic_logo_font"
                 android:textColor="@color/pale_violet"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -41,15 +41,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="000님! 반갑습니다"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:textColor="@color/greyish_brown"
                 android:textSize="11sp" />
 
             <ImageView
                 android:id="@+id/main_profile_iv"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
+                android:layout_marginBottom="2dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginBottom="5dp"
-                android:src="@drawable/ic_main_profile" />
+                android:src="@drawable/ic_main_person" />
 
         </LinearLayout>
 
@@ -71,7 +74,7 @@
                 android:layout_height="10dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="127dp"
-                android:src="@mipmap/main_list" />
+                android:src="@drawable/ic__0" />
 
         </androidx.cardview.widget.CardView>
 
@@ -109,6 +112,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
                     android:text="더 보기"
+                    android:textColor="@color/greyish_brown"
                     android:textSize="11sp"
                     android:textStyle="bold" />
 
@@ -116,7 +120,7 @@
                     android:id="@+id/main_popular_survey_see_more_iv"
                     android:layout_width="12dp"
                     android:layout_height="12dp"
-                    android:src="@mipmap/ic_arrow_left" />
+                    android:src="@drawable/ic_chevron_right_black" />
 
             </LinearLayout>
 
@@ -395,6 +399,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
                     android:text="더 보기"
+                    android:textColor="@color/greyish_brown"
                     android:textSize="11sp"
                     android:textStyle="bold" />
 
@@ -402,7 +407,7 @@
                     android:id="@+id/main_waiting_survey_list_see_more_iv"
                     android:layout_width="12dp"
                     android:layout_height="12dp"
-                    android:src="@mipmap/ic_arrow_left" />
+                    android:src="@drawable/ic_chevron_right_black" />
 
             </LinearLayout>
 

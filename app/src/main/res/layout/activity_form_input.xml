@@ -247,7 +247,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="13dp"
         android:layout_marginBottom="13dp"
-        android:background="@drawable/btn_style"
+        android:background="@drawable/category_selected"
         android:fontFamily="@font/roboto_bold"
         android:text="제출"
         android:textColor="@color/black"

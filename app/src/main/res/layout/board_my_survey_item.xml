@@ -81,7 +81,7 @@
                 android:layout_width="11dp"
                 android:layout_height="11dp"
                 android:layout_marginEnd="5dp"
-                android:src="@drawable/ic_users" />
+                android:src="@drawable/ic_mypage_person" />
 
             <TextView
                 android:id="@+id/board_my_survey_item_people_tv"
@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_medium"
                 android:text="6명 참여"
-                android:textColor="@color/pale_violet"
+                android:textColor="@color/dodger_blue"
                 android:textSize="11sp" />
 
         </LinearLayout>

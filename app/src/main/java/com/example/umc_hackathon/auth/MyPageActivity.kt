@@ -6,9 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.example.umc_hackathon.*
-import com.example.umc_hackathon.databinding.ActivityLoginBinding
 import com.example.umc_hackathon.databinding.ActivityMyPageBinding
-import com.example.umc_hackathon.temporary.MainActivity
+import com.example.umc_hackathon.post.InterestSurveyActivity
+import com.example.umc_hackathon.post.MainActivity
 
 class MyPageActivity : AppCompatActivity(), UserInfoView {
 
