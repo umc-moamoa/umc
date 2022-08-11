@@ -10,6 +10,7 @@ import retrofit2.Response
 class PostService {
     private lateinit var postListView: PostListView
     private lateinit var interestSurveyListView: InterestSurveyListView
+    private lateinit var participatedSurveyView: ParticipatedSurveyView
     private lateinit var postDetailView: PostDetailView
 
     fun setPostListView(postListView: PostListView) {
@@ -18,6 +19,10 @@ class PostService {
 
     fun setInterestSurveyListView(interestSurveyListView: InterestSurveyListView) {
         this.interestSurveyListView = interestSurveyListView
+    }
+
+    fun setParticipatedSurveyView(participatedSurveyView: ParticipatedSurveyView) {
+        this.participatedSurveyView = participatedSurveyView
     }
 
     fun setPostDetailView(postDetailView: PostDetailView) {
@@ -70,6 +75,30 @@ class PostService {
         })
 
         Log.d("getInterestSurveyList()", " / PostService에서 메소드")
+    }
+
+    fun getParticipatedSurvey(jwt: String) {
+        val postService = getRetrofit().create(PostRetrofitInterface::class.java)
+
+        postService.getParticipatedSurvey(jwt).enqueue(object: Callback<PostListResponse> {
+            override fun onResponse(call: Call<PostListResponse>, response: Response<PostListResponse>) {
+                if(response.body() != null) {
+                    Log.d("getParticipatedSurvey()", " / " + response.body())
+                    val postList: PostListResponse = response.body()!!
+
+                    when(postList.code) {
+                        1000 -> participatedSurveyView.onGetParticipatedSurveySuccess(postList)
+                        else -> participatedSurveyView.onGetParticipatedSurveyFailure()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<PostListResponse>, t: Throwable) {
+                Log.d("getParticipatedSurvey()", " 실패 / " + t.message.toString())
+            }
+        })
+
+        Log.d("getParticipatedSurvey()", " / PostService에서 메소드")
     }
 
     fun getPostDetail(postId: Long, jwt: String) {

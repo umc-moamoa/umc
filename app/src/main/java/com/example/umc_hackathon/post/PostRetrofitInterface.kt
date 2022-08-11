@@ -9,10 +9,17 @@ import retrofit2.http.Query
 
 interface PostRetrofitInterface {
     @GET("/posts")
-    fun getPostList(@Query("categoryId") category: Long): Call<PostListResponse>
+    fun getPostList(
+        @Query("categoryId") category: Long
+    ): Call<PostListResponse>
 
     @GET("/users/interest")
     fun getInterestSurveyList(
+        @Header("x-access-token") jwt: String
+    ): Call<PostListResponse>
+
+    @GET("/users/partPost")
+    fun getParticipatedSurvey(
         @Header("x-access-token") jwt: String
     ): Call<PostListResponse>
 
