@@ -63,8 +63,12 @@ class MyPageActivity : AppCompatActivity(), UserInfoView {
 
         val authService = AuthService()
         authService.setUserInfoView(this)
-        // 서버에서 사용자 정보 조회 api 수정하면 parameter 을 userId로 바꿀 것
-        authService.userInfo(UserInfoRequest(1))
+        authService.userInfo(getJwt().toString())
+    }
+
+    private fun getJwt(): String? {
+        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf!!.getString("jwt", "")
     }
 
     override fun onUserInfoSuccess(code: Int, result: UserInfoResult) {
