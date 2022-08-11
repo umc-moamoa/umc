@@ -9,6 +9,8 @@ import com.example.umc_hackathon.*
 import com.example.umc_hackathon.databinding.ActivityMyPageBinding
 import com.example.umc_hackathon.post.InterestSurveyActivity
 import com.example.umc_hackathon.post.MainActivity
+import com.example.umc_hackathon.post.MySurveyActivity
+import com.example.umc_hackathon.post.ParticipatedSurveyActivity
 
 class MyPageActivity : AppCompatActivity(), UserInfoView {
 
@@ -69,12 +71,23 @@ class MyPageActivity : AppCompatActivity(), UserInfoView {
         return spf!!.getString("jwt", "")
     }
 
+    private fun saveNickName(nickName: String) {
+        Log.d("saveNickName", " : " + nickName)
+        val spf = getSharedPreferences("nickName", MODE_PRIVATE)
+        val editor = spf.edit()
+
+        editor.putString("nickName", nickName)
+        editor.apply()
+    }
+
     override fun onUserInfoSuccess(code: Int, result: UserInfoResult) {
         Log.d("onUserInfoSuccess/성공", "회원 정보 불러오기에 성공했습니다")
 
         binding.myPageMemberNameTv.text = result.nickName
         binding.myPageMemberPointTv.text = result.point.toString() + "P 포인트"
         binding.myPageMemberSurveyTv.text = "진행 중인 설문조사 " + result.postCount.toString() + "개"
+
+        saveNickName(result.nickName)
     }
 
     override fun onUserInfoFailure(code: Int) {

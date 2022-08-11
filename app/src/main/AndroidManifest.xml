@@ -13,10 +13,10 @@
         android:theme="@style/Theme.Umc_hackathon">
 
         <activity
-            android:name=".MySurveyActivity"
+            android:name=".post.MySurveyActivity"
             android:exported="false" />
         <activity
-            android:name=".ParticipatedSurveyActivity"
+            android:name=".post.ParticipatedSurveyActivity"
             android:exported="false" />
         <activity
             android:name=".post.InterestSurveyActivity"

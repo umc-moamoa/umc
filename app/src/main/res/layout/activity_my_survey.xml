@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pale_grey"
-    tools:context=".MySurveyActivity">
+    tools:context=".post.MySurveyActivity">
 
     <LinearLayout
         android:id="@+id/my_survey_go_my_page_ll"

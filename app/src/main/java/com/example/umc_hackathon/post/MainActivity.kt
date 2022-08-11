@@ -51,6 +51,9 @@ class MainActivity : AppCompatActivity(), PostListView {
         binding.mainSv.post {
             binding.mainSv.fullScroll(ScrollView.FOCUS_UP)
         }
+
+        // 회원 인사
+        binding.mainWelcomeTv.text = getNickName() + "님! 반갑습니다"
     }
 
     private fun getJwt(): String? {
@@ -62,6 +65,12 @@ class MainActivity : AppCompatActivity(), PostListView {
         val postService = PostService()
         postService.setPostListView(this)
         postService.getPostList(category)
+    }
+
+    private fun getNickName(): String? {
+        val spf = this.getSharedPreferences("nickName", AppCompatActivity.MODE_PRIVATE)
+        Log.d("nickname: ", "" + spf!!.getString("nickName", ""))
+        return spf!!.getString("nickName", "")
     }
 
     override fun onGetPostListSuccess(postList: PostListResponse) {
