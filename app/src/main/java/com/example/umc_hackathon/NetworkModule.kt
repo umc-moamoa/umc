@@ -22,7 +22,7 @@ fun getRetrofit(): Retrofit {
         .hostnameVerifier(
         HostnameVerifier { hostname, session ->
             val hv = HttpsURLConnection.getDefaultHostnameVerifier()
-            hv.verify("dev.umcsom.shop", session)
+            hv.verify("seolmunzip.shop", session)
         })
         .build()
 
