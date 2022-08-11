@@ -33,9 +33,14 @@ class InterestSurveyActivity : AppCompatActivity(), InterestSurveyListView {
     private fun getInterestSurveyList() {
         val postService = PostService()
         postService.setInterestSurveyListView(this)
-        postService.getInterestSurveyList()
+        postService.getInterestSurveyList(getJwt().toString())
         
         Log.d("getInterestSurveyList", " / InterestSurveyActivity에서 메소드")
+    }
+
+    private fun getJwt(): String? {
+        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf!!.getString("jwt", "")
     }
 
     override fun onGetInterestSurveyListSuccess(postList: PostListResponse) {

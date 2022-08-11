@@ -12,7 +12,9 @@ interface PostRetrofitInterface {
     fun getPostList(@Query("categoryId") category: Long): Call<PostListResponse>
 
     @GET("/users/interest")
-    fun getInterestSurveyList(): Call<PostListResponse>
+    fun getInterestSurveyList(
+        @Header("x-access-token") jwt: String
+    ): Call<PostListResponse>
 
     @GET("/posts/content/{postId}")
     fun getPostDetail(

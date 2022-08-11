@@ -48,10 +48,10 @@ class PostService {
         Log.d("getPostList() / ", "PostService에서 메소드")
     }
 
-    fun getInterestSurveyList() {
+    fun getInterestSurveyList(jwt: String) {
         val postService = getRetrofit().create(PostRetrofitInterface::class.java)
 
-        postService.getInterestSurveyList().enqueue(object: Callback<PostListResponse> {
+        postService.getInterestSurveyList(jwt).enqueue(object: Callback<PostListResponse> {
             override fun onResponse(call: Call<PostListResponse>, response: Response<PostListResponse>) {
                 if(response.body() != null) {
                     Log.d("getInterestSurveyList()", " / " + response.body())
