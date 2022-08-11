@@ -21,7 +21,7 @@ class FormListRAdapter(val postList: List<PostList>): RecyclerView.Adapter<FormL
             itemView.setOnClickListener {
                 val currentPosition: Int = adapterPosition
                 val intent = Intent(itemView?.context, FormDetailActivity::class.java)
-                intent.putExtra("list_item_title", postList[currentPosition].title)
+                intent.putExtra("list_item_post_id", postList[currentPosition].postId)
                 startActivity(itemView.context, intent, null)
             }
         }

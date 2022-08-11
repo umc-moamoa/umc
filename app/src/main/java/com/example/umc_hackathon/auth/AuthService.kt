@@ -75,7 +75,6 @@ class AuthService {
         Log.d("LOGIN()/", "메소드")
     }
 
-//    fun userInfo(userInfoRequest: UserInfoRequest) {
     fun userInfo(jwt: String) {
     val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
 
