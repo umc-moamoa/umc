@@ -8,30 +8,6 @@
     android:background="@color/pale_grey"
     tools:context=".auth.JoinActivity">
 
-    <View
-        android:id="@+id/join_title_view"
-        android:layout_width="50dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/ic_folder_purple"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/login_title_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:fontFamily="@font/roboto_bold"
-        android:text="설문 ZIP"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <LinearLayout
         android:id="@+id/login_tabs_ll"
         android:layout_width="match_parent"
@@ -40,7 +16,7 @@
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login_title_tv">
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/join_login_btn"
@@ -48,7 +24,7 @@
             android:layout_height="40dp"
             android:layout_marginVertical="5dp"
             android:layout_marginEnd="10dp"
-            android:background="@drawable/btn_off_style"
+            android:background="@drawable/category_unselected"
             android:fontFamily="@font/roboto_bold"
             android:text="로그인"
             android:textColor="#dadce5"
@@ -61,10 +37,10 @@
             android:layout_height="40dp"
             android:layout_marginVertical="5dp"
             android:layout_marginStart="10dp"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/category_selected"
             android:fontFamily="@font/roboto_bold"
             android:text="회원가입"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -203,11 +179,11 @@
         android:id="@+id/join_submit_btn"
         android:layout_width="160dp"
         android:layout_height="40dp"
-        android:layout_marginTop="88dp"
-        android:background="@drawable/btn_style"
+        android:layout_marginTop="55dp"
+        android:background="@drawable/category_selected"
         android:fontFamily="@font/roboto_bold"
         android:text="회원가입"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

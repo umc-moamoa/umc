@@ -17,4 +17,6 @@
     <color name="transparent">#00000000</color>
     <color name="lavender_pink">#e279be</color>
     <color name="soft_blue">#7798dd</color>
+    <color name="dodger_blue">#4e7ff2</color>
+    <color name="sky_blue">#82A5F3</color>
 </resources>
