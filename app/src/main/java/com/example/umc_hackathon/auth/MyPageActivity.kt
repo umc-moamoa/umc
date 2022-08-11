@@ -13,7 +13,7 @@ import com.example.umc_hackathon.post.MainActivity
 class MyPageActivity : AppCompatActivity(), UserInfoView {
 
     private lateinit var binding: ActivityMyPageBinding
-    var userId: Long = 1
+//    var userId: Long = 1
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

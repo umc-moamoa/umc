@@ -4,7 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import com.example.umc_hackathon.auth.AuthService
+import com.example.umc_hackathon.auth.LoginActivity
+import com.example.umc_hackathon.auth.LoginView
 import com.example.umc_hackathon.databinding.ActivityFormDetailBinding
 import com.example.umc_hackathon.databinding.FragmentFormListMarketingBinding
 import com.example.umc_hackathon.post.*
@@ -12,9 +16,6 @@ import com.example.umc_hackathon.post.*
 class FormDetailActivity : AppCompatActivity(), PostDetailView {
 
     var postId: Long = 1
-    private lateinit var binding: ActivityFormDetailBinding
-
-    val TAG: String = "<FormDetailActivity>"
     private lateinit var binding: ActivityFormDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +41,8 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
             startActivity(intent)
         }
 
-        // 관심 버튼 하트 색깔
+//        binding.
+
     }
 
     private fun getPostDetail() {
@@ -58,11 +60,30 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
 
     override fun onGetPostDetailSuccess(result: PostDetailResult) {
         binding.formDetailTitleTv.text = result.title
+        if(result.myPost) {
+            binding.formDetailParticipateBtn.isInvisible
+            binding.formDetailUpdateBtn.isVisible
+            binding.formDeleteTv.isVisible
+            binding.formDetailLikeTv.isInvisible
+            binding.formDetailLikeSelectedIv.isInvisible
+            binding.formDetailLikeUnselectedIv.isInvisible
+        }
+        else {
+            if(result.like) {
+                binding.formDetailLikeSelectedIv.isVisible
+            }
+        }
         Log.d("PostDetail / ", "상세페이지를 불러오는데 성공했습니다")
     }
 
     override fun onGetPostDetailFailure() {
         Log.d("PostDetail / ", "상세페이지를 불러오는데 실패했습니다")
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+    }
+
+    override fun onlikeSuccess(result: LikeResult) {
+
     }
 
 }
