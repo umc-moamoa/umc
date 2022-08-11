@@ -75,10 +75,11 @@ class AuthService {
         Log.d("LOGIN()/", "메소드")
     }
 
-    fun userInfo(userInfoRequest: UserInfoRequest) {
-        val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
+//    fun userInfo(userInfoRequest: UserInfoRequest) {
+    fun userInfo(jwt: String) {
+    val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
 
-        authService.userInfo(userInfoRequest.userId).enqueue(object : Callback<UserInfoResponse> {
+        authService.userInfo(jwt).enqueue(object : Callback<UserInfoResponse> {
             override fun onResponse(call: Call<UserInfoResponse>, response: Response<UserInfoResponse>) {
                 if(response.body() != null) {
                     Log.d("USERINFO/성공", response.toString())
