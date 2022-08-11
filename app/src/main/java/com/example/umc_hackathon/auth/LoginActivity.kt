@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import com.example.umc_hackathon.databinding.ActivityJoinBinding
 import com.example.umc_hackathon.databinding.ActivityLoginBinding
+import com.example.umc_hackathon.post.MainActivity
 
 class LoginActivity : AppCompatActivity(), LoginView {
 
