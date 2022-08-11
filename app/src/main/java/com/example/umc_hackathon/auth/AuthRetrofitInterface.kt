@@ -12,6 +12,7 @@ interface AuthRetrofitInterface {
 
     @GET("/users")
     fun userInfo(
-        @Query("userId") userId: Long
+        @Header("x-access-token") jwt: String
+//        @Query("userId") userId: Long
     ): Call<UserInfoResponse>
 }
