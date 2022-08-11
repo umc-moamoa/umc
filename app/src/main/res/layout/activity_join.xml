@@ -180,6 +180,7 @@
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/roboto_medium"
                 android:hint="비밀번호"
+                android:inputType="textPassword"
                 android:textSize="14sp" />
 
         </androidx.cardview.widget.CardView>
@@ -201,6 +202,7 @@
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/roboto_medium"
                 android:hint="비밀번호 확인"
+                android:inputType="textPassword"
                 android:textSize="14sp" />
 
         </androidx.cardview.widget.CardView>
