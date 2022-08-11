@@ -10,10 +10,11 @@ import com.example.umc_hackathon.post.FormListActivity
 class FormDetailActivity : AppCompatActivity() {
 
     val TAG: String = "<FormDetailActivity>"
+    private lateinit var binding: ActivityFormDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var binding = ActivityFormDetailBinding.inflate(layoutInflater)
+        binding = ActivityFormDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         if(intent.hasExtra("list_title")) {
