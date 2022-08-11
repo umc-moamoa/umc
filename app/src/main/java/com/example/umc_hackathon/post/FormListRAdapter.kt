@@ -19,7 +19,7 @@ class FormListRAdapter(val postList: List<PostList>): RecyclerView.Adapter<FormL
 
         return MyViewHolder(view).apply {
             itemView.setOnClickListener {
-                val currentPosition: Int = adapterPosition
+                val currentPosition: Int = adapterPosition //수정!!!!!! postId로 받아오기
                 val intent = Intent(itemView?.context, FormDetailActivity::class.java)
                 intent.putExtra("list_item_post_id", postList[currentPosition].postId)
                 startActivity(itemView.context, intent, null)

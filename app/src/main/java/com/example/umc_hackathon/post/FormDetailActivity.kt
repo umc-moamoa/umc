@@ -6,11 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
-import com.example.umc_hackathon.auth.AuthService
 import com.example.umc_hackathon.auth.LoginActivity
-import com.example.umc_hackathon.auth.LoginView
 import com.example.umc_hackathon.databinding.ActivityFormDetailBinding
-import com.example.umc_hackathon.databinding.FragmentFormListMarketingBinding
 import com.example.umc_hackathon.post.*
 
 class FormDetailActivity : AppCompatActivity(), PostDetailView {
@@ -26,7 +23,6 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
         if(intent.hasExtra("list_item_post_id")) {
             postId = intent.getLongExtra("list_item_post_id", postId)
             Log.d("postId", " : " + postId)
-
             getPostDetail()
         }
 
@@ -41,8 +37,9 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
             startActivity(intent)
         }
 
-//        binding.
-
+        binding.formDetailBackgroundCv.setOnClickListener {
+            likePost()
+        }
     }
 
     private fun getPostDetail() {
@@ -51,6 +48,12 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
         val postService = PostService()
         postService.setPostDetailView(this)
         postService.getPostDetail(postId, getJwt().toString())
+    }
+
+    private fun likePost() {
+        val postService = PostService()
+        postService.setPostDetailView(this)
+        postService.likePost(postId, getJwt().toString())
     }
 
     private fun getJwt(): String? {
@@ -82,8 +85,12 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
         startActivity(intent)
     }
 
-    override fun onlikeSuccess(result: LikeResult) {
+    override fun onLikeSuccess() {
+        binding.formDetailLikeSelectedIv.isVisible
+    }
 
+    override fun onLikeFailure(result: LikeResponse) {
+        Log.d("getLikePost()", " 실패 / " + result.message)
     }
 
 }

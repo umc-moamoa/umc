@@ -1,7 +1,6 @@
 package com.example.umc_hackathon.post
 
 import android.util.Log
-import android.widget.Toast
 import com.example.umc_hackathon.getRetrofit
 import retrofit2.Call
 import retrofit2.Callback
@@ -33,6 +32,7 @@ class PostService {
     fun setPostDetailView(postDetailView: PostDetailView) {
         this.postDetailView = postDetailView
     }
+
 
     fun getPostList(category: Long) {
         val postService = getRetrofit().create(PostRetrofitInterface::class.java)
@@ -152,5 +152,27 @@ class PostService {
         })
 
         Log.d("getPostDetail() / ", " / PostService에서 메소드")
+    }
+
+    fun likePost(postId: Long, jwt: String) {
+        val postService = getRetrofit().create(PostRetrofitInterface::class.java)
+
+        postService.likePost(postId, jwt).enqueue(object: Callback<LikeResponse> {
+            override fun onResponse(call: Call<LikeResponse>, response: Response<LikeResponse>) {
+                if(response.body() != null) {
+                    Log.d("getLikePost()", " / " + response.body())
+                    val likeResponse: LikeResponse = response.body()!!
+
+                    when(likeResponse.code) {
+                        1000 -> postDetailView.onLikeSuccess()
+                        else -> postDetailView.onLikeFailure(likeResponse)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<LikeResponse>, t: Throwable) {
+                Log.d("getLikePost()", " 실패 / " + t.message.toString())
+            }
+        })
     }
 }
