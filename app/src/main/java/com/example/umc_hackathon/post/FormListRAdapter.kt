@@ -15,7 +15,7 @@ class FormListRAdapter(val postList: List<PostList>): RecyclerView.Adapter<FormL
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.board_list_item, parent, false)
-        Log.d("onCreateViewHolder() / ", "메소드 called")
+        Log.d("onCreateViewHolder() / ", "FormListRAdapter에서 메소드 called")
 
         return MyViewHolder(view).apply {
             itemView.setOnClickListener {

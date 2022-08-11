@@ -23,6 +23,11 @@ interface PostRetrofitInterface {
         @Header("x-access-token") jwt: String
     ): Call<PostListResponse>
 
+    @GET("/users/userPost")
+    fun getMySurvey(
+        @Header("x-access-token") jwt: String
+    ): Call<MySurveyResponse>
+
     @GET("/posts/content/{postId}")
     fun getPostDetail(
         @Path("postId") postId: Long,

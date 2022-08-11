@@ -9,6 +9,7 @@ import com.example.umc_hackathon.*
 import com.example.umc_hackathon.databinding.ActivityMyPageBinding
 import com.example.umc_hackathon.post.InterestSurveyActivity
 import com.example.umc_hackathon.post.MainActivity
+import com.example.umc_hackathon.post.MySurveyActivity
 import com.example.umc_hackathon.post.ParticipatedSurveyActivity
 
 class MyPageActivity : AppCompatActivity(), UserInfoView {

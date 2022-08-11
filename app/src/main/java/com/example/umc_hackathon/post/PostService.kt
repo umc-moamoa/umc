@@ -11,6 +11,7 @@ class PostService {
     private lateinit var postListView: PostListView
     private lateinit var interestSurveyListView: InterestSurveyListView
     private lateinit var participatedSurveyView: ParticipatedSurveyView
+    private lateinit var mySurveyView: MySurveyView
     private lateinit var postDetailView: PostDetailView
 
     fun setPostListView(postListView: PostListView) {
@@ -23,6 +24,10 @@ class PostService {
 
     fun setParticipatedSurveyView(participatedSurveyView: ParticipatedSurveyView) {
         this.participatedSurveyView = participatedSurveyView
+    }
+
+    fun setMySurveyView(mySurveyView: MySurveyView) {
+        this.mySurveyView = mySurveyView
     }
 
     fun setPostDetailView(postDetailView: PostDetailView) {
@@ -99,6 +104,30 @@ class PostService {
         })
 
         Log.d("getParticipatedSurvey()", " / PostService에서 메소드")
+    }
+
+    fun getMySurvey(jwt: String) {
+        val postService = getRetrofit().create(PostRetrofitInterface::class.java)
+
+        postService.getMySurvey(jwt).enqueue(object: Callback<MySurveyResponse> {
+            override fun onResponse(call: Call<MySurveyResponse>, response: Response<MySurveyResponse>) {
+                if(response.body() != null) {
+                    Log.d("getMySurvey()", " / " + response.body())
+                    val mySurveyList: MySurveyResponse = response.body()!!
+
+                    when(mySurveyList.code) {
+                        1000 -> mySurveyView.onGetMySurveyViewSuccess(mySurveyList)
+                        else -> mySurveyView.onGetMySurveyViewFailure()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<MySurveyResponse>, t: Throwable) {
+                Log.d("getMySurvey()", " 실패 / " + t.message.toString())
+            }
+        })
+
+        Log.d("getMySurvey()", " / PostService에서 메소드")
     }
 
     fun getPostDetail(postId: Long, jwt: String) {
