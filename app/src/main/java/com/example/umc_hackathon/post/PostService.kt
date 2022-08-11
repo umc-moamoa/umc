@@ -10,6 +10,7 @@ import retrofit2.Response
 class PostService {
     private lateinit var postListView: PostListView
     private lateinit var interestSurveyListView: InterestSurveyListView
+    private lateinit var postDetailView: PostDetailView
 
     fun setPostListView(postListView: PostListView) {
         this.postListView = postListView
@@ -17,6 +18,10 @@ class PostService {
 
     fun setInterestSurveyListView(interestSurveyListView: InterestSurveyListView) {
         this.interestSurveyListView = interestSurveyListView
+    }
+
+    fun setPostDetailView(postDetailView: PostDetailView) {
+        this.postDetailView = postDetailView
     }
 
     fun getPostList(category: Long) {
@@ -63,5 +68,31 @@ class PostService {
                 Log.d("getInterestSurveyList()", " 실패 / " + t.message.toString())
             }
         })
+
+        Log.d("getInterestSurveyList()", " / PostService에서 메소드")
+    }
+
+    fun getPostDetail(postId: Long, jwt: String) {
+        val postService = getRetrofit().create(PostRetrofitInterface::class.java)
+
+        postService.getPostDetail(postId, jwt).enqueue(object: Callback<PostDetailResponse> {
+            override fun onResponse(call: Call<PostDetailResponse>, response: Response<PostDetailResponse>) {
+                if(response.body() != null) {
+                    Log.d("getPostDetail()", " / " + response.body())
+                    val postDetail: PostDetailResponse = response.body()!!
+
+                    when(postDetail.code) {
+                        1000 -> postDetailView.onGetPostDetailSuccess(postDetail.result!!)
+                        else -> postDetailView.onGetPostDetailFailure()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<PostDetailResponse>, t: Throwable) {
+                Log.d("getPostDetail()", " 실패 / " + t.message.toString())
+            }
+        })
+
+        Log.d("getPostDetail() / ", " / PostService에서 메소드")
     }
 }

@@ -20,8 +20,6 @@ class MyPageActivity : AppCompatActivity(), UserInfoView {
         binding = ActivityMyPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        userId = intent.getLongExtra("userId", 1)
-
         // UserInfo api 호출
         userInfo()
 
