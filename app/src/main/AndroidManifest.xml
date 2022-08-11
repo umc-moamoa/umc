@@ -19,7 +19,7 @@
             android:name=".ParticipatedSurveyActivity"
             android:exported="false" />
         <activity
-            android:name=".InterestSurveyActivity"
+            android:name=".post.InterestSurveyActivity"
             android:exported="false" />
         <activity
             android:name=".MyPointActivity"
@@ -31,7 +31,7 @@
             android:name=".auth.MyPageActivity"
             android:exported="false" />
         <activity
-            android:name=".temporary.MainActivity"
+            android:name=".post.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

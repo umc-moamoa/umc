@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.umc_hackathon.*
 import com.example.umc_hackathon.databinding.ActivityFormListBinding
-import com.example.umc_hackathon.temporary.MainActivity
 
 class FormListActivity : AppCompatActivity(){
 
@@ -44,7 +43,7 @@ class FormListActivity : AppCompatActivity(){
 
         // Transaction 작업
         binding.formListMarketingBtn.setOnClickListener {
-            binding.formListMarketingBtn.setBackgroundResource(R.drawable.btn_style)
+            binding.formListMarketingBtn.setBackgroundResource(R.drawable.category_selected)
             binding.formListSocialPhenomenonBtn.setBackgroundResource(R.color.transparent)
             binding.formListBrandBtn.setBackgroundResource(R.color.transparent)
             binding.formListIdeaBtn.setBackgroundResource(R.color.transparent)
@@ -56,7 +55,7 @@ class FormListActivity : AppCompatActivity(){
 
         binding.formListSocialPhenomenonBtn.setOnClickListener {
             binding.formListMarketingBtn.setBackgroundResource(R.color.transparent)
-            binding.formListSocialPhenomenonBtn.setBackgroundResource(R.drawable.btn_style)
+            binding.formListSocialPhenomenonBtn.setBackgroundResource(R.drawable.category_selected)
             binding.formListBrandBtn.setBackgroundResource(R.color.transparent)
             binding.formListIdeaBtn.setBackgroundResource(R.color.transparent)
 
@@ -68,7 +67,7 @@ class FormListActivity : AppCompatActivity(){
         binding.formListBrandBtn.setOnClickListener {
             binding.formListMarketingBtn.setBackgroundResource(R.color.transparent)
             binding.formListSocialPhenomenonBtn.setBackgroundResource(R.color.transparent)
-            binding.formListBrandBtn.setBackgroundResource(R.drawable.btn_style)
+            binding.formListBrandBtn.setBackgroundResource(R.drawable.category_selected)
             binding.formListIdeaBtn.setBackgroundResource(R.color.transparent)
 
             val transaction = supportFragmentManager.beginTransaction()
@@ -80,7 +79,7 @@ class FormListActivity : AppCompatActivity(){
             binding.formListMarketingBtn.setBackgroundResource(R.color.transparent)
             binding.formListSocialPhenomenonBtn.setBackgroundResource(R.color.transparent)
             binding.formListBrandBtn.setBackgroundResource( R.color.transparent)
-            binding.formListIdeaBtn.setBackgroundResource(R.drawable.btn_style)
+            binding.formListIdeaBtn.setBackgroundResource(R.drawable.category_selected)
 
             val transaction = supportFragmentManager.beginTransaction()
             transaction.replace(R.id.form_list_fv, ideaFragment)

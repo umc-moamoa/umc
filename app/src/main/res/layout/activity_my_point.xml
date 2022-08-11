@@ -12,7 +12,7 @@
         android:id="@+id/my_point_color_bg_cl"
         android:layout_width="match_parent"
         android:layout_height="195dp"
-        android:background="@drawable/color_round"
+        android:background="@drawable/background_round"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">

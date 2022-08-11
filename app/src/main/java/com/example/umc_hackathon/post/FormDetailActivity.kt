@@ -9,14 +9,12 @@ import com.example.umc_hackathon.post.FormListActivity
 
 class FormDetailActivity : AppCompatActivity() {
 
-    val TAG: String = "<FormDetailActivity>"
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var binding = ActivityFormDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if(intent.hasExtra("list_title")) {
+        if(intent.hasExtra("list_item_title")) {
             binding.formDetailTitleTv.text = intent.getStringExtra("list_title")
         }
 
