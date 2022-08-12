@@ -101,7 +101,7 @@
                     android:layout_gravity="center"
                     android:background="@android:color/transparent"
                     android:fontFamily="@font/roboto_medium"
-                    android:hint="Id"
+                    android:hint="아이디"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -140,7 +140,7 @@
                     android:layout_gravity="center"
                     android:background="@android:color/transparent"
                     android:fontFamily="@font/roboto_medium"
-                    android:hint="Password"
+                    android:hint="비밀번호"
                     android:inputType="textPassword"
                     android:textSize="14sp"
                     tools:ignore="TouchTargetSizeCheck" />

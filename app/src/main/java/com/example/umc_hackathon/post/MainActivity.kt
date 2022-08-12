@@ -46,7 +46,11 @@ class MainActivity : AppCompatActivity(), PostListView {
         }
 
         // 회원 인사
-        binding.mainWelcomeTv.text = getNickName() + "님! 반갑습니다"
+        if(getNickName() == "") {
+            binding.mainWelcomeTv.text = "로그인이 필요합니다"
+        } else {
+            binding.mainWelcomeTv.text = getNickName() + "님! 반갑습니다"
+        }
     }
 
     private fun getPostList(category: Long) {

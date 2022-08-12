@@ -12,12 +12,13 @@
         android:id="@+id/join_title"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="48dp"
         android:adjustViewBounds="true"
         android:src="@drawable/ic_logo_font"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/login_tabs_ll"
