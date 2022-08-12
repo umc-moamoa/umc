@@ -36,6 +36,7 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
         binding.formDetailParticipateBtn.setOnClickListener {
             val intent = Intent(this, FormInputActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         binding.formDetailLikeBtnCv.setOnClickListener {
