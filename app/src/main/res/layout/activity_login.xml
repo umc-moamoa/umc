@@ -13,12 +13,13 @@
         android:id="@+id/login_tabs_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
         android:gravity="center"
         android:orientation="horizontal"
+        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/setting_tabs_ll">
 
         <Button
             android:id="@+id/login_login_btn"
@@ -52,13 +53,13 @@
         android:id="@+id/setting_tabs_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="29dp"
         android:gravity="center"
         android:orientation="vertical"
         android:paddingVertical="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login_tabs_ll">
+        app:layout_constraintTop_toBottomOf="@id/login_tabs_ll"
+        app:layout_constraintBottom_toTopOf="@+id/login_submit_btn">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/login_id_cv"
@@ -144,7 +145,6 @@
         android:id="@+id/login_submit_btn"
         android:layout_width="160dp"
         android:layout_height="40dp"
-        android:layout_marginTop="35dp"
         android:background="@drawable/category_selected"
         android:fontFamily="@font/roboto_bold"
         android:text="로그인"
@@ -153,50 +153,53 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/setting_tabs_ll" />
+        app:layout_constraintTop_toBottomOf="@id/setting_tabs_ll"
+        app:layout_constraintBottom_toTopOf="@id/login_join_ll"/>
 
-    <LinearLayout
-        android:id="@+id/login_social_ll"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login_submit_btn">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/login_social_ll"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="36dp"-->
+<!--        android:gravity="center"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/login_submit_btn"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/login_join_ll">-->
 
-        <ImageView
-            android:id="@+id/login_kakao_iv"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/ic_bt_login_kakao" />
+<!--        <ImageView-->
+<!--            android:id="@+id/login_kakao_iv"-->
+<!--            android:layout_width="48dp"-->
+<!--            android:layout_height="48dp"-->
+<!--            android:src="@drawable/ic_bt_login_kakao" />-->
 
-        <ImageView
-            android:id="@+id/login_naver_iv"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginHorizontal="22dp"
-            android:src="@drawable/ic_bt_login_naver" />
+<!--        <ImageView-->
+<!--            android:id="@+id/login_naver_iv"-->
+<!--            android:layout_width="48dp"-->
+<!--            android:layout_height="48dp"-->
+<!--            android:layout_marginHorizontal="22dp"-->
+<!--            android:src="@drawable/ic_bt_login_naver" />-->
 
-        <ImageView
-            android:id="@+id/login_facebook_iv"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/ic_bt_login_facebook" />
+<!--        <ImageView-->
+<!--            android:id="@+id/login_facebook_iv"-->
+<!--            android:layout_width="48dp"-->
+<!--            android:layout_height="48dp"-->
+<!--            android:src="@drawable/ic_bt_login_facebook" />-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
     <LinearLayout
         android:id="@+id/login_join_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="49dp"
         android:gravity="center"
         android:orientation="horizontal"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login_social_ll">
+        app:layout_constraintTop_toBottomOf="@id/login_submit_btn">
 
         <TextView
             android:id="@+id/login_recommend_signup_tv"

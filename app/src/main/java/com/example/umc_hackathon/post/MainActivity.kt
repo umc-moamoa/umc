@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.ScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_hackathon.auth.LoginActivity
+import com.example.umc_hackathon.auth.MyPageActivity
 import com.example.umc_hackathon.databinding.ActivityMainBinding
 import com.example.umc_hackathon.post.*
 
@@ -26,8 +27,14 @@ class MainActivity : AppCompatActivity(), PostListView {
 
         // 이벤트 리스너
         binding.mainProfileIv.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
+            if(getJwt().isNullOrBlank()) {
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+            }
+            else {
+                val intent = Intent(this, MyPageActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         binding.mainPopularSurveyLl.setOnClickListener {
@@ -47,6 +54,11 @@ class MainActivity : AppCompatActivity(), PostListView {
 
         // 회원 인사
         binding.mainWelcomeTv.text = getNickName() + "님! 반갑습니다"
+    }
+
+    private fun getJwt(): String? {
+        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf!!.getString("jwt", "")
     }
 
     private fun getPostList(category: Long) {
