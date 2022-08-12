@@ -2,10 +2,7 @@ package com.example.umc_hackathon.post
 
 import com.example.umc_hackathon.auth.UserInfoResponse
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface PostRetrofitInterface {
     @GET("/posts")
@@ -33,4 +30,11 @@ interface PostRetrofitInterface {
         @Path("postId") postId: Long,
         @Header("x-access-token") jwt: String
     ): Call<PostDetailResponse>
+
+    @POST("/posts/interest/{postId}")
+    fun likePost(
+        @Path("postId") postId: Long,
+        @Header("x-access-token") jwt: String
+    ): Call<LikeResponse>
+
 }
