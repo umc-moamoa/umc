@@ -11,7 +11,7 @@ import com.example.umc_hackathon.auth.MyPageActivity
 import com.example.umc_hackathon.databinding.ActivityMainBinding
 import com.example.umc_hackathon.post.*
 
-class MainActivity : AppCompatActivity(), PostListView, PopularSurveyView {
+class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity(), PostListView, PopularSurveyView {
         binding.mainWaitingSurveyListRv.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.mainWaitingSurveyListRv.setHasFixedSize(true)
-        getPostList(1) // 추후에 바꿀 것
+        getWaitingSurvey()
 
         // 이벤트 리스너
         binding.mainProfileIv.setOnClickListener {
@@ -74,25 +74,16 @@ class MainActivity : AppCompatActivity(), PostListView, PopularSurveyView {
         return spf!!.getString("nickName", "")
     }
 
-    private fun getPostList(category: Long) {
-        val postService = PostService()
-        postService.setPostListView(this)
-        postService.getPostList(category)
-    }
-
     private fun getPopularSurvey() {
         val postService = PostService()
         postService.setPopularSurveyView(this)
         postService.getPopularSurvey()
     }
 
-    override fun onGetPostListSuccess(postList: PostListResponse) {
-        binding.mainWaitingSurveyListRv.adapter = WaitingSurveyListRAdapter(postList.result)
-        Log.d("(임시)참여를 기다리는 설문조사 / ", "MainActivity, 참여를 기다리는 설문조사 폼 목록을 불러오는데 성공했습니다")
-    }
-
-    override fun onGetPostListFailure() {
-        Log.d("(임시)참여를 기다리는 설문조사 / ", "MainActivity, 참여를 기다리는 설문조사 폼 목록을 불러오는데 실패했습니다")
+    private fun getWaitingSurvey() {
+        val postService = PostService()
+        postService.setWaitingSurveyView(this)
+        postService.getWaitingSurvey()
     }
 
     override fun onGetPopularSurveySuccess(postList: PostListResponse) {
@@ -129,5 +120,14 @@ class MainActivity : AppCompatActivity(), PostListView, PopularSurveyView {
 
     override fun onGetPopularSurveyFailure() {
         Log.d("인기있는 설문조사 / ", "MainActivity, 인기있는 설문조사 폼 목록을 불러오는데 실패했습니다")
+    }
+
+    override fun onGetWaitingSurveySuccess(postList: PostListResponse) {
+        binding.mainWaitingSurveyListRv.adapter = WaitingSurveyListRAdapter(postList.result)
+        Log.d("참여를 기다리는 설문조사 / ", "MainActivity, 참여를 기다리는 설문조사 폼 목록을 불러오는데 성공했습니다")
+    }
+
+    override fun onGetWaitingSurveyFailure() {
+        Log.d("참여를 기다리는 설문조사 / ", "MainActivity, 참여를 기다리는 설문조사 폼 목록을 불러오는데 실패했습니다")
     }
 }

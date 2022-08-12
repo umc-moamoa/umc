@@ -15,6 +15,10 @@ interface PostRetrofitInterface {
     @GET("/posts/desc")
     fun getPopularSurvey(): Call<PostListResponse>
 
+    // 참여를 기다리는 설문조사
+    @GET("/posts/asc")
+    fun getWaitingSurvey(): Call<PostListResponse>
+
     // 관심있는 설문조사
     @GET("/users/interest")
     fun getInterestSurveyList(
