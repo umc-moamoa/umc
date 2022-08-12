@@ -12,7 +12,7 @@ import com.example.umc_hackathon.post.*
 
 class FormDetailActivity : AppCompatActivity(), PostDetailView {
 
-    var postId: Long = 1
+    private var postId: Long = 0L
     private lateinit var binding: ActivityFormDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,6 +74,10 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
         else {
             if(result.like) {
                 binding.formDetailLikeSelectedIv.isVisible
+                binding.formDetailLikeUnselectedIv.isInvisible
+            }
+            else {
+                binding.formDetailLikeSelectedIv.isInvisible
             }
         }
         Log.d("PostDetail / ", "상세페이지를 불러오는데 성공했습니다")
@@ -87,6 +91,7 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
 
     override fun onLikeSuccess() {
         binding.formDetailLikeSelectedIv.isVisible
+        binding.formDetailLikeUnselectedIv.isInvisible
     }
 
     override fun onLikeFailure(result: LikeResponse) {
