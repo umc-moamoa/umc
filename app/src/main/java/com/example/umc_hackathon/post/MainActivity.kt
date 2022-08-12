@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity(), PostListView {
         }
 
         // 회원 인사
-        if(getNickName() == "") {
+        if(getNickName() == "" || getNickName() == null) {
             binding.mainWelcomeTv.text = "로그인이 필요합니다"
         } else {
             binding.mainWelcomeTv.text = getNickName() + "님! 반갑습니다"
@@ -65,16 +65,16 @@ class MainActivity : AppCompatActivity(), PostListView {
         return spf!!.getString("jwt", "")
     }
 
+    private fun getNickName(): String? {
+        val spf = this.getSharedPreferences("nickName", AppCompatActivity.MODE_PRIVATE)
+        Log.d("nickName: ", "" + spf!!.getString("nickName", ""))
+        return spf!!.getString("nickName", "")
+    }
+
     private fun getPostList(category: Long) {
         val postService = PostService()
         postService.setPostListView(this)
         postService.getPostList(category)
-    }
-
-    private fun getNickName(): String? {
-        val spf = this.getSharedPreferences("nickName", AppCompatActivity.MODE_PRIVATE)
-        Log.d("nickname: ", "" + spf!!.getString("nickName", ""))
-        return spf!!.getString("nickName", "")
     }
 
     override fun onGetPostListSuccess(postList: PostListResponse) {
