@@ -14,5 +14,6 @@ data class PostList (
     @SerializedName("point") val point: Int,
     @SerializedName("title") val title: String,
     @SerializedName("status") val status: String,
-    @SerializedName("qCount") val qCount: Int
+    @SerializedName("qcount") val qcount: Int,
+    @SerializedName("dday") val dday: Int
 )

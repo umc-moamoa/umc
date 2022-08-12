@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import com.example.umc_hackathon.auth.LoginActivity
@@ -37,7 +38,10 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
             startActivity(intent)
         }
 
-        binding.formDetailBackgroundCv.setOnClickListener {
+        binding.formDetailLikeBtnCv.setOnClickListener {
+            dislikePost()
+        }
+        binding.formDetailDislikeBtnCv.setOnClickListener {
             likePost()
         }
     }
@@ -56,6 +60,12 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
         postService.likePost(postId, getJwt().toString())
     }
 
+    private fun dislikePost() {
+        val postService = PostService()
+        postService.setPostDetailView(this)
+        postService.dislikePost(postId, getJwt().toString())
+    }
+
     private fun getJwt(): String? {
         val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
         return spf!!.getString("jwt", "")
@@ -69,7 +79,6 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
         if(result.myPost) {
             binding.formDetailParticipateBtn.isInvisible
             binding.formDetailUpdateBtn.isVisible
-            binding.formDeleteTv.isVisible
             binding.formDetailLikeTv.isInvisible
             binding.formDetailLikeSelectedIv.isInvisible
             binding.formDetailLikeUnselectedIv.isInvisible
@@ -100,6 +109,15 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
 
     override fun onLikeFailure(result: LikeResponse) {
         Log.d("getLikePost()", " 실패 / " + result.message)
+    }
+
+    override fun onDislikeSuccess() {
+        binding.formDetailLikeSelectedIv.isInvisible
+        binding.formDetailLikeUnselectedIv.isVisible
+    }
+
+    override fun onDislikeFailure(result: LikeResponse) {
+        Log.d("dislikePost()", " 실패 / " + result.message)
     }
 
 }

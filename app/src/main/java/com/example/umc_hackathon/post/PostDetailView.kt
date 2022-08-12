@@ -6,4 +6,7 @@ interface PostDetailView {
 
     fun onLikeSuccess()
     fun onLikeFailure(result: LikeResponse)
+
+    fun onDislikeSuccess()
+    fun onDislikeFailure(result: LikeResponse)
 }
