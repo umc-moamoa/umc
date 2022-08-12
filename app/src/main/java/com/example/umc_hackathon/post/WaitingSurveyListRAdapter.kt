@@ -25,7 +25,7 @@ class WaitingSurveyListRAdapter(val postList: List<PostList>): RecyclerView.Adap
         Log.d("onBindViewHolder() / ", " called / position: $position")
 
         holder.title.text = postList[position].title
-        holder.qCount.text = postList[position].qCount.toString() + "개의 항목"
+        holder.qCount.text = postList[position].qcount.toString() + "개의 항목"
         holder.point.text = postList[position].point.toString() + "P"
     }
 

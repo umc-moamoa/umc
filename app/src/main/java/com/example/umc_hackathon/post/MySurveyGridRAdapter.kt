@@ -1,15 +1,13 @@
-package com.example.umc_hackathon
+package com.example.umc_hackathon.post
 
-import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 
 import androidx.recyclerview.widget.RecyclerView
-import com.example.umc_hackathon.post.MySurveyList
+import com.example.umc_hackathon.R
 
 
 class MySurveyGridRAdapter(val mySurveyList: List<MySurveyList>): RecyclerView.Adapter<MySurveyGridRAdapter.MyViewHolder>() {
@@ -31,7 +29,8 @@ class MySurveyGridRAdapter(val mySurveyList: List<MySurveyList>): RecyclerView.A
         holder.postTitle.text = mySurveyList[position].postTitle
         holder.point.text = mySurveyList[position].point.toString() + "P"
         holder.postResultCount.text = mySurveyList[position].postResultCount.toString() + "명 참여"
-        holder.qCount.text = mySurveyList[position].qCount.toString() + "개의 항목"
+        holder.qCount.text = mySurveyList[position].qcount.toString() + "개의 항목  l"
+        Log.d("qCount", " : " +  mySurveyList[position].qcount)
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

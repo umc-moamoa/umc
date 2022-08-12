@@ -8,6 +8,8 @@ import retrofit2.Response
 
 class PostService {
     private lateinit var postListView: PostListView
+    private lateinit var popularSurveyView: PopularSurveyView
+    private lateinit var waitingSurveyView: WaitingSurveyView
     private lateinit var interestSurveyListView: InterestSurveyListView
     private lateinit var participatedSurveyView: ParticipatedSurveyView
     private lateinit var mySurveyView: MySurveyView
@@ -15,6 +17,14 @@ class PostService {
 
     fun setPostListView(postListView: PostListView) {
         this.postListView = postListView
+    }
+
+    fun setPopularSurveyView(popularSurveyView: PopularSurveyView) {
+        this.popularSurveyView = popularSurveyView
+    }
+
+    fun setWaitingSurveyView(waitingSurveyView: WaitingSurveyView) {
+        this.waitingSurveyView = waitingSurveyView
     }
 
     fun setInterestSurveyListView(interestSurveyListView: InterestSurveyListView) {
@@ -32,7 +42,6 @@ class PostService {
     fun setPostDetailView(postDetailView: PostDetailView) {
         this.postDetailView = postDetailView
     }
-
 
     fun getPostList(category: Long) {
         val postService = getRetrofit().create(PostRetrofitInterface::class.java)
@@ -56,6 +65,50 @@ class PostService {
         })
         
         Log.d("getPostList() / ", "PostService에서 메소드")
+    }
+
+    fun getPopularSurvey() {
+        val postService = getRetrofit().create(PostRetrofitInterface::class.java)
+
+        postService.getPopularSurvey().enqueue(object: Callback<PostListResponse> {
+            override fun onResponse(call: Call<PostListResponse>, response: Response<PostListResponse>) {
+                if(response.body() != null) {
+                    Log.d("getPopularSurvey()", " / " + response.body())
+                    val postList: PostListResponse = response.body()!!
+
+                    when(postList.code) {
+                        1000 -> popularSurveyView.onGetPopularSurveySuccess(postList)
+                        else -> popularSurveyView.onGetPopularSurveyFailure()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<PostListResponse>, t: Throwable) {
+                Log.d("getPopularSurvey() 실패", " / " + t.message.toString())
+            }
+        })
+    }
+
+    fun getWaitingSurvey() {
+        val postService = getRetrofit().create(PostRetrofitInterface::class.java)
+
+        postService.getWaitingSurvey().enqueue(object: Callback<PostListResponse> {
+            override fun onResponse(call: Call<PostListResponse>, response: Response<PostListResponse>) {
+                if(response.body() != null) {
+                    Log.d("getWaitingSurvey()", " / " + response.body())
+                    val postList: PostListResponse = response.body()!!
+
+                    when(postList.code) {
+                        1000 -> waitingSurveyView.onGetWaitingSurveySuccess(postList)
+                        else -> waitingSurveyView.onGetWaitingSurveyFailure()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<PostListResponse>, t: Throwable) {
+                Log.d("getWaitingSurvey() 실패", " / " + t.message.toString())
+            }
+        })
     }
 
     fun getInterestSurveyList(jwt: String) {

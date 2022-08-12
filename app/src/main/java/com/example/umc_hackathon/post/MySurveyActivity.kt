@@ -4,8 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.umc_hackathon.MySurveyGridRAdapter
 import com.example.umc_hackathon.auth.MyPageActivity
 import com.example.umc_hackathon.databinding.ActivityMySurveyBinding
 
@@ -19,7 +19,7 @@ class MySurveyActivity : AppCompatActivity(), MySurveyView {
         setContentView(binding.root)
 
         // 어댑터
-        binding.mySurveyRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.mySurveyRv.layoutManager = GridLayoutManager(this, 2)
         binding.mySurveyRv.setHasFixedSize(true)
         getMySurvey()
 

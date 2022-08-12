@@ -145,14 +145,14 @@
                         android:layout_marginEnd="20dp">
 
                         <View
-                            android:id="@+id/main_social_phenomenon_folder_view"
+                            android:id="@+id/main_popular_first_folder_view"
                             android:layout_width="138dp"
                             android:layout_height="118dp"
                             android:layout_marginEnd="10dp"
                             android:background="@drawable/ic_file_blue" />
 
                         <LinearLayout
-                            android:id="@+id/main_social_phenomenon_folder_ll"
+                            android:id="@+id/main_popular_first_folder_ll"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="vertical"
@@ -160,7 +160,7 @@
                             android:paddingTop="30dp">
 
                             <TextView
-                                android:id="@+id/main_social_phenomenon_title_tv"
+                                android:id="@+id/main_popular_first_title_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="5dp"
@@ -170,7 +170,7 @@
                                 android:textSize="14sp" />
 
                             <TextView
-                                android:id="@+id/main_social_phenomenon_count_tv"
+                                android:id="@+id/main_popular_first_count_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/roboto_light"
@@ -187,7 +187,7 @@
                                 android:paddingEnd="12dp">
 
                                 <TextView
-                                    android:id="@+id/main_social_phenomenon_type_tv"
+                                    android:id="@+id/main_popular_first_deadline_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto_medium"
@@ -196,7 +196,7 @@
                                     android:textSize="11sp" />
 
                                 <TextView
-                                    android:id="@+id/main_social_phenomenon_point_tv"
+                                    android:id="@+id/main_popular_first_point_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -218,14 +218,14 @@
                         android:layout_marginEnd="20dp">
 
                         <View
-                            android:id="@+id/main_marketing_folder_view"
+                            android:id="@+id/main_second_folder_view"
                             android:layout_width="138dp"
                             android:layout_height="118dp"
                             android:layout_marginEnd="10dp"
-                            android:background="@drawable/ic_file_mint" />
+                            android:background="@drawable/ic_folder_white" />
 
                         <LinearLayout
-                            android:id="@+id/main_marketing_folder_ll"
+                            android:id="@+id/main_second_folder_ll"
                             android:layout_width="138dp"
                             android:layout_height="118dp"
                             android:orientation="vertical"
@@ -233,7 +233,7 @@
                             android:paddingTop="30dp">
 
                             <TextView
-                                android:id="@+id/main_marketing_title_tv"
+                                android:id="@+id/main_second_title_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="5dp"
@@ -243,7 +243,7 @@
                                 android:textSize="14sp" />
 
                             <TextView
-                                android:id="@+id/main_marketing_count_tv"
+                                android:id="@+id/main_second_count_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/roboto_light"
@@ -260,7 +260,7 @@
                                 android:paddingEnd="12dp">
 
                                 <TextView
-                                    android:id="@+id/main_marketing_type_tv"
+                                    android:id="@+id/main_second_deadline_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto_medium"
@@ -269,7 +269,7 @@
                                     android:textSize="11sp" />
 
                                 <TextView
-                                    android:id="@+id/main_marketing_point_tv"
+                                    android:id="@+id/main_second_point_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -291,14 +291,14 @@
                         android:layout_marginEnd="20dp">
 
                         <View
-                            android:id="@+id/main_brand_folder_view"
+                            android:id="@+id/main_third_folder_view"
                             android:layout_width="138dp"
                             android:layout_height="118dp"
                             android:layout_marginEnd="10dp"
-                            android:background="@drawable/ic_folder_white" />
+                            android:background="@drawable/ic_file_mint" />
 
                         <LinearLayout
-                            android:id="@+id/main_brand_folder_ll"
+                            android:id="@+id/main_third_folder_ll"
                             android:layout_width="138dp"
                             android:layout_height="118dp"
                             android:orientation="vertical"
@@ -306,7 +306,7 @@
                             android:paddingTop="30dp">
 
                             <TextView
-                                android:id="@+id/main_brand_title_tv"
+                                android:id="@+id/main_third_title_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="5dp"
@@ -316,7 +316,7 @@
                                 android:textSize="14sp" />
 
                             <TextView
-                                android:id="@+id/main_brand_count_tv"
+                                android:id="@+id/main_third_count_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/roboto_light"
@@ -333,7 +333,7 @@
                                 android:paddingEnd="12dp">
 
                                 <TextView
-                                    android:id="@+id/main_brand_type_tv"
+                                    android:id="@+id/main_third_deadline_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto_medium"
@@ -342,7 +342,7 @@
                                     android:textSize="11sp" />
 
                                 <TextView
-                                    android:id="@+id/main_brand_point_tv"
+                                    android:id="@+id/main_third_point_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/form_detail_cl"
@@ -61,28 +60,29 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/form_detail_deadline_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/roboto_regular"
-            android:text="04/15 17:27"
-            android:textColor="#9b9999"
-            android:textSize="11sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/form_detail_title_tv" />
-
-        <TextView
             android:id="@+id/form_detail_item_count_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/roboto_medium"
-            android:text="11개의 항목"
+            android:text="11개의 항목  l"
             android:textColor="@color/greyish_brown"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/form_detail_deadline_tv" />
+            app:layout_constraintTop_toBottomOf="@id/form_detail_title_tv" />
+
+        <TextView
+            android:id="@+id/form_detail_item_deadline_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="D - DAY"
+            android:textColor="@color/dodger_blue"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/form_detail_item_count_tv"
+            app:layout_constraintTop_toBottomOf="@id/form_detail_title_tv" />
 
         <TextView
             android:id="@+id/form_detail_info_tv"
@@ -170,8 +170,8 @@
             android:background="@drawable/category_selected"
             android:fontFamily="@font/roboto_bold"
             android:text="설문 참여하기"
-            android:textSize="16sp"
             android:textColor="@color/white"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -179,7 +179,6 @@
 
         <Button
             android:id="@+id/form_detail_update_btn"
-            android:visibility="invisible"
             android:layout_width="160dp"
             android:layout_height="40dp"
             android:layout_marginBottom="5dp"
@@ -187,6 +186,7 @@
             android:fontFamily="@font/roboto_bold"
             android:text="수정하기"
             android:textSize="16sp"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
