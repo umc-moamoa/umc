@@ -175,4 +175,26 @@ class PostService {
             }
         })
     }
+
+    fun dislikePost(postId: Long, jwt: String) {
+        val postService = getRetrofit().create(PostRetrofitInterface::class.java)
+
+        postService.dislikePost(postId, jwt).enqueue(object: Callback<LikeResponse> {
+            override fun onResponse(call: Call<LikeResponse>, response: Response<LikeResponse>) {
+                if(response.body() != null) {
+                    Log.d("dislikePost()", " / " + response.body())
+                    val likeResponse: LikeResponse = response.body()!!
+
+                    when(likeResponse.code) {
+                        1000 -> postDetailView.onDislikeSuccess()
+                        else -> postDetailView.onDislikeFailure(likeResponse)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<LikeResponse>, t: Throwable) {
+                Log.d("dislikePost()", " 실패 / " + t.message.toString())
+            }
+        })
+    }
 }

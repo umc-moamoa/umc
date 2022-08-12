@@ -37,4 +37,10 @@ interface PostRetrofitInterface {
         @Header("x-access-token") jwt: String
     ): Call<LikeResponse>
 
+    @DELETE("/posts/interest/{postId}")
+    fun dislikePost(
+
+        @Path("postId") postId: Long,
+        @Header("x-access-token") jwt: String
+    ): Call<LikeResponse>
 }

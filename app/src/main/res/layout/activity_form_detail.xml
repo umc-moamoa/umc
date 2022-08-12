@@ -101,7 +101,7 @@
             app:layout_constraintTop_toBottomOf="@id/form_detail_item_count_tv" />
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/form_detail_background_cv"
+            android:id="@+id/form_detail_dislikeBtn_cv"
             android:layout_width="60dp"
             android:layout_height="30dp"
             android:layout_marginTop="40dp"
@@ -117,6 +117,29 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/ic_like_unselected" />
+
+            <TextView
+                android:id="@+id/form_detail_dislike_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="관심"
+                android:textColor="@color/black"
+                android:textSize="11sp" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/form_detail_likeBtn_cv"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="@color/pale_grey"
+            app:cardCornerRadius="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/form_detail_info_tv">
 
             <ImageView
                 android:id="@+id/form_detail_like_selected_iv"
@@ -134,18 +157,6 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/roboto_medium"
                 android:text="관심"
-                android:textColor="@color/black"
-                android:textSize="11sp" />
-
-            <TextView
-                android:id="@+id/form_delete_tv"
-                android:visibility="invisible"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="삭제"
                 android:textColor="@color/black"
                 android:textSize="11sp" />
 
