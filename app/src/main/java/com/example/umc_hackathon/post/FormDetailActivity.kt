@@ -63,6 +63,9 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
 
     override fun onGetPostDetailSuccess(result: PostDetailResult) {
         binding.formDetailTitleTv.text = result.title
+        binding.formDetailItemCountTv.text = result.qCount.toString() + "개의 항목  l"
+        binding.formDetailInfoTv.text = result.content
+
         if(result.myPost) {
             binding.formDetailParticipateBtn.isInvisible
             binding.formDetailUpdateBtn.isVisible
@@ -80,6 +83,7 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
                 binding.formDetailLikeSelectedIv.isInvisible
             }
         }
+
         Log.d("PostDetail / ", "상세페이지를 불러오는데 성공했습니다")
     }
 

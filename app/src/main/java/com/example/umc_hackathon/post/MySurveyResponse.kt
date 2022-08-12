@@ -13,5 +13,5 @@ data class MySurveyList (
     @SerializedName("postTitle") val postTitle: String,
     @SerializedName("point") val point: Int,
     @SerializedName("postResultCount") val postResultCount: Int,
-    @SerializedName("qCount") val qCount: Int
+    @SerializedName("qcount") val qcount: Int
 )
