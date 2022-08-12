@@ -10,7 +10,7 @@ data class PostListResponse(
 )
 
 data class PostList (
-    @SerializedName("postId") val postId: Int,
+    @SerializedName("postId") val postId: Long,
     @SerializedName("point") val point: Int,
     @SerializedName("title") val title: String,
     @SerializedName("status") val status: String,
