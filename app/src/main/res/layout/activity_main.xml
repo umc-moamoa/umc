@@ -69,12 +69,10 @@
             app:layout_constraintTop_toBottomOf="@id/main_title_ll">
 
             <ImageView
-                android:id="@+id/main_banner_iv"
-                android:layout_width="70dp"
-                android:layout_height="10dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="127dp"
-                android:src="@drawable/ic__0" />
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic___" />
 
         </androidx.cardview.widget.CardView>
 
