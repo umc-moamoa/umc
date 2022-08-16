@@ -1,10 +1,12 @@
-package com.example.umc_hackathon
+package com.example.umc_hackathon.survey
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.recyclerview.widget.RecyclerView
+import com.example.umc_hackathon.MyQuestion
+import com.example.umc_hackathon.R
 
 // 설문 작성 페이지의 질문들 목록
 class FormCreateRAdapter(val questionList: ArrayList<MyQuestion>): RecyclerView.Adapter<FormCreateRAdapter.MyViewHolder> (){

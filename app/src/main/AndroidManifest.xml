@@ -46,10 +46,10 @@
             android:name=".auth.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".FormCreateActivity"
+            android:name=".survey.FormCreateActivity"
             android:exported="false" />
         <activity
-            android:name=".FormInputActivity"
+            android:name=".survey.FormInputActivity"
             android:exported="false" />
         <activity
             android:name=".FormDetailActivity"

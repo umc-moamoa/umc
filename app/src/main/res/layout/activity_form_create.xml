@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pale_grey"
-    tools:context=".FormCreateActivity">
+    tools:context=".survey.FormCreateActivity">
 
     <LinearLayout
         android:id="@+id/form_create_header_ll"
@@ -15,7 +15,6 @@
         android:orientation="horizontal"
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp"
-        app:layout_constraintBottom_toTopOf="@id/form_create_title_tv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -51,10 +50,32 @@
         android:textColor="@color/black"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/form_create_list_rv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/form_create_header_ll" />
+
+    <LinearLayout
+        android:id="@+id/form_create_survey_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="40dp"
+        android:paddingTop="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/form_create_title_tv">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:hint="설문 제목을 입력해주세요."
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:background="@null"/>
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/form_create_list_rv"
@@ -67,7 +88,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/form_create_title_tv"
+        app:layout_constraintTop_toBottomOf="@id/form_create_survey_info"
         tools:listitem="@layout/board_question_item" />
 
     <View
@@ -85,8 +106,8 @@
         android:background="@drawable/category_selected"
         android:fontFamily="@font/roboto_bold"
         android:text="질문 추가하기"
-        android:textSize="16sp"
         android:textColor="@color/white"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

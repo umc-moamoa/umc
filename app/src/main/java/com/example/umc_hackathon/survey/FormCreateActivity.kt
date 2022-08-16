@@ -1,9 +1,10 @@
-package com.example.umc_hackathon
+package com.example.umc_hackathon.survey
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.umc_hackathon.MyQuestion
 import com.example.umc_hackathon.databinding.ActivityFormCreateBinding
 import com.example.umc_hackathon.post.FormListActivity
 
