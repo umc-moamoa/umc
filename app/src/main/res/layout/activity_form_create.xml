@@ -28,16 +28,6 @@
             android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/form_create_save_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_regular"
-            android:gravity="right"
-            android:text="저장"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
     </LinearLayout>
 
     <TextView
@@ -68,20 +58,50 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@null"
             android:fontFamily="@font/roboto_medium"
             android:hint="설문 제목을 입력해주세요."
-            android:textColorHint="@color/black"
             android:textColor="@color/black"
-            android:textSize="14sp"
-            android:background="@null"/>
+            android:textColorHint="@color/black"
+            android:textSize="14sp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@null"
+            android:fontFamily="@font/roboto_light"
+            android:hint="설문 내용을 작성해주세요."
+            android:textColorHint="#707070"
+            android:textSize="11sp" />
 
     </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        app:cardCornerRadius="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/form_create_survey_info">
+
+        <Spinner
+            android:id="@+id/form_create_select_category_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/form_create_survey_info" />
+
+    </androidx.cardview.widget.CardView>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/form_create_list_rv"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="35dp"
         android:clipToPadding="false"
         android:paddingBottom="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -89,6 +109,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/form_create_survey_info"
+        app:layout_constraintVertical_bias="1.0"
         tools:listitem="@layout/board_question_item" />
 
     <View
@@ -105,7 +126,7 @@
         android:layout_height="40dp"
         android:background="@drawable/category_selected"
         android:fontFamily="@font/roboto_bold"
-        android:text="질문 추가하기"
+        android:text="저장"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
