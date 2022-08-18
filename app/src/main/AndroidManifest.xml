@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Umc_hackathon"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".survey.QuestionItemActivity"
+            android:exported="false" />
         <activity
             android:name=".post.MySurveyActivity"
             android:exported="false" />
@@ -31,11 +33,13 @@
         <activity
             android:name=".auth.MyPageActivity"
             android:exported="false" />
+
         <activity
             android:name=".post.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

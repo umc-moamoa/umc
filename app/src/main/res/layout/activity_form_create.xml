@@ -78,10 +78,11 @@
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/form_create_spinner_cv"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:layout_marginEnd="30dp"
-        app:cardCornerRadius="25dp"
+        app:cardCornerRadius="17dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/form_create_survey_info">
 
@@ -89,30 +90,55 @@
             android:id="@+id/form_create_select_category_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_gravity="center_vertical"
+            android:entries="@array/category"
             android:spinnerMode="dropdown"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/form_create_survey_info" />
-
     </androidx.cardview.widget.CardView>
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/form_create_list_rv"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="35dp"
         android:clipToPadding="false"
-        android:paddingBottom="70dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/form_create_btns_ll"
+        app:layout_constraintTop_toBottomOf="@id/form_create_spinner_cv" />
+
+    <LinearLayout
+        android:id="@+id/form_create_btns_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:layout_marginBottom="70dp"
+        app:layout_constraintBottom_toBottomOf="@id/form_create_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/form_create_survey_info"
-        app:layout_constraintVertical_bias="1.0"
-        tools:listitem="@layout/board_question_item" />
+        app:layout_constraintTop_toBottomOf="@id/form_create_list_rv"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/form_create_trash_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_trashcan" />
+
+        <ImageView
+            android:id="@+id/form_create_plus_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_plus" />
+
+    </LinearLayout>
 
     <View
+        android:id="@+id/form_create_view"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:background="@drawable/transparent_bottom"

@@ -10,6 +10,7 @@ import javax.net.ssl.HostnameVerifier
 import javax.net.ssl.HttpsURLConnection
 
 const val BASE_URL = "http://seolmunzip.shop:9000" //추후 수정
+//http://seolmunzip.shop:9000
 
 fun getRetrofit(): Retrofit {
     val interceptor = HttpLoggingInterceptor().apply {

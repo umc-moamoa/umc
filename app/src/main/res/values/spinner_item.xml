@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="type">
+        <item>객관식</item>
+        <item>주관식</item>
+    </string-array>
+
+    <string-array name="category">
+        <item>마케팅</item>
+        <item>사회현상</item>
+        <item>브랜드</item>
+        <item>아이디어</item>
+    </string-array>
+</resources>
