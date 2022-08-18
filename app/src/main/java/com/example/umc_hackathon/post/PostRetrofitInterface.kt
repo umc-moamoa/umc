@@ -1,6 +1,7 @@
 package com.example.umc_hackathon.post
 
 import com.example.umc_hackathon.auth.UserInfoResponse
+import com.example.umc_hackathon.post.result.ResultResponse
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -39,8 +40,12 @@ interface PostRetrofitInterface {
 
     @DELETE("/posts/interest/{postId}")
     fun dislikePost(
-
         @Path("postId") postId: Long,
         @Header("x-access-token") jwt: String
     ): Call<LikeResponse>
+
+    @GET("/results/{postDetailId}")
+    fun getResults(
+        @Path("postDetailId") postDetailId: Long
+    ): Call<ResultResponse>
 }
