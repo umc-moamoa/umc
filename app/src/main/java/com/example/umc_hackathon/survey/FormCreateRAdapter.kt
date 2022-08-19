@@ -1,11 +1,15 @@
 package com.example.umc_hackathon.survey
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.umc_hackathon.FormDetailActivity
 import com.example.umc_hackathon.R
 
 // 설문 작성 페이지의 질문들 목록
@@ -16,7 +20,6 @@ class FormCreateRAdapter(val questionList: ArrayList<MyQuestion>): RecyclerView.
     fun addItem(item: MyQuestion) {
         questionList.add(item)
         notifyDataSetChanged()
-
     }
 
     fun removeItem(position: Int) {
@@ -39,11 +42,11 @@ class FormCreateRAdapter(val questionList: ArrayList<MyQuestion>): RecyclerView.
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         Log.d(TAG, " - onBindViewHolder() called / position: $position")
-        holder.title.setText(questionList.get(position).title)
+        holder.title.setText((position + 1).toString() + "번. " + questionList.get(position).title)
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title = itemView.findViewById<EditText>(R.id.question_item_et)
+        val title = itemView.findViewById<TextView>(R.id.question_item_et)
     }
 
 }
