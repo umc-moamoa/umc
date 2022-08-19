@@ -29,7 +29,7 @@
             android:name=".post.InterestSurveyActivity"
             android:exported="false" />
         <activity
-            android:name=".MyPointActivity"
+            android:name=".post.MyPointActivity"
             android:exported="false" />
         <activity
             android:name=".auth.SettingActivity"
@@ -42,7 +42,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

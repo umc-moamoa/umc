@@ -23,11 +23,13 @@ class FormListActivity : AppCompatActivity(){
         // 이벤트 리스너
         binding.formListFormCreateBtn.setOnClickListener {
             val intent = Intent(this, FormCreateActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
         }
 
         binding.formListGoMainLl.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
             finish()
         }

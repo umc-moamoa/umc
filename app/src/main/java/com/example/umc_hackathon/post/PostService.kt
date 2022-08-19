@@ -14,6 +14,7 @@ class PostService {
     private lateinit var participatedSurveyView: ParticipatedSurveyView
     private lateinit var mySurveyView: MySurveyView
     private lateinit var postDetailView: PostDetailView
+    private lateinit var myPointView: MyPointView
 
     fun setPostListView(postListView: PostListView) {
         this.postListView = postListView
@@ -43,6 +44,10 @@ class PostService {
         this.postDetailView = postDetailView
     }
 
+    fun setMyPointView(myPointView: MyPointView) {
+        this.myPointView = myPointView
+    }
+
     fun getPostList(category: Long) {
         val postService = getRetrofit().create(PostRetrofitInterface::class.java)
 
@@ -63,7 +68,7 @@ class PostService {
                 Log.d("getPostList() 실패 /  ", t.message.toString())
             }
         })
-        
+
         Log.d("getPostList() / ", "PostService에서 메소드")
     }
 
@@ -271,5 +276,34 @@ class PostService {
                 Log.d("deletePost()", " 실패 / " + t.message.toString())
             }
         })
+    }
+
+    fun getMyPoint(jwt: String) {
+        val postService = getRetrofit().create(PostRetrofitInterface::class.java)
+
+        postService.getMyPoint(jwt).enqueue(object: Callback<MyPointResponse> {
+            override fun onResponse(call: Call<MyPointResponse>, response: Response<MyPointResponse>) {
+                if(response.body() != null) {
+                    Log.d("getMyPoint()", " / " + response.body())
+                    val myPointList: MyPointResponse = response.body()!!
+
+                    when(myPointList.code) {
+                        1000 -> myPointView.onGetMyPointSuccess(myPointList)
+                        else -> myPointView.onGetMyPointFailure()
+                    }
+
+                    when(val code = myPointList.code) {
+                        1000 -> myPointView.onGetMyTotalPointSuccess(code, myPointList.result!!)
+                        else -> myPointView.onGetMyPointFailure()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<MyPointResponse>, t: Throwable) {
+                Log.d("getMyPoint()", " 실패 / " + t.message.toString())
+            }
+        })
+
+        Log.d("getMyPoint()", " / PostService에서 메소드")
     }
 }

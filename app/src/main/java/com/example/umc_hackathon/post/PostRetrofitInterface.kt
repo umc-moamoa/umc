@@ -66,4 +66,10 @@ interface PostRetrofitInterface {
         @Path("postId") postId: Long,
         @Header("x-access-token") jwt: String
     ): Call<StringResultResponse> //같은 형식이라 공유해서 사용
+
+    // 포인트 내역 조회
+    @GET("/users/point/recent")
+    fun getMyPoint(
+        @Header("x-access-token") jwt: String
+    ): Call<MyPointResponse>
 }

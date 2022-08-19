@@ -21,6 +21,7 @@ class SettingActivity : AppCompatActivity() {
 
         binding.settingCancelTv.setOnClickListener {
             val intent = Intent(this, MyPageActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
             finish()
         }

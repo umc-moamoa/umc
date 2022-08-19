@@ -19,7 +19,15 @@ class MySurveyGridRAdapter(val mySurveyList: List<MySurveyList>): RecyclerView.A
         val view = LayoutInflater.from(parent.context).inflate(R.layout.board_my_survey_item, parent, false)
         Log.d("onCreateViewHolder() / ", "MySurveyGridAdapter에서 메소드 called")
 
-        return MyViewHolder(view)
+        return MyViewHolder(view).apply {
+            itemView.setOnClickListener {
+//                val currentPosition: Int = postList[adapterPosition].postId //수정!!!!!! postId로 받아오기
+                val intent = Intent(itemView?.context, FormDetailActivity::class.java)
+                intent.putExtra("list_item_post_id", mySurveyList[adapterPosition].postId)
+                Log.d("list_item_post_id", mySurveyList[adapterPosition].postId.toString());
+                ContextCompat.startActivity(itemView.context, intent, null)
+            }
+        }
     }
 
     override fun getItemCount(): Int {
@@ -28,6 +36,14 @@ class MySurveyGridRAdapter(val mySurveyList: List<MySurveyList>): RecyclerView.A
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         Log.d("MySurveyGridRAdapter", " - onBindViewHolder() called / position: $position")
+
+        if(mySurveyList[position].status == "CLOSED") {
+            holder.dday.text = "CLOSED"
+        }
+
+        else {
+            holder.dday.text = "D - " + mySurveyList[position].dday.toString()
+        }
 
         holder.postTitle.text = mySurveyList[position].postTitle
         holder.point.text = mySurveyList[position].point.toString() + "P"
@@ -40,6 +56,7 @@ class MySurveyGridRAdapter(val mySurveyList: List<MySurveyList>): RecyclerView.A
         val postTitle: TextView = itemView.findViewById(R.id.board_my_survey_item_title_tv)
         val point: TextView = itemView.findViewById(R.id.board_my_survey_item_point_tv)
         val postResultCount: TextView = itemView.findViewById(R.id.board_my_survey_item_people_tv)
+        val dday: TextView = itemView.findViewById(R.id.board_my_survey_item_deadline_tv)
         val qCount: TextView = itemView.findViewById(R.id.board_my_survey_item_count_tv)
     }
 
