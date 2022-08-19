@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_hackathon.databinding.ActivityFormCreateBinding
+import com.example.umc_hackathon.post.FormListActivity
 
 class FormCreateActivity : AppCompatActivity() {
 
@@ -28,12 +29,14 @@ class FormCreateActivity : AppCompatActivity() {
 
         binding.formCreateCancelTv.setOnClickListener {
             val intent = Intent(this, FormListActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
             finish()
         }
 
         binding.formCreateSaveTv.setOnClickListener {
             val intent = Intent(this, FormListActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
             finish()
         }

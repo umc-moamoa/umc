@@ -2,16 +2,17 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_page_cl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pale_grey"
-    tools:context=".MyPageActivity">
+    tools:context=".auth.MyPageActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/my_page_background_cl"
         android:layout_width="match_parent"
         android:layout_height="277dp"
-        android:background="@drawable/color_round"
+        android:background="@drawable/background_round"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -83,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="40dp"
-            android:src="@drawable/ic_mypage_settings"
+            android:src="@drawable/ic_mypage_setting"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/my_page_member_ll" />
 
@@ -92,8 +93,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="35dp"
             android:paddingHorizontal="30dp"
+            android:paddingTop="35dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/my_page_member_ll">
@@ -111,7 +112,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_marginBottom="13dp"
-                    android:src="@drawable/ic_mypage_point_black" />
+                    android:src="@drawable/ic_mypage_point_white" />
 
                 <TextView
                     android:id="@+id/my_page_member_point_tv"
@@ -125,6 +126,7 @@
             </LinearLayout>
 
             <ImageView
+                android:id="@+id/my_page_slash_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -167,8 +169,8 @@
         android:id="@+id/my_page_survey_cv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="220dp"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="220dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="10dp"
         app:layout_constraintEnd_toEndOf="parent"

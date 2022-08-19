@@ -13,12 +13,14 @@ class FormInputActivity : AppCompatActivity() {
 
         binding.formInputCancelBtn.setOnClickListener {
             val intent = Intent(this, FormDetailActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
             finish()
         }
 
         binding.formInputSubmitBtn.setOnClickListener {
             val intent = Intent(this, FormDetailActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
             finish()
         }

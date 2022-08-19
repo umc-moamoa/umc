@@ -2,38 +2,36 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/form_detail_cl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    tools:context=".MainActivity"
-    tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="-1dp">
+    android:background="@drawable/background">
 
     <LinearLayout
-        android:id="@+id/form_detail_back_main_ll"
+        android:id="@+id/form_detail_go_form_list_ll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:gravity="center_vertical">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/form_detail_back_main_iv"
+            android:id="@+id/form_detail_go_form_list_iv"
             android:layout_width="12dp"
             android:layout_height="12dp"
             android:layout_marginEnd="7dp"
-            android:src="@mipmap/chevron_right" />
+            android:src="@drawable/ic_arrow_left_white" />
 
         <TextView
-            android:id="@+id/form_detail_back_main_tv"
+            android:id="@+id/form_detail_go_form_list_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="목록으로"
-            android:textSize="14sp"
-            android:textColor="@color/black" />
+            android:textColor="@color/white"
+            android:textSize="14sp" />
 
     </LinearLayout>
 
@@ -48,7 +46,7 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" >
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/form_detail_title_tv"
@@ -58,43 +56,38 @@
             android:text="사회현상에 대한 소비자인식"
             android:textColor="@color/black"
             android:textSize="20sp"
-            android:fontFamily="@font/roboto_bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/form_detail_deadline_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/roboto_regular"
-            android:text="04/15 17:27"
-            android:textColor="#9b9999"
-            android:textSize="11sp"
-            android:fontFamily="@font/roboto_regular"
-            app:layout_constraintTop_toBottomOf="@id/form_detail_title_tv"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="5dp"/>
 
         <TextView
             android:id="@+id/form_detail_item_count_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/form_detail_deadline_tv"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/roboto_medium"
-            android:text="11개의 항목"
+            android:text="11개의 항목  l"
             android:textColor="@color/greyish_brown"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/form_detail_title_tv" />
+
+        <TextView
+            android:id="@+id/form_detail_item_deadline_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="D - DAY"
+            android:textColor="@color/dodger_blue"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/form_detail_item_count_tv"
+            app:layout_constraintTop_toBottomOf="@id/form_detail_title_tv" />
 
         <TextView
             android:id="@+id/form_detail_info_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/form_detail_item_count_tv"
             android:layout_marginTop="30dp"
             android:fontFamily="@font/roboto_light"
             android:text="안녕하세요. 저희는 광고론을 수강하고 있는 학생들입니다.
@@ -102,63 +95,102 @@
 관한 자료가 필요하여 설문을 진행하고 있습니다!
 3분 가량 소요되는 짧은 설문조사이니 많은 참여 부탁드립니다."
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/form_detail_item_count_tv" />
 
-        <View
-            android:id="@+id/form_detail_background_view"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/form_detail_dislikeBtn_cv"
             android:layout_width="60dp"
             android:layout_height="30dp"
-            android:background="@drawable/like_style"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="@color/pale_grey"
+            app:cardCornerRadius="15dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/form_detail_info_tv"
-            android:layout_marginTop="40dp"/>
+            app:layout_constraintTop_toBottomOf="@id/form_detail_info_tv">
 
-        <ImageView
-            android:id="@+id/form_detail_like_unselected_iv"
-            android:layout_width="13dp"
-            android:layout_height="11dp"
-            android:src="@drawable/ic_like_unselected"
-            app:layout_constraintStart_toStartOf="@id/form_detail_background_view"
-            app:layout_constraintTop_toTopOf="@id/form_detail_background_view"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"/>
+            <ImageView
+                android:id="@+id/form_detail_like_unselected_iv"
+                android:layout_width="13dp"
+                android:layout_height="11dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_like_unselected" />
 
-        <ImageView
-            android:id="@+id/form_detail_like_selected_iv"
-            android:layout_width="13dp"
-            android:layout_height="11dp"
-            android:src="@drawable/ic_like_selected"
-            app:layout_constraintStart_toStartOf="@id/form_detail_background_view"
-            app:layout_constraintTop_toTopOf="@id/form_detail_background_view"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"/>
+            <TextView
+                android:id="@+id/form_detail_dislike_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="관심"
+                android:textColor="@color/black"
+                android:textSize="11sp" />
 
-        <TextView
-            android:id="@+id/form_detail_like_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_medium"
-            android:text="관심"
-            android:textColor="@color/black"
-            android:textSize="11sp"
-            app:layout_constraintStart_toStartOf="@id/form_detail_background_view"
-            app:layout_constraintTop_toTopOf="@id/form_detail_background_view"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="25dp"/>
+        </androidx.cardview.widget.CardView>
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/form_detail_likeBtn_cv"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="@color/pale_grey"
+            app:cardCornerRadius="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/form_detail_info_tv">
+
+            <ImageView
+                android:id="@+id/form_detail_like_selected_iv"
+                android:layout_width="13dp"
+                android:layout_height="11dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_like_selected" />
+
+            <TextView
+                android:id="@+id/form_detail_like_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="관심"
+                android:textColor="@color/black"
+                android:textSize="11sp" />
+
+        </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/form_detail_participate_btn"
             android:layout_width="160dp"
             android:layout_height="40dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/category_selected"
             android:fontFamily="@font/roboto_bold"
             android:text="설문 참여하기"
-            android:textSize="16sp" />
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <Button
+            android:id="@+id/form_detail_update_btn"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/category_selected"
+            android:fontFamily="@font/roboto_bold"
+            android:text="수정하기"
+            android:textSize="16sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

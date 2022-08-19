@@ -2,13 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pps_cl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pale_grey"
-    tools:context=".InterestSurveyActivity">
+    tools:context=".post.InterestSurveyActivity">
 
     <LinearLayout
-        android:id="@+id/interest_survey_go_my_page_ll"
+        android:id="@+id/pps_go_my_page_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -20,12 +21,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/pps_go_my_page_iv"
             android:layout_width="wrap_content"
             android:layout_height="12dp"
             android:layout_marginEnd="10dp"
             android:src="@drawable/ic_arrow_left" />
 
         <TextView
+            android:id="@+id/pps_go_my_page_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
@@ -36,24 +39,26 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/interest_survey_header_ll"
+        android:id="@+id/pps_header_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="27dp"
-        android:orientation="horizontal"
         android:gravity="center_vertical"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/interest_survey_go_my_page_ll">
+        app:layout_constraintTop_toBottomOf="@id/pps_go_my_page_ll">
 
         <ImageView
+            android:id="@+id/pps_title_iv"
             android:layout_width="20dp"
             android:layout_height="27dp"
             android:layout_marginEnd="14dp"
             android:src="@drawable/ic_mypage_check" />
 
         <TextView
+            android:id="@+id/pps_title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_bold"
@@ -64,7 +69,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/interest_survey_form_list_rv"
+        android:id="@+id/pps_list_rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
@@ -73,7 +78,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/interest_survey_header_ll" />
+        app:layout_constraintTop_toBottomOf="@id/pps_header_ll" />
 
     <View
         android:layout_width="match_parent"
