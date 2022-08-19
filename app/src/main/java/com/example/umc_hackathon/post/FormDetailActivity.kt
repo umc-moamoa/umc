@@ -84,6 +84,8 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
 
     override fun onGetPostDetailSuccess(result: PostDetailResult) {
         binding.formDetailTitleTv.text = result.title
+        binding.formDetailItemCountTv.text = result.qCount.toString()
+
         if(result.myPost) {
             Log.d("mypost", result.myPost.toString())
             binding.formDetailParticipateBtn.visibility = View.INVISIBLE
