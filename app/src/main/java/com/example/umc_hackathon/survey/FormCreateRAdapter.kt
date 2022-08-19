@@ -40,7 +40,7 @@ class FormCreateRAdapter(val questionList: ArrayList<MyQuestion>): RecyclerView.
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         Log.d(TAG, " - onBindViewHolder() called / position: $position")
-        holder.title.setText(questionList.get(position).title)
+        holder.title.setText((position + 1).toString() + "번. " + questionList.get(position).title)
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
