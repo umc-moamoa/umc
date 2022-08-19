@@ -8,6 +8,8 @@ import android.view.View
 import com.example.umc_hackathon.auth.LoginActivity
 import com.example.umc_hackathon.databinding.ActivityFormDetailBinding
 import com.example.umc_hackathon.post.*
+import com.example.umc_hackathon.post.result.ResultActivity
+import com.example.umc_hackathon.post.result.ResultFragment
 import com.example.umc_hackathon.survey.FormInputActivity
 
 class FormDetailActivity : AppCompatActivity(), PostDetailView {
@@ -46,6 +48,13 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
         }
         binding.formDetailDeleteBtn.setOnClickListener {
             deletePost()
+        }
+        binding.formDetailResultBtn.setOnClickListener {
+            val intent = Intent(this, ResultActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            intent.putExtra("postId", postId)
+            startActivity(intent)
+            finish()
         }
     }
 
@@ -99,7 +108,7 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
         if(result.myPost) {
             Log.d("mypost", result.myPost.toString())
             binding.formDetailParticipateBtn.visibility = View.INVISIBLE
-            binding.formDetailUpdateBtn.visibility = View.VISIBLE
+            binding.formDetailResultBtn.visibility = View.VISIBLE
             binding.formDetailDislikeBtnCv.visibility = View.INVISIBLE
             binding.formDetailLikeBtnCv.visibility = View.INVISIBLE
             binding.formDetailDeleteBtn.visibility = View.VISIBLE

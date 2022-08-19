@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Umc_hackathon"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".post.result.ResultActivity"
+            android:exported="false"/>
+        <activity
             android:name=".survey.QuestionItemActivity"
             android:exported="false" />
         <activity
@@ -38,6 +41,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

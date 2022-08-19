@@ -1,17 +1,13 @@
 package com.example.umc_hackathon.post.result
 
-import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import com.example.umc_hackathon.R
 import com.example.umc_hackathon.databinding.FragmentResultBinding
@@ -20,34 +16,38 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
-import com.github.mikephil.charting.utils.ColorTemplate
 
-class ResultFragment : Fragment(), ResultView {
+class ResultActivity : AppCompatActivity(), ResultView {
 
+    private var postId: Long = 0L
     private lateinit var binding: FragmentResultBinding
     private lateinit var pieChart: PieChart
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-       binding = FragmentResultBinding.inflate(layoutInflater)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-        getResultDetail(1) //리팩토링
+        binding = FragmentResultBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        return binding.root
+        if(intent.hasExtra("postId")) {
+            postId = intent.getLongExtra("postId", postId)
+            Log.d("postId", " : " + postId)
+            getResultDetail(postId) //리팩토링
+        }
     }
 
-    private fun getResultDetail(detailId: Long) {
+    private fun getResultDetail(postId: Long) {
         val resultService = ResultService()
         resultService.setResultView(this)
-//        resultService.getResult(detailId)
+        resultService.getDetailId(postId)
     }
 
-//    private fun getJwt(): String? {
-//        val spf = context?.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-//        return spf!!.getString("jwt", "")
-//    }
+    private fun getResult(detailId: Long) {
+        val resultService = ResultService()
+        resultService.setResultView(this)
+//        resultService.getResult(detailId) 테스트 후 복구
+        resultService.getResult(52)
+    }
 
     override fun onGetResultSuccess(detailResult: DetailResult) {
         binding.formResultQuestionTv.text = detailResult.question
@@ -56,6 +56,22 @@ class ResultFragment : Fragment(), ResultView {
             //파이차트
             pieChart = binding.pieChart
             pieChart.setUsePercentValues(true)
+            pieChart.description.isEnabled = false
+            pieChart.setExtraOffsets(5f, 10f, 5f, 5f)
+            pieChart.dragDecelerationFrictionCoef = 0.95f
+            pieChart.isDrawHoleEnabled = true
+            pieChart.setHoleColor(Color.WHITE)
+            pieChart.setTransparentCircleColor(Color.WHITE)
+            pieChart.setTransparentCircleAlpha(110)
+            pieChart.holeRadius = 58f
+            pieChart.transparentCircleRadius = 61f
+            pieChart.setDrawCenterText(true)
+            pieChart.rotationAngle = 0f
+            pieChart.isRotationEnabled = true
+            pieChart.isHighlightPerTapEnabled = true
+            pieChart.legend.isEnabled = false
+            pieChart.setEntryLabelColor(Color.WHITE)
+            pieChart.setEntryLabelTextSize(12f)
 
             val visitors: ArrayList<PieEntry> = ArrayList()
             visitors.add(PieEntry(detailResult.case1.toFloat(), "1"))
@@ -100,15 +116,15 @@ class ResultFragment : Fragment(), ResultView {
     }
 
     override fun onGetResultFailure(message: String) {
-        Log.d("result_fragment-fail", message)
+        Log.d("result_get-fail", message)
     }
 
     override fun onGetDetailIdSuccess(result: DetailIdResponse) {
-        TODO("Not yet implemented")
+        getResult(result.result.startId)
     }
 
     override fun onGetDetailIdFailure(message: String) {
-        TODO("Not yet implemented")
+        Log.d("result_detailId-fail", message)
     }
 
     private fun setCardView(res: String) {
@@ -118,15 +134,15 @@ class ResultFragment : Fragment(), ResultView {
         )
         layoutParams.setMargins(10, 10, 10, 10)
 
-        val resCardView = context?.let { CardView(it) }
-        resCardView?.layoutParams = layoutParams
-        resCardView?.radius = 10F
-        resCardView?.setContentPadding(10, 10, 10, 10)
-        resCardView?.setCardBackgroundColor(Color.LTGRAY)
-        resCardView?.cardElevation = 8F
+        val resCardView = CardView(this)
+        resCardView.layoutParams = layoutParams
+        resCardView.radius = 10F
+        resCardView.setContentPadding(10, 10, 10, 10)
+        resCardView.setCardBackgroundColor(Color.LTGRAY)
+        resCardView.cardElevation = 8F
 //                resCardView?.addView(genera)
 
-        val one = TextView(context)
+        val one = TextView(this)
         one.text = res
         one.textSize = 12f
         one.setTextColor(Color.BLACK)
@@ -135,8 +151,5 @@ class ResultFragment : Fragment(), ResultView {
 
         binding.root.addView(resCardView)
     }
-
-
-
 
 }

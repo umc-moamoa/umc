@@ -17,4 +17,11 @@
         <item name="colorAccent">#7798dd</item>
         <item name="colorControlNormal">#d0d1d5</item>
     </style>
+    <style name="Theme.Umc_hackathon.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.Umc_hackathon.AppBarOverlay"
+        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Umc_hackathon.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
