@@ -14,7 +14,7 @@ data class PostDetailResult (
     @SerializedName("title") val title: String,
     @SerializedName("content") val content: String,
     @SerializedName("status") val status: String,
-    @SerializedName("qCount") val qCount: Int,
+    @SerializedName("qcount") val qCount: Int,
     @SerializedName("dday") val dday: Int,
     @SerializedName("like") val like: Boolean,
     @SerializedName("myPost") val myPost: Boolean
