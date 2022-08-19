@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.umc_hackathon.R
 
 
-class OptionRAdapter(val optionList: ArrayList<String>): RecyclerView.Adapter<OptionRAdapter.MyViewHolder> (){
+class OptionRAdapter(val optionList: ArrayList<Option>): RecyclerView.Adapter<OptionRAdapter.MyViewHolder> (){
 
-    fun addItem(item: String) {
+    fun addItem(item: Option) {
         optionList.add(item)
         notifyDataSetChanged()
     }
@@ -32,7 +32,7 @@ class OptionRAdapter(val optionList: ArrayList<String>): RecyclerView.Adapter<Op
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         Log.d("OptionRAdapter", " - onBindViewHolder() called / position: $position")
-        holder.option.text = optionList[position]
+        holder.option.text = optionList[position].question
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

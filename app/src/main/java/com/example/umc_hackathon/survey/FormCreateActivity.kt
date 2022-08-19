@@ -47,7 +47,15 @@ class FormCreateActivity : AppCompatActivity() {
         binding.formCreateListRv.setHasFixedSize(true)
         binding.formCreateListRv.adapter = FormCreateRAdapter(questionList)
 
-//        rAdapter.addItem(MyQuestion(""))
+        // 다이얼로그 리사이클러뷰
+        var optionList = arrayListOf<Option>()
+        val optionRAdapter = OptionRAdapter(optionList)
+
+        builderItem.dialogItemRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        builderItem.dialogItemRv.setHasFixedSize(true)
+        builderItem.dialogItemRv.adapter = OptionRAdapter(optionList)
+
+        optionRAdapter.addItem(Option("옵션 1 입니다~~~~~~~"))
 
         // 이벤트 리스너
         binding.formCreateCancelTv.setOnClickListener {
