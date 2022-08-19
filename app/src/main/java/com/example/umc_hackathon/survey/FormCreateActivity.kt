@@ -44,8 +44,10 @@ class FormCreateActivity : AppCompatActivity() {
         builderItem.dialogTypeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, pos: Int, p3: Long) {
                 if(pos == 0) {
+                    builderItem.dialogOptionLl.visibility = View.VISIBLE
                     builderItem.dialogItemOptionRv.visibility = View.VISIBLE
                 } else if (pos == 1) {
+                    builderItem.dialogOptionLl.visibility = View.GONE
                     builderItem.dialogItemOptionRv.visibility = View.GONE
                 }
 
@@ -73,7 +75,7 @@ class FormCreateActivity : AppCompatActivity() {
         builderItem.dialogItemOptionRv.setHasFixedSize(true)
         builderItem.dialogItemOptionRv.adapter = OptionRAdapter(optionList)
 
-        optionRAdapter.addItem(Option("옵션 1 입니다~~~~~~~"))
+        optionRAdapter.addItem(Option(""))
 
         // 이벤트 리스너
         binding.formCreateCancelTv.setOnClickListener {
@@ -83,6 +85,8 @@ class FormCreateActivity : AppCompatActivity() {
         }
 
         builderItem.dialogOptionLl.setOnClickListener {
+            optionRAdapter.addItem(Option(""))
+
             Log.d("dialogOptionLl", "눌림")
         }
 
