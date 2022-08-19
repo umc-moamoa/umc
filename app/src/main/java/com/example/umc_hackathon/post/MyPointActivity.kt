@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_hackathon.auth.MyPageActivity
+import com.example.umc_hackathon.auth.UserInfoResult
 import com.example.umc_hackathon.databinding.ActivityMyPointBinding
 import com.example.umc_hackathon.databinding.ActivityParticipatedSurveyBinding
 
@@ -23,14 +24,6 @@ class MyPointActivity : AppCompatActivity(), MyPointView {
         binding.myPointPointListRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.myPointPointListRv.setHasFixedSize(true)
         getMyPoint()
-
-        // 점수 계산
-//        var total = 0
-//        for (i in 0 until pointList.size) {
-//            total += pointList.get(i).point
-//        }
-//
-//        binding.myPointTotalTv.text = total.toString() + "P"
 
         // 페이지 이동
         binding.myPointGoMyPageLl.setOnClickListener {
@@ -57,6 +50,11 @@ class MyPointActivity : AppCompatActivity(), MyPointView {
     override fun onGetMyPointSuccess(pointHistoryRecent: MyPointResponse) {
         binding.myPointPointListRv.adapter = MyPointRAdapter(pointHistoryRecent.result.pointHistoryRecent)
         Log.d("포인트 내역 / ", "포인트 내역을 불러오는데 성공했습니다")
+    }
+
+    override fun onGetMyTotalPointSuccess(code: Int, result: MyPointList) {
+        binding.myPointTotalTv.text = result.point.toString() + "P"
+        Log.d("포인트 / ", "포인트 불러오기에 성공했습니다")
     }
 
     override fun onGetMyPointFailure() {

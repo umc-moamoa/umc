@@ -269,6 +269,11 @@ class PostService {
                         1000 -> myPointView.onGetMyPointSuccess(myPointList)
                         else -> myPointView.onGetMyPointFailure()
                     }
+
+                    when(val code = myPointList.code) {
+                        1000 -> myPointView.onGetMyTotalPointSuccess(code, myPointList.result!!)
+                        else -> myPointView.onGetMyPointFailure()
+                    }
                 }
             }
 
