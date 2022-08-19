@@ -27,7 +27,7 @@ class FormCreateActivity : AppCompatActivity() {
         val binding = ActivityFormCreateBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-         // 스피너
+         // 카테고리 스피너
         val categoryList = listOf("마케팅", "사회현상", "브랜드", "아이디어")
         binding.formCreateSelectCategorySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, pos: Int, p3: Long) {
@@ -39,7 +39,25 @@ class FormCreateActivity : AppCompatActivity() {
             }
         }
 
-        // 리사이클러뷰
+        // 설문 타입 스피너
+        val typeList = listOf("객관식", "주관식")
+        builderItem.dialogTypeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, pos: Int, p3: Long) {
+                if(pos == 0) {
+                    builderItem.dialogItemOptionRv.visibility = View.VISIBLE
+                } else if (pos == 1) {
+                    builderItem.dialogItemOptionRv.visibility = View.GONE
+                }
+
+                println(typeList[pos] + "입니다")
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                println("카테고리를 선택하세요")
+            }
+        }
+
+        // 설문 작성 아이템 리사이클러뷰
         var questionList = arrayListOf<MyQuestion>()
         val rAdapter = FormCreateRAdapter(questionList)
 
@@ -47,13 +65,13 @@ class FormCreateActivity : AppCompatActivity() {
         binding.formCreateListRv.setHasFixedSize(true)
         binding.formCreateListRv.adapter = FormCreateRAdapter(questionList)
 
-        // 다이얼로그 리사이클러뷰
+        // 다이얼로그 옵션 리사이클러뷰
         var optionList = arrayListOf<Option>()
         val optionRAdapter = OptionRAdapter(optionList)
 
-        builderItem.dialogItemRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        builderItem.dialogItemRv.setHasFixedSize(true)
-        builderItem.dialogItemRv.adapter = OptionRAdapter(optionList)
+        builderItem.dialogItemOptionRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        builderItem.dialogItemOptionRv.setHasFixedSize(true)
+        builderItem.dialogItemOptionRv.adapter = OptionRAdapter(optionList)
 
         optionRAdapter.addItem(Option("옵션 1 입니다~~~~~~~"))
 
@@ -68,15 +86,15 @@ class FormCreateActivity : AppCompatActivity() {
             Log.d("dialogOptionLl", "눌림")
         }
 
-        var questionEt = builderItem.dialogQuestionEt
-        var questionSpinner = builderItem.dialogTypeSpinner
-
 //        Log.d("스피너", questionSpinner.selectedItem.toString())
 //        if(questionSpinner.selectedItem.toString() == "주관식") {
 //            builderItem.dialogOptionLl.visibility = View.GONE
 //        } else if (questionSpinner.selectedItem.toString() == "객관식") {
 //            builderItem.dialogOptionLl.visibility = View.VISIBLE
 //        }
+
+        var questionEt = builderItem.dialogQuestionEt
+        var questionSpinner = builderItem.dialogTypeSpinner
 
         binding.formCreatePlusIv.setOnClickListener {
             Log.d("항목 추가", " 선택")
