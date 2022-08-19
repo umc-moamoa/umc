@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.umc_hackathon.R
 
@@ -43,7 +44,7 @@ class FormCreateRAdapter(val questionList: ArrayList<MyQuestion>): RecyclerView.
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title = itemView.findViewById<EditText>(R.id.question_item_et)
+        val title = itemView.findViewById<TextView>(R.id.question_item_et)
     }
 
 }

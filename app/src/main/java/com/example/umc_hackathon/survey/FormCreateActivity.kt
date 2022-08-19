@@ -1,6 +1,7 @@
 package com.example.umc_hackathon.survey
 
 import android.annotation.SuppressLint
+import android.app.ProgressDialog.show
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +12,7 @@ import android.widget.AdapterView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.set
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_hackathon.databinding.ActivityFormCreateBinding
 import com.example.umc_hackathon.databinding.AddItemDialogBinding
 import com.example.umc_hackathon.post.FormListActivity
@@ -38,13 +40,13 @@ class FormCreateActivity : AppCompatActivity() {
         }
 
         // 리사이클러뷰
-//        var questionList = arrayListOf<MyQuestion>()
-//        val rAdapter = FormCreateRAdapter(questionList)
-//
-//        binding.formCreateListRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-//        binding.formCreateListRv.setHasFixedSize(true)
-//        binding.formCreateListRv.adapter = FormCreateRAdapter(questionList)
-//
+        var questionList = arrayListOf<MyQuestion>()
+        val rAdapter = FormCreateRAdapter(questionList)
+
+        binding.formCreateListRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.formCreateListRv.setHasFixedSize(true)
+        binding.formCreateListRv.adapter = FormCreateRAdapter(questionList)
+
 //        rAdapter.addItem(MyQuestion(""))
 
         // 이벤트 리스너
@@ -58,16 +60,25 @@ class FormCreateActivity : AppCompatActivity() {
             Log.d("항목 추가", " 선택")
 
             var questionEt = builderItem.dialogQuestionEt
+            var questionSpinner = builderItem.dialogTypeSpinner
+            var question: String
+            var spinner: String
 
             AlertDialog.Builder(this).run {
                 setTitle("항목 추가")
-                if (builderItem.root.getParent() != null) {
-                    (builderItem.root.getParent() as ViewGroup).removeView(builderItem.root)
+                if (builderItem.root.parent != null) {
+                    (builderItem.root.parent as ViewGroup).removeView(builderItem.root)
                     questionEt.setText("")
                 }
                 setView(builderItem.root)
                 setPositiveButton("항목 저장", DialogInterface.OnClickListener { dialogInterface, i ->
-                    Log.d("저장 버튼", questionEt.text.toString())
+                    question = questionEt.text.toString()
+                    spinner = questionSpinner.selectedItem.toString()
+
+                    Log.d("항목 저장(질문) : ", question)
+                    Log.d("항목 저장(스피너) : ", spinner)
+
+                    rAdapter.addItem(MyQuestion(question))
 
                 })
                 setNegativeButton("취소", null)
