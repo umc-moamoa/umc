@@ -35,6 +35,17 @@ class FormListRAdapter(val postList: List<PostList>): RecyclerView.Adapter<FormL
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         Log.d("onBindViewHolder() / ", " called / position: $position")
 
+        if (postList[position].status == "ACTIVE") {
+            if (postList[position].dday == 0) {
+                holder.dday.text = "D - DAY"
+            }
+            else {
+                holder.dday.text = "D - " + postList[position].dday.toString()
+            }
+        }
+        else {
+            holder.dday.text = "마감"
+        }
         holder.title.text = postList[position].title
         holder.qCount.text = postList[position].qcount.toString() + "개의 항목"
         holder.point.text = postList[position].point.toString() + "P"
@@ -44,6 +55,7 @@ class FormListRAdapter(val postList: List<PostList>): RecyclerView.Adapter<FormL
         val title: TextView = itemView.findViewById(R.id.board_list_item_title_tv)
         val qCount: TextView = itemView.findViewById(R.id.board_list_item_count_tv)
         val point: TextView = itemView.findViewById(R.id.board_list_item_coin_tv)
+        val dday: TextView = itemView.findViewById(R.id.board_list_item_deadline_tv)
     }
 
 }

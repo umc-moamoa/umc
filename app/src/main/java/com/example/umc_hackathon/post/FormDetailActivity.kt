@@ -4,8 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
+import android.view.View
 import com.example.umc_hackathon.auth.LoginActivity
 import com.example.umc_hackathon.databinding.ActivityFormDetailBinding
 import com.example.umc_hackathon.post.*
@@ -28,13 +27,13 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
         }
 
         binding.formDetailGoFormListLl.setOnClickListener{
-            val intent = Intent(this, FormListActivity::class.java)
-            startActivity(intent)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             finish()
         }
 
         binding.formDetailParticipateBtn.setOnClickListener {
             val intent = Intent(this, FormInputActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
             finish()
         }
@@ -44,6 +43,9 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
         }
         binding.formDetailDislikeBtnCv.setOnClickListener {
             likePost()
+        }
+        binding.formDetailDeleteBtn.setOnClickListener {
+            deletePost()
         }
     }
 
@@ -67,6 +69,12 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
         postService.dislikePost(postId, getJwt().toString())
     }
 
+    private fun deletePost() {
+        val postService = PostService()
+        postService.setPostDetailView(this)
+        postService.deletePost(postId, getJwt().toString())
+    }
+
     private fun getJwt(): String? {
         val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
         return spf!!.getString("jwt", "")
@@ -74,26 +82,40 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
 
     override fun onGetPostDetailSuccess(result: PostDetailResult) {
         binding.formDetailTitleTv.text = result.title
-        binding.formDetailItemCountTv.text = result.qCount.toString() + "개의 항목  l"
-        binding.formDetailInfoTv.text = result.content
+        binding.formDetailItemCountTv.text = result.qCount.toString() + "개의 항목"
+
+        if (result.status == "ACTIVE") {
+            if (result.dday == 0) {
+                binding.formDetailItemDeadlineTv.text = "D - DAY"
+            }
+            else {
+                binding.formDetailItemDeadlineTv.text = "D - " + result.dday.toString()
+            }
+        }
+        else {
+            binding.formDetailItemDeadlineTv.text = "마감"
+        }
 
         if(result.myPost) {
-            binding.formDetailParticipateBtn.isInvisible
-            binding.formDetailUpdateBtn.isVisible
-            binding.formDetailLikeTv.isInvisible
-            binding.formDetailLikeSelectedIv.isInvisible
-            binding.formDetailLikeUnselectedIv.isInvisible
+            Log.d("mypost", result.myPost.toString())
+            binding.formDetailParticipateBtn.visibility = View.INVISIBLE
+            binding.formDetailUpdateBtn.visibility = View.VISIBLE
+            binding.formDetailDislikeBtnCv.visibility = View.INVISIBLE
+            binding.formDetailLikeBtnCv.visibility = View.INVISIBLE
+            binding.formDetailDeleteBtn.visibility = View.VISIBLE
         }
         else {
             if(result.like) {
-                binding.formDetailLikeSelectedIv.isVisible
-                binding.formDetailLikeUnselectedIv.isInvisible
+                Log.d("like", result.like.toString())
+                binding.formDetailLikeBtnCv.visibility = View.VISIBLE
+                binding.formDetailDislikeBtnCv.visibility = View.INVISIBLE
             }
             else {
-                binding.formDetailLikeSelectedIv.isInvisible
+                Log.d("dislike", result.like.toString())
+                binding.formDetailLikeBtnCv.visibility = View.INVISIBLE
+                binding.formDetailDislikeBtnCv.visibility = View.VISIBLE
             }
         }
-
         Log.d("PostDetail / ", "상세페이지를 불러오는데 성공했습니다")
     }
 
@@ -104,8 +126,8 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
     }
 
     override fun onLikeSuccess() {
-        binding.formDetailLikeSelectedIv.isVisible
-        binding.formDetailLikeUnselectedIv.isInvisible
+        binding.formDetailLikeBtnCv.visibility = View.VISIBLE
+        binding.formDetailDislikeBtnCv.visibility = View.INVISIBLE
     }
 
     override fun onLikeFailure(result: LikeResponse) {
@@ -113,12 +135,20 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
     }
 
     override fun onDislikeSuccess() {
-        binding.formDetailLikeSelectedIv.isInvisible
-        binding.formDetailLikeUnselectedIv.isVisible
+        binding.formDetailLikeBtnCv.visibility = View.INVISIBLE
+        binding.formDetailDislikeBtnCv.visibility = View.VISIBLE
     }
 
-    override fun onDislikeFailure(result: LikeResponse) {
+    override fun onDislikeFailure(result: StringResultResponse) {
         Log.d("dislikePost()", " 실패 / " + result.message)
+    }
+
+    override fun onDeleteSuccess() {
+        //삭제 알림창 띄우기
+    }
+
+    override fun onDeleteFailure(result: StringResultResponse) {
+        Log.d("deletePost()", " 실패 / " + result.message)
     }
 
 }

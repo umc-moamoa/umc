@@ -39,6 +39,9 @@ android {
 }
 
 dependencies {
+    //pie chart
+    implementation 'com.github.PhilJay:MpAndroidChart:v3.1.0'
+
     implementation 'org.conscrypt:conscrypt-android:2.5.0'
 
     //okHttp

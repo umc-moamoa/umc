@@ -26,6 +26,7 @@ class ParticipatedSurveyActivity : AppCompatActivity(), ParticipatedSurveyView {
         // 이벤트 리스너
         binding.ppsGoMyPageLl.setOnClickListener {
             val intent = Intent(this, MyPageActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
             finish()
         }
