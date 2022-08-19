@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
 import com.example.umc_hackathon.auth.LoginActivity
 import com.example.umc_hackathon.databinding.ActivityFormDetailBinding
 import com.example.umc_hackathon.post.*
@@ -84,6 +82,20 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
 
     override fun onGetPostDetailSuccess(result: PostDetailResult) {
         binding.formDetailTitleTv.text = result.title
+        binding.formDetailItemCountTv.text = result.qCount.toString() + "개의 항목"
+
+        if (result.status == "ACTIVE") {
+            if (result.dday == 0) {
+                binding.formDetailItemDeadlineTv.text = "D - DAY"
+            }
+            else {
+                binding.formDetailItemDeadlineTv.text = "D - " + result.dday.toString()
+            }
+        }
+        else {
+            binding.formDetailItemDeadlineTv.text = "마감"
+        }
+
         if(result.myPost) {
             Log.d("mypost", result.myPost.toString())
             binding.formDetailParticipateBtn.visibility = View.INVISIBLE
