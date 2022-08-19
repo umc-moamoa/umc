@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.example.umc_hackathon.databinding.ActivityJoinBinding
+import com.example.umc_hackathon.post.MainActivity
 
 class JoinActivity : AppCompatActivity(), JoinView {
 
@@ -19,6 +20,12 @@ class JoinActivity : AppCompatActivity(), JoinView {
         binding.joinLoginBtn.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+            finish()
+        }
+
+        binding.joinTitle.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }

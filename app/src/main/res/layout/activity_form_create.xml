@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pale_grey"
-    tools:context=".FormCreateActivity">
+    tools:context=".survey.FormCreateActivity">
 
     <LinearLayout
         android:id="@+id/form_create_header_ll"
@@ -15,7 +15,6 @@
         android:orientation="horizontal"
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp"
-        app:layout_constraintBottom_toTopOf="@id/form_create_title_tv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -26,16 +25,6 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
             android:text="취소"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/form_create_save_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_regular"
-            android:gravity="right"
-            android:text="저장"
             android:textColor="@color/black"
             android:textSize="14sp" />
 
@@ -51,26 +40,99 @@
         android:textColor="@color/black"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/form_create_list_rv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/form_create_header_ll" />
 
+    <LinearLayout
+        android:id="@+id/form_create_survey_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="40dp"
+        android:paddingTop="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/form_create_title_tv">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:fontFamily="@font/roboto_medium"
+            android:hint="설문 제목을 입력해주세요."
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="14sp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@null"
+            android:fontFamily="@font/roboto_light"
+            android:hint="설문 내용을 작성해주세요."
+            android:textColorHint="#707070"
+            android:textSize="11sp" />
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/form_create_spinner_cv"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginEnd="30dp"
+        app:cardCornerRadius="17dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/form_create_survey_info">
+
+        <Spinner
+            android:id="@+id/form_create_select_category_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:entries="@array/category"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/form_create_survey_info" />
+    </androidx.cardview.widget.CardView>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/form_create_list_rv"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="18dp"
         android:clipToPadding="false"
-        android:paddingBottom="70dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/form_create_btns_ll"
+        app:layout_constraintTop_toBottomOf="@id/form_create_spinner_cv" />
+
+    <LinearLayout
+        android:id="@+id/form_create_btns_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toBottomOf="@id/form_create_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/form_create_title_tv"
-        tools:listitem="@layout/board_question_item" />
+        app:layout_constraintTop_toBottomOf="@id/form_create_list_rv"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/form_create_plus_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_plus" />
+
+    </LinearLayout>
 
     <View
+        android:id="@+id/form_create_view"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:background="@drawable/transparent_bottom"
@@ -84,9 +146,9 @@
         android:layout_height="40dp"
         android:background="@drawable/category_selected"
         android:fontFamily="@font/roboto_bold"
-        android:text="질문 추가하기"
-        android:textSize="16sp"
+        android:text="저장"
         android:textColor="@color/white"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -4,12 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import com.example.umc_hackathon.auth.LoginActivity
 import com.example.umc_hackathon.databinding.ActivityFormDetailBinding
 import com.example.umc_hackathon.post.*
+import com.example.umc_hackathon.survey.FormInputActivity
 
 class FormDetailActivity : AppCompatActivity(), PostDetailView {
 
@@ -36,6 +36,7 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
         binding.formDetailParticipateBtn.setOnClickListener {
             val intent = Intent(this, FormInputActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         binding.formDetailLikeBtnCv.setOnClickListener {
