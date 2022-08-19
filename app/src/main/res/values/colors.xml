@@ -19,4 +19,12 @@
     <color name="soft_blue">#7798dd</color>
     <color name="dodger_blue">#4e7ff2</color>
     <color name="sky_blue">#82A5F3</color>
+    <color name="liget_grey_blue">#97C6E5</color>
+    <color name="powder_blue">#C0D2EC</color>
+    <color name="light_blue_grey">#C1DDDD</color>
+    <color name="light_pink">#FADCE4</color>
+    <color name="pale_peach">#F7DEAA</color>
+    <color name="pale">#F7F3D5</color>
+    <color name="pig_pink">#E091A4</color>
+    <color name="baby_pink">#F5BBCB</color>
 </resources>

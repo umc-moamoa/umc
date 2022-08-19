@@ -11,6 +11,7 @@ data class ResultResponse(
 
 data class DetailResult(
     @SerializedName("format") val format: Int,
+    @SerializedName("question") val question: String,
     @SerializedName("getResultStatisticsRes") val res: List<Result>,
     @SerializedName("case1") val case1: Double,
     @SerializedName("case2") val case2: Double,
@@ -19,11 +20,9 @@ data class DetailResult(
     @SerializedName("case5") val case5: Double,
     @SerializedName("case6") val case6: Double,
     @SerializedName("case7") val case7: Double,
-    @SerializedName("case8") val case8: Double,
-    @SerializedName("case9") val case9: Double,
-    @SerializedName("case10") val case10: Double
+    @SerializedName("case8") val case8: Double
 )
 
 data class Result(
-    @SerializedName("result") val result: Int
+    @SerializedName("result") val res: Int
 )

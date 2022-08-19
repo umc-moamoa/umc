@@ -24,7 +24,7 @@ class ResultService {
                     val result: ResultResponse = response.body()!!
 
                     when(result.code) {
-                        1000 -> resultView.onGetResultSuccess()
+                        1000 -> resultView.onGetResultSuccess(result.result)
                         else -> resultView.onGetResultFailure()
                     }
                 }

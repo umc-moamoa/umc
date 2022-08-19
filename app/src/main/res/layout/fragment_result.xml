@@ -57,7 +57,7 @@
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <ImageView
             android:layout_width="12dp"
@@ -82,18 +82,67 @@
             app:layout_constraintTop_toBottomOf="@id/form_result_title_tv" />
 
 
-        <TextView
-            android:id="@+id/form_detail_info_tv"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/roboto_bold"
-            android:text="1. 첫번째 질문"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/form_result_count_tv" />
+            app:layout_constraintTop_toBottomOf="@id/form_result_count_tv"
+            app:layout_constraintEnd_toEndOf="parent">
+
+
+<!--            <TextView-->
+<!--                android:id="@+id/form_detail_info_tv"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:fontFamily="@font/roboto_bold"-->
+<!--                android:text="1. 첫번째 질문"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="14sp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/form_result_count_tv" />-->
+
+<!--            <com.github.mikephil.charting.charts.PieChart-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:layout_marginBottom="20dp"-->
+<!--                android:id="@+id/pie_chart"-->
+<!--              />-->
+
+            <LinearLayout
+                android:id="@+id/board_list_item_ll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/list_item_style"
+                android:orientation="vertical"
+                android:paddingVertical="10dp">
+
+                <TextView
+                    android:id="@+id/form_result_question_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="1. 첫번째 질문"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/pie_chart">
+
+                </com.github.mikephil.charting.charts.PieChart>
+
+            </LinearLayout>
+
+        </FrameLayout>
 
 
         <Button
