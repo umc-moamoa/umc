@@ -14,4 +14,9 @@ interface AuthRetrofitInterface {
     fun userInfo(
         @Header("x-access-token") jwt: String
     ): Call<UserInfoResponse>
+
+    @DELETE("/user")
+    fun deleteUser(
+        @Header("x-access-token") jwt: String
+    ): Call<UserDeleteResponse>
 }

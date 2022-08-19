@@ -27,6 +27,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
         binding.loginTitle.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
             finish()
         }
@@ -77,6 +78,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
         when(code) {
             1000 -> {
                 val intent = Intent(this, MyPageActivity::class.java)
+                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
                 startActivity(intent)
                 finish()
 

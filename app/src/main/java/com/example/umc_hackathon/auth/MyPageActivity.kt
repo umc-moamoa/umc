@@ -7,10 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import com.example.umc_hackathon.*
 import com.example.umc_hackathon.databinding.ActivityMyPageBinding
-import com.example.umc_hackathon.post.InterestSurveyActivity
-import com.example.umc_hackathon.post.MainActivity
-import com.example.umc_hackathon.post.MySurveyActivity
-import com.example.umc_hackathon.post.ParticipatedSurveyActivity
+import com.example.umc_hackathon.post.*
 
 class MyPageActivity : AppCompatActivity(), UserInfoView {
 
@@ -27,33 +24,39 @@ class MyPageActivity : AppCompatActivity(), UserInfoView {
 
         binding.myPageGoMainLl.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
             finish()
         }
 
         binding.myPageSettingIv.setOnClickListener {
             val intent = Intent(this, SettingActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
             finish()
         }
 
         binding.myPageMySurveyLl.setOnClickListener {
             val intent = Intent(this, MySurveyActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
         }
 
         binding.myPageInterestSurveyLl.setOnClickListener {
             val intent = Intent(this, InterestSurveyActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
         }
 
         binding.myPageJoinSurveyLl.setOnClickListener {
             val intent = Intent(this, ParticipatedSurveyActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
         }
 
         binding.myPagePointLl.setOnClickListener {
             val intent = Intent(this, MyPointActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
         }
     }

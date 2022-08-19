@@ -22,30 +22,28 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 어댑터
-        binding.mainWaitingSurveyListRv.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        binding.mainWaitingSurveyListRv.setHasFixedSize(true)
-        getWaitingSurvey()
-
         // 이벤트 리스너
         binding.mainProfileIv.setOnClickListener {
             if (getJwt().isNullOrBlank()) {
                 val intent = Intent(this, LoginActivity::class.java)
+                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
                 startActivity(intent)
             } else {
                 val intent = Intent(this, MyPageActivity::class.java)
+                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
                 startActivity(intent)
             }
         }
 
         binding.mainPopularSurveyLl.setOnClickListener {
             val intent = Intent(this, FormListActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
         }
 
-        binding.mainWaitingSurveyListHeaderLl.setOnClickListener {
+        binding.mainWaitingSurveyListLl.setOnClickListener {
             val intent = Intent(this, FormListActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
         }
 
@@ -63,6 +61,9 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
 
         // 인기있는 설문조사 조회
         getPopularSurvey()
+
+        // 참여를 기다리는 설문조사 조회
+        getWaitingSurvey()
     }
 
     private fun getJwt(): String? {
@@ -146,7 +147,32 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
     }
 
     override fun onGetWaitingSurveySuccess(postList: PostListResponse) {
-        binding.mainWaitingSurveyListRv.adapter = WaitingSurveyListRAdapter(postList.result)
+        binding.mainWaitingSurveyItemTitleTv1.text = postList.result[0].title
+        binding.mainWaitingSurveyItemCountTv1.text = postList.result[0].qcount.toString() + "개의 항목"
+        if(postList.result[0].dday == 0) {
+            binding.mainWaitingSurveyItemDeadlineTv1.text = "D - DAY"
+        } else {
+            binding.mainWaitingSurveyItemDeadlineTv1.text = "D - " + postList.result[0].dday.toString()
+        }
+        binding.mainWaitingSurveyItemPointTv1.text = postList.result[0].point.toString() + "P"
+
+        binding.mainWaitingSurveyItemTitleTv2.text = postList.result[1].title
+        binding.mainWaitingSurveyItemCountTv2.text = postList.result[1].qcount.toString() + "개의 항목"
+        if(postList.result[1].dday == 0) {
+            binding.mainWaitingSurveyItemDeadlineTv2.text = "D - DAY"
+        } else {
+            binding.mainWaitingSurveyItemDeadlineTv2.text = "D - " + postList.result[1].dday.toString()
+        }
+        binding.mainWaitingSurveyItemPointTv2.text = postList.result[1].point.toString() + "P"
+
+        binding.mainWaitingSurveyItemTitleTv3.text = postList.result[2].title
+        binding.mainWaitingSurveyItemCountTv3.text = postList.result[2].qcount.toString() + "개의 항목"
+        if(postList.result[2].dday == 0) {
+            binding.mainWaitingSurveyItemDeadlineTv3.text = "D - DAY"
+        } else {
+            binding.mainWaitingSurveyItemDeadlineTv3.text = "D - " + postList.result[2].dday.toString()
+        }
+        binding.mainWaitingSurveyItemPointTv3.text = postList.result[2].point.toString() + "P"
         Log.d("참여를 기다리는 설문조사 / ", "MainActivity, 참여를 기다리는 설문조사 폼 목록을 불러오는데 성공했습니다")
     }
 

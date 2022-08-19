@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,9 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Umc_hackathon"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".AddItemDialogActivity"
-            android:exported="false" />
         <activity
             android:name=".survey.QuestionItemActivity"
             android:exported="false" />
@@ -29,10 +25,10 @@
             android:name=".post.InterestSurveyActivity"
             android:exported="false" />
         <activity
-            android:name=".MyPointActivity"
+            android:name=".post.MyPointActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingActivity"
+            android:name=".auth.SettingActivity"
             android:exported="false" />
         <activity
             android:name=".auth.MyPageActivity"
@@ -42,7 +38,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

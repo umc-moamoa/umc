@@ -19,13 +19,14 @@ class JoinActivity : AppCompatActivity(), JoinView {
 
         binding.joinLoginBtn.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
             finish()
         }
 
         binding.joinTitle.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
             finish()
         }
