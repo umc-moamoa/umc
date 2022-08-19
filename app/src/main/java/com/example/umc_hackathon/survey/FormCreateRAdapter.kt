@@ -1,12 +1,15 @@
 package com.example.umc_hackathon.survey
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.umc_hackathon.FormDetailActivity
 import com.example.umc_hackathon.R
 
 // 설문 작성 페이지의 질문들 목록
@@ -17,7 +20,6 @@ class FormCreateRAdapter(val questionList: ArrayList<MyQuestion>): RecyclerView.
     fun addItem(item: MyQuestion) {
         questionList.add(item)
         notifyDataSetChanged()
-
     }
 
     fun removeItem(position: Int) {

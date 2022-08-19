@@ -14,6 +14,5 @@ class QuestionItemActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityQuestionItemBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_question_item)
-
     }
 }

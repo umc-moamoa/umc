@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     app:cardCornerRadius="20dp">
 
     <LinearLayout
@@ -30,14 +31,39 @@
 
     </LinearLayout>
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/dialog_type_fv"
+    <LinearLayout
+        android:id="@+id/dialog_option_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="right|center_vertical"
+        android:paddingHorizontal="20dp"
+        app:layout_constraintBottom_toTopOf="@id/dialog_item_rv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/dialog_ll">
 
-    </androidx.fragment.app.FragmentContainerView>
+        <ImageView
+            android:id="@+id/dialog_option_iv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_plus" />
+
+        <TextView
+            android:id="@+id/dialog_option_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="옵션 추가"
+            android:textColor="@color/black" />
+        
+    </LinearLayout>
+    
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dialog_item_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/dialog_option_ll"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        tools:listitem="@layout/dialog_option_item"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

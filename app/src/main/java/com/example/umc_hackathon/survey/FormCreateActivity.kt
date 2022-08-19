@@ -56,11 +56,23 @@ class FormCreateActivity : AppCompatActivity() {
             finish()
         }
 
+        builderItem.dialogOptionLl.setOnClickListener {
+            Log.d("dialogOptionLl", "눌림")
+        }
+
+        var questionEt = builderItem.dialogQuestionEt
+        var questionSpinner = builderItem.dialogTypeSpinner
+
+//        Log.d("스피너", questionSpinner.selectedItem.toString())
+//        if(questionSpinner.selectedItem.toString() == "주관식") {
+//            builderItem.dialogOptionLl.visibility = View.GONE
+//        } else if (questionSpinner.selectedItem.toString() == "객관식") {
+//            builderItem.dialogOptionLl.visibility = View.VISIBLE
+//        }
+
         binding.formCreatePlusIv.setOnClickListener {
             Log.d("항목 추가", " 선택")
 
-            var questionEt = builderItem.dialogQuestionEt
-            var questionSpinner = builderItem.dialogTypeSpinner
             var question: String
             var spinner: String
 
@@ -79,11 +91,9 @@ class FormCreateActivity : AppCompatActivity() {
                     Log.d("항목 저장(스피너) : ", spinner)
 
                     rAdapter.addItem(MyQuestion(question))
-
                 })
                 setNegativeButton("취소", null)
                 show()
-
             }
         }
     }

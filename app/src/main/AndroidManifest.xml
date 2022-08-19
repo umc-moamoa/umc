@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Umc_hackathon"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".AddItemDialogActivity"
+            android:exported="false" />
+        <activity
             android:name=".survey.QuestionItemActivity"
             android:exported="false" />
         <activity
