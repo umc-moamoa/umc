@@ -30,8 +30,8 @@
                 android:id="@+id/main_title_tv"
                 android:layout_width="72dp"
                 android:layout_height="18dp"
-                android:text="설문 ZIP"
                 android:src="@drawable/ic_logo_font"
+                android:text="설문 ZIP"
                 android:textColor="@color/pale_violet"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -40,9 +40,9 @@
                 android:id="@+id/main_welcome_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="000님! 반갑습니다"
                 android:layout_weight="1"
                 android:gravity="right"
+                android:text="000님! 반갑습니다"
                 android:textColor="@color/greyish_brown"
                 android:textSize="11sp" />
 
@@ -50,8 +50,8 @@
                 android:id="@+id/main_profile_iv"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_marginBottom="2dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginBottom="2dp"
                 android:src="@drawable/ic_main_person" />
 
         </LinearLayout>
@@ -62,19 +62,17 @@
             android:layout_height="150dp"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="22dp"
-            app:cardCornerRadius="30dp"
-            app:cardElevation="20dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/main_title_ll">
 
             <ImageView
-                android:id="@+id/main_banner_iv"
-                android:layout_width="70dp"
-                android:layout_height="10dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="127dp"
-                android:src="@drawable/ic__0" />
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/banner" />
 
         </androidx.cardview.widget.CardView>
 
@@ -110,17 +108,17 @@
                     android:id="@+id/main_popular_survey_see_more_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:text="더 보기"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="@font/roboto_light"
+                    android:text="전체 설문보기"
                     android:textColor="@color/greyish_brown"
-                    android:textSize="11sp"
-                    android:textStyle="bold" />
+                    android:textSize="11sp" />
 
                 <ImageView
                     android:id="@+id/main_popular_survey_see_more_iv"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:src="@drawable/ic_chevron_right_black" />
+                    android:layout_width="11dp"
+                    android:layout_height="11dp"
+                    android:src="@drawable/ic_mainpage_arrow_right" />
 
             </LinearLayout>
 
@@ -139,38 +137,38 @@
                     android:orientation="horizontal">
 
                     <FrameLayout
-                        android:layout_width="120dp"
-                        android:layout_height="100dp"
+                        android:layout_width="138dp"
+                        android:layout_height="118dp"
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="20dp">
 
                         <View
-                            android:id="@+id/main_social_phenomenon_folder_view"
-                            android:layout_width="120dp"
-                            android:layout_height="100dp"
+                            android:id="@+id/main_popular_first_folder_view"
+                            android:layout_width="138dp"
+                            android:layout_height="118dp"
                             android:layout_marginEnd="10dp"
-                            android:background="@drawable/ic_folder_blue" />
+                            android:background="@drawable/ic_file_blue" />
 
                         <LinearLayout
-                            android:id="@+id/main_social_phenomenon_folder_ll"
-                            android:layout_width="120dp"
-                            android:layout_height="100dp"
+                            android:id="@+id/main_popular_first_folder_ll"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:orientation="vertical"
-                            android:paddingStart="12dp"
-                            android:paddingTop="23dp">
+                            android:paddingHorizontal="12dp"
+                            android:paddingTop="30dp">
 
                             <TextView
-                                android:id="@+id/main_social_phenomenon_title_tv"
+                                android:id="@+id/main_popular_first_title_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="5dp"
                                 android:fontFamily="@font/roboto_bold"
-                                android:text="사회현상"
+                                android:text="첫 번째로 인기있는 설문조사입니다."
                                 android:textColor="@color/black"
-                                android:textSize="20sp" />
+                                android:textSize="14sp" />
 
                             <TextView
-                                android:id="@+id/main_social_phenomenon_count_tv"
+                                android:id="@+id/main_popular_first_count_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/roboto_light"
@@ -187,16 +185,16 @@
                                 android:paddingEnd="12dp">
 
                                 <TextView
-                                    android:id="@+id/main_social_phenomenon_type_tv"
+                                    android:id="@+id/main_popular_first_deadline_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/roboto_light"
-                                    android:text="선택형"
-                                    android:textColor="@color/black"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:text="D - DAY"
+                                    android:textColor="@color/dodger_blue"
                                     android:textSize="11sp" />
 
                                 <TextView
-                                    android:id="@+id/main_social_phenomenon_point_tv"
+                                    android:id="@+id/main_popular_first_point_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -213,37 +211,37 @@
                     </FrameLayout>
 
                     <FrameLayout
-                        android:layout_width="120dp"
-                        android:layout_height="100dp"
+                        android:layout_width="138dp"
+                        android:layout_height="118dp"
                         android:layout_marginEnd="20dp">
 
                         <View
-                            android:id="@+id/main_marketing_folder_view"
-                            android:layout_width="120dp"
-                            android:layout_height="100dp"
+                            android:id="@+id/main_second_folder_view"
+                            android:layout_width="138dp"
+                            android:layout_height="118dp"
                             android:layout_marginEnd="10dp"
                             android:background="@drawable/ic_folder_white" />
 
                         <LinearLayout
-                            android:id="@+id/main_marketing_folder_ll"
-                            android:layout_width="120dp"
-                            android:layout_height="100dp"
+                            android:id="@+id/main_second_folder_ll"
+                            android:layout_width="138dp"
+                            android:layout_height="118dp"
                             android:orientation="vertical"
-                            android:paddingStart="12dp"
-                            android:paddingTop="23dp">
+                            android:paddingHorizontal="12dp"
+                            android:paddingTop="30dp">
 
                             <TextView
-                                android:id="@+id/main_marketing_title_tv"
+                                android:id="@+id/main_second_title_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="5dp"
                                 android:fontFamily="@font/roboto_bold"
-                                android:text="마케팅"
+                                android:text="두 번째로 인기있는 설문조사입니다."
                                 android:textColor="@color/black"
-                                android:textSize="20sp" />
+                                android:textSize="14sp" />
 
                             <TextView
-                                android:id="@+id/main_marketing_count_tv"
+                                android:id="@+id/main_second_count_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/roboto_light"
@@ -260,16 +258,16 @@
                                 android:paddingEnd="12dp">
 
                                 <TextView
-                                    android:id="@+id/main_marketing_type_tv"
+                                    android:id="@+id/main_second_deadline_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/roboto_light"
-                                    android:text="선택형"
-                                    android:textColor="@color/black"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:text="D - 3"
+                                    android:textColor="@color/dodger_blue"
                                     android:textSize="11sp" />
 
                                 <TextView
-                                    android:id="@+id/main_marketing_point_tv"
+                                    android:id="@+id/main_second_point_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -286,37 +284,37 @@
                     </FrameLayout>
 
                     <FrameLayout
-                        android:layout_width="120dp"
-                        android:layout_height="100dp"
+                        android:layout_width="138dp"
+                        android:layout_height="118dp"
                         android:layout_marginEnd="20dp">
 
                         <View
-                            android:id="@+id/main_brand_folder_view"
-                            android:layout_width="120dp"
-                            android:layout_height="100dp"
+                            android:id="@+id/main_third_folder_view"
+                            android:layout_width="138dp"
+                            android:layout_height="118dp"
                             android:layout_marginEnd="10dp"
-                            android:background="@drawable/ic_folder_purple" />
+                            android:background="@drawable/ic_file_mint" />
 
                         <LinearLayout
-                            android:id="@+id/main_brand_folder_ll"
-                            android:layout_width="120dp"
-                            android:layout_height="100dp"
+                            android:id="@+id/main_third_folder_ll"
+                            android:layout_width="138dp"
+                            android:layout_height="118dp"
                             android:orientation="vertical"
-                            android:paddingStart="12dp"
-                            android:paddingTop="23dp">
+                            android:paddingHorizontal="12dp"
+                            android:paddingTop="30dp">
 
                             <TextView
-                                android:id="@+id/main_brand_title_tv"
+                                android:id="@+id/main_third_title_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="5dp"
                                 android:fontFamily="@font/roboto_bold"
-                                android:text="브랜드"
+                                android:text="세 번째로 인기있는 설문조사입니다."
                                 android:textColor="@color/black"
-                                android:textSize="20sp" />
+                                android:textSize="14sp" />
 
                             <TextView
-                                android:id="@+id/main_brand_count_tv"
+                                android:id="@+id/main_third_count_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/roboto_light"
@@ -333,16 +331,16 @@
                                 android:paddingEnd="12dp">
 
                                 <TextView
-                                    android:id="@+id/main_brand_type_tv"
+                                    android:id="@+id/main_third_deadline_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/roboto_light"
-                                    android:text="선택형"
-                                    android:textColor="@color/black"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:text="D - 10"
+                                    android:textColor="@color/dodger_blue"
                                     android:textSize="11sp" />
 
                                 <TextView
-                                    android:id="@+id/main_brand_point_tv"
+                                    android:id="@+id/main_third_point_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -392,22 +390,6 @@
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/main_waiting_survey_list_see_more_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:text="더 보기"
-                    android:textColor="@color/greyish_brown"
-                    android:textSize="11sp"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:id="@+id/main_waiting_survey_list_see_more_iv"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:src="@drawable/ic_chevron_right_black" />
 
             </LinearLayout>
 

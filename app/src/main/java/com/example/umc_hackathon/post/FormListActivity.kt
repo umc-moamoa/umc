@@ -3,8 +3,10 @@ package com.example.umc_hackathon.post
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import com.example.umc_hackathon.*
 import com.example.umc_hackathon.databinding.ActivityFormListBinding
+import com.example.umc_hackathon.survey.FormCreateActivity
 
 class FormListActivity : AppCompatActivity(){
 
@@ -43,10 +45,17 @@ class FormListActivity : AppCompatActivity(){
 
         // Transaction 작업
         binding.formListMarketingBtn.setOnClickListener {
+            // 버튼색
             binding.formListMarketingBtn.setBackgroundResource(R.drawable.category_selected)
             binding.formListSocialPhenomenonBtn.setBackgroundResource(R.color.transparent)
             binding.formListBrandBtn.setBackgroundResource(R.color.transparent)
             binding.formListIdeaBtn.setBackgroundResource(R.color.transparent)
+
+            // 글자색
+            binding.formListMarketingBtn.setTextColor(ContextCompat.getColor(applicationContext, R.color.white))
+            binding.formListSocialPhenomenonBtn.setTextColor(ContextCompat.getColor(applicationContext, R.color.black))
+            binding.formListBrandBtn.setTextColor(ContextCompat.getColor(applicationContext, R.color.black))
+            binding.formListIdeaBtn.setTextColor(ContextCompat.getColor(applicationContext, R.color.black))
 
             val transaction = supportFragmentManager.beginTransaction()
             transaction.replace(R.id.form_list_fv, marketingFragment)
@@ -54,10 +63,17 @@ class FormListActivity : AppCompatActivity(){
         }
 
         binding.formListSocialPhenomenonBtn.setOnClickListener {
+            // 버튼색
             binding.formListMarketingBtn.setBackgroundResource(R.color.transparent)
             binding.formListSocialPhenomenonBtn.setBackgroundResource(R.drawable.category_selected)
             binding.formListBrandBtn.setBackgroundResource(R.color.transparent)
             binding.formListIdeaBtn.setBackgroundResource(R.color.transparent)
+            
+            // 글자색
+            binding.formListMarketingBtn.setTextColor(ContextCompat.getColor(applicationContext, R.color.black))
+            binding.formListSocialPhenomenonBtn.setTextColor(ContextCompat.getColor(applicationContext, R.color.white))
+            binding.formListBrandBtn.setTextColor(ContextCompat.getColor(applicationContext, R.color.black))
+            binding.formListIdeaBtn.setTextColor(ContextCompat.getColor(applicationContext, R.color.black))
 
             val transaction = supportFragmentManager.beginTransaction()
             transaction.replace(R.id.form_list_fv, socialFragment)
@@ -65,10 +81,17 @@ class FormListActivity : AppCompatActivity(){
         }
 
         binding.formListBrandBtn.setOnClickListener {
+            // 버튼색
             binding.formListMarketingBtn.setBackgroundResource(R.color.transparent)
             binding.formListSocialPhenomenonBtn.setBackgroundResource(R.color.transparent)
             binding.formListBrandBtn.setBackgroundResource(R.drawable.category_selected)
             binding.formListIdeaBtn.setBackgroundResource(R.color.transparent)
+
+            // 글자색
+            binding.formListMarketingBtn.setTextColor(ContextCompat.getColor(applicationContext, R.color.black))
+            binding.formListSocialPhenomenonBtn.setTextColor(ContextCompat.getColor(applicationContext, R.color.black))
+            binding.formListBrandBtn.setTextColor(ContextCompat.getColor(applicationContext, R.color.white))
+            binding.formListIdeaBtn.setTextColor(ContextCompat.getColor(applicationContext, R.color.black))
 
             val transaction = supportFragmentManager.beginTransaction()
             transaction.replace(R.id.form_list_fv, brandFragment)
@@ -76,10 +99,17 @@ class FormListActivity : AppCompatActivity(){
         }
 
         binding.formListIdeaBtn.setOnClickListener {
+            // 버튼색
             binding.formListMarketingBtn.setBackgroundResource(R.color.transparent)
             binding.formListSocialPhenomenonBtn.setBackgroundResource(R.color.transparent)
             binding.formListBrandBtn.setBackgroundResource( R.color.transparent)
             binding.formListIdeaBtn.setBackgroundResource(R.drawable.category_selected)
+
+            // 글자색
+            binding.formListMarketingBtn.setTextColor(ContextCompat.getColor(applicationContext, R.color.black))
+            binding.formListSocialPhenomenonBtn.setTextColor(ContextCompat.getColor(applicationContext, R.color.black))
+            binding.formListBrandBtn.setTextColor(ContextCompat.getColor(applicationContext, R.color.black))
+            binding.formListIdeaBtn.setTextColor(ContextCompat.getColor(applicationContext, R.color.white))
 
             val transaction = supportFragmentManager.beginTransaction()
             transaction.replace(R.id.form_list_fv, ideaFragment)

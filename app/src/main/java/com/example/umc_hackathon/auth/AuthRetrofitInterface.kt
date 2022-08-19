@@ -13,7 +13,6 @@ interface AuthRetrofitInterface {
     @GET("/users")
     fun userInfo(
         @Header("x-access-token") jwt: String
-//        @Query("userId") userId: Long
     ): Call<UserInfoResponse>
 
     @DELETE("/user")
