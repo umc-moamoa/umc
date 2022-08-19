@@ -26,7 +26,7 @@
             android:name=".MyPointActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingActivity"
+            android:name=".auth.SettingActivity"
             android:exported="false" />
         <activity
             android:name=".auth.MyPageActivity"

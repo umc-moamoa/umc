@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/pale_grey"
     android:paddingTop="20dp"
-    tools:context=".SettingActivity">
+    tools:context=".auth.SettingActivity">
 
     <TextView
         android:id="@+id/setting_cancel_tv"

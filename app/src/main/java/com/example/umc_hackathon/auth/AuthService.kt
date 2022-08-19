@@ -14,6 +14,7 @@ class AuthService {
     private lateinit var joinView: JoinView
     private lateinit var loginView: LoginView
     private lateinit var userInfoView: UserInfoView
+    private lateinit var userSettingView: UserSettingView
 
     fun setJoinView(joinView: JoinView) {
         this.joinView = joinView
@@ -25,6 +26,10 @@ class AuthService {
 
     fun setUserInfoView(userInfoView: UserInfoView) {
         this.userInfoView = userInfoView
+    }
+
+    fun setUserSettingView(userSettingView: UserSettingView){
+        this.userSettingView = userSettingView
     }
 
     fun join(user: User) {
@@ -94,6 +99,31 @@ class AuthService {
             override fun onFailure(call: Call<UserInfoResponse>, t: Throwable) {
                 Log.d("USERINFO/실패", t.message.toString())
             }
+        })
+
+        Log.d("service/userInfo()", "메소드")
+    }
+
+    fun deleteUser(jwt: String) {
+        val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
+
+        authService.deleteUser(jwt).enqueue(object : Callback<UserDeleteResponse> {
+            override fun onResponse(call: Call<UserDeleteResponse>, response: Response<UserDeleteResponse>) {
+                if(response.body() != null) {
+                    Log.d("USERINFO/성공", response.toString())
+
+                    val resp: UserDeleteResponse = response.body()!!
+                    when(val code = resp.code) {
+                        1000 -> userSettingView.onUserDeleteSuccess()
+                        else -> userSettingView.onUserDeleteFailure()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<UserDeleteResponse>, t: Throwable) {
+                Log.d("USERINFO/실패", t.message.toString())
+            }
+
         })
 
         Log.d("service/userInfo()", "메소드")
