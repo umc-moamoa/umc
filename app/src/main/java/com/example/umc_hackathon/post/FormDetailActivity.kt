@@ -29,13 +29,13 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
         }
 
         binding.formDetailGoFormListLl.setOnClickListener{
-            val intent = Intent(this, FormListActivity::class.java)
-            startActivity(intent)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             finish()
         }
 
         binding.formDetailParticipateBtn.setOnClickListener {
             val intent = Intent(this, FormInputActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
             finish()
         }

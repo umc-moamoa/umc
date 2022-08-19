@@ -24,7 +24,7 @@ class MySurveyGridRAdapter(val mySurveyList: List<MySurveyList>): RecyclerView.A
 //                val currentPosition: Int = postList[adapterPosition].postId //수정!!!!!! postId로 받아오기
                 val intent = Intent(itemView?.context, FormDetailActivity::class.java)
                 intent.putExtra("list_item_post_id", mySurveyList[adapterPosition].postId)
-                Log.d("list_item_post_id", mySurveyList[adapterPosition].postId.toString());
+                Log.d("list_item_my_survey_id", mySurveyList[adapterPosition].postId.toString());
                 ContextCompat.startActivity(itemView.context, intent, null)
             }
         }

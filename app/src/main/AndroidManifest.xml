@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,9 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Umc_hackathon"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".AddItemDialogActivity"
-            android:exported="false" />
         <activity
             android:name=".survey.QuestionItemActivity"
             android:exported="false" />
