@@ -1,20 +1,25 @@
 package com.example.umc_hackathon.survey
 
+import android.annotation.SuppressLint
+import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.EditText
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.umc_hackathon.R
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.text.set
 import com.example.umc_hackathon.databinding.ActivityFormCreateBinding
+import com.example.umc_hackathon.databinding.AddItemDialogBinding
 import com.example.umc_hackathon.post.FormListActivity
 
 class FormCreateActivity : AppCompatActivity() {
 
+    val builderItem by lazy {AddItemDialogBinding.inflate(layoutInflater)}
+
+    @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityFormCreateBinding.inflate(layoutInflater)
@@ -23,8 +28,8 @@ class FormCreateActivity : AppCompatActivity() {
          // 스피너
         val categoryList = listOf("마케팅", "사회현상", "브랜드", "아이디어")
         binding.formCreateSelectCategorySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                println(categoryList[p2] + "입니다")
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, pos: Int, p3: Long) {
+                println(categoryList[pos] + "입니다")
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -33,14 +38,14 @@ class FormCreateActivity : AppCompatActivity() {
         }
 
         // 리사이클러뷰
-        var questionList = arrayListOf<MyQuestion>()
-        val rAdapter = FormCreateRAdapter(questionList)
-
-        binding.formCreateListRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        binding.formCreateListRv.setHasFixedSize(true)
-        binding.formCreateListRv.adapter = FormCreateRAdapter(questionList)
-        
-        rAdapter.addItem(MyQuestion(""))
+//        var questionList = arrayListOf<MyQuestion>()
+//        val rAdapter = FormCreateRAdapter(questionList)
+//
+//        binding.formCreateListRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+//        binding.formCreateListRv.setHasFixedSize(true)
+//        binding.formCreateListRv.adapter = FormCreateRAdapter(questionList)
+//
+//        rAdapter.addItem(MyQuestion(""))
 
         // 이벤트 리스너
         binding.formCreateCancelTv.setOnClickListener {
@@ -49,17 +54,26 @@ class FormCreateActivity : AppCompatActivity() {
             finish()
         }
 
-        binding.formCreateTrashIv.setOnClickListener {
-            Log.d("trash", " 선택")
-            rAdapter.removeItem(questionList.size - 1)
-            onRestart()
-        }
-
         binding.formCreatePlusIv.setOnClickListener {
-            Log.d("plus", " 선택")
-            rAdapter.modifyItem(questionList.size - 1, MyQuestion(findViewById<EditText>(R.id.question_item_et).text.toString()))
-            rAdapter.addItem(MyQuestion(""))
-            onRestart()
+            Log.d("항목 추가", " 선택")
+
+            var questionEt = builderItem.dialogQuestionEt
+
+            AlertDialog.Builder(this).run {
+                setTitle("항목 추가")
+                if (builderItem.root.getParent() != null) {
+                    (builderItem.root.getParent() as ViewGroup).removeView(builderItem.root)
+                    questionEt.setText("")
+                }
+                setView(builderItem.root)
+                setPositiveButton("항목 저장", DialogInterface.OnClickListener { dialogInterface, i ->
+                    Log.d("저장 버튼", questionEt.text.toString())
+
+                })
+                setNegativeButton("취소", null)
+                show()
+
+            }
         }
     }
 }

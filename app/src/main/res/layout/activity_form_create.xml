@@ -115,19 +115,13 @@
         android:gravity="right"
         android:orientation="horizontal"
         android:paddingHorizontal="20dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toBottomOf="@id/form_create_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/form_create_list_rv"
         app:layout_constraintVertical_bias="0.0">
-
-        <ImageView
-            android:id="@+id/form_create_trash_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_trashcan" />
 
         <ImageView
             android:id="@+id/form_create_plus_iv"
