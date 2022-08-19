@@ -179,21 +179,43 @@ class PostService {
     fun dislikePost(postId: Long, jwt: String) {
         val postService = getRetrofit().create(PostRetrofitInterface::class.java)
 
-        postService.dislikePost(postId, jwt).enqueue(object: Callback<LikeResponse> {
-            override fun onResponse(call: Call<LikeResponse>, response: Response<LikeResponse>) {
+        postService.dislikePost(postId, jwt).enqueue(object: Callback<StringResultResponse> {
+            override fun onResponse(call: Call<StringResultResponse>, response: Response<StringResultResponse>) {
                 if(response.body() != null) {
                     Log.d("dislikePost()", " / " + response.body())
-                    val likeResponse: LikeResponse = response.body()!!
+                    val dislikeResponse: StringResultResponse = response.body()!!
 
-                    when(likeResponse.code) {
+                    when(dislikeResponse.code) {
                         1000 -> postDetailView.onDislikeSuccess()
-                        else -> postDetailView.onDislikeFailure(likeResponse)
+                        else -> postDetailView.onDislikeFailure(dislikeResponse)
                     }
                 }
             }
 
-            override fun onFailure(call: Call<LikeResponse>, t: Throwable) {
+            override fun onFailure(call: Call<StringResultResponse>, t: Throwable) {
                 Log.d("dislikePost()", " 실패 / " + t.message.toString())
+            }
+        })
+    }
+
+    fun deletePost(postId: Long, jwt: String) {
+        val postService = getRetrofit().create(PostRetrofitInterface::class.java)
+
+        postService.deletePost(postId, jwt).enqueue(object: Callback<StringResultResponse> {
+            override fun onResponse(call: Call<StringResultResponse>, response: Response<StringResultResponse>) {
+                if(response.body() != null) {
+                    Log.d("deletePost()", " / " + response.body())
+                    val deleteResponse: StringResultResponse = response.body()!!
+
+                    when(deleteResponse.code) {
+                        1000 -> postDetailView.onDeleteSuccess()
+                        else -> postDetailView.onDeleteFailure(deleteResponse)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<StringResultResponse>, t: Throwable) {
+                Log.d("deletePost()", " 실패 / " + t.message.toString())
             }
         })
     }

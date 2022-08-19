@@ -1,6 +1,5 @@
 package com.example.umc_hackathon.post
 
-import com.example.umc_hackathon.auth.UserInfoResponse
 import com.example.umc_hackathon.post.result.ResultResponse
 import retrofit2.Call
 import retrofit2.http.*
@@ -42,10 +41,16 @@ interface PostRetrofitInterface {
     fun dislikePost(
         @Path("postId") postId: Long,
         @Header("x-access-token") jwt: String
-    ): Call<LikeResponse>
+    ): Call<StringResultResponse>
 
     @GET("/results/{postDetailId}")
     fun getResults(
         @Path("postDetailId") postDetailId: Long
     ): Call<ResultResponse>
+
+    @PATCH("/posts/{postId}/status")
+    fun deletePost(
+        @Path("postId") postId: Long,
+        @Header("x-access-token") jwt: String
+    ): Call<StringResultResponse> //같은 형식이라 공유해서 사용
 }
