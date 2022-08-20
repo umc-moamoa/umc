@@ -15,8 +15,6 @@ import com.example.umc_hackathon.R
 // 설문 작성 페이지의 질문들 목록
 class FormCreateRAdapter(val questionList: ArrayList<MyQuestion>): RecyclerView.Adapter<FormCreateRAdapter.MyViewHolder> (){
 
-    val TAG: String = "<MyRecycleAdapter2>"
-
     fun addItem(item: MyQuestion) {
         questionList.add(item)
         notifyDataSetChanged()
@@ -41,7 +39,7 @@ class FormCreateRAdapter(val questionList: ArrayList<MyQuestion>): RecyclerView.
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        Log.d(TAG, " - onBindViewHolder() called / position: $position")
+        Log.d("FormCreateRAdapter", " - onBindViewHolder() called / position: $position")
         holder.title.setText((position + 1).toString() + "번. " + questionList.get(position).title)
     }
 

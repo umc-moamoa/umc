@@ -9,13 +9,16 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.set
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.umc_hackathon.R
 import com.example.umc_hackathon.databinding.ActivityFormCreateBinding
 import com.example.umc_hackathon.databinding.AddItemDialogBinding
 import com.example.umc_hackathon.post.FormListActivity
+import kotlinx.android.synthetic.main.dialog_option_item.*
 
 class FormCreateActivity : AppCompatActivity() {
 
@@ -39,7 +42,7 @@ class FormCreateActivity : AppCompatActivity() {
             }
         }
 
-        // 설문 타입 스피너
+        // 설문 타입 스피너에 따라 옵션 visibility 선택
         val typeList = listOf("객관식", "주관식")
         builderItem.dialogTypeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, pos: Int, p3: Long) {
@@ -74,8 +77,8 @@ class FormCreateActivity : AppCompatActivity() {
         builderItem.dialogItemOptionRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         builderItem.dialogItemOptionRv.setHasFixedSize(true)
         builderItem.dialogItemOptionRv.adapter = OptionRAdapter(optionList)
-
-        optionRAdapter.addItem(Option(""))
+        
+        optionRAdapter.addItem(Option("")) // 초기 옵션
 
         // 이벤트 리스너
         binding.formCreateCancelTv.setOnClickListener {
@@ -85,7 +88,10 @@ class FormCreateActivity : AppCompatActivity() {
         }
 
         builderItem.dialogOptionLl.setOnClickListener {
-            optionRAdapter.addItem(Option("추가한 옵션입니다"))
+            Log.d("옵션 개수", optionRAdapter.itemCount.toString())
+            optionRAdapter.modifyItem(optionRAdapter.itemCount - 1, Option("abcdef"))
+            optionRAdapter.addItem(Option("ㅇ"))
+            onStart()
 
             Log.d("옵션 추가", "눌림")
         }
@@ -94,24 +100,24 @@ class FormCreateActivity : AppCompatActivity() {
         var questionSpinner = builderItem.dialogTypeSpinner
 
         binding.formCreatePlusIv.setOnClickListener {
-            Log.d("항목 추가", " 선택")
+            Log.d("질문 추가", " 선택")
 
             var question: String
             var spinner: String
 
             AlertDialog.Builder(this).run {
-                setTitle("항목 추가")
+                setTitle("질문 추가")
                 if (builderItem.root.parent != null) {
                     (builderItem.root.parent as ViewGroup).removeView(builderItem.root)
                     questionEt.setText("")
                 }
                 setView(builderItem.root)
-                setPositiveButton("항목 저장", DialogInterface.OnClickListener { dialogInterface, i ->
+                setPositiveButton("질문 저장", DialogInterface.OnClickListener { dialogInterface, i ->
                     question = questionEt.text.toString()
                     spinner = questionSpinner.selectedItem.toString()
 
-                    Log.d("항목 저장(질문) : ", question)
-                    Log.d("항목 저장(스피너) : ", spinner)
+                    Log.d("질문 저장(질문) : ", question)
+                    Log.d("질문 저장(스피너) : ", spinner)
 
                     rAdapter.addItem(MyQuestion(question))
                 })

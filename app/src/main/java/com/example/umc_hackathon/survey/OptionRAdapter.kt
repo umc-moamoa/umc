@@ -16,17 +16,28 @@ class OptionRAdapter(val optionList: ArrayList<Option>): RecyclerView.Adapter<Op
     fun addItem(item: Option) {
         optionList.add(item)
         notifyDataSetChanged()
-        Log.d("옵션 add", item.question)
+        Log.d("옵션 추가", item.question)
     }
 
     fun removeItem(position: Int) {
         optionList.removeAt(position)
         notifyDataSetChanged()
+        Log.d("옵션 삭제", optionList[position].question)
+    }
+
+    fun modifyItem(position: Int, item: Option) {
+        optionList[position] = item
+        notifyDataSetChanged()
+        Log.d("옵션 수정", item.question)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.dialog_option_item, parent, false)
-        return MyViewHolder(view)
+        return MyViewHolder(view).apply {
+            itemView.setOnClickListener {
+               Log.d("옵션", "클릭 발생!")
+            }
+        }
     }
 
     override fun getItemCount(): Int {
