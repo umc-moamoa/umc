@@ -28,7 +28,7 @@
             android:layout_marginHorizontal="15dp"
             android:layout_weight="1"
             android:background="@null"
-            android:hint="옵션" />
+            android:hint="옵션을 입력하세요" />
 
         <ImageView
             android:id="@+id/dialog_option_item_delete_iv"

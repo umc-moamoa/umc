@@ -85,17 +85,10 @@ class FormCreateActivity : AppCompatActivity() {
         }
 
         builderItem.dialogOptionLl.setOnClickListener {
-            optionRAdapter.addItem(Option(""))
+            optionRAdapter.addItem(Option("추가한 옵션입니다"))
 
-            Log.d("dialogOptionLl", "눌림")
+            Log.d("옵션 추가", "눌림")
         }
-
-//        Log.d("스피너", questionSpinner.selectedItem.toString())
-//        if(questionSpinner.selectedItem.toString() == "주관식") {
-//            builderItem.dialogOptionLl.visibility = View.GONE
-//        } else if (questionSpinner.selectedItem.toString() == "객관식") {
-//            builderItem.dialogOptionLl.visibility = View.VISIBLE
-//        }
 
         var questionEt = builderItem.dialogQuestionEt
         var questionSpinner = builderItem.dialogTypeSpinner
