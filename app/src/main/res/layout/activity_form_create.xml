@@ -120,7 +120,6 @@
 
     </LinearLayout>
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/form_create_list_rv"
         android:layout_width="match_parent"

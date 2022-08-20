@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.widget.ScrollView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -64,6 +66,7 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
 
         // 참여를 기다리는 설문조사 조회
         getWaitingSurvey()
+
     }
 
     private fun getJwt(): String? {
@@ -156,6 +159,15 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
         }
         binding.mainWaitingSurveyItemPointTv1.text = postList.result[0].point.toString() + "P"
 
+        // 상세 페이지로 intent
+        binding.mainWaitingSurveyItemLl1.setOnClickListener {
+//          val currentPosition: Int = postList[adapterPosition].postId //수정!!!!!! postId로 받아오기
+            val intent = Intent(this, FormDetailActivity::class.java)
+            intent.putExtra("list_item_post_id", postList.result[0].postId)
+            Log.d("list_item_my_survey_id", postList.result[0].postId.toString());
+            startActivity(intent)
+        }
+
         binding.mainWaitingSurveyItemTitleTv2.text = postList.result[1].title
         binding.mainWaitingSurveyItemCountTv2.text = postList.result[1].qcount.toString() + "개의 항목"
         if(postList.result[1].dday == 0) {
@@ -165,6 +177,15 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
         }
         binding.mainWaitingSurveyItemPointTv2.text = postList.result[1].point.toString() + "P"
 
+        // 상세 페이지로 intent
+        binding.mainWaitingSurveyItemLl1.setOnClickListener {
+//          val currentPosition: Int = postList[adapterPosition].postId //수정!!!!!! postId로 받아오기
+            val intent = Intent(this, FormDetailActivity::class.java)
+            intent.putExtra("list_item_post_id", postList.result[1].postId)
+            Log.d("list_item_my_survey_id", postList.result[1].postId.toString());
+            startActivity(intent)
+        }
+
         binding.mainWaitingSurveyItemTitleTv3.text = postList.result[2].title
         binding.mainWaitingSurveyItemCountTv3.text = postList.result[2].qcount.toString() + "개의 항목"
         if(postList.result[2].dday == 0) {
@@ -173,6 +194,16 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
             binding.mainWaitingSurveyItemDeadlineTv3.text = "D - " + postList.result[2].dday.toString()
         }
         binding.mainWaitingSurveyItemPointTv3.text = postList.result[2].point.toString() + "P"
+
+        // 상세 페이지로 intent
+        binding.mainWaitingSurveyItemLl1.setOnClickListener {
+//          val currentPosition: Int = postList[adapterPosition].postId //수정!!!!!! postId로 받아오기
+            val intent = Intent(this, FormDetailActivity::class.java)
+            intent.putExtra("list_item_post_id", postList.result[2].postId)
+            Log.d("list_item_my_survey_id", postList.result[2].postId.toString());
+            startActivity(intent)
+        }
+
         Log.d("참여를 기다리는 설문조사 / ", "MainActivity, 참여를 기다리는 설문조사 폼 목록을 불러오는데 성공했습니다")
     }
 

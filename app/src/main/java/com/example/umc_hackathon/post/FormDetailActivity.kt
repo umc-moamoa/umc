@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import com.example.umc_hackathon.auth.LoginActivity
 import com.example.umc_hackathon.databinding.ActivityFormDetailBinding
 import com.example.umc_hackathon.post.*
