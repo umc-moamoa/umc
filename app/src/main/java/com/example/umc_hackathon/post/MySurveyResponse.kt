@@ -10,7 +10,7 @@ data class MySurveyResponse(
 )
 
 data class MySurveyList (
-    @SerializedName("postId") val postId: Int,
+    @SerializedName("postId") val postId: Long,
     @SerializedName("postTitle") val postTitle: String,
     @SerializedName("point") val point: Int,
     @SerializedName("postResultCount") val postResultCount: Int,

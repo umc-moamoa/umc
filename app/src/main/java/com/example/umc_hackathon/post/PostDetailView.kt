@@ -8,5 +8,8 @@ interface PostDetailView {
     fun onLikeFailure(result: LikeResponse)
 
     fun onDislikeSuccess()
-    fun onDislikeFailure(result: LikeResponse)
+    fun onDislikeFailure(result: StringResultResponse)
+
+    fun onDeleteSuccess()
+    fun onDeleteFailure(result: StringResultResponse)
 }

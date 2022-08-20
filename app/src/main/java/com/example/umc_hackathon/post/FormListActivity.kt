@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.core.content.ContextCompat
 import com.example.umc_hackathon.*
 import com.example.umc_hackathon.databinding.ActivityFormListBinding
+import com.example.umc_hackathon.survey.FormCreateActivity
 
 class FormListActivity : AppCompatActivity(){
 

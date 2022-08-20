@@ -1,8 +1,9 @@
-package com.example.umc_hackathon
+package com.example.umc_hackathon.survey
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.umc_hackathon.FormDetailActivity
 import com.example.umc_hackathon.databinding.ActivityFormInputBinding
 
 class FormInputActivity : AppCompatActivity() {
