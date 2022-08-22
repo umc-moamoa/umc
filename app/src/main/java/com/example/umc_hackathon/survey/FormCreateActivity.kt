@@ -95,9 +95,9 @@ class FormCreateActivity : AppCompatActivity() {
 
             optionRAdapter.addItem(Option(builderItem.dialogOptionInputEt.text.toString()))
 
-            for(x in 0 until optionList.size) {
-                Log.d("옵션", "항목 $x : ${optionList[x].question}")
-            }
+//            for(x in 0 until optionList.size) {
+//                Log.d("옵션", "항목 $x : ${optionList[x].question}")
+//            }
 
             builderItem.dialogOptionInputEt.setText("") // 초기화 시키기
         }
@@ -128,7 +128,7 @@ class FormCreateActivity : AppCompatActivity() {
                     Log.d("질문 저장(질문) : ", question)
                     Log.d("질문 저장(스피너) : ", spinner)
 
-                    rAdapter.addItem(MyQuestion(question))
+                    rAdapter.addItem(MyQuestion(question, optionList))
                 })
                 setNegativeButton("취소", null)
                 show()

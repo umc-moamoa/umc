@@ -23,7 +23,6 @@ class OptionRAdapter(val optionList: ArrayList<Option>): RecyclerView.Adapter<Op
     fun removeItem(position: Int) {
         optionList.removeAt(position)
         notifyDataSetChanged()
-        Log.d("옵션 삭제", optionList[position].question)
     }
 
     fun modifyItem(position: Int, item: Option) {
@@ -36,7 +35,12 @@ class OptionRAdapter(val optionList: ArrayList<Option>): RecyclerView.Adapter<Op
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.dialog_option_item, parent, false)
-        return MyViewHolder(view)
+        return MyViewHolder(view).apply {
+            itemView.setOnLongClickListener {
+                removeItem(adapterPosition)
+                true
+            }
+        }
     }
 
     override fun getItemCount(): Int {

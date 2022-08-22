@@ -59,10 +59,12 @@ class FormCreateRAdapter(val questionList: ArrayList<MyQuestion>): RecyclerView.
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         Log.d("FormCreateRAdapter", " - onBindViewHolder() called / position: $position")
         holder.title.setText((position + 1).toString() + "번. " + questionList.get(position).title)
+        holder.option.setText(questionList.get(position).option!![0].question)
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title = itemView.findViewById<TextView>(R.id.question_item_et)
+        val option = itemView.findViewById<TextView>(R.id.question_item_option_tv)
     }
 
 }
