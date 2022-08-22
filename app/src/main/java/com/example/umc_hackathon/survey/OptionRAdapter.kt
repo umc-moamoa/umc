@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.umc_hackathon.R
+import kotlinx.android.synthetic.main.dialog_option_item.view.*
 
 
 class OptionRAdapter(val optionList: ArrayList<Option>): RecyclerView.Adapter<OptionRAdapter.MyViewHolder> (){
@@ -30,6 +31,8 @@ class OptionRAdapter(val optionList: ArrayList<Option>): RecyclerView.Adapter<Op
         notifyDataSetChanged()
         Log.d("옵션 수정", item.question)
     }
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.dialog_option_item, parent, false)

@@ -10,6 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.set
@@ -19,6 +21,7 @@ import com.example.umc_hackathon.databinding.ActivityFormCreateBinding
 import com.example.umc_hackathon.databinding.AddItemDialogBinding
 import com.example.umc_hackathon.post.FormListActivity
 import kotlinx.android.synthetic.main.dialog_option_item.*
+import org.w3c.dom.Text
 
 class FormCreateActivity : AppCompatActivity() {
 
@@ -77,8 +80,6 @@ class FormCreateActivity : AppCompatActivity() {
         builderItem.dialogItemOptionRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         builderItem.dialogItemOptionRv.setHasFixedSize(true)
         builderItem.dialogItemOptionRv.adapter = OptionRAdapter(optionList)
-        
-        optionRAdapter.addItem(Option("")) // 초기 옵션
 
         // 이벤트 리스너
         binding.formCreateCancelTv.setOnClickListener {
@@ -87,23 +88,31 @@ class FormCreateActivity : AppCompatActivity() {
             finish()
         }
 
-        builderItem.dialogOptionLl.setOnClickListener {
-            Log.d("옵션 개수", optionRAdapter.itemCount.toString())
-            optionRAdapter.modifyItem(optionRAdapter.itemCount - 1, Option("수정됐음"))
-            optionRAdapter.addItem(Option(""))
-            onStart()
+        // 옵션 추가
+        builderItem.dialogOptionAddIv.setOnClickListener {
+            Log.d("(추가) 옵션 개수", optionRAdapter.itemCount.toString())
+            Log.d("옵션 추가 내용", builderItem.dialogOptionInputEt.text.toString())
 
-            Log.d("옵션 추가", "눌림")
+            optionRAdapter.addItem(Option(builderItem.dialogOptionInputEt.text.toString()))
+
+            for(x in 0 until optionList.size) {
+                Log.d("옵션", "항목 $x : ${optionList[x].question}")
+            }
+
+            builderItem.dialogOptionInputEt.setText("") // 초기화 시키기
         }
+
 
         var questionEt = builderItem.dialogQuestionEt
         var questionSpinner = builderItem.dialogTypeSpinner
+        var question: String
+        var spinner: String
 
         binding.formCreatePlusIv.setOnClickListener {
             Log.d("질문 추가", " 선택")
 
-            var question: String
-            var spinner: String
+            question= questionEt.text.toString()
+            spinner = questionSpinner.selectedItem.toString()
 
             AlertDialog.Builder(this).run {
                 setTitle("질문 추가")

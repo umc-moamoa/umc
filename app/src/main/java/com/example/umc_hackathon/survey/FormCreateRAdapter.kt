@@ -15,6 +15,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.umc_hackathon.FormDetailActivity
 import com.example.umc_hackathon.R
+import kotlinx.android.synthetic.main.dialog_option_item.view.*
 
 // 설문 작성 페이지의 질문들 목록
 class FormCreateRAdapter(val questionList: ArrayList<MyQuestion>): RecyclerView.Adapter<FormCreateRAdapter.MyViewHolder> (){
