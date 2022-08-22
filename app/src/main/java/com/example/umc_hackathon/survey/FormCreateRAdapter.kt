@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
@@ -58,8 +59,18 @@ class FormCreateRAdapter(val questionList: ArrayList<MyQuestion>): RecyclerView.
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         Log.d("FormCreateRAdapter", " - onBindViewHolder() called / position: $position")
-        holder.title.setText((position + 1).toString() + "번. " + questionList.get(position).title)
-        holder.option.setText(questionList.get(position).option!![0].question)
+        holder.title.text = (position + 1).toString() + "번. " + questionList[position].title
+
+        if(questionList[position].type == "주관식") {
+            holder.option.text = "주관식 질문입니다"
+        } else if(questionList[position].type == "객관식") {
+            var result: String = ""
+            for(i in 0 until questionList[position].option!!.size) {
+                result += "${i + 1}번 " + questionList[position].option!![i].question + "\n"
+            }
+            holder.option.text = result
+        }
+
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

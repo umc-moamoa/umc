@@ -21,6 +21,7 @@ import com.example.umc_hackathon.databinding.ActivityFormCreateBinding
 import com.example.umc_hackathon.databinding.AddItemDialogBinding
 import com.example.umc_hackathon.post.FormListActivity
 import kotlinx.android.synthetic.main.dialog_option_item.*
+import okhttp3.internal.notifyAll
 import org.w3c.dom.Text
 
 class FormCreateActivity : AppCompatActivity() {
@@ -95,10 +96,6 @@ class FormCreateActivity : AppCompatActivity() {
 
             optionRAdapter.addItem(Option(builderItem.dialogOptionInputEt.text.toString()))
 
-//            for(x in 0 until optionList.size) {
-//                Log.d("옵션", "항목 $x : ${optionList[x].question}")
-//            }
-
             builderItem.dialogOptionInputEt.setText("") // 초기화 시키기
         }
 
@@ -120,6 +117,7 @@ class FormCreateActivity : AppCompatActivity() {
                     (builderItem.root.parent as ViewGroup).removeView(builderItem.root)
                     questionEt.setText("")
                 }
+
                 setView(builderItem.root)
                 setPositiveButton("질문 저장", DialogInterface.OnClickListener { dialogInterface, i ->
                     question = questionEt.text.toString()
@@ -128,7 +126,11 @@ class FormCreateActivity : AppCompatActivity() {
                     Log.d("질문 저장(질문) : ", question)
                     Log.d("질문 저장(스피너) : ", spinner)
 
-                    rAdapter.addItem(MyQuestion(question, optionList))
+                    rAdapter.addItem(MyQuestion(question, spinner, optionList))
+
+                    optionList = arrayListOf<Option>()
+                    optionRAdapter.clearAll()
+                    Log.d("업샨 게스", optionList.size.toString())
                 })
                 setNegativeButton("취소", null)
                 show()

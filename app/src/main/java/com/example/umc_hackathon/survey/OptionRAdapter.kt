@@ -12,7 +12,7 @@ import com.example.umc_hackathon.R
 import kotlinx.android.synthetic.main.dialog_option_item.view.*
 
 
-class OptionRAdapter(val optionList: ArrayList<Option>): RecyclerView.Adapter<OptionRAdapter.MyViewHolder> (){
+class OptionRAdapter(var optionList: ArrayList<Option>): RecyclerView.Adapter<OptionRAdapter.MyViewHolder> (){
 
     fun addItem(item: Option) {
         optionList.add(item)
@@ -25,13 +25,16 @@ class OptionRAdapter(val optionList: ArrayList<Option>): RecyclerView.Adapter<Op
         notifyDataSetChanged()
     }
 
+    fun clearAll() {
+        optionList = arrayListOf<Option>()
+        notifyDataSetChanged()
+    }
+
     fun modifyItem(position: Int, item: Option) {
         optionList[position] = item
         notifyDataSetChanged()
         Log.d("옵션 수정", item.question)
     }
-
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.dialog_option_item, parent, false)
