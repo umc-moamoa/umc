@@ -89,8 +89,8 @@ class FormCreateActivity : AppCompatActivity() {
 
         builderItem.dialogOptionLl.setOnClickListener {
             Log.d("옵션 개수", optionRAdapter.itemCount.toString())
-            optionRAdapter.modifyItem(optionRAdapter.itemCount - 1, Option("abcdef"))
-            optionRAdapter.addItem(Option("ㅇ"))
+            optionRAdapter.modifyItem(optionRAdapter.itemCount - 1, Option("수정됐음"))
+            optionRAdapter.addItem(Option(""))
             onStart()
 
             Log.d("옵션 추가", "눌림")

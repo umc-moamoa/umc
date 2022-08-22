@@ -33,11 +33,7 @@ class OptionRAdapter(val optionList: ArrayList<Option>): RecyclerView.Adapter<Op
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.dialog_option_item, parent, false)
-        return MyViewHolder(view).apply {
-            itemView.setOnClickListener {
-               Log.d("옵션", "클릭 발생!")
-            }
-        }
+        return MyViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -46,11 +42,12 @@ class OptionRAdapter(val optionList: ArrayList<Option>): RecyclerView.Adapter<Op
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         Log.d("OptionRAdapter", " - onBindViewHolder() called / position: $position")
-        holder.option.setText(optionList[position].question)
+        holder.optionTitle.setText(optionList[position].question)
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val option: EditText = itemView.findViewById(R.id.dialog_option_item_et)
+        val optionTitle: EditText = itemView.findViewById(R.id.dialog_option_item_et)
+//        val optionDetail: TextView = itemView.findViewById(R.id.dialog_option_tv)
     }
 
 }

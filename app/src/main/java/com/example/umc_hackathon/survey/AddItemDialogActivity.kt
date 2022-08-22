@@ -15,7 +15,5 @@ class AddItemDialogActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = AddItemDialogBinding.inflate(layoutInflater)
         setContentView(R.layout.add_item_dialog)
-
-
     }
 }
