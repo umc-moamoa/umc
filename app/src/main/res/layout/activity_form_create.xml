@@ -44,6 +44,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/form_create_header_ll" />
 
+
     <LinearLayout
         android:id="@+id/form_create_survey_info"
         android:layout_width="match_parent"
@@ -57,6 +58,7 @@
         app:layout_constraintTop_toBottomOf="@id/form_create_title_tv">
 
         <EditText
+            android:id="@+id/form_create_title_et"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
@@ -67,6 +69,7 @@
             android:textSize="14sp" />
 
         <EditText
+            android:id="@+id/form_create_content_et"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
@@ -85,6 +88,7 @@
         android:gravity="right"
         android:orientation="horizontal"
         android:paddingHorizontal="20dp"
+        android:paddingBottom="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/form_create_survey_info">
@@ -110,6 +114,8 @@
 
         </androidx.cardview.widget.CardView>
 
+
+
         <ImageView
             android:id="@+id/form_create_plus_iv"
             android:layout_width="wrap_content"
@@ -119,6 +125,7 @@
             app:layout_constraintTop_toBottomOf="@id/form_create_survey_info" />
 
     </LinearLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/form_create_list_rv"
@@ -141,7 +148,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/form_create_add_question_btn"
+        android:id="@+id/form_create_btn"
         android:layout_width="160dp"
         android:layout_height="40dp"
         android:background="@drawable/category_selected"

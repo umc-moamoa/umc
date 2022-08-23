@@ -12,7 +12,7 @@ import com.example.umc_hackathon.databinding.FragmentFormListBrandBinding
 
 class FormListBrand : Fragment(), PostListView {
 
-    private val categoryId: Long = 1 // 추후에 값 바꿀 것
+    private val categoryId: Long = 3
     private lateinit var binding: FragmentFormListBrandBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

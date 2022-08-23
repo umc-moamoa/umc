@@ -16,6 +16,9 @@
             android:name=".survey.QuestionItemActivity"
             android:exported="false" />
         <activity
+            android:name=".survey.DialogOptionItemActivity"
+            android:exported="false" />
+        <activity
             android:name=".post.MySurveyActivity"
             android:exported="false" />
         <activity
