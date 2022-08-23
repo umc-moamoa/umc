@@ -16,6 +16,7 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
+import com.github.mikephil.charting.utils.MPPointF
 
 class ResultActivity : AppCompatActivity(), ResultView {
 
@@ -46,7 +47,7 @@ class ResultActivity : AppCompatActivity(), ResultView {
         val resultService = ResultService()
         resultService.setResultView(this)
 //        resultService.getResult(detailId) 테스트 후 복구
-        resultService.getResult(52)
+        resultService.getResult(54)
     }
 
     override fun onGetResultSuccess(detailResult: DetailResult) {
@@ -74,6 +75,9 @@ class ResultActivity : AppCompatActivity(), ResultView {
             pieChart.setEntryLabelTextSize(12f)
 
             val visitors: ArrayList<PieEntry> = ArrayList()
+//            for (i in detailResult.statistics) {
+//                visitors.add(i, 1)
+//            }
             visitors.add(PieEntry(detailResult.case1.toFloat(), "1"))
             visitors.add(PieEntry(detailResult.case2.toFloat(), "2"))
             visitors.add(PieEntry(detailResult.case3.toFloat(), "3"))
@@ -82,8 +86,19 @@ class ResultActivity : AppCompatActivity(), ResultView {
             visitors.add(PieEntry(detailResult.case6.toFloat(), "6"))
             visitors.add(PieEntry(detailResult.case7.toFloat(), "7"))
             visitors.add(PieEntry(detailResult.case8.toFloat(), "8"))
+            Log.d("detail-result1", detailResult.case1.toString())
+            Log.d("detail-result2", detailResult.case2.toString())
+            Log.d("detail-result3", detailResult.case3.toString())
+            Log.d("detail-result4", detailResult.case4.toString())
+            Log.d("detail-result5", detailResult.case5.toString())
+            Log.d("detail-result6", detailResult.case6.toString())
+            Log.d("detail-result7", detailResult.case7.toString())
+            Log.d("detail-result8", detailResult.case8.toString())
 
             val pieDataSet = PieDataSet(visitors, "visitors")
+            pieDataSet.sliceSpace = 3f
+            pieDataSet.iconsOffset = MPPointF(0f, 40f)
+            pieDataSet.selectionShift = 5f
 
             val colors: ArrayList<Int> = ArrayList()
             colors.add(R.color.baby_pink)
@@ -104,7 +119,7 @@ class ResultActivity : AppCompatActivity(), ResultView {
             pieData.setValueTextColor(Color.WHITE)
             pieChart.data = pieData
 
-            pieChart.animation
+//            pieChart.animation
 
             pieChart.invalidate()
         }
