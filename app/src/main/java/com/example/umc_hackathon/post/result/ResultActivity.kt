@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.Dimension
 import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
@@ -30,6 +31,9 @@ class ResultActivity : AppCompatActivity(), ResultView {
 
     private var postId: Long = 0L
     private var postTitle: String = ""
+    private var startId: Long = 0L
+    private var endId: Long = 0L
+    private var pos: Int = 0
     private lateinit var binding: ActivityResultBinding
     private lateinit var pieChart: PieChart
 
@@ -49,7 +53,18 @@ class ResultActivity : AppCompatActivity(), ResultView {
         }
         binding.resultAnswerRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.resultAnswerRv.setHasFixedSize(true)
+
+        binding.formResultNextBtn.setOnClickListener {
+            pos++
+            if (pos <= endId) {
+                getResult(pos.toLong())
+            }
+            else {
+                Toast.makeText(this, "마지막 페이지입니다.", Toast.LENGTH_LONG).show()
+            }
+        }
     }
+
 
     private fun getResultDetail(postId: Long) {
         val resultService = ResultService()
@@ -60,9 +75,14 @@ class ResultActivity : AppCompatActivity(), ResultView {
     private fun getResult(detailId: Long) {
         val resultService = ResultService()
         resultService.setResultView(this)
-//        resultService.getResult(detailId)
+
         Log.d("detail post id", detailId.toString())
-        resultService.getResult(54)
+
+//        for (i in startId..endId)
+//        {
+            resultService.getResult(52)
+            //        resultService.getResult(detailId)
+//        }
     }
 
     override fun onGetResultSuccess(detailResult: DetailResult) {
@@ -76,42 +96,27 @@ class ResultActivity : AppCompatActivity(), ResultView {
             pieChart = binding.pieChart
             pieChart.setUsePercentValues(true)
             pieChart.description.isEnabled = false
-            pieChart.setExtraOffsets(5f, 10f, 5f, 5f)
-            pieChart.dragDecelerationFrictionCoef = 0.95f
-            pieChart.isDrawHoleEnabled = true
-            pieChart.setHoleColor(Color.WHITE)
-            pieChart.setTransparentCircleColor(Color.WHITE)
-            pieChart.setTransparentCircleAlpha(110)
-            pieChart.holeRadius = 58f
-            pieChart.transparentCircleRadius = 61f
-            pieChart.setDrawCenterText(true)
-            pieChart.rotationAngle = 0f
-            pieChart.isRotationEnabled = true
-            pieChart.isHighlightPerTapEnabled = true
-            pieChart.legend.isEnabled = false
-            pieChart.setEntryLabelColor(Color.WHITE)
-            pieChart.setEntryLabelTextSize(12f)
+//            pieChart.setExtraOffsets(5f, 10f, 5f, 5f)
+//            pieChart.dragDecelerationFrictionCoef = 0.95f
+//            pieChart.isDrawHoleEnabled = true
+//            pieChart.setHoleColor(Color.WHITE)
+//            pieChart.setTransparentCircleColor(Color.WHITE)
+//            pieChart.setTransparentCircleAlpha(110)
+//            pieChart.holeRadius = 58f
+//            pieChart.transparentCircleRadius = 61f
+//            pieChart.setDrawCenterText(true)
+//            pieChart.rotationAngle = 0f
+//            pieChart.isRotationEnabled = true
+//            pieChart.isHighlightPerTapEnabled = true
+//            pieChart.legend.isEnabled = false
+//            pieChart.setEntryLabelColor(Color.WHITE)
+//            pieChart.setEntryLabelTextSize(12f)
 
             val visitors: ArrayList<PieEntry> = ArrayList()
-//            for (i in detailResult.statistics) {
-//                visitors.add(i, 1)
-//            }
-            visitors.add(PieEntry(detailResult.case1.toFloat(), "1"))
-            visitors.add(PieEntry(detailResult.case2.toFloat(), "2"))
-            visitors.add(PieEntry(detailResult.case3.toFloat(), "3"))
-            visitors.add(PieEntry(detailResult.case4.toFloat(), "4"))
-            visitors.add(PieEntry(detailResult.case5.toFloat(), "5"))
-            visitors.add(PieEntry(detailResult.case6.toFloat(), "6"))
-            visitors.add(PieEntry(detailResult.case7.toFloat(), "7"))
-            visitors.add(PieEntry(detailResult.case8.toFloat(), "8"))
-            Log.d("detail-result1", detailResult.case1.toString())
-            Log.d("detail-result2", detailResult.case2.toString())
-            Log.d("detail-result3", detailResult.case3.toString())
-            Log.d("detail-result4", detailResult.case4.toString())
-            Log.d("detail-result5", detailResult.case5.toString())
-            Log.d("detail-result6", detailResult.case6.toString())
-            Log.d("detail-result7", detailResult.case7.toString())
-            Log.d("detail-result8", detailResult.case8.toString())
+            for (i in detailResult.statistics) {
+                visitors.add(PieEntry(i))
+                Log.d("detail-result", i.toString())
+            }
 
             val pieDataSet = PieDataSet(visitors, "visitors")
             pieDataSet.sliceSpace = 3f
@@ -137,8 +142,7 @@ class ResultActivity : AppCompatActivity(), ResultView {
             pieData.setValueTextColor(Color.WHITE)
             pieChart.data = pieData
 
-//            pieChart.animation
-
+            pieChart.animation
             pieChart.invalidate()
         }
         else { //주관식
@@ -146,21 +150,6 @@ class ResultActivity : AppCompatActivity(), ResultView {
             binding.resultAnswerRv.visibility = View.VISIBLE
 
             binding.resultAnswerRv.adapter = AnswerRAdapter(detailResult.res)
-//            for (res in detailResult.res) {
-//                Log.d("res", res.result
-//                )
-//                val answer = TextView(this@ResultActivity)
-//                answer.text = res.result
-//                answer.setTextSize(Dimension.SP, 13.0f)
-//                answer.setTextColor(Color.BLACK)
-////                answer.background.
-//                val param: LinearLayout.LayoutParams =
-//                    LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-//                param.setMargins(5, 5, 5, 5)
-//                answer.layoutParams = param
-//
-//                binding.root.addView(answer)
-//            }
         }
     }
 
@@ -169,7 +158,11 @@ class ResultActivity : AppCompatActivity(), ResultView {
     }
 
     override fun onGetDetailIdSuccess(result: DetailIdResponse) {
-        getResult(result.result.startId)
+        startId = result.result.startId
+        endId = result.result.endId
+        pos = startId.toInt()
+
+        getResult(startId)
     }
 
     override fun onGetDetailIdFailure(message: String) {

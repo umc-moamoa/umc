@@ -22,7 +22,7 @@ data class DetailResult(
     @SerializedName("case6") val case6: Double,
     @SerializedName("case7") val case7: Double,
     @SerializedName("case8") val case8: Double,
-//    @SerializedName("statistics") val statistics: ArrayList<Float>
+    @SerializedName("statistics") val statistics: ArrayList<Float>
 )
 
 data class ResultItem(
