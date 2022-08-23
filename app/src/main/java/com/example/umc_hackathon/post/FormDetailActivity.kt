@@ -15,6 +15,7 @@ import com.example.umc_hackathon.survey.FormInputActivity
 class FormDetailActivity : AppCompatActivity(), PostDetailView {
 
     private var postId: Long = 0L
+    private lateinit var postTitle: String
     private lateinit var binding: ActivityFormDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +54,7 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
             val intent = Intent(this, ResultActivity::class.java)
             intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             intent.putExtra("postId", postId)
+            intent.putExtra("postTitle", postTitle)
             startActivity(intent)
             finish()
         }
@@ -90,7 +92,8 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
     }
 
     override fun onGetPostDetailSuccess(result: PostDetailResult) {
-        binding.formDetailTitleTv.text = result.title
+        postTitle = result.title
+        binding.formDetailTitleTv.text = postTitle
         binding.formDetailItemCountTv.text = result.qCount.toString() + "개의 항목"
 
         if (result.status == "ACTIVE") {

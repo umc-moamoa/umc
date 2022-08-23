@@ -5,12 +5,20 @@ import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.annotation.Dimension
 import androidx.cardview.widget.CardView
+import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_hackathon.R
+import com.example.umc_hackathon.databinding.ActivityResultBinding
 import com.example.umc_hackathon.databinding.FragmentResultBinding
+import com.example.umc_hackathon.post.AnswerRAdapter
+import com.example.umc_hackathon.post.FormListRAdapter
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
@@ -21,20 +29,26 @@ import com.github.mikephil.charting.utils.MPPointF
 class ResultActivity : AppCompatActivity(), ResultView {
 
     private var postId: Long = 0L
-    private lateinit var binding: FragmentResultBinding
+    private var postTitle: String = ""
+    private lateinit var binding: ActivityResultBinding
     private lateinit var pieChart: PieChart
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = FragmentResultBinding.inflate(layoutInflater)
+        binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         if(intent.hasExtra("postId")) {
             postId = intent.getLongExtra("postId", postId)
+            postTitle = intent.getStringExtra("postTitle")!!
             Log.d("postId", " : " + postId)
+            Log.d("postTitle", postTitle)
+            binding.formResultTitleTv.text = postTitle
             getResultDetail(postId) //리팩토링
         }
+        binding.resultAnswerRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.resultAnswerRv.setHasFixedSize(true)
     }
 
     private fun getResultDetail(postId: Long) {
@@ -46,14 +60,18 @@ class ResultActivity : AppCompatActivity(), ResultView {
     private fun getResult(detailId: Long) {
         val resultService = ResultService()
         resultService.setResultView(this)
-//        resultService.getResult(detailId) 테스트 후 복구
+//        resultService.getResult(detailId)
+        Log.d("detail post id", detailId.toString())
         resultService.getResult(54)
     }
 
     override fun onGetResultSuccess(detailResult: DetailResult) {
         binding.formResultQuestionTv.text = detailResult.question
+        binding.formResultCountTv.text = detailResult.res.size.toString() + "명 응답"
 
         if(detailResult.format == 1 || detailResult.format == 2) { //객관식
+            binding.pieChart.visibility = View.VISIBLE
+            binding.resultAnswerRv.visibility = View.INVISIBLE
             //파이차트
             pieChart = binding.pieChart
             pieChart.setUsePercentValues(true)
@@ -124,9 +142,25 @@ class ResultActivity : AppCompatActivity(), ResultView {
             pieChart.invalidate()
         }
         else { //주관식
-            for (res in detailResult.res) {
-                setCardView(res.result)
-            }
+            binding.pieChart.visibility = View.INVISIBLE
+            binding.resultAnswerRv.visibility = View.VISIBLE
+
+            binding.resultAnswerRv.adapter = AnswerRAdapter(detailResult.res)
+//            for (res in detailResult.res) {
+//                Log.d("res", res.result
+//                )
+//                val answer = TextView(this@ResultActivity)
+//                answer.text = res.result
+//                answer.setTextSize(Dimension.SP, 13.0f)
+//                answer.setTextColor(Color.BLACK)
+////                answer.background.
+//                val param: LinearLayout.LayoutParams =
+//                    LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+//                param.setMargins(5, 5, 5, 5)
+//                answer.layoutParams = param
+//
+//                binding.root.addView(answer)
+//            }
         }
     }
 

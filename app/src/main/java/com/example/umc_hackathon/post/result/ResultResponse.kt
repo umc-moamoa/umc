@@ -13,7 +13,7 @@ data class DetailResult(
     @SerializedName("format") val format: Int,
     @SerializedName("question") val question: String,
     @SerializedName("getResultItems") val resultItem: List<ResultItem>,
-    @SerializedName("getResultStatisticsRes") val res: List<Result>,
+    @SerializedName("getResultStatisticsRes") val res: List<ResultAnswer>,
     @SerializedName("case1") val case1: Double,
     @SerializedName("case2") val case2: Double,
     @SerializedName("case3") val case3: Double,
@@ -29,6 +29,6 @@ data class ResultItem(
     @SerializedName("item") val item: String
 )
 
-data class Result(
+data class ResultAnswer(
     @SerializedName("result") val result: String
 )
