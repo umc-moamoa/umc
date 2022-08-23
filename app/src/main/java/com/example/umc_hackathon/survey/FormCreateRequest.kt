@@ -9,6 +9,6 @@ data class FormCreateRequest(
     @SerializedName("longCount") val longCount: Int,
     @SerializedName("title") val title: String,
     @SerializedName("content") val content: String,
-    @SerializedName("deadline") val deadline: Date,
+    @SerializedName("deadline") val deadline: String,
     @SerializedName("postDetails") val postDetails: List<List<String>>
 )

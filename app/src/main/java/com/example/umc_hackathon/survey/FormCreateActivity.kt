@@ -19,10 +19,13 @@ import com.example.umc_hackathon.databinding.ActivityFormCreateBinding
 import com.example.umc_hackathon.databinding.AddItemDialogBinding
 import com.example.umc_hackathon.post.FormListActivity
 import kotlinx.android.synthetic.main.dialog_option_item.*
+import okhttp3.internal.format
 import okhttp3.internal.notifyAll
 import org.w3c.dom.Text
 import retrofit2.http.Body
 import retrofit2.http.POST
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -152,7 +155,20 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
         }
 
         binding.formCreateBtn.setOnClickListener {
-            formCreate()
+            AlertDialog.Builder(this).run {
+                setTitle("설문을 저장하시겠습니까?")
+                setPositiveButton("네, 저장하겠습니다", DialogInterface.OnClickListener { dialogInterface, i ->
+                    formCreate()
+                    Toast.makeText(this@FormCreateActivity, "설문을 저장했습니다", Toast.LENGTH_SHORT).show()
+
+                    val intent = Intent(this@FormCreateActivity, FormListActivity::class.java)
+                    intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+                    finish()
+                })
+                setNegativeButton("아니요", null)
+                show()
+            }
         }
     }
 
@@ -164,7 +180,8 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
     private fun getForm(): FormCreateRequest {
         val formTitle: String = binding.formCreateTitleEt.text.toString()
         val formContent: String = binding.formCreateContentEt.text.toString()
-        val formDeadline: Date = Date(2022, 8, 30) // 임의 설정
+        val formDeadline: String = "2022-08-30"
+
         val postDetails: ArrayList<ArrayList<String>> = arrayListOf()
 
         for(i in 0 until createRAdapter.itemCount) {
@@ -175,7 +192,6 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
             if(questionList[i].type == "객관식(택1)" || questionList[i].type == "객관식(복수선택)") {
                 for(j in 0 until questionList[i].option!!.size) {
                     postDetail.add(questionList[i].option!![j].question)
-//                    Log.d("$j", "${questionList[i].option!![j].question}")
                 }
             }
 
