@@ -84,6 +84,7 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
 
     override fun onGetPostDetailSuccess(result: PostDetailResult) {
         binding.formDetailTitleTv.text = result.title
+        binding.formDetailInfoTv.text = result.content
         binding.formDetailItemCountTv.text = result.qCount.toString() + "개의 항목"
 
         if (result.status == "ACTIVE") {
