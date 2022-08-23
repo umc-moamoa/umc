@@ -58,19 +58,18 @@ class FormCreateRAdapter(val questionList: ArrayList<MyQuestion>): RecyclerView.
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        Log.d("FormCreateRAdapter", " - onBindViewHolder() called / position: $position")
+        Log.d("FormCreateRAdapter", "onBindViewHolder() called / position: $position")
         holder.title.text = (position + 1).toString() + "번. " + questionList[position].title
 
-        if(questionList[position].type == "주관식") {
-            holder.option.text = "주관식 질문입니다"
-        } else if(questionList[position].type == "객관식") {
+        if (questionList[position].type == "객관식(택1)" || questionList[position].type == "객관식(복수선택)") {
             var result: String = ""
             for(i in 0 until questionList[position].option!!.size) {
                 result += "${i + 1}번 " + questionList[position].option!![i].question + "\n"
             }
             holder.option.text = result
+        } else {
+            holder.option.text = "${questionList[position].type} 입니다."
         }
-
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

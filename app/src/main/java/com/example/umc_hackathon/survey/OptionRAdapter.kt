@@ -21,12 +21,8 @@ class OptionRAdapter(var optionList: ArrayList<Option>): RecyclerView.Adapter<Op
     }
 
     fun removeItem(position: Int) {
+        Log.d("옵션 삭제", optionList[position].question)
         optionList.removeAt(position)
-        notifyDataSetChanged()
-    }
-
-    fun clearAll() {
-        optionList = arrayListOf<Option>()
         notifyDataSetChanged()
     }
 

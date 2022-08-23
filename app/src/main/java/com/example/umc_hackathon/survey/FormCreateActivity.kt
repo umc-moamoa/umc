@@ -8,30 +8,45 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.set
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_hackathon.R
+import com.example.umc_hackathon.auth.User
 import com.example.umc_hackathon.databinding.ActivityFormCreateBinding
 import com.example.umc_hackathon.databinding.AddItemDialogBinding
 import com.example.umc_hackathon.post.FormListActivity
 import kotlinx.android.synthetic.main.dialog_option_item.*
 import okhttp3.internal.notifyAll
 import org.w3c.dom.Text
+import retrofit2.http.Body
+import retrofit2.http.POST
+import java.util.*
+import kotlin.collections.ArrayList
 
-class FormCreateActivity : AppCompatActivity() {
+class FormCreateActivity : AppCompatActivity(), FormCreateView {
 
+    private lateinit var binding: ActivityFormCreateBinding
     val builderItem by lazy {AddItemDialogBinding.inflate(layoutInflater)}
+
+    var categoryId: Long = 1
+    var shortCount: Int = 0
+    var longCount: Int = 0
+    var questionIndex: Int = 0
+    var postDetail: ArrayList<String> = arrayListOf()
+
+    var questionList = arrayListOf<MyQuestion>()
+    var createRAdapter = FormCreateRAdapter(questionList)
+
+    var optionList = arrayListOf<Option>()
+    var optionRAdapter = OptionRAdapter(optionList)
 
     @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityFormCreateBinding.inflate(layoutInflater)
+        binding = ActivityFormCreateBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
          // 카테고리 스피너
@@ -39,6 +54,7 @@ class FormCreateActivity : AppCompatActivity() {
         binding.formCreateSelectCategorySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, pos: Int, p3: Long) {
                 println(categoryList[pos] + "입니다")
+                categoryId = pos.toLong() + 1
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -47,13 +63,13 @@ class FormCreateActivity : AppCompatActivity() {
         }
 
         // 설문 타입 스피너에 따라 옵션 visibility 선택
-        val typeList = listOf("객관식", "주관식")
+        val typeList = listOf("객관식(택1)", "객관식(복수선택)", "단답형", "서술형")
         builderItem.dialogTypeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, pos: Int, p3: Long) {
-                if(pos == 0) {
+                if(pos == 0 || pos == 1) {
                     builderItem.dialogOptionLl.visibility = View.VISIBLE
                     builderItem.dialogItemOptionRv.visibility = View.VISIBLE
-                } else if (pos == 1) {
+                } else if (pos == 2 || pos == 3) {
                     builderItem.dialogOptionLl.visibility = View.GONE
                     builderItem.dialogItemOptionRv.visibility = View.GONE
                 }
@@ -67,17 +83,11 @@ class FormCreateActivity : AppCompatActivity() {
         }
 
         // 설문 작성 아이템 리사이클러뷰
-        var questionList = arrayListOf<MyQuestion>()
-        val rAdapter = FormCreateRAdapter(questionList)
-
         binding.formCreateListRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.formCreateListRv.setHasFixedSize(true)
         binding.formCreateListRv.adapter = FormCreateRAdapter(questionList)
 
         // 다이얼로그 옵션 리사이클러뷰
-        var optionList = arrayListOf<Option>()
-        val optionRAdapter = OptionRAdapter(optionList)
-
         builderItem.dialogItemOptionRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         builderItem.dialogItemOptionRv.setHasFixedSize(true)
         builderItem.dialogItemOptionRv.adapter = OptionRAdapter(optionList)
@@ -91,15 +101,15 @@ class FormCreateActivity : AppCompatActivity() {
 
         // 옵션 추가
         builderItem.dialogOptionAddIv.setOnClickListener {
-            Log.d("(추가) 옵션 개수", optionRAdapter.itemCount.toString())
             Log.d("옵션 추가 내용", builderItem.dialogOptionInputEt.text.toString())
 
             optionRAdapter.addItem(Option(builderItem.dialogOptionInputEt.text.toString()))
 
             builderItem.dialogOptionInputEt.setText("") // 초기화 시키기
+            Log.d("(추가) 옵션 개수", optionRAdapter.itemCount.toString())
         }
 
-
+        // 다이얼로그에서 쓰는 View들
         var questionEt = builderItem.dialogQuestionEt
         var questionSpinner = builderItem.dialogTypeSpinner
         var question: String
@@ -117,24 +127,75 @@ class FormCreateActivity : AppCompatActivity() {
                     (builderItem.root.parent as ViewGroup).removeView(builderItem.root)
                     questionEt.setText("")
                 }
-
                 setView(builderItem.root)
                 setPositiveButton("질문 저장", DialogInterface.OnClickListener { dialogInterface, i ->
                     question = questionEt.text.toString()
                     spinner = questionSpinner.selectedItem.toString()
 
-                    Log.d("질문 저장(질문) : ", question)
-                    Log.d("질문 저장(스피너) : ", spinner)
+                    Log.d("질문 저장(질문)", question)
+                    Log.d("질문 저장(스피너)", spinner)
 
-                    rAdapter.addItem(MyQuestion(question, spinner, optionList))
+                    if(spinner == "객관식(택1)" || spinner == "객관식(복수선택)" || spinner == "단답형") {
+                        shortCount += 1
+                    } else if(spinner == "서술형") {
+                        longCount += 1
+                    }
 
-                    optionList = arrayListOf<Option>()
-                    optionRAdapter.clearAll()
-                    Log.d("업샨 게스", optionList.size.toString())
+                    createRAdapter.addItem(MyQuestion(question, spinner, optionList))
+                    createRAdapter.notifyDataSetChanged()
+
+                    Log.d("옵션 개수", optionList.size.toString())
                 })
                 setNegativeButton("취소", null)
                 show()
             }
         }
+
+        binding.formCreateBtn.setOnClickListener {
+            formCreate()
+        }
+    }
+
+    private fun getJwt(): String? {
+        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf!!.getString("jwt", "")
+    }
+
+    private fun getForm(): FormCreateRequest {
+        val formTitle: String = binding.formCreateTitleEt.text.toString()
+        val formContent: String = binding.formCreateContentEt.text.toString()
+        val formDeadline: Date = Date(2022, 8, 30) // 임의 설정
+        val postDetails: ArrayList<ArrayList<String>> = arrayListOf()
+
+        for(i in 0 until createRAdapter.itemCount) {
+            postDetail = arrayListOf() // 초기화
+            postDetail.add((i + 1).toString())
+            postDetail.add(questionList[i].title)
+            
+            if(questionList[i].type == "객관식(택1)" || questionList[i].type == "객관식(복수선택)") {
+                for(j in 0 until questionList[i].option!!.size) {
+                    postDetail.add(questionList[i].option!![j].question)
+//                    Log.d("$j", "${questionList[i].option!![j].question}")
+                }
+            }
+
+            postDetails.add(postDetail)
+        }
+
+        return FormCreateRequest(categoryId, shortCount, longCount, formTitle, formContent, formDeadline, postDetails)
+    }
+
+    private fun formCreate() {
+        val formService = FormService()
+        formService.setFormCreateView(this)
+        formService.formCreate(getForm(), getJwt()!!)
+    }
+
+    override fun onFormCreateSuccess() {
+        Toast.makeText(this, "설문 등록에 성공했습니다", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onFormCreateFailure() {
+        Toast.makeText(this, "설문 등록에 실패했습니다", Toast.LENGTH_SHORT).show()
     }
 }
