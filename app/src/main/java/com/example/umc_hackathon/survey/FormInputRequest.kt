@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class FormInputRequest(
     @SerializedName("postId") val postId: Long,
-    @SerializedName("postDetailResults") val postDetailResults: List<List<List<String>>>
+    @SerializedName("postDetailResults") val postDetailResults: List<String>
 )
