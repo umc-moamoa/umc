@@ -36,6 +36,7 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
         binding.formDetailParticipateBtn.setOnClickListener {
             val intent = Intent(this, FormInputActivity::class.java)
             intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            intent.putExtra("postId", postId)
             startActivity(intent)
             finish()
         }
@@ -84,6 +85,7 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
 
     override fun onGetPostDetailSuccess(result: PostDetailResult) {
         binding.formDetailTitleTv.text = result.title
+        binding.formDetailInfoTv.text = result.content
         binding.formDetailItemCountTv.text = result.qCount.toString() + "개의 항목"
 
         if (result.status == "ACTIVE") {

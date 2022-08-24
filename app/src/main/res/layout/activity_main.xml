@@ -555,7 +555,8 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         android:paddingHorizontal="20dp"
-                        android:paddingVertical="15dp">
+                        android:paddingVertical="15dp"
+                        android:paddingBottom="30dp">
 
                         <TextView
                             android:id="@+id/main_waiting_survey_item_title_tv3"
