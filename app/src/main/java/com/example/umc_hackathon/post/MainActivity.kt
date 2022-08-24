@@ -10,7 +10,6 @@ import android.widget.ScrollView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_hackathon.FormDetailActivity
-import com.example.umc_hackathon.R
 import com.example.umc_hackathon.auth.LoginActivity
 import com.example.umc_hackathon.auth.MyPageActivity
 import com.example.umc_hackathon.databinding.ActivityMainBinding

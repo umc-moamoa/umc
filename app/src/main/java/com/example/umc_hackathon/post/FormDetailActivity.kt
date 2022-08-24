@@ -84,6 +84,20 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
 
     override fun onGetPostDetailSuccess(result: PostDetailResult) {
         binding.formDetailTitleTv.text = result.title
+        binding.formDetailItemCountTv.text = result.qCount.toString() + "개의 항목"
+
+        if (result.status == "ACTIVE") {
+            if (result.dday == 0) {
+                binding.formDetailItemDeadlineTv.text = "D - DAY"
+            }
+            else {
+                binding.formDetailItemDeadlineTv.text = "D - " + result.dday.toString()
+            }
+        }
+        else {
+            binding.formDetailItemDeadlineTv.text = "마감"
+        }
+
         if(result.myPost) {
             Log.d("mypost", result.myPost.toString())
             binding.formDetailParticipateBtn.visibility = View.INVISIBLE
@@ -103,6 +117,11 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
                 binding.formDetailLikeBtnCv.visibility = View.INVISIBLE
                 binding.formDetailDislikeBtnCv.visibility = View.VISIBLE
             }
+
+            // status = closed일 때 button 비활성화
+            if(result.status == "CLOSED") {
+                binding.formDetailParticipateBtn.isEnabled = false
+            }
         }
         Log.d("PostDetail / ", "상세페이지를 불러오는데 성공했습니다")
     }
@@ -111,6 +130,7 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
         Log.d("PostDetail / ", "상세페이지를 불러오는데 실패했습니다")
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     override fun onLikeSuccess() {
