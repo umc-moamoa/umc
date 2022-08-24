@@ -13,7 +13,7 @@ class QuestionItemActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQuestionItemBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_question_item)
+        setContentView(binding.root)
 
     }
 }

@@ -171,7 +171,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/form_detail_dislikeBtn_cv"/>
 
-
         <Button
             android:id="@+id/form_detail_participate_btn"
             android:layout_width="160dp"

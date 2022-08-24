@@ -12,18 +12,20 @@
         android:id="@+id/question_item_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingHorizontal="20dp">
 
-        <EditText
+        <TextView
             android:id="@+id/question_item_et"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="질문을 입력하세요."
-            android:textSize="14sp" />
+            android:text="질문"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_medium"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -31,12 +33,13 @@
         android:id="@+id/question_item_option_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="20dp"
         android:orientation="vertical"
         android:paddingHorizontal="20dp">
 
         <TextView
+            android:id="@+id/question_item_option_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="옵션" />
