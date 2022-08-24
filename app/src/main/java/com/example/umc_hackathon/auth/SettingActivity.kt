@@ -4,12 +4,16 @@ import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.umc_hackathon.databinding.DialogSettingBinding
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.umc_hackathon.databinding.ActivitySettingBinding
 import com.example.umc_hackathon.post.MainActivity
 
 class SettingActivity : AppCompatActivity(), UserSettingView {
+
+    private lateinit var dialogBinding: DialogSettingBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivitySettingBinding.inflate(layoutInflater)
@@ -21,6 +25,32 @@ class SettingActivity : AppCompatActivity(), UserSettingView {
             startActivity(intent)
             finish()
         }
+
+
+        binding.settingQuitCv.setOnClickListener {
+            val dialog = CustomDialog(this)
+            dialog.initViews()
+            dialog.setOnClickListener(object : CustomDialog.OnDialogClickListener {
+                override fun onClicked(flag: Boolean) {
+                    if (flag) {
+                        quitUser()
+                    }
+                }
+            })
+//            val builder = AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Light_Dialog)
+//            builder
+//                .setMessage("탈퇴 후엔 보유하고 있던 포인트, 이력 등은 모두 소멸되며 복구는 불가능합니다. 정말 떠나시겠습니까?")
+//                .setPositiveButton("나중에",
+//                    DialogInterface.OnClickListener { dialog, id ->
+//                    })
+//                .setNegativeButton("떠나기",
+//                    DialogInterface.OnClickListener { dialog, id ->
+//                        quitUser()
+//                    })
+//                .setCancelable(false)
+//            // 다이얼로그를 띄워주기
+//            builder.show()
+          }
 
         binding.settingLogoutCv.setOnClickListener {
             var dialog = AlertDialog.Builder(this)
@@ -53,10 +83,6 @@ class SettingActivity : AppCompatActivity(), UserSettingView {
             dialog.setPositiveButton("네", dialogListener)
             dialog.setNegativeButton("아니요", null)
             dialog.show()
-        }
-
-        binding.settingQuitCv.setOnClickListener {
-            quitUser()
         }
     }
 

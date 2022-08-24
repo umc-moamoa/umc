@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Umc_hackathon"
         android:usesCleartextTraffic="true">
-        <activity
+         <activity
             android:name=".StartActivity"
             android:exported="true"
             android:theme="@style/Theme.Design.Light.NoActionBar">
@@ -21,6 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".post.result.ResultActivity"
+            android:exported="false"/>
         <activity
             android:name=".survey.QuestionItemActivity"
             android:exported="false" />
@@ -48,6 +51,7 @@
         <activity
             android:name=".post.MainActivity"
             android:exported="false"></activity>
+
         <activity
             android:name=".auth.JoinActivity"
             android:exported="false" />

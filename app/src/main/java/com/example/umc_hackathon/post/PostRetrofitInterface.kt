@@ -1,5 +1,6 @@
 package com.example.umc_hackathon.post
 
+import com.example.umc_hackathon.post.result.DetailIdResponse
 import com.example.umc_hackathon.post.result.ResultResponse
 import retrofit2.Call
 import retrofit2.http.*
@@ -60,6 +61,11 @@ interface PostRetrofitInterface {
     fun getResults(
         @Path("postDetailId") postDetailId: Long
     ): Call<ResultResponse>
+
+    @GET("/results/repeat/{postId}")
+    fun getDetailId(
+        @Path("postId") postId: Long
+    ): Call<DetailIdResponse>
 
     @PATCH("/posts/{postId}/status")
     fun deletePost(
