@@ -14,6 +14,7 @@ class AuthService {
     private lateinit var joinView: JoinView
     private lateinit var loginView: LoginView
     private lateinit var userInfoView: UserInfoView
+    private lateinit var joinCheckView: JoinCheckView
     private lateinit var userSettingView: UserSettingView
 
     fun setJoinView(joinView: JoinView) {
@@ -26,6 +27,10 @@ class AuthService {
 
     fun setUserInfoView(userInfoView: UserInfoView) {
         this.userInfoView = userInfoView
+    }
+
+    fun setJoinCheckView(joinCheckView: JoinCheckView) {
+        this.joinCheckView = joinCheckView
     }
 
     fun setUserSettingView(userSettingView: UserSettingView){
@@ -102,6 +107,48 @@ class AuthService {
         })
 
         Log.d("service/userInfo()", "메소드")
+    }
+
+    fun joinCheck(id: String, nick: String) {
+        val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
+
+        authService.joinIdCheck(id).enqueue(object: Callback<JoinCheckResponse> {
+            override fun onResponse(call: Call<JoinCheckResponse>, response: Response<JoinCheckResponse>) {
+                if(response.body() != null) {
+                    Log.d("JOINIDCHECK/SUCCESS", response.toString())
+
+                    val resp: JoinCheckResponse = response.body()!!
+                    when(resp.code) {
+                        1000 -> joinCheckView.onJoinIdCheckSuccess()
+                        else -> joinCheckView.onJoinIdCheckFailure()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<JoinCheckResponse>, t: Throwable) {
+                Log.d("JOINIDCHECK/FAILURE", t.message.toString())
+            }
+        })
+
+        authService.joinNickCheck(nick).enqueue(object: Callback<JoinCheckResponse> {
+            override fun onResponse(call: Call<JoinCheckResponse>, response: Response<JoinCheckResponse>) {
+                if(response.body() != null) {
+                    Log.d("JOINNICKCHECK/SUCCESS", response.toString())
+
+                    val resp: JoinCheckResponse = response.body()!!
+                    when(resp.code) {
+                        1000 -> joinCheckView.onJoinNickCheckSuccess()
+                        else -> joinCheckView.onJoinNickCheckFailure()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<JoinCheckResponse>, t: Throwable) {
+                Log.d("JOINNICKCHECK/FAILURE", t.message.toString())
+            }
+        })
+
+        Log.d("JOINCHECK()/", "메소드")
     }
 
     fun deleteUser(jwt: String) {

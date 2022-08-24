@@ -8,7 +8,7 @@ import android.widget.Toast
 import com.example.umc_hackathon.databinding.ActivityJoinBinding
 import com.example.umc_hackathon.post.MainActivity
 
-class JoinActivity : AppCompatActivity(), JoinView {
+class JoinActivity : AppCompatActivity(), JoinView, JoinCheckView {
 
     private lateinit var binding: ActivityJoinBinding
 
@@ -16,6 +16,15 @@ class JoinActivity : AppCompatActivity(), JoinView {
         super.onCreate(savedInstanceState)
         binding = ActivityJoinBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // joinCheck
+        binding.joinIdDuplicateCheckEt.setOnClickListener {
+            joinIdCheck()
+        }
+
+        binding.joinNicknameDuplicateCheckEt.setOnClickListener {
+            joinNickCheck()
+        }
 
         binding.joinLoginBtn.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
@@ -85,5 +94,36 @@ class JoinActivity : AppCompatActivity(), JoinView {
     override fun onJoinFailure() {
         Toast.makeText(this, "회원가입에 실패했습니다", Toast.LENGTH_SHORT).show()
         clearInputText()
+    }
+
+    // joinCheck
+    private fun joinIdCheck() {
+        val authService = AuthService()
+        authService.setJoinCheckView(this)
+        authService.joinCheck(getUser().id, "")
+    }
+
+    private fun joinNickCheck() {
+        val authService = AuthService()
+        authService.setJoinCheckView(this)
+        authService.joinCheck("", getUser().nick)
+    }
+
+    override fun onJoinIdCheckSuccess() {
+        Toast.makeText(this, "아이디 중복 확인에 성공했습니다", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onJoinIdCheckFailure() {
+        Toast.makeText(this, "아이디 중복 확인에 실패했습니다", Toast.LENGTH_SHORT).show()
+        binding.joinSubmitBtn.isEnabled = false
+    }
+
+    override fun onJoinNickCheckSuccess() {
+        Toast.makeText(this, "닉네임 중복 확인에 성공했습니다", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onJoinNickCheckFailure() {
+        Toast.makeText(this, "닉네임 중복 확인에 실패했습니다", Toast.LENGTH_SHORT).show()
+        binding.joinSubmitBtn.isEnabled = false
     }
 }

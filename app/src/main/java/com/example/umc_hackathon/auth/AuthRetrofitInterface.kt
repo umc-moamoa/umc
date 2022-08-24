@@ -19,4 +19,10 @@ interface AuthRetrofitInterface {
     fun deleteUser(
         @Header("x-access-token") jwt: String
     ): Call<UserDeleteResponse>
+
+    @GET("/users/id/{id}")
+    fun joinIdCheck(@Path("id") id: String): Call<JoinCheckResponse>
+
+    @GET("/users/nick/{nick}")
+    fun joinNickCheck(@Path("nick") nick: String): Call<JoinCheckResponse>
 }
