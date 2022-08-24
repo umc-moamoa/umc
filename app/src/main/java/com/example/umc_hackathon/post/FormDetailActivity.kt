@@ -118,6 +118,11 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
                 binding.formDetailLikeBtnCv.visibility = View.INVISIBLE
                 binding.formDetailDislikeBtnCv.visibility = View.VISIBLE
             }
+
+            // status = closed일 때 button 비활성화
+            if(result.status == "CLOSED") {
+                binding.formDetailParticipateBtn.isEnabled = false
+            }
         }
         Log.d("PostDetail / ", "상세페이지를 불러오는데 성공했습니다")
     }
@@ -126,6 +131,7 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
         Log.d("PostDetail / ", "상세페이지를 불러오는데 실패했습니다")
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     override fun onLikeSuccess() {
