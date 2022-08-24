@@ -1,5 +1,6 @@
 package com.example.umc_hackathon.post.result
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
@@ -20,12 +21,15 @@ import com.example.umc_hackathon.databinding.ActivityResultBinding
 import com.example.umc_hackathon.databinding.FragmentResultBinding
 import com.example.umc_hackathon.post.AnswerRAdapter
 import com.example.umc_hackathon.post.FormListRAdapter
+import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
+import com.github.mikephil.charting.utils.ColorTemplate
 import com.github.mikephil.charting.utils.MPPointF
+import kotlin.math.log
 
 class ResultActivity : AppCompatActivity(), ResultView {
 
@@ -80,8 +84,8 @@ class ResultActivity : AppCompatActivity(), ResultView {
 
 //        for (i in startId..endId)
 //        {
-            resultService.getResult(52)
-            //        resultService.getResult(detailId)
+//        resultService.getResult(52)
+        resultService.getResult(detailId)
 //        }
     }
 
@@ -98,8 +102,9 @@ class ResultActivity : AppCompatActivity(), ResultView {
             pieChart.description.isEnabled = false
 //            pieChart.setExtraOffsets(5f, 10f, 5f, 5f)
 //            pieChart.dragDecelerationFrictionCoef = 0.95f
-//            pieChart.isDrawHoleEnabled = true
+            pieChart.isDrawHoleEnabled = true
 //            pieChart.setHoleColor(Color.WHITE)
+//            pieChart.setBackgroundColor(color)
 //            pieChart.setTransparentCircleColor(Color.WHITE)
 //            pieChart.setTransparentCircleAlpha(110)
 //            pieChart.holeRadius = 58f
@@ -113,31 +118,42 @@ class ResultActivity : AppCompatActivity(), ResultView {
 //            pieChart.setEntryLabelTextSize(12f)
 
             val visitors: ArrayList<PieEntry> = ArrayList()
-            for (i in detailResult.statistics) {
-                visitors.add(PieEntry(i))
-                Log.d("detail-result", i.toString())
+            for (i in 0 until detailResult.resultItem.size) {
+                visitors.add(PieEntry(detailResult.statistics[i], detailResult.resultItem[i].item))
+                Log.d("detail-result", detailResult.resultItem[i].item)
             }
+            pieChart.animateY(1000, Easing.EaseInOutCubic)
 
-            val pieDataSet = PieDataSet(visitors, "visitors")
+            val pieDataSet = PieDataSet(visitors, "")
             pieDataSet.sliceSpace = 3f
             pieDataSet.iconsOffset = MPPointF(0f, 40f)
             pieDataSet.selectionShift = 5f
 
-            val colors: ArrayList<Int> = ArrayList()
-            colors.add(R.color.baby_pink)
-            colors.add(R.color.pale)
-            colors.add(R.color.pale_peach)
-            colors.add(R.color.light_blue_grey)
-            colors.add(R.color.pig_pink)
-            colors.add(R.color.powder_blue)
-            colors.add(R.color.light_periwinkle)
-            colors.add(R.color.liget_grey_blue)
+            val mColors: List<Int> = listOf(
+                R.color.baby_pink, R.color.pale, R.color.pale_peach, R.color.light_blue_grey,
+                R.color.powder_blue, R.color.light_periwinkle, R.color.liget_grey_blue, R.color.pig_pink
+            )
+//            mColors.add(R.color.baby_pink)
+//            mColors.add(R.color.pale)
+//            mColors.add(R.color.pale_peach)
+//            mColors.add(R.color.light_blue_grey)
+//            mColors.add(R.color.pig_pink)
+//            mColors.add(R.color.powder_blue)
+//            mColors.add(R.color.light_periwinkle)
+//            mColors.add(R.color.liget_grey_blue)
 
-            pieDataSet.colors = colors
+//            val colors: List<Int>
+//            for (i in 0 until detailResult.resultItem.size) {
+//                colors.add(mColors[i])
+//                Log.d("color", mColors[i].toString())
+//            }
+
+            pieDataSet.colors = mColors
+//            pieDataSet.colors = ColorTemplate.VORDIPLOM_COLORS
 
             val pieData = PieData(pieDataSet)
             pieData.setValueFormatter(PercentFormatter())
-            pieData.setValueTextSize(15f)
+            pieData.setValueTextSize(12f)
             pieData.setValueTypeface(Typeface.DEFAULT_BOLD)
             pieData.setValueTextColor(Color.WHITE)
             pieChart.data = pieData
