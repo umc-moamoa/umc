@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.umc_hackathon.R
 
 
-class MyPointRAdapter(val pointList: List<PointHistoryRecent>): RecyclerView.Adapter<MyPointRAdapter.MyViewHolder>() {
+class MyPointRAdapter(val pointRecentList: List<PointHistoryRecent>, val pointFormerList: List<PointHistoryFormer>): RecyclerView.Adapter<MyPointRAdapter.MyViewHolder>() {
 
     val TAG: String = "<MyPointRAdapter>"
 
@@ -23,27 +23,54 @@ class MyPointRAdapter(val pointList: List<PointHistoryRecent>): RecyclerView.Ada
     }
 
     override fun getItemCount(): Int {
-        return pointList.size
+        if (pointRecentList.size != 0) {
+            return pointRecentList.size
+        }
+
+        else {
+            return pointFormerList.size
+        }
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         Log.d(TAG, " - onBindViewHolder() called / position: $position")
 
-        if (pointList[position].addAmount != 0) {
-            holder.point.text = "+" + pointList[position].addAmount.toString() + "P"
-            holder.point.setTextColor(Color.parseColor("#7798dd"))
-            holder.state.text = "적립"
+        if (pointRecentList.size != 0) {
+            if (pointRecentList[position].addAmount != 0) {
+                holder.point.text = "+" + pointRecentList[position].addAmount.toString() + "P"
+                holder.point.setTextColor(Color.parseColor("#7798dd"))
+                holder.state.text = "적립"
 
+            }
+
+            if (pointRecentList[position].subAmount != 0) {
+                holder.point.text = "-" + pointRecentList[position].subAmount.toString() + "P"
+                holder.point.setTextColor(Color.parseColor("#e279be"))
+                holder.state.text = "사용"
+            }
+
+            holder.date.text = pointRecentList[position].created.toString()
+            Log.d("date", " : " +  pointRecentList[position].created)
         }
 
-        if (pointList[position].subAmount != 0) {
-            holder.point.text = "-" + pointList[position].subAmount.toString() + "P"
-            holder.point.setTextColor(Color.parseColor("#e279be"))
-            holder.state.text = "사용"
+        else {
+            if (pointFormerList[position].addAmount != 0) {
+                holder.point.text = "+" + pointFormerList[position].addAmount.toString() + "P"
+                holder.point.setTextColor(Color.parseColor("#7798dd"))
+                holder.state.text = "적립"
+
+            }
+
+            if (pointFormerList[position].subAmount != 0) {
+                holder.point.text = "-" + pointFormerList[position].subAmount.toString() + "P"
+                holder.point.setTextColor(Color.parseColor("#e279be"))
+                holder.state.text = "사용"
+            }
+
+            holder.date.text = pointFormerList[position].created.toString()
+            Log.d("date", " : " +  pointFormerList[position].created)
         }
 
-        holder.date.text = pointList[position].created.toString()
-        Log.d("date", " : " +  pointList[position].created)
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
