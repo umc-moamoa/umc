@@ -29,7 +29,7 @@ class FormDetailRAdapter(val questionList: List<FormDetail>): RecyclerView.Adapt
         // 질문 유형에 따라 다르게 보이기
         if(questionList[position].format == 1) {
             for(i in 0 until questionList[position].items.size) {
-                Log.d("items", questionList[position].items[i])
+                Log.d("${questionList[position].items[i]}", questionList[position].items[i])
 
                 val radioButton: RadioButton = RadioButton(holder.itemView.context)
                 radioButton.text = questionList[position].items[i]
@@ -42,7 +42,7 @@ class FormDetailRAdapter(val questionList: List<FormDetail>): RecyclerView.Adapt
             holder.optionLong.visibility = View.GONE
         } else if(questionList[position].format == 2) {
             for(i in 0 until questionList[position].items.size) {
-                Log.d("items", questionList[position].items[i])
+                Log.d("${questionList[position].items[i]}", questionList[position].items[i])
 
                 val checkBox: CheckBox = CheckBox(holder.itemView.context)
                 checkBox.text = questionList[position].items[i]
