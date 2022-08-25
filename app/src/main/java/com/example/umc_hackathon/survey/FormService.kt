@@ -10,6 +10,7 @@ class FormService {
 
     private lateinit var formCreateView: FormCreateView
     private lateinit var formDetailView: FormDetailView
+    private lateinit var formInputView: FormInputView
 
     fun setFormCreateView(formCreateView: FormCreateView) {
         this.formCreateView = formCreateView
@@ -17,6 +18,10 @@ class FormService {
 
     fun setFormDetailView(formDetailView: FormDetailView) {
         this.formDetailView = formDetailView
+    }
+
+    fun setFormInputView(formInputView: FormInputView) {
+        this.formInputView = formInputView
     }
 
     fun formCreate(formCreateRequest: FormCreateRequest, jwt: String) {
@@ -59,6 +64,28 @@ class FormService {
 
             override fun onFailure(call: Call<FormDetailResponse>, t: Throwable) {
                 Log.d("getFormDetail() 실패", t.message.toString())
+            }
+        })
+    }
+
+    fun formInput(formInputRequest: FormInputRequest, jwt: String) {
+        val formService = getRetrofit().create(FormRetrofitInterface::class.java)
+
+        formService.formInput(formInputRequest, jwt).enqueue(object: Callback<FormInputResponse> {
+            override fun onResponse(call: Call<FormInputResponse>, response: Response<FormInputResponse>) {
+                if(response.body() != null) {
+                    Log.d("formInput()", response.body().toString())
+                    val formInputResponse: FormInputResponse = response.body()!!
+
+                    when(formInputResponse.code) {
+                        1000 -> formInputView.onFormInputSuccess()
+                        else -> formInputView.onFormInputFailure()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<FormInputResponse>, t: Throwable) {
+                Log.d("formInput() 실패", t.message.toString())
             }
         })
     }

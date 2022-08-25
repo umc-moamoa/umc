@@ -73,12 +73,13 @@ interface PostRetrofitInterface {
         @Header("x-access-token") jwt: String
     ): Call<StringResultResponse> //같은 형식이라 공유해서 사용
 
-    // 포인트 내역 조회
+    // 포인트 내역 최신 순으로 조회
     @GET("/users/point/recent")
     fun getRecentMyPoint(
         @Header("x-access-token") jwt: String
     ): Call<MyPointResponse>
 
+    // 포인트 내역 오래된 순으로 조회
     @GET("/users/point/former")
     fun getFormerMyPoint(
         @Header("x-access-token") jwt: String
