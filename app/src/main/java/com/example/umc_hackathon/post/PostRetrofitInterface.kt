@@ -75,7 +75,12 @@ interface PostRetrofitInterface {
 
     // 포인트 내역 조회
     @GET("/users/point/recent")
-    fun getMyPoint(
+    fun getRecentMyPoint(
+        @Header("x-access-token") jwt: String
+    ): Call<MyPointResponse>
+
+    @GET("/users/point/former")
+    fun getFormerMyPoint(
         @Header("x-access-token") jwt: String
     ): Call<MyPointResponse>
 }
