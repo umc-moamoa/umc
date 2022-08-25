@@ -3,9 +3,11 @@ package com.example.umc_hackathon.survey
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.RadioButton
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_hackathon.FormDetailActivity
+import com.example.umc_hackathon.R
 import com.example.umc_hackathon.databinding.ActivityFormInputBinding
 
 class FormInputActivity : AppCompatActivity(), FormDetailView {
@@ -20,7 +22,6 @@ class FormInputActivity : AppCompatActivity(), FormDetailView {
 
         // 설문조사 상세 페이지에서 살문 조사 참여 페이지로 넘어올 때 넘어오는 것
         postId = intent.getLongExtra("postId", postId)
-
 
         // 어댑터
         binding.formInputRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
