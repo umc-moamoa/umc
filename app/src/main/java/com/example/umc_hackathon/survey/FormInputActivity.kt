@@ -18,6 +18,7 @@ class FormInputActivity : AppCompatActivity(), FormDetailView {
     private lateinit var binding: ActivityFormInputBinding
     private var postId: Long = 0L
     lateinit var answerList: List<List<String>>
+    var exampleList = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +42,11 @@ class FormInputActivity : AppCompatActivity(), FormDetailView {
         }
 
         binding.formInputSubmitBtn.setOnClickListener {
+            Log.d("제출", exampleList.size.toString())
+            for(i in 0 until exampleList.size) {
+                Log.d("${i}번", exampleList[i])
+            }
+
             val intent = Intent(this, FormDetailActivity::class.java)
             intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
@@ -60,7 +66,13 @@ class FormInputActivity : AppCompatActivity(), FormDetailView {
     }
 
     override fun onFormDetailSuccess(formDetailResponse: FormDetailResponse) {
-        binding.formInputRv.adapter = FormDetailRAdapter(formDetailResponse.result)
+        exampleList = ArrayList<String>()
+
+        binding.formInputRv.adapter = FormDetailRAdapter(formDetailResponse.result, itemClick = {
+            it.forEach{ item ->
+                exampleList.add(item)
+            }
+        })
         Toast.makeText(this, "설문 조사 문항 불러오기에 성공했습니다", Toast.LENGTH_SHORT).show()
     }
 
