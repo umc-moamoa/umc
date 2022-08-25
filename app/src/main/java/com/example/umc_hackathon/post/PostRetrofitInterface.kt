@@ -1,5 +1,6 @@
 package com.example.umc_hackathon.post
 
+import com.example.umc_hackathon.post.result.DetailIdResponse
 import com.example.umc_hackathon.post.result.ResultResponse
 import retrofit2.Call
 import retrofit2.http.*
@@ -61,6 +62,11 @@ interface PostRetrofitInterface {
         @Path("postDetailId") postDetailId: Long
     ): Call<ResultResponse>
 
+    @GET("/results/repeat/{postId}")
+    fun getDetailId(
+        @Path("postId") postId: Long
+    ): Call<DetailIdResponse>
+
     @PATCH("/posts/{postId}/status")
     fun deletePost(
         @Path("postId") postId: Long,
@@ -69,7 +75,12 @@ interface PostRetrofitInterface {
 
     // 포인트 내역 조회
     @GET("/users/point/recent")
-    fun getMyPoint(
+    fun getRecentMyPoint(
+        @Header("x-access-token") jwt: String
+    ): Call<MyPointResponse>
+
+    @GET("/users/point/former")
+    fun getFormerMyPoint(
         @Header("x-access-token") jwt: String
     ): Call<MyPointResponse>
 }

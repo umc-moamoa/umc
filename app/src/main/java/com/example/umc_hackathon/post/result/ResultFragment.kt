@@ -1,12 +1,18 @@
 package com.example.umc_hackathon.post.result
 
+import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RelativeLayout
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import com.example.umc_hackathon.R
 import com.example.umc_hackathon.databinding.FragmentResultBinding
 import com.github.mikephil.charting.charts.PieChart
@@ -35,9 +41,13 @@ class ResultFragment : Fragment(), ResultView {
     private fun getResultDetail(detailId: Long) {
         val resultService = ResultService()
         resultService.setResultView(this)
-        resultService.getResult(detailId)
-
+//        resultService.getResult(detailId)
     }
+
+//    private fun getJwt(): String? {
+//        val spf = context?.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+//        return spf!!.getString("jwt", "")
+//    }
 
     override fun onGetResultSuccess(detailResult: DetailResult) {
         binding.formResultQuestionTv.text = detailResult.question
@@ -83,13 +93,50 @@ class ResultFragment : Fragment(), ResultView {
             pieChart.invalidate()
         }
         else { //주관식
-
+            for (res in detailResult.res) {
+                setCardView(res.result)
+            }
         }
     }
 
-    override fun onGetResultFailure() {
+    override fun onGetResultFailure(message: String) {
+        Log.d("result_fragment-fail", message)
+    }
+
+    override fun onGetDetailIdSuccess(result: DetailIdResponse) {
         TODO("Not yet implemented")
     }
+
+    override fun onGetDetailIdFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    private fun setCardView(res: String) {
+        val layoutParams = RelativeLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        layoutParams.setMargins(10, 10, 10, 10)
+
+        val resCardView = context?.let { CardView(it) }
+        resCardView?.layoutParams = layoutParams
+        resCardView?.radius = 10F
+        resCardView?.setContentPadding(10, 10, 10, 10)
+        resCardView?.setCardBackgroundColor(Color.LTGRAY)
+        resCardView?.cardElevation = 8F
+//                resCardView?.addView(genera)
+
+        val one = TextView(context)
+        one.text = res
+        one.textSize = 12f
+        one.setTextColor(Color.BLACK)
+
+        resCardView?.addView(one)
+
+        binding.root.addView(resCardView)
+    }
+
+
 
 
 }

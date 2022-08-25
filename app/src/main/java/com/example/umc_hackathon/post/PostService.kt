@@ -53,15 +53,15 @@ class PostService {
 
         postService.getPostList(category).enqueue(object: Callback<PostListResponse> {
             override fun onResponse(call: Call<PostListResponse>, response: Response<PostListResponse>) {
-               if(response.body() != null) {
-                   Log.d("getPostList()", " / " + response.body())
-                   val postList: PostListResponse = response.body()!!
+                if(response.body() != null) {
+                    Log.d("getPostList()", " / " + response.body())
+                    val postList: PostListResponse = response.body()!!
 
-                   when(postList.code) {
-                       1000 -> postListView.onGetPostListSuccess(postList)
-                       else -> postListView.onGetPostListFailure()
-                   }
-               }
+                    when(postList.code) {
+                        1000 -> postListView.onGetPostListSuccess(postList)
+                        else -> postListView.onGetPostListFailure()
+                    }
+                }
             }
 
             override fun onFailure(call: Call<PostListResponse>, t: Throwable) {
@@ -278,17 +278,17 @@ class PostService {
         })
     }
 
-    fun getMyPoint(jwt: String) {
+    fun getRecentMyPoint(jwt: String) {
         val postService = getRetrofit().create(PostRetrofitInterface::class.java)
 
-        postService.getMyPoint(jwt).enqueue(object: Callback<MyPointResponse> {
+        postService.getRecentMyPoint(jwt).enqueue(object: Callback<MyPointResponse> {
             override fun onResponse(call: Call<MyPointResponse>, response: Response<MyPointResponse>) {
                 if(response.body() != null) {
-                    Log.d("getMyPoint()", " / " + response.body())
+                    Log.d("getRecentMyPoint()", " / " + response.body())
                     val myPointList: MyPointResponse = response.body()!!
 
                     when(myPointList.code) {
-                        1000 -> myPointView.onGetMyPointSuccess(myPointList)
+                        1000 -> myPointView.onGetMyRecentPointSuccess(myPointList)
                         else -> myPointView.onGetMyPointFailure()
                     }
 
@@ -300,10 +300,35 @@ class PostService {
             }
 
             override fun onFailure(call: Call<MyPointResponse>, t: Throwable) {
-                Log.d("getMyPoint()", " 실패 / " + t.message.toString())
+                Log.d("getRecentMyPoint()", " 실패 / " + t.message.toString())
             }
         })
+    }
 
-        Log.d("getMyPoint()", " / PostService에서 메소드")
+    fun getFormerMyPoint(jwt: String) {
+        val postService = getRetrofit().create(PostRetrofitInterface::class.java)
+
+        postService.getFormerMyPoint(jwt).enqueue(object: Callback<MyPointResponse> {
+            override fun onResponse(call: Call<MyPointResponse>, response: Response<MyPointResponse>) {
+                if(response.body() != null) {
+                    Log.d("getFormerMyPoint()", " / " + response.body())
+                    val myPointFormerList: MyPointResponse = response.body()!!
+
+                    when(myPointFormerList.code) {
+                        1000 -> myPointView.onGetMyFormerPointSuccess(myPointFormerList)
+                        else -> myPointView.onGetMyPointFailure()
+                    }
+
+                    when(val code = myPointFormerList.code) {
+                        1000 -> myPointView.onGetMyTotalPointSuccess(code, myPointFormerList.result!!)
+                        else -> myPointView.onGetMyPointFailure()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<MyPointResponse>, t: Throwable) {
+                Log.d("getFormerMyPoint()", " 실패 / " + t.message.toString())
+            }
+        })
     }
 }

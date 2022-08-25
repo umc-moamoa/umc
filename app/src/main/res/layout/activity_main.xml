@@ -160,7 +160,7 @@
                             <TextView
                                 android:id="@+id/main_popular_first_title_tv"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_height="38dp"
                                 android:layout_marginBottom="5dp"
                                 android:fontFamily="@font/roboto_bold"
                                 android:text="첫 번째로 인기있는 설문조사입니다."
@@ -233,7 +233,7 @@
                             <TextView
                                 android:id="@+id/main_second_title_tv"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_height="38dp"
                                 android:layout_marginBottom="5dp"
                                 android:fontFamily="@font/roboto_bold"
                                 android:text="두 번째로 인기있는 설문조사입니다."
@@ -306,7 +306,7 @@
                             <TextView
                                 android:id="@+id/main_third_title_tv"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_height="38dp"
                                 android:layout_marginBottom="5dp"
                                 android:fontFamily="@font/roboto_bold"
                                 android:text="세 번째로 인기있는 설문조사입니다."
@@ -555,7 +555,8 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         android:paddingHorizontal="20dp"
-                        android:paddingVertical="15dp">
+                        android:paddingVertical="15dp"
+                        android:paddingBottom="30dp">
 
                         <TextView
                             android:id="@+id/main_waiting_survey_item_title_tv3"

@@ -10,11 +10,14 @@ import androidx.core.view.isVisible
 import com.example.umc_hackathon.auth.LoginActivity
 import com.example.umc_hackathon.databinding.ActivityFormDetailBinding
 import com.example.umc_hackathon.post.*
+import com.example.umc_hackathon.post.result.ResultActivity
+import com.example.umc_hackathon.post.result.ResultFragment
 import com.example.umc_hackathon.survey.FormInputActivity
 
 class FormDetailActivity : AppCompatActivity(), PostDetailView {
 
     private var postId: Long = 0L
+    private lateinit var postTitle: String
     private lateinit var binding: ActivityFormDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +39,7 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
         binding.formDetailParticipateBtn.setOnClickListener {
             val intent = Intent(this, FormInputActivity::class.java)
             intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            intent.putExtra("postId", postId)
             startActivity(intent)
             finish()
         }
@@ -48,6 +52,14 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
         }
         binding.formDetailDeleteBtn.setOnClickListener {
             deletePost()
+        }
+        binding.formDetailResultBtn.setOnClickListener {
+            val intent = Intent(this, ResultActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            intent.putExtra("postId", postId)
+            intent.putExtra("postTitle", postTitle)
+            startActivity(intent)
+            finish()
         }
     }
 
@@ -83,7 +95,9 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
     }
 
     override fun onGetPostDetailSuccess(result: PostDetailResult) {
-        binding.formDetailTitleTv.text = result.title
+        postTitle = result.title
+        binding.formDetailTitleTv.text = postTitle
+        binding.formDetailInfoTv.text = result.content
         binding.formDetailItemCountTv.text = result.qCount.toString() + "개의 항목"
 
         if (result.status == "ACTIVE") {
@@ -101,7 +115,7 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
         if(result.myPost) {
             Log.d("mypost", result.myPost.toString())
             binding.formDetailParticipateBtn.visibility = View.INVISIBLE
-            binding.formDetailUpdateBtn.visibility = View.VISIBLE
+            binding.formDetailResultBtn.visibility = View.VISIBLE
             binding.formDetailDislikeBtnCv.visibility = View.INVISIBLE
             binding.formDetailLikeBtnCv.visibility = View.INVISIBLE
             binding.formDetailDeleteBtn.visibility = View.VISIBLE

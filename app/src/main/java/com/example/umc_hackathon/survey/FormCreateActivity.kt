@@ -186,13 +186,25 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
 
         for(i in 0 until createRAdapter.itemCount) {
             postDetail = arrayListOf() // 초기화
-            postDetail.add((i + 1).toString())
-            postDetail.add(questionList[i].title)
-            
-            if(questionList[i].type == "객관식(택1)" || questionList[i].type == "객관식(복수선택)") {
+
+            if(questionList[i].type == "객관식(택1)") {
+                postDetail.add("1")
+                postDetail.add(questionList[i].title)
                 for(j in 0 until questionList[i].option!!.size) {
                     postDetail.add(questionList[i].option!![j].question)
                 }
+            } else if (questionList[i].type == "객관식(복수선택)") {
+                postDetail.add("2")
+                postDetail.add(questionList[i].title)
+                for(j in 0 until questionList[i].option!!.size) {
+                    postDetail.add(questionList[i].option!![j].question)
+                }
+            } else if (questionList[i].type == "단답형") {
+                postDetail.add("3")
+                postDetail.add(questionList[i].title)
+            } else if (questionList[i].type == "서술형") {
+                postDetail.add("4")
+                postDetail.add(questionList[i].title)
             }
 
             postDetails.add(postDetail)

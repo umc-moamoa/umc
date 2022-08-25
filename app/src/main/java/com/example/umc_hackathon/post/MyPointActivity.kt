@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_hackathon.auth.MyPageActivity
 import com.example.umc_hackathon.auth.UserInfoResult
@@ -14,6 +16,8 @@ class MyPointActivity : AppCompatActivity(), MyPointView {
 
     private lateinit var binding: ActivityMyPointBinding
 
+    var sortId: Long = 1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMyPointBinding.inflate(layoutInflater)
@@ -23,7 +27,6 @@ class MyPointActivity : AppCompatActivity(), MyPointView {
         // 어댑터
         binding.myPointPointListRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.myPointPointListRv.setHasFixedSize(true)
-        getMyPoint()
 
         // 페이지 이동
         binding.myPointGoMyPageLl.setOnClickListener {
@@ -32,14 +35,40 @@ class MyPointActivity : AppCompatActivity(), MyPointView {
             startActivity(intent)
             finish()
         }
+
+        // 정렬 스피너
+        val sortList = listOf("최신순", "오래된순")
+        binding.myPointSortSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, pos: Int, p3: Long) {
+                if(pos == 0) {
+                    getRecentMyPoint()
+                }
+                else {
+                    getFormerMyPoint()
+                }
+                println(sortList[pos] + "입니다")
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                println("카테고리를 선택하세요")
+            }
+        }
     }
 
-    private fun getMyPoint() {
+    private fun getRecentMyPoint() {
         val postService = PostService()
         postService.setMyPointView(this)
-        postService.getMyPoint(getJwt().toString())
+        postService.getRecentMyPoint(getJwt().toString())
 
-        Log.d("getMyPoint", " / MyPointActivity에서 메소드")
+        Log.d("getRecentMyPoint", " / MyPointActivity에서 메소드")
+    }
+
+    private fun getFormerMyPoint() {
+        val postService = PostService()
+        postService.setMyPointView(this)
+        postService.getFormerMyPoint(getJwt().toString())
+
+        Log.d("getFormerMyPoint", " / MyPointActivity에서 메소드")
     }
 
     private fun getJwt(): String? {
@@ -47,9 +76,14 @@ class MyPointActivity : AppCompatActivity(), MyPointView {
         return spf!!.getString("jwt", "")
     }
 
-    override fun onGetMyPointSuccess(pointHistoryRecent: MyPointResponse) {
-        binding.myPointPointListRv.adapter = MyPointRAdapter(pointHistoryRecent.result.pointHistoryRecent)
-        Log.d("포인트 내역 / ", "포인트 내역을 불러오는데 성공했습니다")
+    override fun onGetMyRecentPointSuccess(pointHistoryRecent: MyPointResponse) {
+        binding.myPointPointListRv.adapter = MyPointRAdapter(pointHistoryRecent.result.pointHistoryRecent, emptyList())
+        Log.d("포인트 내역 최신순 / ", "포인트 내역을 불러오는데 성공했습니다")
+    }
+
+    override fun onGetMyFormerPointSuccess(pointHistoryFormer: MyPointResponse) {
+        binding.myPointPointListRv.adapter = MyPointRAdapter(emptyList(), pointHistoryFormer.result.pointHistoryFormer)
+        Log.d("포인트 내역 오래된순 / ", "포인트 내역을 불러오는데 성공했습니다")
     }
 
     override fun onGetMyTotalPointSuccess(code: Int, result: MyPointList) {
