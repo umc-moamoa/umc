@@ -16,7 +16,7 @@ class SettingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivitySettingBinding.inflate(layoutInflater)
+        binding = ActivitySettingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.settingCancelTv.setOnClickListener {
