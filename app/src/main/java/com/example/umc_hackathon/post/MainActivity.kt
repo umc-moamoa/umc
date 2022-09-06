@@ -178,7 +178,7 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
         binding.mainWaitingSurveyItemPointTv2.text = postList.result[1].point.toString() + "P"
 
         // 상세 페이지로 intent
-        binding.mainWaitingSurveyItemLl1.setOnClickListener {
+        binding.mainWaitingSurveyItemLl2.setOnClickListener {
 //          val currentPosition: Int = postList[adapterPosition].postId //수정!!!!!! postId로 받아오기
             val intent = Intent(this, FormDetailActivity::class.java)
             intent.putExtra("list_item_post_id", postList.result[1].postId)
@@ -196,7 +196,7 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
         binding.mainWaitingSurveyItemPointTv3.text = postList.result[2].point.toString() + "P"
 
         // 상세 페이지로 intent
-        binding.mainWaitingSurveyItemLl1.setOnClickListener {
+        binding.mainWaitingSurveyItemLl3.setOnClickListener {
 //          val currentPosition: Int = postList[adapterPosition].postId //수정!!!!!! postId로 받아오기
             val intent = Intent(this, FormDetailActivity::class.java)
             intent.putExtra("list_item_post_id", postList.result[2].postId)
