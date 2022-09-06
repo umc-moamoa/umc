@@ -4,17 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.widget.ScrollView
-import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_hackathon.FormDetailActivity
 import com.example.umc_hackathon.auth.AuthActivity
-import com.example.umc_hackathon.auth.LoginActivity
 import com.example.umc_hackathon.auth.MyPageActivity
 import com.example.umc_hackathon.databinding.ActivityMainBinding
-import com.example.umc_hackathon.post.*
 
 class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
 

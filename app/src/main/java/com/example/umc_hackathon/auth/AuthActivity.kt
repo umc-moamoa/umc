@@ -3,14 +3,12 @@ package com.example.umc_hackathon.auth
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.example.umc_hackathon.R
 import com.example.umc_hackathon.databinding.ActivityAuthBinding
-import com.example.umc_hackathon.databinding.ActivityFormListBinding
-import com.example.umc_hackathon.databinding.ActivityLoginBinding
 import com.example.umc_hackathon.post.MainActivity
-import kotlinx.coroutines.NonDisposableHandle.parent
 
 class AuthActivity : AppCompatActivity() {
 
