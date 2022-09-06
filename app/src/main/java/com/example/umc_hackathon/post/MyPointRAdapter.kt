@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.umc_hackathon.R
 
 
-class MyPointRAdapter(val pointRecentList: List<PointHistoryRecent>, val pointFormerList: List<PointHistoryFormer>): RecyclerView.Adapter<MyPointRAdapter.MyViewHolder>() {
+class MyPointRAdapter(val recentPointList: List<PointRecentResult>, val formerPointList: List<PointFormerResult>): RecyclerView.Adapter<MyPointRAdapter.MyViewHolder>() {
 
     val TAG: String = "<MyPointRAdapter>"
 
@@ -23,52 +23,52 @@ class MyPointRAdapter(val pointRecentList: List<PointHistoryRecent>, val pointFo
     }
 
     override fun getItemCount(): Int {
-        if (pointRecentList.size != 0) {
-            return pointRecentList.size
+        if (recentPointList.size != 0) {
+            return recentPointList.size
         }
 
         else {
-            return pointFormerList.size
+            return formerPointList.size
         }
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         Log.d(TAG, " - onBindViewHolder() called / position: $position")
 
-        if (pointRecentList.size != 0) {
-            if (pointRecentList[position].addAmount != 0) {
-                holder.point.text = "+" + pointRecentList[position].addAmount.toString() + "P"
+        if (recentPointList.size != 0) {
+            if (recentPointList[position].addAmount != 0) {
+                holder.point.text = "+" + recentPointList[position].addAmount.toString() + "P"
                 holder.point.setTextColor(Color.parseColor("#7798dd"))
                 holder.state.text = "적립"
 
             }
 
-            if (pointRecentList[position].subAmount != 0) {
-                holder.point.text = "-" + pointRecentList[position].subAmount.toString() + "P"
+            if (recentPointList[position].subAmount != 0) {
+                holder.point.text = "-" + recentPointList[position].subAmount.toString() + "P"
                 holder.point.setTextColor(Color.parseColor("#e279be"))
                 holder.state.text = "사용"
             }
 
-            holder.date.text = pointRecentList[position].created.toString()
-            Log.d("date", " : " +  pointRecentList[position].created)
+            holder.date.text = recentPointList[position].created.toString()
+            Log.d("date", " : " +  recentPointList[position].created)
         }
 
         else {
-            if (pointFormerList[position].addAmount != 0) {
-                holder.point.text = "+" + pointFormerList[position].addAmount.toString() + "P"
+            if (formerPointList[position].addAmount != 0) {
+                holder.point.text = "+" + formerPointList[position].addAmount.toString() + "P"
                 holder.point.setTextColor(Color.parseColor("#7798dd"))
                 holder.state.text = "적립"
 
             }
 
-            if (pointFormerList[position].subAmount != 0) {
-                holder.point.text = "-" + pointFormerList[position].subAmount.toString() + "P"
+            if (formerPointList[position].subAmount != 0) {
+                holder.point.text = "-" + formerPointList[position].subAmount.toString() + "P"
                 holder.point.setTextColor(Color.parseColor("#e279be"))
                 holder.state.text = "사용"
             }
 
-            holder.date.text = pointFormerList[position].created.toString()
-            Log.d("date", " : " +  pointFormerList[position].created)
+            holder.date.text = formerPointList[position].created.toString()
+            Log.d("date", " : " +  formerPointList[position].created)
         }
 
     }

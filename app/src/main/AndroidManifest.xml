@@ -50,8 +50,7 @@
             android:exported="false" />
         <activity
             android:name=".post.MainActivity"
-            android:exported="false"></activity>
-
+            android:exported="false" />
         <activity
             android:name=".auth.JoinActivity"
             android:exported="false" />

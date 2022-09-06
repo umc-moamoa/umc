@@ -11,17 +11,17 @@ data class MyPointResponse(
 
 data class MyPointList (
     @SerializedName("point") val point: Int,
-    @SerializedName("pointHistoryRecent") val pointHistoryRecent: List<PointHistoryRecent>,
-    @SerializedName("pointHistoryFormer") val pointHistoryFormer: List<PointHistoryFormer>
+    @SerializedName("pointHistoryRecent") val pointHistoryRecent: List<PointRecentResult>?,
+    @SerializedName("pointHistoryFormer") val pointHistoryFormer: List<PointFormerResult>?
 )
 
-data class PointHistoryRecent (
+data class PointRecentResult (
     @SerializedName("addAmount") val addAmount: Int,
     @SerializedName("subAmount") val subAmount: Int,
     @SerializedName("created") val created: String
 )
 
-data class PointHistoryFormer (
+data class PointFormerResult (
     @SerializedName("addAmount") val addAmount: Int,
     @SerializedName("subAmount") val subAmount: Int,
     @SerializedName("created") val created: String

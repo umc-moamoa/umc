@@ -19,6 +19,7 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/yeji_umc/app/src/main/res/layout/activity_survey_check.xml" value="0.23143115942028986" />
         <entry key="..\:/Users/User/AndroidStudioProjects/yeji_umc/app/src/main/res/layout/board_list_item.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/User/AndroidStudioProjects/yeji_umc/app/src/main/res/layout/survey_check.xml" value="0.1656534954407295" />
+<<<<<<< HEAD
         <entry key="..\:/Users/yoonm/Desktop/umc/app/src/main/res/drawable/background.xml" value="0.112" />
         <entry key="..\:/Users/yoonm/Desktop/umc/app/src/main/res/drawable/btn_style.xml" value="0.112" />
         <entry key="..\:/Users/yoonm/Desktop/umc/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
@@ -42,26 +43,43 @@
         <entry key="..\:/Users/yoonm/umc/app/src/main/res/drawable/round.xml" value="0.1625" />
         <entry key="..\:/Users/yoonm/umc/app/src/main/res/drawable/transparent.xml" value="0.1775" />
         <entry key="..\:/Users/yoonm/umc/app/src/main/res/drawable/transparent_top.xml" value="0.1" />
-        <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_form_create.xml" value="0.264" />
-        <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_form_detail.xml" value="0.264" />
+        <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_form_create.xml" value="0.2" />
+        <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_form_detail.xml" value="0.3573487031700288" />
         <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_form_input.xml" value="0.2" />
         <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_form_list.xml" value="0.264" />
         <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_interest_survey.xml" value="0.2" />
-        <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_join.xml" value="0.4" />
-        <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_login.xml" value="0.4" />
+        <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_join.xml" value="0.264" />
+        <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_login.xml" value="0.3287037037037037" />
         <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_my_page.xml" value="0.264" />
-        <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_my_point.xml" value="0.2" />
+        <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_my_point.xml" value="0.264" />
+        <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_my_survey.xml" value="0.176" />
         <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_participated_survey.xml" value="0.16" />
         <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/activity_setting.xml" value="0.264" />
         <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/board_list_item.xml" value="0.264" />
+        <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/board_my_survey_item.xml" value="0.2" />
+        <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/board_question_item.xml" value="0.2" />
+        <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/board_waiting_survey_item.xml" value="0.264" />
         <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/point_item.xml" value="0.4" />
         <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/question_item.xml" value="0.20052083333333334" />
         <entry key="..\:/Users/yoonm/umc/app/src/main/res/layout/waiting_survey_board_item.xml" value="0.28974358974358977" />
+=======
+        <entry key="..\:/Users/yoonm/Desktop/umc/app/src/main/res/drawable/background.xml" value="0.1985" />
+        <entry key="..\:/Users/yoonm/Desktop/umc/app/src/main/res/drawable/btn_off_style.xml" value="0.1985" />
+        <entry key="..\:/Users/yoonm/Desktop/umc/app/src/main/res/layout/activity_form_list.xml" value="0.2" />
+        <entry key="..\:/Users/yoonm/Desktop/umc/app/src/main/res/layout/activity_main.xml" value="0.190625" />
+        <entry key="..\:/Users/yoonm/Desktop/umc/app/src/main/res/layout/fragment_form_list_brand.xml" value="0.17239583333333333" />
+        <entry key="..\:/Users/yoonm/Desktop/umc/app/src/main/res/layout/fragment_form_list_idea.xml" value="0.18697916666666667" />
+        <entry key="..\:/Users/yoonm/Desktop/umc/app/src/main/res/layout/fragment_form_list_marketing.xml" value="0.18697916666666667" />
+        <entry key="..\:/Users/yoonm/Desktop/umc/app/src/main/res/layout/fragment_form_list_social.xml" value="0.17239583333333333" />
+        <entry key="..\:/Work/umc-android/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Work/umc-android/app/src/main/res/layout/activity_survey_check.xml" value="0.1" />
+        <entry key="..\:/Work/umc-android/app/src/main/res/layout/board_list_item.xml" value="0.1" />
+>>>>>>> f296a627146700eb015e31d4b34afdd83ab4aed2
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
