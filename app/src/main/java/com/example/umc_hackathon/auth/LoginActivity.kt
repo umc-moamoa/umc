@@ -47,7 +47,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
     }
 
     private fun getJwt(): String? {
-        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+         val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
         return spf!!.getString("jwt", "")
     }
 

@@ -10,6 +10,7 @@ import android.widget.ScrollView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_hackathon.FormDetailActivity
+import com.example.umc_hackathon.auth.AuthActivity
 import com.example.umc_hackathon.auth.LoginActivity
 import com.example.umc_hackathon.auth.MyPageActivity
 import com.example.umc_hackathon.databinding.ActivityMainBinding
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
         // 이벤트 리스너
         binding.mainProfileIv.setOnClickListener {
             if (getJwt().isNullOrBlank()) {
-                val intent = Intent(this, LoginActivity::class.java)
+                val intent = Intent(this, AuthActivity::class.java)
                 intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
                 startActivity(intent)
             } else {

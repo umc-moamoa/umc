@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
+import com.example.umc_hackathon.auth.AuthActivity
 import com.example.umc_hackathon.auth.LoginActivity
 import com.example.umc_hackathon.databinding.ActivityFormDetailBinding
 import com.example.umc_hackathon.post.*
@@ -142,7 +143,7 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
 
     override fun onGetPostDetailFailure() {
         Log.d("PostDetail / ", "상세페이지를 불러오는데 실패했습니다")
-        val intent = Intent(this, LoginActivity::class.java)
+        val intent = Intent(this, AuthActivity::class.java)
         startActivity(intent)
         finish()
     }
