@@ -19,11 +19,4 @@ interface FormRetrofitInterface {
         @Path("postId") postId: Long,
         @Header("x-access-token") jwt: String
     ): Call<FormDetailResponse>
-
-    // 설문조사 답변 등록하기
-    @POST("/results")
-    fun formInput (
-        @Body formInputRequest: FormInputRequest,
-        @Header("x-access-token") jwt: String
-    ): Call<FormInputResponse>
 }
