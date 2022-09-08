@@ -57,7 +57,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/form_create_title_tv">
 
-
         <EditText
             android:id="@+id/form_create_title_et"
             android:layout_width="wrap_content"
@@ -80,16 +79,6 @@
             android:textColorHint="#707070"
             android:textSize="11sp" />
 
-        <EditText
-            android:id="@+id/form_create_deadline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:layout_marginTop="6dp"
-            android:textColorHint="@color/dodger_blue"
-            android:textSize="11sp"
-            android:hint="0000-00-00 형식으로 마감일을 적어주세요." />
-
     </LinearLayout>
 
     <LinearLayout
@@ -103,6 +92,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/form_create_survey_info">
+
 
         <androidx.cardview.widget.CardView
             android:id="@+id/form_create_spinner_cv"
