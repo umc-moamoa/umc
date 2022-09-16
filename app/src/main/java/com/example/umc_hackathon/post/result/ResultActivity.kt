@@ -28,6 +28,7 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
+import com.github.mikephil.charting.utils.ColorTemplate.*
 import com.github.mikephil.charting.utils.MPPointF
 import kotlin.math.log
 
@@ -122,34 +123,46 @@ class ResultActivity : AppCompatActivity(), ResultView {
                 visitors.add(PieEntry(detailResult.statistics[i], detailResult.resultItem[i].item))
                 Log.d("detail-result", detailResult.resultItem[i].item)
             }
-            pieChart.animateY(1000, Easing.EaseInOutCubic)
+            pieChart.animateY(1000, Easing.EasingOption.EaseInOutCubic)
 
-            val pieDataSet = PieDataSet(visitors, "")
-            pieDataSet.sliceSpace = 3f
-            pieDataSet.iconsOffset = MPPointF(0f, 40f)
-            pieDataSet.selectionShift = 5f
+            var pieDataSet = PieDataSet(visitors, "")
+//            pieDataSet.sliceSpace = 3f
+//            pieDataSet.iconsOffset = MPPointF(0f, 40f)
+//            pieDataSet.selectionShift = 5f
+            val mColors: ArrayList<Int> = ArrayList()
+//            val mColors: ArrayList<Int> = listOf(
+//                R.color.baby_pink, R.color.pale, R.color.pale_peach, R.color.light_blue_grey,
+//                R.color.powder_blue, R.color.light_periwinkle, R.color.liget_grey_blue, R.color.pig_pink
+//            )
+            mColors.add(R.color.baby_pink)
+            mColors.add(R.color.pale)
+            mColors.add(R.color.pale_peach)
+            mColors.add(R.color.light_blue_grey)
+            mColors.add(R.color.pig_pink)
+            mColors.add(R.color.powder_blue)
+            mColors.add(R.color.light_periwinkle)
+            mColors.add(R.color.liget_grey_blue)
 
-            val mColors: List<Int> = listOf(
-                R.color.baby_pink, R.color.pale, R.color.pale_peach, R.color.light_blue_grey,
-                R.color.powder_blue, R.color.light_periwinkle, R.color.liget_grey_blue, R.color.pig_pink
-            )
-//            mColors.add(R.color.baby_pink)
-//            mColors.add(R.color.pale)
-//            mColors.add(R.color.pale_peach)
-//            mColors.add(R.color.light_blue_grey)
-//            mColors.add(R.color.pig_pink)
-//            mColors.add(R.color.powder_blue)
-//            mColors.add(R.color.light_periwinkle)
-//            mColors.add(R.color.liget_grey_blue)
-
-//            val colors: List<Int>
+//            val colors: ArrayList<Int> = ArrayList()
 //            for (i in 0 until detailResult.resultItem.size) {
 //                colors.add(mColors[i])
 //                Log.d("color", mColors[i].toString())
 //            }
 
-            pieDataSet.colors = mColors
-//            pieDataSet.colors = ColorTemplate.VORDIPLOM_COLORS
+//            pieDataSet.colors = mColors
+//            for (i in 0..8) {
+//                pieDataSet.colors.add(VORDIPLOM_COLORS[i])
+//            }
+//            pieDataSet.colors = ColorTemplate.JOYFUL_COLORS
+
+            with(pieDataSet) {
+                sliceSpace = 3f
+                iconsOffset = MPPointF(0f, 40f)
+                pieDataSet.selectionShift = 5f
+//                setColors(mColors)
+//                setColors(*ColorTemplate.JOYFUL_COLORS)
+                setColors(*ColorTemplate.MATERIAL_COLORS)
+            }
 
             val pieData = PieData(pieDataSet)
             pieData.setValueFormatter(PercentFormatter())

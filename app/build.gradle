@@ -40,7 +40,7 @@ android {
 
 dependencies {
     //pie chart
-    implementation 'com.github.PhilJay:MpAndroidChart:v3.1.0'
+    implementation 'com.github.PhilJay:MpAndroidChart:v3.0.2'
 
     implementation 'org.conscrypt:conscrypt-android:2.5.0'
 
