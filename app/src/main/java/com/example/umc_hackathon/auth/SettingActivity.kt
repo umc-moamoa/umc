@@ -3,6 +3,7 @@ package com.example.umc_hackathon.auth
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.example.umc_hackathon.databinding.DialogSettingBinding
 import com.example.umc_hackathon.databinding.ActivitySettingBinding
 import com.example.umc_hackathon.post.MainActivity
@@ -106,10 +107,11 @@ class SettingActivity : AppCompatActivity(), UserSettingView {
     }
 
     override fun onUserDeleteSuccess() {
-        TODO("Not yet implemented")
+        Log.d("userDelete: ", "quit-success")
+        logoutUser()
     }
 
     override fun onUserDeleteFailure() {
-        TODO("Not yet implemented")
+        Log.d("userDelete: ", "quit-fail")
     }
 }
