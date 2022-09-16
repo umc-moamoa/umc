@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import com.example.umc_hackathon.auth.LoginActivity
 import com.example.umc_hackathon.databinding.ActivityFormDetailBinding
 import com.example.umc_hackathon.post.*
@@ -37,6 +39,7 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
         binding.formDetailParticipateBtn.setOnClickListener {
             val intent = Intent(this, FormInputActivity::class.java)
             intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            intent.putExtra("postId", postId)
             startActivity(intent)
             finish()
         }
@@ -94,6 +97,7 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
     override fun onGetPostDetailSuccess(result: PostDetailResult) {
         postTitle = result.title
         binding.formDetailTitleTv.text = postTitle
+        binding.formDetailInfoTv.text = result.content
         binding.formDetailItemCountTv.text = result.qCount.toString() + "개의 항목"
 
         if (result.status == "ACTIVE") {
@@ -127,6 +131,11 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
                 binding.formDetailLikeBtnCv.visibility = View.INVISIBLE
                 binding.formDetailDislikeBtnCv.visibility = View.VISIBLE
             }
+
+            // status = closed일 때 button 비활성화
+            if(result.status == "CLOSED") {
+                binding.formDetailParticipateBtn.isEnabled = false
+            }
         }
         Log.d("PostDetail / ", "상세페이지를 불러오는데 성공했습니다")
     }
@@ -135,6 +144,7 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
         Log.d("PostDetail / ", "상세페이지를 불러오는데 실패했습니다")
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     override fun onLikeSuccess() {

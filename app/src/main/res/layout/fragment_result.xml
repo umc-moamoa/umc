@@ -153,6 +153,7 @@
             android:background="@drawable/category_selected"
             android:fontFamily="@font/roboto_bold"
             android:text="다음 장"
+            android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

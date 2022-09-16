@@ -36,6 +36,13 @@ class LoginActivity : AppCompatActivity(), LoginView {
             login()
         }
 
+        binding.loginJoinLl.setOnClickListener {
+            val intent = Intent(this, JoinActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+            finish()
+        }
+
         Log.d("LOGIN/JWT_TO_SERVICE/", " ")
     }
 

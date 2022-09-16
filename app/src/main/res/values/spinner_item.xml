@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="type">
-        <item>객관식</item>
-        <item>주관식</item>
+        <item>객관식(택1)</item>
+        <item>객관식(복수선택)</item>
+        <item>단답형</item>
+        <item>서술형</item>
     </string-array>
 
     <string-array name="category">
@@ -10,5 +12,10 @@
         <item>사회현상</item>
         <item>브랜드</item>
         <item>아이디어</item>
+    </string-array>
+
+    <string-array name="point">
+        <item>최신순</item>
+        <item>오래된순</item>
     </string-array>
 </resources>

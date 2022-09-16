@@ -12,11 +12,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Umc_hackathon"
         android:usesCleartextTraffic="true">
+         <activity
+            android:name=".StartActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Design.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".post.result.ResultActivity"
             android:exported="false"/>
         <activity
             android:name=".survey.QuestionItemActivity"
+            android:exported="false" />
+        <activity
+            android:name=".survey.DialogOptionItemActivity"
             android:exported="false" />
         <activity
             android:name=".post.MySurveyActivity"
@@ -38,13 +50,8 @@
             android:exported="false" />
         <activity
             android:name=".post.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false"></activity>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".auth.JoinActivity"
             android:exported="false" />
