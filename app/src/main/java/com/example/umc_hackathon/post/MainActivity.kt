@@ -105,7 +105,7 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
             binding.mainThirdCountTv.text = "설문조사 개수 부족"
             binding.mainThirdDeadlineTv.text = "설문조사 개수 부족"
         } else {
-            binding.mainPopularFirstTitleTv.text = "첫번째" //postList.result[0].title
+            binding.mainPopularFirstTitleTv.text = postList.result[0].title
             binding.mainPopularFirstCountTv.text = postList.result[0].qcount.toString() + "개의 항목"
             if(postList.result[0].dday == 0) {
                 binding.mainPopularFirstDeadlineTv.text = "D - DAY"

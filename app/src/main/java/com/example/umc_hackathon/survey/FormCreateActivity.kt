@@ -180,7 +180,7 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
     private fun getForm(): FormCreateRequest {
         val formTitle: String = binding.formCreateTitleEt.text.toString()
         val formContent: String = binding.formCreateContentEt.text.toString()
-        val formDeadline: String = "2022-08-30"
+        val formDeadline: String = "2022-09-20"
 
         val postDetails: ArrayList<ArrayList<String>> = arrayListOf()
 
