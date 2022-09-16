@@ -1,21 +1,24 @@
 package com.example.umc_hackathon.auth
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import com.example.umc_hackathon.databinding.ActivityJoinBinding
+import com.example.umc_hackathon.R
+import com.example.umc_hackathon.databinding.FragmentJoinBinding
+import com.example.umc_hackathon.databinding.FragmentLoginBinding
 import com.example.umc_hackathon.post.MainActivity
 
-class JoinActivity : AppCompatActivity(), JoinView, JoinCheckView {
+class JoinFragment : Fragment(), JoinView, JoinCheckView {
 
-    private lateinit var binding: ActivityJoinBinding
+    private lateinit var binding: FragmentJoinBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityJoinBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = FragmentJoinBinding.inflate(layoutInflater)
 
         // joinCheck
         binding.joinIdDuplicateCheckEt.setOnClickListener {
@@ -26,25 +29,11 @@ class JoinActivity : AppCompatActivity(), JoinView, JoinCheckView {
             joinNickCheck()
         }
 
-        binding.joinLoginBtn.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
-            startActivity(intent)
-            finish()
-        }
-
-        binding.joinTitle.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
-            startActivity(intent)
-            finish()
-        }
-
         binding.joinSubmitBtn.setOnClickListener {
             join()
         }
 
-        Log.d("JOIN/JWT_TO_SERVICE/", " ")
+        return binding.root
     }
 
     private fun getUser(): User {
@@ -59,17 +48,17 @@ class JoinActivity : AppCompatActivity(), JoinView, JoinCheckView {
         Log.d("JOIN()", "메소드")
 
         if(binding.joinIdEt.text.toString().isEmpty()) {
-            Toast.makeText(this, "아이디를 입력해주세요", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "아이디를 입력해주세요", Toast.LENGTH_SHORT).show()
             return
         }
-        
+
         if(binding.joinNicknameEt.text.toString().isEmpty()) {
-            Toast.makeText(this, "닉네임을 입력해주세요", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "닉네임을 입력해주세요", Toast.LENGTH_SHORT).show()
             return
         }
 
         if(binding.joinPasswordEt.text.toString() != binding.joinPasswordCheckEt.text.toString()) {
-            Toast.makeText(this, "비밀번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "비밀번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -87,12 +76,12 @@ class JoinActivity : AppCompatActivity(), JoinView, JoinCheckView {
 
     // JoinView 상속
     override fun onJoinSuccess() {
-        Toast.makeText(this, "회원가입에 성공했습니다", Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity, "회원가입에 성공했습니다", Toast.LENGTH_SHORT).show()
         clearInputText()
     }
 
     override fun onJoinFailure() {
-        Toast.makeText(this, "회원가입에 실패했습니다", Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity, "회원가입에 실패했습니다", Toast.LENGTH_SHORT).show()
         clearInputText()
     }
 
@@ -110,20 +99,21 @@ class JoinActivity : AppCompatActivity(), JoinView, JoinCheckView {
     }
 
     override fun onJoinIdCheckSuccess() {
-        Toast.makeText(this, "아이디 중복 확인에 성공했습니다", Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity, "아이디 중복 확인에 성공했습니다", Toast.LENGTH_SHORT).show()
     }
 
     override fun onJoinIdCheckFailure() {
-        Toast.makeText(this, "아이디 중복 확인에 실패했습니다", Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity, "아이디 중복 확인에 실패했습니다", Toast.LENGTH_SHORT).show()
         binding.joinSubmitBtn.isEnabled = false
     }
 
     override fun onJoinNickCheckSuccess() {
-        Toast.makeText(this, "닉네임 중복 확인에 성공했습니다", Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity, "닉네임 중복 확인에 성공했습니다", Toast.LENGTH_SHORT).show()
     }
 
     override fun onJoinNickCheckFailure() {
-        Toast.makeText(this, "닉네임 중복 확인에 실패했습니다", Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity, "닉네임 중복 확인에 실패했습니다", Toast.LENGTH_SHORT).show()
         binding.joinSubmitBtn.isEnabled = false
     }
+
 }
