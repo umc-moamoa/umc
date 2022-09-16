@@ -27,4 +27,5 @@
     <color name="pale">#F7F3D5</color>
     <color name="pig_pink">#E091A4</color>
     <color name="baby_pink">#F5BBCB</color>
+    <color name="unselected_color">#dadce5</color>
 </resources>
