@@ -12,18 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Umc_hackathon"
         android:usesCleartextTraffic="true">
-         <activity
+        <activity
+            android:name=".auth.AuthActivity"
+            android:exported="false" />
+        <activity
             android:name=".StartActivity"
             android:exported="true"
             android:theme="@style/Theme.Design.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".post.result.ResultActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".survey.QuestionItemActivity"
             android:exported="false" />

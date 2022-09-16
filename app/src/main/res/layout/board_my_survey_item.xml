@@ -29,7 +29,7 @@
         <TextView
             android:id="@+id/board_my_survey_item_title_tv"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:fontFamily="@font/roboto_bold"
             android:text="음식 배달 플랫폼에 대한 소비자 인식"
             android:textColor="@color/black"
