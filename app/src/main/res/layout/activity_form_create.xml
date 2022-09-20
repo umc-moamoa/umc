@@ -8,57 +8,59 @@
     android:background="@color/pale_grey"
     tools:context=".survey.FormCreateActivity">
 
-    <LinearLayout
-        android:id="@+id/form_create_header_ll"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/form_create_cancel_tv"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/roboto_regular"
+        android:paddingHorizontal="21dp"
+        android:paddingTop="19dp"
+        android:paddingBottom="8dp"
+        android:text="취소"
+        android:textColor="@color/black"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/form_create_cancel_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_regular"
-            android:text="취소"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-    </LinearLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/form_create_title_tv"
+        android:id="@+id/form_create_save_tv"
         android:layout_width="wrap_content"
-        android:layout_height="27dp"
-        android:layout_marginBottom="15dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:paddingHorizontal="21dp"
+        android:paddingTop="19dp"
+        android:paddingBottom="8dp"
+        android:text="저장"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/form_create_header_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_bold"
         android:text="설문 작성"
         android:textColor="@color/black"
         android:textSize="22sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/form_create_header_ll" />
-
+        app:layout_constraintTop_toBottomOf="@id/form_create_cancel_tv" />
 
     <LinearLayout
-        android:id="@+id/form_create_survey_info"
+        android:id="@+id/form_create_info_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         android:orientation="vertical"
         android:paddingHorizontal="40dp"
-        android:paddingTop="25dp"
-        android:paddingBottom="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/form_create_title_tv">
+        app:layout_constraintTop_toBottomOf="@id/form_create_header_title_tv">
 
         <EditText
-            android:id="@+id/form_create_title_et"
+            android:id="@+id/form_create_info_title_et"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
@@ -69,7 +71,7 @@
             android:textSize="14sp" />
 
         <EditText
-            android:id="@+id/form_create_content_et"
+            android:id="@+id/form_create_info_content_et"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
@@ -79,81 +81,69 @@
             android:textColorHint="#707070"
             android:textSize="11sp" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/form_create_question_selection_ll"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="right"
-        android:orientation="horizontal"
-        android:paddingHorizontal="20dp"
-        android:paddingBottom="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/form_create_survey_info">
-
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/form_create_spinner_cv"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            app:cardCornerRadius="17dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/form_create_survey_info">
-
-            <Spinner
-                android:id="@+id/form_create_select_category_spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:entries="@array/category"
-                android:spinnerMode="dropdown"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/form_create_survey_info" />
-
-        </androidx.cardview.widget.CardView>
-
-
-
-        <ImageView
-            android:id="@+id/form_create_plus_iv"
+        <EditText
+            android:id="@+id/form_create_info_date_et"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_plus"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/form_create_survey_info" />
-
+            android:layout_marginTop="6dp"
+            android:background="@null"
+            android:fontFamily="@font/roboto_light"
+            android:hint="0000-00-00 형식으로 마감날짜를 입력해주세요."
+            android:textColorHint="@color/dodger_blue"
+            android:textSize="11sp" />
     </LinearLayout>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/form_create_category_cv"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:outlineProvider="none"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/form_create_info_ll">
+
+        <Spinner
+            android:id="@+id/form_create_category_spinner"
+            android:layout_width="130dp"
+            android:layout_height="30dp"
+            android:entries="@array/category"
+            android:spinnerMode="dropdown" />
+
+    </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/form_create_list_rv"
+        android:id="@+id/form_create_rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="20dp"
         android:clipToPadding="false"
+        android:orientation="vertical"
+        tools:listitem="@layout/activity_question_item"
         android:paddingBottom="50dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/form_create_question_selection_ll" />
+        app:layout_constraintTop_toBottomOf="@id/form_create_category_cv" />
 
     <View
         android:id="@+id/form_create_view"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="110dp"
         android:background="@drawable/transparent_bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/form_create_btn"
+        android:id="@+id/form_create_add_btn"
         android:layout_width="160dp"
         android:layout_height="40dp"
         android:background="@drawable/category_selected"
         android:fontFamily="@font/roboto_bold"
-        android:text="저장"
+        android:text="질문 추가하기"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -25,8 +25,7 @@ class CustomDialog(
 //        initViews()
 //    }
 
-    fun setOnClickListener(listener: OnDialogClickListener)
-    {
+    fun setOnClickListener(listener: OnDialogClickListener) {
         onClickListener = listener
     }
 

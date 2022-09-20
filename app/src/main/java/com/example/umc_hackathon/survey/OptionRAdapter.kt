@@ -1,22 +1,18 @@
 package com.example.umc_hackathon.survey
 
-import android.text.Editable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.umc_hackathon.R
-import kotlinx.android.synthetic.main.dialog_option_item.view.*
 
 
 class OptionRAdapter(var optionList: ArrayList<Option>): RecyclerView.Adapter<OptionRAdapter.MyViewHolder> (){
 
     fun addItem(item: Option) {
         optionList.add(item)
-        notifyDataSetChanged()
         Log.d("옵션 추가", item.question)
     }
 
@@ -33,7 +29,7 @@ class OptionRAdapter(var optionList: ArrayList<Option>): RecyclerView.Adapter<Op
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.dialog_option_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.option_item, parent, false)
         return MyViewHolder(view).apply {
             itemView.setOnLongClickListener {
                 removeItem(adapterPosition)
