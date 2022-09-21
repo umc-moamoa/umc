@@ -1,7 +1,6 @@
 package com.example.umc_hackathon.survey
 
 import android.annotation.SuppressLint
-import android.app.ProgressDialog.show
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -11,21 +10,11 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.text.set
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.umc_hackathon.R
-import com.example.umc_hackathon.auth.User
 import com.example.umc_hackathon.databinding.ActivityFormCreateBinding
 import com.example.umc_hackathon.databinding.AddItemDialogBinding
 import com.example.umc_hackathon.post.FormListActivity
 import kotlinx.android.synthetic.main.dialog_option_item.*
-import okhttp3.internal.format
-import okhttp3.internal.notifyAll
-import org.w3c.dom.Text
-import retrofit2.http.Body
-import retrofit2.http.POST
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -54,7 +43,7 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
 
          // 카테고리 스피너
         val categoryList = listOf("마케팅", "사회현상", "브랜드", "아이디어")
-        binding.formCreateSelectCategorySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        binding.formCreateCategorySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, pos: Int, p3: Long) {
                 println(categoryList[pos] + "입니다")
                 categoryId = pos.toLong() + 1
@@ -88,12 +77,12 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
         // 설문 작성 아이템 리사이클러뷰
         binding.formCreateListRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.formCreateListRv.setHasFixedSize(true)
-        binding.formCreateListRv.adapter = FormCreateRAdapter(questionList)
+        binding.formCreateListRv.adapter = createRAdapter
 
         // 다이얼로그 옵션 리사이클러뷰
         builderItem.dialogItemOptionRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         builderItem.dialogItemOptionRv.setHasFixedSize(true)
-        builderItem.dialogItemOptionRv.adapter = OptionRAdapter(optionList)
+        builderItem.dialogItemOptionRv.adapter = optionRAdapter
 
         // 이벤트 리스너
         binding.formCreateCancelTv.setOnClickListener {
@@ -118,7 +107,7 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
         var question: String
         var spinner: String
 
-        binding.formCreatePlusIv.setOnClickListener {
+        binding.formCreateAddBtn.setOnClickListener {
             Log.d("질문 추가", " 선택")
 
             question= questionEt.text.toString()
@@ -154,7 +143,7 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
             }
         }
 
-        binding.formCreateBtn.setOnClickListener {
+        binding.formCreateSaveTv.setOnClickListener {
             AlertDialog.Builder(this).run {
                 setTitle("설문을 저장하시겠습니까?")
                 setPositiveButton("네, 저장하겠습니다", DialogInterface.OnClickListener { dialogInterface, i ->
