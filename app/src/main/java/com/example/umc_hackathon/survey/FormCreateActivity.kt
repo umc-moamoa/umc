@@ -219,7 +219,10 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
         Toast.makeText(this, "설문 등록에 성공했습니다", Toast.LENGTH_SHORT).show()
     }
 
-    override fun onFormCreateFailure() {
-        Toast.makeText(this, "설문 등록에 실패했습니다", Toast.LENGTH_SHORT).show()
+    override fun onFormCreateFailure(code: Int) {
+        when(code) {
+            2013 -> Toast.makeText(this, "포인트가 부족합니다", Toast.LENGTH_SHORT).show()
+            else -> Toast.makeText(this, "설문 등록에 실패했습니다", Toast.LENGTH_SHORT).show()
+        }
     }
 }
