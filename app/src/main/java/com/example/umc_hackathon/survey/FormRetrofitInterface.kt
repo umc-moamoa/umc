@@ -19,4 +19,11 @@ interface FormRetrofitInterface {
         @Path("postId") postId: Long,
         @Header("x-access-token") jwt: String
     ): Call<FormDetailResponse>
+
+
+    @POST("/results")
+    fun submitAnswer(
+        @Body formInputRequest: FormInputRequest,
+        @Header("x-access-token") jwt: String
+    ): Call<FormInputResponse>
 }

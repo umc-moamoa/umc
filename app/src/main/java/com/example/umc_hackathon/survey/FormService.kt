@@ -62,4 +62,27 @@ class FormService {
             }
         })
     }
+
+    fun submitResult(formInputRequest: FormInputRequest, jwt: String) {
+        val formService = getRetrofit().create(FormRetrofitInterface::class.java)
+
+        formService.submitAnswer(formInputRequest, jwt).enqueue(object : Callback<FormInputResponse> {
+            override fun onResponse(call: Call<FormInputResponse>, response: Response<FormInputResponse>) {
+                if(response.isSuccessful) {
+                    Log.d("submit-success", response.body().toString())
+                    val inputResponse: FormInputResponse = response.body()!!
+
+                    when(inputResponse.code) {
+                        1000 -> formDetailView.onFormSubmitSucess()
+                        else -> formDetailView.onFormSubitFailure()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<FormInputResponse>, t: Throwable) {
+                Log.d("submit-fail", t.message.toString())
+            }
+
+        })
+    }
 }
