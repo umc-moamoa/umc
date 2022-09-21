@@ -1,6 +1,7 @@
 package com.example.umc_hackathon.survey
 
 import android.util.Log
+import android.widget.Toast
 import com.example.umc_hackathon.getRetrofit
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,7 +31,7 @@ class FormService {
 
                     when(formCreateResponse.code) {
                         1000 -> formCreateView.onFormCreateSuccess()
-                        else -> formCreateView.onFormCreateFailure()
+                        else -> formCreateView.onFormCreateFailure(formCreateResponse.code)
                     }
                 }
             }

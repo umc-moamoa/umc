@@ -1,14 +1,23 @@
 package com.example.umc_hackathon.survey
 
+import android.app.ProgressDialog.show
+import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.umc_hackathon.FormDetailActivity
 import com.example.umc_hackathon.R
+import com.example.umc_hackathon.databinding.AddItemDialogBinding
+import kotlinx.android.synthetic.main.dialog_option_item.view.*
 
 // 설문 작성 페이지의 질문들 목록
 class FormCreateRAdapter(val questionList: ArrayList<MyQuestion>): RecyclerView.Adapter<FormCreateRAdapter.MyViewHolder> (){
@@ -65,7 +74,7 @@ class FormCreateRAdapter(val questionList: ArrayList<MyQuestion>): RecyclerView.
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title = itemView.findViewById<TextView>(R.id.question_item_tv)
+        val title = itemView.findViewById<TextView>(R.id.question_item_et)
         val option = itemView.findViewById<TextView>(R.id.question_item_option_tv)
     }
 

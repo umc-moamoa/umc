@@ -16,7 +16,6 @@ class OptionRAdapter(var optionList: ArrayList<Option>): RecyclerView.Adapter<Op
 
     fun addItem(item: Option) {
         optionList.add(item)
-        notifyDataSetChanged()
         Log.d("옵션 추가", item.question)
     }
 
@@ -30,6 +29,11 @@ class OptionRAdapter(var optionList: ArrayList<Option>): RecyclerView.Adapter<Op
         optionList[position] = item
         notifyDataSetChanged()
         Log.d("옵션 수정", item.question)
+    }
+
+    fun clearAll() {
+        optionList.clear()
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
