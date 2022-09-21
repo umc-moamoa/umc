@@ -26,7 +26,7 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
     var categoryId: Long = 1
     var shortCount: Int = 0
     var longCount: Int = 0
-    var questionIndex: Int = 0
+
     var postDetail: ArrayList<String> = arrayListOf()
 
     var questionList = arrayListOf<MyQuestion>()
@@ -93,25 +93,23 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
 
         // 옵션 추가
         builderItem.dialogOptionAddIv.setOnClickListener {
-            Log.d("옵션 추가 내용", builderItem.dialogOptionInputEt.text.toString())
+            Log.d("옵션 추가함 ", builderItem.dialogOptionInputEt.text.toString())
 
             optionRAdapter.addItem(Option(builderItem.dialogOptionInputEt.text.toString()))
-
             builderItem.dialogOptionInputEt.setText("") // 초기화 시키기
+
             Log.d("(추가) 옵션 개수", optionRAdapter.itemCount.toString())
         }
 
         // 다이얼로그에서 쓰는 View들
         var questionEt = builderItem.dialogQuestionEt
         var questionSpinner = builderItem.dialogTypeSpinner
-        var question: String
-        var spinner: String
 
         binding.formCreateAddBtn.setOnClickListener {
             Log.d("질문 추가", " 선택")
 
-            question= questionEt.text.toString()
-            spinner = questionSpinner.selectedItem.toString()
+            var question= questionEt.text.toString()
+            var spinner = questionSpinner.selectedItem.toString()
 
             AlertDialog.Builder(this).run {
                 setTitle("질문 추가")
@@ -136,11 +134,13 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
                     createRAdapter.addItem(MyQuestion(question, spinner, optionList))
                     createRAdapter.notifyDataSetChanged()
 
-                    Log.d("옵션 개수", optionList.size.toString())
+                    Log.d("옵션 총 개수", optionList.size.toString())
                 })
                 setNegativeButton("취소", null)
                 show()
             }
+
+            optionList.clear()
         }
 
         binding.formCreateSaveTv.setOnClickListener {
