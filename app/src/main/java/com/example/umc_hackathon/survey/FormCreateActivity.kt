@@ -79,7 +79,7 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
         binding.formCreateListRv.setHasFixedSize(true)
         binding.formCreateListRv.adapter = createRAdapter
 
-        // 다이얼로그 옵션 리사이클러뷰
+        // 다이얼로그 질문 옵션 리사이클러뷰
         builderItem.dialogItemOptionRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         builderItem.dialogItemOptionRv.setHasFixedSize(true)
         builderItem.dialogItemOptionRv.adapter = optionRAdapter
@@ -105,6 +105,7 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
         var questionEt = builderItem.dialogQuestionEt
         var questionSpinner = builderItem.dialogTypeSpinner
 
+        // 질문 추가
         binding.formCreateAddBtn.setOnClickListener {
             Log.d("질문 추가", " 선택")
 
@@ -147,13 +148,19 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
             AlertDialog.Builder(this).run {
                 setTitle("설문을 저장하시겠습니까?")
                 setPositiveButton("네, 저장하겠습니다", DialogInterface.OnClickListener { dialogInterface, i ->
-                    formCreate()
-                    Toast.makeText(this@FormCreateActivity, "설문을 저장했습니다", Toast.LENGTH_SHORT).show()
+                    if(questionList.size >= 1) {
+                        formCreate()
 
-                    val intent = Intent(this@FormCreateActivity, FormListActivity::class.java)
-                    intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                    startActivity(intent)
-                    finish()
+                        val intent = Intent(this@FormCreateActivity, FormListActivity::class.java)
+                        intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                        startActivity(intent)
+                        finish()
+
+                        Toast.makeText(this@FormCreateActivity, "설문을 저장했습니다", Toast.LENGTH_SHORT).show()
+                    }
+                    else {
+                        Toast.makeText(this@FormCreateActivity, "설문 질문 개수가 부족합니다", Toast.LENGTH_SHORT).show()
+                    }
                 })
                 setNegativeButton("아니요", null)
                 show()

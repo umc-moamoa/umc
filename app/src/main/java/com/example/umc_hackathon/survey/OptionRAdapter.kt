@@ -16,7 +16,6 @@ class OptionRAdapter(var optionList: ArrayList<Option>): RecyclerView.Adapter<Op
 
     fun addItem(item: Option) {
         optionList.add(item)
-        notifyDataSetChanged()
         Log.d("옵션 추가", item.question)
     }
 
