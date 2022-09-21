@@ -140,7 +140,7 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
                 show()
             }
 
-            optionList.clear()
+            optionRAdapter.clearAll()
         }
 
         binding.formCreateSaveTv.setOnClickListener {

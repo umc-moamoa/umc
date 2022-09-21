@@ -32,6 +32,11 @@ class OptionRAdapter(var optionList: ArrayList<Option>): RecyclerView.Adapter<Op
         Log.d("옵션 수정", item.question)
     }
 
+    fun clearAll() {
+        optionList.clear()
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.dialog_option_item, parent, false)
         return MyViewHolder(view).apply {
