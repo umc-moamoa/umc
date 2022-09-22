@@ -95,7 +95,10 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
         builderItem.dialogOptionAddIv.setOnClickListener {
             Log.d("옵션 추가함 ", builderItem.dialogOptionInputEt.text.toString())
 
-            optionRAdapter.addItem(Option(builderItem.dialogOptionInputEt.text.toString()))
+            val option: Option = Option(builderItem.dialogOptionInputEt.text.toString())
+            optionList.add(option)
+//            optionRAdapter.addItem(option)
+            optionRAdapter.notifyDataSetChanged()
             builderItem.dialogOptionInputEt.setText("") // 초기화 시키기
 
             Log.d("(추가) 옵션 개수", optionRAdapter.itemCount.toString())
@@ -132,8 +135,8 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
                         longCount += 1
                     }
 
-                    createRAdapter.addItem(MyQuestion(question, spinner, optionList))
-                    createRAdapter.notifyDataSetChanged()
+                    questionList.add(MyQuestion(question, spinner, optionList))
+                    createRAdapter = FormCreateRAdapter(questionList)
 
                     Log.d("옵션 총 개수", optionList.size.toString())
                 })
@@ -141,6 +144,7 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
                 show()
             }
 
+            createRAdapter.notifyDataSetChanged()
             optionRAdapter.clearAll()
         }
 
