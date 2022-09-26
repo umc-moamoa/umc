@@ -1,10 +1,13 @@
 package com.example.umc_hackathon
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.umc_hackathon.auth.AuthActivity
 import com.example.umc_hackathon.databinding.ActivityFormDetailBinding
 import com.example.umc_hackathon.post.*
@@ -48,7 +51,15 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
             likePost()
         }
         binding.formDetailDeleteBtn.setOnClickListener {
-            deletePost()
+            AlertDialog.Builder(this).run {
+                setTitle("설문을 삭제하시겠습니까?")
+                setPositiveButton("네, 삭제하겠습니다", DialogInterface.OnClickListener { dialogInterface, i ->
+                    deletePost()
+                })
+                setNegativeButton("아니요", null)
+                show()
+            }
+
         }
         binding.formDetailResultBtn.setOnClickListener {
             val intent = Intent(this, ResultActivity::class.java)
@@ -163,10 +174,11 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
     }
 
     override fun onDeleteSuccess() {
-        //삭제 알림창 띄우기
+        Toast.makeText(this, "설문 삭제를 성공했습니다.", Toast.LENGTH_SHORT).show()
     }
 
     override fun onDeleteFailure(result: StringResultResponse) {
+        Toast.makeText(this, "설문 삭제를 실패했습니다.", Toast.LENGTH_SHORT).show()
         Log.d("deletePost()", " 실패 / " + result.message)
     }
 
