@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ScrollView
 import androidx.core.content.ContextCompat.startActivity
 import com.example.umc_hackathon.FormDetailActivity
@@ -96,14 +97,17 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
             binding.mainPopularFirstTitleTv.text = "설문조사 개수 부족"
             binding.mainPopularFirstCountTv.text = "설문조사 개수 부족"
             binding.mainPopularFirstDeadlineTv.text = "설문조사 개수 부족"
+            binding.mainPopularFirstPointTv.visibility = View.GONE
 
             binding.mainSecondTitleTv.text = "설문조사 개수 부족"
             binding.mainSecondCountTv.text = "설문조사 개수 부족"
             binding.mainSecondDeadlineTv.text = "설문조사 개수 부족"
+            binding.mainSecondPointTv.visibility = View.GONE
 
             binding.mainThirdTitleTv.text = "설문조사 개수 부족"
             binding.mainThirdCountTv.text = "설문조사 개수 부족"
             binding.mainThirdDeadlineTv.text = "설문조사 개수 부족"
+            binding.mainThirdPointTv.visibility = View.GONE
         } else {
             binding.mainPopularFirstTitleTv.text = postList.result[0].title
             binding.mainPopularFirstCountTv.text = postList.result[0].qcount.toString() + "개의 항목"
@@ -170,14 +174,17 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
             binding.mainWaitingSurveyItemTitleTv1.text = "설문조사 개수 부족"
             binding.mainWaitingSurveyItemCountTv1.text = "설문조사 개수 부족"
             binding.mainWaitingSurveyItemDeadlineTv1.text = "설문조사 개수 부족"
+            binding.mainWaitingSurveyItemPointTv1.visibility = View.GONE
 
             binding.mainWaitingSurveyItemTitleTv2.text = "설문조사 개수 부족"
             binding.mainWaitingSurveyItemCountTv2.text = "설문조사 개수 부족"
             binding.mainWaitingSurveyItemDeadlineTv2.text = "설문조사 개수 부족"
+            binding.mainWaitingSurveyItemPointTv2.visibility = View.GONE
 
             binding.mainWaitingSurveyItemTitleTv3.text = "설문조사 개수 부족"
             binding.mainWaitingSurveyItemCountTv3.text = "설문조사 개수 부족"
             binding.mainWaitingSurveyItemDeadlineTv3.text = "설문조사 개수 부족"
+            binding.mainWaitingSurveyItemPointTv3.visibility = View.GONE
         } else {
             binding.mainWaitingSurveyItemTitleTv1.text = postList.result[0].title
             binding.mainWaitingSurveyItemCountTv1.text = postList.result[0].qcount.toString() + "개의 항목"

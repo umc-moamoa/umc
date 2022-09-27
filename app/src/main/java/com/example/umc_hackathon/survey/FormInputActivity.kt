@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_hackathon.FormDetailActivity
 import com.example.umc_hackathon.R
 import com.example.umc_hackathon.databinding.ActivityFormInputBinding
+import com.example.umc_hackathon.post.FormListActivity
 
 class FormInputActivity : AppCompatActivity(), FormDetailView {
 
@@ -30,14 +31,14 @@ class FormInputActivity : AppCompatActivity(), FormDetailView {
 
         // 이벤트 리스너
         binding.formInputCancelBtn.setOnClickListener {
-            val intent = Intent(this, FormDetailActivity::class.java)
+            val intent = Intent(this, FormListActivity::class.java)
             intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
             finish()
         }
 
         binding.formInputSubmitBtn.setOnClickListener {
-            val intent = Intent(this, FormDetailActivity::class.java)
+            val intent = Intent(this, FormListActivity::class.java)
             intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
             finish()
