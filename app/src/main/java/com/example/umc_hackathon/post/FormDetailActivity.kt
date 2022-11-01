@@ -13,11 +13,15 @@ import com.example.umc_hackathon.databinding.ActivityFormDetailBinding
 import com.example.umc_hackathon.post.*
 import com.example.umc_hackathon.post.result.ResultActivity
 import com.example.umc_hackathon.survey.FormInputActivity
+import com.example.umc_hackathon.survey.ModifyActivity
 
 class FormDetailActivity : AppCompatActivity(), PostDetailView {
 
     private var postId: Long = 0L
     private lateinit var postTitle: String
+    private var postDeadline: Int = 0
+    private var postUserId: Long = 0
+    private lateinit var postContent: String
     private lateinit var binding: ActivityFormDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,13 +63,25 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
                 setNegativeButton("아니요", null)
                 show()
             }
-
         }
+
         binding.formDetailResultBtn.setOnClickListener {
             val intent = Intent(this, ResultActivity::class.java)
             intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             intent.putExtra("postId", postId)
             intent.putExtra("postTitle", postTitle)
+            startActivity(intent)
+            finish()
+        }
+
+        binding.formDetailModifyBtn.setOnClickListener {
+            val intent = Intent(this, ModifyActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            intent.putExtra("postId", postId)
+            intent.putExtra("postTitle", postTitle)
+            intent.putExtra("postContent", postContent)
+            intent.putExtra("postDeadline", postDeadline)
+            intent.putExtra("postUserId", postUserId)
             startActivity(intent)
             finish()
         }
@@ -104,11 +120,17 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
 
     override fun onGetPostDetailSuccess(result: PostDetailResult) {
         postTitle = result.title
+        postDeadline = result.dday
+        postContent = result.content
+        postUserId = result.postUserId
+
         binding.formDetailTitleTv.text = postTitle
         binding.formDetailInfoTv.text = result.content
         binding.formDetailItemCountTv.text = result.qCount.toString() + "개의 항목"
 
         if (result.status == "ACTIVE") {
+            binding.formDetailModifyBtn.visibility = View.VISIBLE
+
             if (result.dday == 0) {
                 binding.formDetailItemDeadlineTv.text = "D - DAY"
             }
