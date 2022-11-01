@@ -42,7 +42,8 @@ interface PostRetrofitInterface {
     @GET("/posts/content/{postId}")
     fun getPostDetail(
         @Path("postId") postId: Long,
-        @Header("x-access-token") jwt: String
+        @Header("x-access-token") accessToken: String,
+        @Header("REFRESH-TOKEN") refreshToken: String
     ): Call<PostDetailResponse>
 
     @POST("/posts/interest/{postId}")

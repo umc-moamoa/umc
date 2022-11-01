@@ -188,10 +188,10 @@ class PostService {
         Log.d("getMySurvey()", " / PostService에서 메소드")
     }
 
-    fun getPostDetail(postId: Long, jwt: String) {
+    fun getPostDetail(postId: Long, accessToken: String, refreshToken: String) {
         val postService = getRetrofit().create(PostRetrofitInterface::class.java)
 
-        postService.getPostDetail(postId, jwt).enqueue(object: Callback<PostDetailResponse> {
+        postService.getPostDetail(postId, accessToken, refreshToken).enqueue(object: Callback<PostDetailResponse> {
             override fun onResponse(call: Call<PostDetailResponse>, response: Response<PostDetailResponse>) {
                 if(response.body() != null) {
                     Log.d("getPostDetail()", " / " + response.body())

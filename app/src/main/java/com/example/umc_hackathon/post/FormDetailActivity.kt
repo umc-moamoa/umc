@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat.startActivity
 import com.example.umc_hackathon.auth.AuthActivity
 import com.example.umc_hackathon.databinding.ActivityFormDetailBinding
 import com.example.umc_hackathon.post.*
@@ -92,7 +93,7 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
 
         val postService = PostService()
         postService.setPostDetailView(this)
-        postService.getPostDetail(postId, getJwt().toString())
+        postService.getPostDetail(postId, getAccessToken().toString(), getRefreshToken().toString())
     }
 
     private fun likePost() {
@@ -116,6 +117,16 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
     private fun getJwt(): String? {
         val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
         return spf!!.getString("jwt", "")
+    }
+
+    private fun getAccessToken(): String? {
+        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf!!.getString("accessToken", "")
+    }
+
+    private fun getRefreshToken(): String? {
+        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf!!.getString("refreshToken", "")
     }
 
     override fun onGetPostDetailSuccess(result: PostDetailResult) {
