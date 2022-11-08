@@ -23,11 +23,12 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
 
         // 이벤트 리스너
         binding.mainProfileIv.setOnClickListener {
-            if (getJwt().isNullOrBlank()) {
+            if (getRefreshToken().isNullOrBlank()) {
                 val intent = Intent(this, AuthActivity::class.java)
                 intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
                 startActivity(intent)
             } else {
+                Log.d("리프레시 토큰있음", "마이페이지로~")
                 val intent = Intent(this, MyPageActivity::class.java)
                 intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
                 startActivity(intent)
@@ -69,6 +70,16 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
     private fun getJwt(): String? {
         val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
         return spf!!.getString("jwt", "")
+    }
+
+    private fun getAccessToken(): String? {
+        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf!!.getString("accessToken", "")
+    }
+
+    private fun getRefreshToken(): String? {
+        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf!!.getString("refreshToken", "")
     }
 
     private fun getNickName(): String? {

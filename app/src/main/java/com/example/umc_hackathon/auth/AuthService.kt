@@ -1,9 +1,6 @@
 package com.example.umc_hackathon.auth
 
-import android.app.Activity
-import android.content.Context
 import android.util.Log
-import android.widget.Toast
 import com.example.umc_hackathon.getRetrofit
 import retrofit2.Call
 import retrofit2.Callback
@@ -16,6 +13,7 @@ class AuthService {
     private lateinit var userInfoView: UserInfoView
     private lateinit var joinCheckView: JoinCheckView
     private lateinit var userSettingView: UserSettingView
+    private lateinit var reAccessTokenView: ReAccessTokenView
 
     fun setJoinView(joinView: JoinView) {
         this.joinView = joinView
@@ -35,6 +33,10 @@ class AuthService {
 
     fun setUserSettingView(userSettingView: UserSettingView){
         this.userSettingView = userSettingView
+    }
+
+    fun setReAccessTokenView(reAccessTokenView: ReAccessTokenView) {
+        this.reAccessTokenView = reAccessTokenView
     }
 
     fun join(user: User) {
@@ -170,9 +172,32 @@ class AuthService {
             override fun onFailure(call: Call<UserDeleteResponse>, t: Throwable) {
                 Log.d("USERINFO/실패", t.message.toString())
             }
-
         })
 
         Log.d("service/userInfo()", "메소드")
     }
+
+    // Access Token 재발급
+    fun getReAccessToken(accessToken: String, refreshToken: String) {
+        val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
+
+        authService.getReAccessToken(accessToken, refreshToken).enqueue(object : Callback<ReAccessTokenResponse> {
+            override fun onResponse(call: Call<ReAccessTokenResponse>, response: Response<ReAccessTokenResponse>) {
+                if(response.body() != null) {
+                    Log.d("getReAccessToken/성공", response.toString())
+
+                    val resp: ReAccessTokenResponse = response.body()!!
+                    when(val code = resp.code) {
+                        1000 -> reAccessTokenView.onGetReAccessTokenSuccess(resp)
+                        else -> reAccessTokenView.onGetReAccessTokenFailure()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ReAccessTokenResponse>, t: Throwable) {
+                Log.d("getReAccessToken/실패", t.message.toString())
+            }
+        })
+    }
+
 }

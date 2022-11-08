@@ -61,7 +61,9 @@ class SettingActivity : AppCompatActivity(), UserSettingView {
 
                 val authSpf = getSharedPreferences("auth", MODE_PRIVATE)
                 val authEditor = authSpf.edit()
-                authEditor.remove("jwt")
+                authEditor.remove("accessToken")
+                authEditor.commit()
+                authEditor.remove("refreshToken")
                 authEditor.commit()
 
                 val nickNameSpf = getSharedPreferences("nickName", MODE_PRIVATE)

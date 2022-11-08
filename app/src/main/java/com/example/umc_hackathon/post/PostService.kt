@@ -1,6 +1,7 @@
 package com.example.umc_hackathon.post
 
 import android.util.Log
+import com.example.umc_hackathon.auth.ReAccessTokenView
 import com.example.umc_hackathon.getRetrofit
 import retrofit2.Call
 import retrofit2.Callback
@@ -15,6 +16,7 @@ class PostService {
     private lateinit var mySurveyView: MySurveyView
     private lateinit var postDetailView: PostDetailView
     private lateinit var myPointView: MyPointView
+//    private lateinit var reAccessTokenView: ReAccessTokenView
 
     fun setPostListView(postListView: PostListView) {
         this.postListView = postListView
@@ -164,10 +166,10 @@ class PostService {
         Log.d("getParticipatedSurvey()", " / PostService에서 메소드")
     }
 
-    fun getMySurvey(jwt: String) {
+    fun getMySurvey(accessToken: String, refreshToken: String) {
         val postService = getRetrofit().create(PostRetrofitInterface::class.java)
 
-        postService.getMySurvey(jwt).enqueue(object: Callback<MySurveyResponse> {
+        postService.getMySurvey(accessToken, refreshToken).enqueue(object: Callback<MySurveyResponse> {
             override fun onResponse(call: Call<MySurveyResponse>, response: Response<MySurveyResponse>) {
                 if(response.body() != null) {
                     Log.d("getMySurvey()", " / " + response.body())
@@ -199,7 +201,8 @@ class PostService {
 
                     when(postDetail.code) {
                         1000 -> postDetailView.onGetPostDetailSuccess(postDetail.result!!)
-                        else -> postDetailView.onGetPostDetailFailure()
+                        // 2002 -> refresh Token으로 Access Token 재발급
+                        else -> postDetailView.onGetPostDetailFailure(postDetail)
                     }
                 }
             }

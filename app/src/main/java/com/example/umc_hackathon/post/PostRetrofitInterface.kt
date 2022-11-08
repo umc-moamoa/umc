@@ -35,7 +35,8 @@ interface PostRetrofitInterface {
     // 나의 설문조사
     @GET("/users/userPost")
     fun getMySurvey(
-        @Header("x-access-token") jwt: String
+        @Header("x-access-token") jwt: String,
+        @Header("REFRESH-TOKEN") refreshToken: String
     ): Call<MySurveyResponse>
 
     // 상세 페이지

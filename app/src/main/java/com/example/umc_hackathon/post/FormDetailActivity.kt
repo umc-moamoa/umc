@@ -10,13 +10,16 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat.startActivity
 import com.example.umc_hackathon.auth.AuthActivity
+import com.example.umc_hackathon.auth.AuthService
+import com.example.umc_hackathon.auth.ReAccessTokenResponse
+import com.example.umc_hackathon.auth.ReAccessTokenView
 import com.example.umc_hackathon.databinding.ActivityFormDetailBinding
 import com.example.umc_hackathon.post.*
 import com.example.umc_hackathon.post.result.ResultActivity
 import com.example.umc_hackathon.survey.FormInputActivity
 import com.example.umc_hackathon.survey.ModifyActivity
 
-class FormDetailActivity : AppCompatActivity(), PostDetailView {
+class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenView {
 
     private var postId: Long = 0L
     private lateinit var postTitle: String
@@ -114,6 +117,22 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
         postService.deletePost(postId, getJwt().toString())
     }
 
+    private fun saveAccessToken(accessToken: String) {
+        val spf = getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        val editor = spf.edit()
+
+        editor.putString("accessToken", accessToken)
+        editor.apply()
+
+        Log.d("엑세스토근", "세이브")
+    }
+
+    private fun getReAccessToken() {
+        val authService = AuthService()
+        authService.setReAccessTokenView(this)
+        authService.getReAccessToken(getAccessToken().toString(), getRefreshToken().toString())
+    }
+
     private fun getJwt(): String? {
         val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
         return spf!!.getString("jwt", "")
@@ -181,11 +200,16 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
         Log.d("PostDetail / ", "상세페이지를 불러오는데 성공했습니다")
     }
 
-    override fun onGetPostDetailFailure() {
-        Log.d("PostDetail / ", "상세페이지를 불러오는데 실패했습니다")
-        val intent = Intent(this, AuthActivity::class.java)
-        startActivity(intent)
-        finish()
+    override fun onGetPostDetailFailure(result: PostDetailResponse) {
+        Log.d("PostDetail / ", "상세페이지를 불러오는데 실패했습니다" + result.code)
+
+        if(result.code == 2002) {
+            getReAccessToken()
+        } else {
+            val intent = Intent(this, AuthActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     override fun onLikeSuccess() {
@@ -213,6 +237,15 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
     override fun onDeleteFailure(result: StringResultResponse) {
         Toast.makeText(this, "설문 삭제를 실패했습니다.", Toast.LENGTH_SHORT).show()
         Log.d("deletePost()", " 실패 / " + result.message)
+    }
+
+    override fun onGetReAccessTokenSuccess(res: ReAccessTokenResponse) {
+        Log.d("액세스토근", "을 재발급했습니다.")
+        saveAccessToken(res.result)
+    }
+
+    override fun onGetReAccessTokenFailure() {
+        Log.d("onGetReAccessTokenFailure()", " 실패 / ")
     }
 
 }

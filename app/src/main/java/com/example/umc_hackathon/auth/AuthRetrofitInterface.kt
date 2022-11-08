@@ -25,5 +25,13 @@ interface AuthRetrofitInterface {
     fun joinIdCheck(@Path("id") id: String): Call<JoinCheckResponse>
 
     @GET("/users/nick/{nick}")
-    fun joinNickCheck(@Path("nick") nick: String): Call<JoinCheckResponse>
+    fun joinNickCheck(
+        @Path("nick") nick: String
+    ): Call<JoinCheckResponse>
+
+    @GET("/auth/refresh")
+    fun getReAccessToken(
+        @Header("x-access-token") accessToken: String,
+        @Header("REFRESH-TOKEN") refreshToken: String
+    ): Call<ReAccessTokenResponse>
 }
