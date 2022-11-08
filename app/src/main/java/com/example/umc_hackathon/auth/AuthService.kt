@@ -33,6 +33,10 @@ class AuthService {
         this.joinCheckView = joinCheckView
     }
 
+    fun setEmailView(emailView: JoinCheckView) {
+        this.joinCheckView = joinCheckView
+    }
+
     fun setUserSettingView(userSettingView: UserSettingView){
         this.userSettingView = userSettingView
     }
@@ -149,6 +153,28 @@ class AuthService {
         })
 
         Log.d("JOINCHECK()/", "메소드")
+    }
+
+    fun emailSend(email : String) {
+        val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
+
+        authService.emailSend(email).enqueue(object : Callback<EmailResponse>{
+            override fun onResponse(call: Call<EmailResponse>, response: Response<EmailResponse>) {
+                if(response.body() != null) {
+                    Log.d("emailSend-success", response.toString())
+
+                    val response: EmailResponse = response.body()!!
+                    when(val code = response.code) {
+                        1000 ->
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<EmailResponse>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
 
     fun deleteUser(jwt: String) {

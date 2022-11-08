@@ -92,6 +92,12 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView {
         authService.joinCheck(getUser().id, "")
     }
 
+    private fun emailSend() {
+        val authService = AuthService()
+        authService.setJoinCheckView(this)
+        authService.emailSend(getUser().id)
+    }
+
     private fun joinNickCheck() {
         val authService = AuthService()
         authService.setJoinCheckView(this)

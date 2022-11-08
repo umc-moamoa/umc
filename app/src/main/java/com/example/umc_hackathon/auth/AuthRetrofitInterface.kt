@@ -23,6 +23,12 @@ interface AuthRetrofitInterface {
     @GET("/users/id/{id}")
     fun joinIdCheck(@Path("id") id: String): Call<JoinCheckResponse>
 
+    @GET("/email/send")
+    fun emailSend(@Body email:String): Call<EmailResponse>
+
+    @POST("/email/auth")
+    fun emailCertificate(@Body certifiedCode:String): Call<EmailResponse>
+
     @GET("/users/nick/{nick}")
     fun joinNickCheck(@Path("nick") nick: String): Call<JoinCheckResponse>
 }
