@@ -177,7 +177,7 @@ class PostService {
 
                     when(mySurveyList.code) {
                         1000 -> mySurveyView.onGetMySurveyViewSuccess(mySurveyList)
-                        else -> mySurveyView.onGetMySurveyViewFailure()
+                        else -> mySurveyView.onGetMySurveyViewFailure(mySurveyList)
                     }
                 }
             }

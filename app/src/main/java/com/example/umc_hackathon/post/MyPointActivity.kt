@@ -7,12 +7,11 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.umc_hackathon.auth.MyPageActivity
-import com.example.umc_hackathon.auth.UserInfoResult
+import com.example.umc_hackathon.auth.*
 import com.example.umc_hackathon.databinding.ActivityMyPointBinding
 import com.example.umc_hackathon.databinding.ActivityParticipatedSurveyBinding
 
-class MyPointActivity : AppCompatActivity(), MyPointView {
+class MyPointActivity : AppCompatActivity(), MyPointView, ReAccessTokenView {
 
     private lateinit var binding: ActivityMyPointBinding
 
@@ -81,6 +80,22 @@ class MyPointActivity : AppCompatActivity(), MyPointView {
         return spf!!.getString("refreshToken", "")
     }
 
+    private fun getReAccessToken() {
+        val authService = AuthService()
+        authService.setReAccessTokenView(this)
+        authService.getReAccessToken(getAccessToken().toString(), getRefreshToken().toString())
+    }
+
+    private fun saveAccessToken(accessToken: String) {
+        val spf = getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        val editor = spf.edit()
+
+        editor.putString("accessToken", accessToken)
+        editor.apply()
+
+        Log.d("엑세스토근", "세이브")
+    }
+
     override fun onGetMyRecentPointSuccess(pointHistoryRecent: MyPointResponse) {
         binding.myPointPointListRv.adapter = MyPointRAdapter(pointHistoryRecent.result.pointHistoryRecent, emptyList())
         Log.d("포인트 내역 최신순 / ", "포인트 내역을 불러오는데 성공했습니다")
@@ -98,6 +113,19 @@ class MyPointActivity : AppCompatActivity(), MyPointView {
 
     override fun onGetMyPointFailure(result: MyPointResponse) {
         Log.d("포인트 내역 / ", "포인트 내역을 불러오는데 실패했습니다" + result.code)
+
+        if(result.code == 2002) {
+            getReAccessToken()
+        }
+    }
+
+    override fun onGetReAccessTokenSuccess(res: ReAccessTokenResponse) {
+        Log.d("액세스 토큰", "재발급했습니다.")
+        saveAccessToken(res.result)
+    }
+
+    override fun onGetReAccessTokenFailure() {
+        Log.d("액세스 토큰", "재발급 실패했습니다.")
     }
 
 }

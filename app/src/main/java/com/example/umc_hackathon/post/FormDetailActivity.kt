@@ -133,11 +133,6 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenVie
         authService.getReAccessToken(getAccessToken().toString(), getRefreshToken().toString())
     }
 
-    private fun getJwt(): String? {
-        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-        return spf!!.getString("jwt", "")
-    }
-
     private fun getAccessToken(): String? {
         val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
         return spf!!.getString("accessToken", "")
