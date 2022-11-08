@@ -129,7 +129,7 @@ class PostService {
 
                     when(postList.code) {
                         1000 -> interestSurveyListView.onGetInterestSurveyListSuccess(postList)
-                        else -> interestSurveyListView.onGetInterestSurveyListFailure()
+                        else -> interestSurveyListView.onGetInterestSurveyListFailure(postList)
                     }
                 }
             }
