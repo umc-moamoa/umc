@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.umc_hackathon.auth.MyPageActivity
+import com.example.umc_hackathon.auth.*
 import com.example.umc_hackathon.databinding.ActivityInterestSurveyBinding
 
-class InterestSurveyActivity : AppCompatActivity(), InterestSurveyListView {
+class InterestSurveyActivity : AppCompatActivity(), InterestSurveyListView, ReAccessTokenView {
 
     private lateinit var binding: ActivityInterestSurveyBinding
 
@@ -34,14 +34,35 @@ class InterestSurveyActivity : AppCompatActivity(), InterestSurveyListView {
     private fun getInterestSurveyList() {
         val postService = PostService()
         postService.setInterestSurveyListView(this)
-        postService.getInterestSurveyList(getJwt().toString())
+        postService.getInterestSurveyList(getAccessToken().toString(), getRefreshToken().toString())
         
         Log.d("getInterestSurveyList", " / InterestSurveyActivity에서 메소드")
     }
 
-    private fun getJwt(): String? {
+    private fun getAccessToken(): String? {
         val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-        return spf!!.getString("jwt", "")
+        return spf!!.getString("accessToken", "")
+    }
+
+    private fun getRefreshToken(): String? {
+        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf!!.getString("refreshToken", "")
+    }
+
+    private fun getReAccessToken() {
+        val authService = AuthService()
+        authService.setReAccessTokenView(this)
+        authService.getReAccessToken(getAccessToken().toString(), getRefreshToken().toString())
+    }
+
+    private fun saveAccessToken(accessToken: String) {
+        val spf = getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        val editor = spf.edit()
+
+        editor.putString("accessToken", accessToken)
+        editor.apply()
+
+        Log.d("엑세스토근", "세이브")
     }
 
     override fun onGetInterestSurveyListSuccess(postList: PostListResponse) {
@@ -49,9 +70,24 @@ class InterestSurveyActivity : AppCompatActivity(), InterestSurveyListView {
         Log.d("관심있는 설문조사 / ", "관심있는 설문조사 폼 목록을 불러오는데 성공했습니다")
     }
 
-    override fun onGetInterestSurveyListFailure() {
+    override fun onGetInterestSurveyListFailure(result: PostListResponse) {
         Log.d("관심있는 설문조사 / ", "관심있는 설문조사 폼 목록을 불러오는데 실패했습니다")
+
+        if(result.code == 2002) {
+            getReAccessToken()
+        } else {
+            val intent = Intent(this, AuthActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
+    override fun onGetReAccessTokenSuccess(res: ReAccessTokenResponse) {
+        Log.d("액세스토근", "을 재발급했습니다.")
+        saveAccessToken(res.result)
+    }
 
+    override fun onGetReAccessTokenFailure() {
+        Log.d("onGetReAccessTokenFailure()", " 실패 / ")
+    }
 }

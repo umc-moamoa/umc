@@ -2,5 +2,5 @@ package com.example.umc_hackathon.post
 
 interface MySurveyView {
     fun onGetMySurveyViewSuccess(mySurveyList: MySurveyResponse)
-    fun onGetMySurveyViewFailure()
+    fun onGetMySurveyViewFailure(mySurveyList: MySurveyResponse)
 }

@@ -12,12 +12,14 @@ interface AuthRetrofitInterface {
 
     @GET("/users")
     fun userInfo(
-        @Header("x-access-token") jwt: String
+        @Header("x-access-token") accessToken: String,
+        @Header("REFRESH-TOKEN") refreshToken: String
     ): Call<UserInfoResponse>
 
     @DELETE("/users")
     fun deleteUser(
-        @Header("x-access-token") jwt: String
+        @Header("x-access-token") accessToken: String,
+        @Header("REFRESH-TOKEN") refreshToken: String
     ): Call<UserDeleteResponse>
 
     @GET("/users/id/{id}")
@@ -30,5 +32,13 @@ interface AuthRetrofitInterface {
     fun emailCertificate(@Body certifiedCode:String): Call<EmailResponse>
 
     @GET("/users/nick/{nick}")
-    fun joinNickCheck(@Path("nick") nick: String): Call<JoinCheckResponse>
+    fun joinNickCheck(
+        @Path("nick") nick: String
+    ): Call<JoinCheckResponse>
+
+    @GET("/auth/refresh")
+    fun getReAccessToken(
+        @Header("x-access-token") accessToken: String,
+        @Header("REFRESH-TOKEN") refreshToken: String
+    ): Call<ReAccessTokenResponse>
 }

@@ -27,6 +27,7 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
     var shortCount: Int = 0
     var longCount: Int = 0
 
+    val postDetails: ArrayList<ArrayList<String>> = arrayListOf()
     var postDetail: ArrayList<String> = arrayListOf()
 
     var questionList = arrayListOf<MyQuestion>()
@@ -95,7 +96,10 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
         builderItem.dialogOptionAddIv.setOnClickListener {
             Log.d("옵션 추가함 ", builderItem.dialogOptionInputEt.text.toString())
 
-            optionRAdapter.addItem(Option(builderItem.dialogOptionInputEt.text.toString()))
+            val option: Option = Option(builderItem.dialogOptionInputEt.text.toString())
+            optionList.add(option)
+//            optionRAdapter.addItem(option)
+            optionRAdapter.notifyDataSetChanged()
             builderItem.dialogOptionInputEt.setText("") // 초기화 시키기
 
             Log.d("(추가) 옵션 개수", optionRAdapter.itemCount.toString())
@@ -132,17 +136,43 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
                         longCount += 1
                     }
 
-                    createRAdapter.addItem(MyQuestion(question, spinner, optionList))
+                    questionList.add(MyQuestion(question, spinner, optionList))
+                    val createRAdapter = FormCreateRAdapter(questionList)
                     createRAdapter.notifyDataSetChanged()
 
-                    Log.d("qList", optionList.toString())
-                    Log.d("옵션 총 개수", optionList.size.toString())
+                    val nowIndex = questionList.size - 1
+                    postDetail = arrayListOf() // 초기화
+
+                    // when 문법으로 바꾸기
+                    if(questionList[nowIndex].type == "객관식(택1)") {
+                        postDetail.add("1")
+                        postDetail.add(questionList[nowIndex].title)
+                        for(j in 0 until questionList[nowIndex].option!!.size) {
+                            postDetail.add(questionList[nowIndex].option!![j].question)
+                        }
+                    } else if (questionList[nowIndex].type == "객관식(복수선택)") {
+                        postDetail.add("2")
+                        postDetail.add(questionList[nowIndex].title)
+                        for(j in 0 until questionList[nowIndex].option!!.size) {
+                            postDetail.add(questionList[nowIndex].option!![j].question)
+                        }
+                    } else if (questionList[nowIndex].type == "단답형") {
+                        postDetail.add("3")
+                        postDetail.add(questionList[nowIndex].title)
+                    } else if (questionList[nowIndex].type == "서술형") {
+                        postDetail.add("4")
+                        postDetail.add(questionList[nowIndex].title)
+                    }
+
+                    postDetails.add(postDetail)
+
+                    Log.d("postDetail 사이즈", postDetails.size.toString())
                 })
                 setNegativeButton("취소", null)
                 show()
             }
 
-            optionRAdapter.clearAll()
+            optionList.clear()
         }
 
         binding.formCreateSaveTv.setOnClickListener {
@@ -179,33 +209,33 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
         val formContent: String = binding.formCreateContentEt.text.toString()
         val formDeadline: String = binding.formCreateDateEt.text.toString()
 
-        val postDetails: ArrayList<ArrayList<String>> = arrayListOf()
+//        val postDetails: ArrayList<ArrayList<String>> = arrayListOf()
 
-        for(i in 0 until createRAdapter.itemCount) {
-            postDetail = arrayListOf() // 초기화
-
-            if(questionList[i].type == "객관식(택1)") {
-                postDetail.add("1")
-                postDetail.add(questionList[i].title)
-                for(j in 0 until questionList[i].option!!.size) {
-                    postDetail.add(questionList[i].option!![j].question)
-                }
-            } else if (questionList[i].type == "객관식(복수선택)") {
-                postDetail.add("2")
-                postDetail.add(questionList[i].title)
-                for(j in 0 until questionList[i].option!!.size) {
-                    postDetail.add(questionList[i].option!![j].question)
-                }
-            } else if (questionList[i].type == "단답형") {
-                postDetail.add("3")
-                postDetail.add(questionList[i].title)
-            } else if (questionList[i].type == "서술형") {
-                postDetail.add("4")
-                postDetail.add(questionList[i].title)
-            }
-
-            postDetails.add(postDetail)
-        }
+//        for(i in 0 until createRAdapter.itemCount) {
+//            postDetail = arrayListOf() // 초기화
+//
+//            if(questionList[i].type == "객관식(택1)") {
+//                postDetail.add("1")
+//                postDetail.add(questionList[i].title)
+//                for(j in 0 until questionList[i].option!!.size) {
+//                    postDetail.add(questionList[i].option!![j].question)
+//                }
+//            } else if (questionList[i].type == "객관식(복수선택)") {
+//                postDetail.add("2")
+//                postDetail.add(questionList[i].title)
+//                for(j in 0 until questionList[i].option!!.size) {
+//                    postDetail.add(questionList[i].option!![j].question)
+//                }
+//            } else if (questionList[i].type == "단답형") {
+//                postDetail.add("3")
+//                postDetail.add(questionList[i].title)
+//            } else if (questionList[i].type == "서술형") {
+//                postDetail.add("4")
+//                postDetail.add(questionList[i].title)
+//            }
+//
+//            postDetails.add(postDetail)
+//        }
 
         return FormCreateRequest(categoryId, shortCount, longCount, formTitle, formContent, formDeadline, postDetails)
     }

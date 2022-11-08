@@ -66,12 +66,22 @@ class MyPageActivity : AppCompatActivity(), UserInfoView {
 
         val authService = AuthService()
         authService.setUserInfoView(this)
-        authService.userInfo(getJwt().toString())
+        authService.userInfo(getAccessToken().toString(), getRefreshToken().toString())
     }
 
     private fun getJwt(): String? {
         val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
         return spf!!.getString("jwt", "")
+    }
+
+    private fun getAccessToken(): String? {
+        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf!!.getString("accessToken", "")
+    }
+
+    private fun getRefreshToken(): String? {
+        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf!!.getString("refreshToken", "")
     }
 
     private fun saveNickName(nickName: String) {

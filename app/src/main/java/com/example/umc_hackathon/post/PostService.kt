@@ -1,6 +1,7 @@
 package com.example.umc_hackathon.post
 
 import android.util.Log
+import com.example.umc_hackathon.auth.ReAccessTokenView
 import com.example.umc_hackathon.getRetrofit
 import retrofit2.Call
 import retrofit2.Callback
@@ -15,6 +16,7 @@ class PostService {
     private lateinit var mySurveyView: MySurveyView
     private lateinit var postDetailView: PostDetailView
     private lateinit var myPointView: MyPointView
+//    private lateinit var reAccessTokenView: ReAccessTokenView
 
     fun setPostListView(postListView: PostListView) {
         this.postListView = postListView
@@ -116,10 +118,10 @@ class PostService {
         })
     }
 
-    fun getInterestSurveyList(jwt: String) {
+    fun getInterestSurveyList(accessToken: String, refreshToken: String) {
         val postService = getRetrofit().create(PostRetrofitInterface::class.java)
 
-        postService.getInterestSurveyList(jwt).enqueue(object: Callback<PostListResponse> {
+        postService.getInterestSurveyList(accessToken, refreshToken).enqueue(object: Callback<PostListResponse> {
             override fun onResponse(call: Call<PostListResponse>, response: Response<PostListResponse>) {
                 if(response.body() != null) {
                     Log.d("getInterestSurveyList()", " / " + response.body())
@@ -127,7 +129,7 @@ class PostService {
 
                     when(postList.code) {
                         1000 -> interestSurveyListView.onGetInterestSurveyListSuccess(postList)
-                        else -> interestSurveyListView.onGetInterestSurveyListFailure()
+                        else -> interestSurveyListView.onGetInterestSurveyListFailure(postList)
                     }
                 }
             }
@@ -140,10 +142,10 @@ class PostService {
         Log.d("getInterestSurveyList()", " / PostService에서 메소드")
     }
 
-    fun getParticipatedSurvey(jwt: String) {
+    fun getParticipatedSurvey(accessToken: String, refreshToken: String) {
         val postService = getRetrofit().create(PostRetrofitInterface::class.java)
 
-        postService.getParticipatedSurvey(jwt).enqueue(object: Callback<PostListResponse> {
+        postService.getParticipatedSurvey(accessToken, refreshToken).enqueue(object: Callback<PostListResponse> {
             override fun onResponse(call: Call<PostListResponse>, response: Response<PostListResponse>) {
                 if(response.body() != null) {
                     Log.d("getParticipatedSurvey()", " / " + response.body())
@@ -164,10 +166,10 @@ class PostService {
         Log.d("getParticipatedSurvey()", " / PostService에서 메소드")
     }
 
-    fun getMySurvey(jwt: String) {
+    fun getMySurvey(accessToken: String, refreshToken: String) {
         val postService = getRetrofit().create(PostRetrofitInterface::class.java)
 
-        postService.getMySurvey(jwt).enqueue(object: Callback<MySurveyResponse> {
+        postService.getMySurvey(accessToken, refreshToken).enqueue(object: Callback<MySurveyResponse> {
             override fun onResponse(call: Call<MySurveyResponse>, response: Response<MySurveyResponse>) {
                 if(response.body() != null) {
                     Log.d("getMySurvey()", " / " + response.body())
@@ -175,7 +177,7 @@ class PostService {
 
                     when(mySurveyList.code) {
                         1000 -> mySurveyView.onGetMySurveyViewSuccess(mySurveyList)
-                        else -> mySurveyView.onGetMySurveyViewFailure()
+                        else -> mySurveyView.onGetMySurveyViewFailure(mySurveyList)
                     }
                 }
             }
@@ -188,10 +190,10 @@ class PostService {
         Log.d("getMySurvey()", " / PostService에서 메소드")
     }
 
-    fun getPostDetail(postId: Long, jwt: String) {
+    fun getPostDetail(postId: Long, accessToken: String, refreshToken: String) {
         val postService = getRetrofit().create(PostRetrofitInterface::class.java)
 
-        postService.getPostDetail(postId, jwt).enqueue(object: Callback<PostDetailResponse> {
+        postService.getPostDetail(postId, accessToken, refreshToken).enqueue(object: Callback<PostDetailResponse> {
             override fun onResponse(call: Call<PostDetailResponse>, response: Response<PostDetailResponse>) {
                 if(response.body() != null) {
                     Log.d("getPostDetail()", " / " + response.body())
@@ -199,7 +201,8 @@ class PostService {
 
                     when(postDetail.code) {
                         1000 -> postDetailView.onGetPostDetailSuccess(postDetail.result!!)
-                        else -> postDetailView.onGetPostDetailFailure()
+                        // 2002 -> refresh Token으로 Access Token 재발급
+                        else -> postDetailView.onGetPostDetailFailure(postDetail)
                     }
                 }
             }
@@ -212,10 +215,10 @@ class PostService {
         Log.d("getPostDetail() / ", " / PostService에서 메소드")
     }
 
-    fun likePost(postId: Long, jwt: String) {
+    fun likePost(postId: Long, accessToken: String, refreshToken: String) {
         val postService = getRetrofit().create(PostRetrofitInterface::class.java)
 
-        postService.likePost(postId, jwt).enqueue(object: Callback<LikeResponse> {
+        postService.likePost(postId, accessToken, refreshToken).enqueue(object: Callback<LikeResponse> {
             override fun onResponse(call: Call<LikeResponse>, response: Response<LikeResponse>) {
                 if(response.body() != null) {
                     Log.d("getLikePost()", " / " + response.body())
@@ -234,10 +237,10 @@ class PostService {
         })
     }
 
-    fun dislikePost(postId: Long, jwt: String) {
+    fun dislikePost(postId: Long, accessToken: String, refreshToken: String) {
         val postService = getRetrofit().create(PostRetrofitInterface::class.java)
 
-        postService.dislikePost(postId, jwt).enqueue(object: Callback<StringResultResponse> {
+        postService.dislikePost(postId, accessToken, refreshToken).enqueue(object: Callback<StringResultResponse> {
             override fun onResponse(call: Call<StringResultResponse>, response: Response<StringResultResponse>) {
                 if(response.body() != null) {
                     Log.d("dislikePost()", " / " + response.body())
@@ -256,10 +259,10 @@ class PostService {
         })
     }
 
-    fun deletePost(postId: Long, jwt: String) {
+    fun deletePost(postId: Long, accessToken: String, refreshToken: String) {
         val postService = getRetrofit().create(PostRetrofitInterface::class.java)
 
-        postService.deletePost(postId, jwt).enqueue(object: Callback<StringResultResponse> {
+        postService.deletePost(postId, accessToken, refreshToken).enqueue(object: Callback<StringResultResponse> {
             override fun onResponse(call: Call<StringResultResponse>, response: Response<StringResultResponse>) {
                 if(response.body() != null) {
                     Log.d("deletePost()", " / " + response.body())
@@ -278,10 +281,10 @@ class PostService {
         })
     }
 
-    fun getRecentMyPoint(jwt: String) {
+    fun getRecentMyPoint(accessToken: String, refreshToken: String) {
         val postService = getRetrofit().create(PostRetrofitInterface::class.java)
 
-        postService.getRecentMyPoint(jwt).enqueue(object: Callback<MyPointResponse> {
+        postService.getRecentMyPoint(accessToken, refreshToken).enqueue(object: Callback<MyPointResponse> {
             override fun onResponse(call: Call<MyPointResponse>, response: Response<MyPointResponse>) {
                 if(response.body() != null) {
                     Log.d("getRecentMyPoint()", " / " + response.body())
@@ -289,12 +292,12 @@ class PostService {
 
                     when(myPointList.code) {
                         1000 -> myPointView.onGetMyRecentPointSuccess(myPointList)
-                        else -> myPointView.onGetMyPointFailure()
+                        else -> myPointView.onGetMyPointFailure(myPointList)
                     }
 
                     when(val code = myPointList.code) {
                         1000 -> myPointView.onGetMyTotalPointSuccess(code, myPointList.result!!)
-                        else -> myPointView.onGetMyPointFailure()
+                        else -> myPointView.onGetMyPointFailure(myPointList)
                     }
                 }
             }
@@ -305,23 +308,24 @@ class PostService {
         })
     }
 
-    fun getFormerMyPoint(jwt: String) {
+    fun getFormerMyPoint(accessToken: String, refreshToken: String) {
         val postService = getRetrofit().create(PostRetrofitInterface::class.java)
 
-        postService.getFormerMyPoint(jwt).enqueue(object: Callback<MyPointResponse> {
+        postService.getFormerMyPoint(accessToken, refreshToken).enqueue(object: Callback<MyPointResponse> {
             override fun onResponse(call: Call<MyPointResponse>, response: Response<MyPointResponse>) {
                 if(response.body() != null) {
                     Log.d("getFormerMyPoint()", " / " + response.body())
                     val myPointFormerList: MyPointResponse = response.body()!!
+                    val myPointResponse: MyPointResponse = response.body()!!
 
                     when(myPointFormerList.code) {
                         1000 -> myPointView.onGetMyFormerPointSuccess(myPointFormerList)
-                        else -> myPointView.onGetMyPointFailure()
+                        else -> myPointView.onGetMyPointFailure(myPointFormerList)
                     }
 
                     when(val code = myPointFormerList.code) {
                         1000 -> myPointView.onGetMyTotalPointSuccess(code, myPointFormerList.result!!)
-                        else -> myPointView.onGetMyPointFailure()
+                        else -> myPointView.onGetMyPointFailure(myPointResponse)
                     }
                 }
             }

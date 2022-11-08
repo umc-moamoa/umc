@@ -26,4 +26,11 @@ interface FormRetrofitInterface {
         @Body formInputRequest: FormInputRequest,
         @Header("x-access-token") jwt: String
     ): Call<FormInputResponse>
+
+    // 설문조사 수정하기
+    @PATCH("/posts")
+    fun formModify (
+        @Body modifyRequest: ModifyRequest,
+        @Header("x-access-token") jwt: String
+    ): Call<ModifyResponse>
 }

@@ -10,7 +10,7 @@ data class PostDetailResponse (
 )
 
 data class PostDetailResult (
-    @SerializedName("postUserId") val postId: Int,
+    @SerializedName("postUserId") val postUserId: Long,
     @SerializedName("title") val title: String,
     @SerializedName("content") val content: String,
     @SerializedName("status") val status: String,

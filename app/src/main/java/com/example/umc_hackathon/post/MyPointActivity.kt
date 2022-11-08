@@ -7,12 +7,11 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.umc_hackathon.auth.MyPageActivity
-import com.example.umc_hackathon.auth.UserInfoResult
+import com.example.umc_hackathon.auth.*
 import com.example.umc_hackathon.databinding.ActivityMyPointBinding
 import com.example.umc_hackathon.databinding.ActivityParticipatedSurveyBinding
 
-class MyPointActivity : AppCompatActivity(), MyPointView {
+class MyPointActivity : AppCompatActivity(), MyPointView, ReAccessTokenView {
 
     private lateinit var binding: ActivityMyPointBinding
 
@@ -58,7 +57,7 @@ class MyPointActivity : AppCompatActivity(), MyPointView {
     private fun getRecentMyPoint() {
         val postService = PostService()
         postService.setMyPointView(this)
-        postService.getRecentMyPoint(getJwt().toString())
+        postService.getRecentMyPoint(getAccessToken().toString(), getRefreshToken().toString())
 
         Log.d("getRecentMyPoint", " / MyPointActivity에서 메소드")
     }
@@ -66,14 +65,35 @@ class MyPointActivity : AppCompatActivity(), MyPointView {
     private fun getFormerMyPoint() {
         val postService = PostService()
         postService.setMyPointView(this)
-        postService.getFormerMyPoint(getJwt().toString())
+        postService.getFormerMyPoint(getAccessToken().toString(), getRefreshToken().toString())
 
         Log.d("getFormerMyPoint", " / MyPointActivity에서 메소드")
     }
 
-    private fun getJwt(): String? {
+    private fun getAccessToken(): String? {
         val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-        return spf!!.getString("jwt", "")
+        return spf!!.getString("accessToken", "")
+    }
+
+    private fun getRefreshToken(): String? {
+        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf!!.getString("refreshToken", "")
+    }
+
+    private fun getReAccessToken() {
+        val authService = AuthService()
+        authService.setReAccessTokenView(this)
+        authService.getReAccessToken(getAccessToken().toString(), getRefreshToken().toString())
+    }
+
+    private fun saveAccessToken(accessToken: String) {
+        val spf = getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        val editor = spf.edit()
+
+        editor.putString("accessToken", accessToken)
+        editor.apply()
+
+        Log.d("엑세스토근", "세이브")
     }
 
     override fun onGetMyRecentPointSuccess(pointHistoryRecent: MyPointResponse) {
@@ -91,8 +111,21 @@ class MyPointActivity : AppCompatActivity(), MyPointView {
         Log.d("포인트 / ", "포인트 불러오기에 성공했습니다")
     }
 
-    override fun onGetMyPointFailure() {
-        Log.d("포인트 내역 / ", "포인트 내역을 불러오는데 실패했습니다")
+    override fun onGetMyPointFailure(result: MyPointResponse) {
+        Log.d("포인트 내역 / ", "포인트 내역을 불러오는데 실패했습니다" + result.code)
+
+        if(result.code == 2002) {
+            getReAccessToken()
+        }
+    }
+
+    override fun onGetReAccessTokenSuccess(res: ReAccessTokenResponse) {
+        Log.d("액세스 토큰", "재발급했습니다.")
+        saveAccessToken(res.result)
+    }
+
+    override fun onGetReAccessTokenFailure() {
+        Log.d("액세스 토큰", "재발급 실패했습니다.")
     }
 
 }

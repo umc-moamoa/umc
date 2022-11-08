@@ -1,11 +1,13 @@
 package com.example.umc_hackathon
 
+import android.content.Context.MODE_PRIVATE
 import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat.startActivity
 import com.example.umc_hackathon.auth.MyPageActivity
 import com.example.umc_hackathon.databinding.ActivitySettingBinding
 import com.example.umc_hackathon.post.MainActivity
