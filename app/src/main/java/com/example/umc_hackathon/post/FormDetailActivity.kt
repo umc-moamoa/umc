@@ -108,13 +108,13 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenVie
     private fun dislikePost() {
         val postService = PostService()
         postService.setPostDetailView(this)
-        postService.dislikePost(postId, getJwt().toString())
+        postService.dislikePost(postId, getAccessToken().toString(), getRefreshToken().toString())
     }
 
     private fun deletePost() {
         val postService = PostService()
         postService.setPostDetailView(this)
-        postService.deletePost(postId, getJwt().toString())
+        postService.deletePost(postId, getAccessToken().toString(), getRefreshToken().toString())
     }
 
     private fun saveAccessToken(accessToken: String) {

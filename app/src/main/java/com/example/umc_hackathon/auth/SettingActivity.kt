@@ -88,15 +88,20 @@ class SettingActivity : AppCompatActivity(), UserSettingView {
         }
     }
 
-    private fun getJwt(): String? {
+    private fun getAccessToken(): String? {
         val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-        return spf!!.getString("jwt", "")
+        return spf!!.getString("accessToken", "")
+    }
+
+    private fun getRefreshToken(): String? {
+        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf!!.getString("refreshToken", "")
     }
 
     private fun quitUser() {
         val authService = AuthService()
         authService.setUserSettingView(this)
-        authService.deleteUser(getJwt().toString())
+        authService.deleteUser(getAccessToken().toString(), getRefreshToken().toString())
     }
 
     override fun onUserDeleteSuccess() {

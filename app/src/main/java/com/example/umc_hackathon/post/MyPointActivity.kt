@@ -58,7 +58,7 @@ class MyPointActivity : AppCompatActivity(), MyPointView {
     private fun getRecentMyPoint() {
         val postService = PostService()
         postService.setMyPointView(this)
-        postService.getRecentMyPoint(getJwt().toString())
+        postService.getRecentMyPoint(getAccessToken().toString(), getRefreshToken().toString())
 
         Log.d("getRecentMyPoint", " / MyPointActivity에서 메소드")
     }
@@ -66,14 +66,19 @@ class MyPointActivity : AppCompatActivity(), MyPointView {
     private fun getFormerMyPoint() {
         val postService = PostService()
         postService.setMyPointView(this)
-        postService.getFormerMyPoint(getJwt().toString())
+        postService.getFormerMyPoint(getAccessToken().toString(), getRefreshToken().toString())
 
         Log.d("getFormerMyPoint", " / MyPointActivity에서 메소드")
     }
 
-    private fun getJwt(): String? {
+    private fun getAccessToken(): String? {
         val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-        return spf!!.getString("jwt", "")
+        return spf!!.getString("accessToken", "")
+    }
+
+    private fun getRefreshToken(): String? {
+        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf!!.getString("refreshToken", "")
     }
 
     override fun onGetMyRecentPointSuccess(pointHistoryRecent: MyPointResponse) {
@@ -91,8 +96,8 @@ class MyPointActivity : AppCompatActivity(), MyPointView {
         Log.d("포인트 / ", "포인트 불러오기에 성공했습니다")
     }
 
-    override fun onGetMyPointFailure() {
-        Log.d("포인트 내역 / ", "포인트 내역을 불러오는데 실패했습니다")
+    override fun onGetMyPointFailure(result: MyPointResponse) {
+        Log.d("포인트 내역 / ", "포인트 내역을 불러오는데 실패했습니다" + result.code)
     }
 
 }

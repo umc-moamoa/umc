@@ -5,5 +5,5 @@ interface MyPointView {
     fun onGetMyRecentPointSuccess(myPointList: MyPointResponse)
     fun onGetMyFormerPointSuccess(myPointList: MyPointResponse)
     fun onGetMyTotalPointSuccess(code: Int, result: MyPointList)
-    fun onGetMyPointFailure()
+    fun onGetMyPointFailure(result: MyPointResponse)
 }

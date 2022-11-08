@@ -153,10 +153,10 @@ class AuthService {
         Log.d("JOINCHECK()/", "메소드")
     }
 
-    fun deleteUser(jwt: String) {
+    fun deleteUser(accessToken: String, refreshToken: String) {
         val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
 
-        authService.deleteUser(jwt).enqueue(object : Callback<UserDeleteResponse> {
+        authService.deleteUser(accessToken, refreshToken).enqueue(object : Callback<UserDeleteResponse> {
             override fun onResponse(call: Call<UserDeleteResponse>, response: Response<UserDeleteResponse>) {
                 if(response.body() != null) {
                     Log.d("USERINFO/성공", response.toString())
