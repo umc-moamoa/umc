@@ -46,7 +46,8 @@ class FormDetailRAdapter(val questionList: List<FormDetail>): RecyclerView.Adapt
 
                 val checkBox: CheckBox = CheckBox(holder.itemView.context)
                 checkBox.text = questionList[position].items[i]
-                holder.optionCb.addView(checkBox)
+//                holder.optionCb.(checkBox)
+                checkBox.id = "cb".toInt() + i //id int형??
             }
 
             holder.optionRg.visibility = View.GONE
@@ -69,7 +70,7 @@ class FormDetailRAdapter(val questionList: List<FormDetail>): RecyclerView.Adapt
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title = itemView.findViewById<TextView>(R.id.question_input_item_tv)
         val optionRg = itemView.findViewById<RadioGroup>(R.id.question_input_item_rg)
-        val optionCb = itemView.findViewById<LinearLayout>(R.id.question_input_checkbox_ll)
+        val optionCb = itemView.findViewById<CheckBox>(R.id.question_input_item_cb)
         val optionShort = itemView.findViewById<EditText>(R.id.question_input_short_answer_et)
         val optionLong = itemView.findViewById<EditText>(R.id.question_input_long_answer_et)
     }

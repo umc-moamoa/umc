@@ -135,6 +135,7 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
                     createRAdapter.addItem(MyQuestion(question, spinner, optionList))
                     createRAdapter.notifyDataSetChanged()
 
+                    Log.d("qList", optionList.toString())
                     Log.d("옵션 총 개수", optionList.size.toString())
                 })
                 setNegativeButton("취소", null)

@@ -24,7 +24,7 @@ class FormInputActivity : AppCompatActivity(), FormDetailView {
         binding = ActivityFormInputBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 설문조사 상세 페이지에서 살문 조사 참여 페이지로 넘어올 때 넘어오는 것
+        // 설문조사 상세 페이지에서 설문 조사 참여 페이지로 넘어올 때 넘어오는 것
         postId = intent.getLongExtra("postId", postId)
 
         // 어댑터
@@ -80,7 +80,10 @@ class FormInputActivity : AppCompatActivity(), FormDetailView {
                     answer.answer = radioGroup.checkedRadioButtonId.toString()
                 }
                 2 -> {
-        //                val checkBox: CheckBox = findViewById(CheckBox)
+                    val checkBox: CheckBox = findViewById(R.id.question_input_item_cb)
+                    if (checkBox.isChecked) {
+                        answer.answer = checkBox.id.toString()
+                    }
                 }
                 3 -> {
                     val short: EditText = findViewById(R.id.question_input_short_answer_et)
