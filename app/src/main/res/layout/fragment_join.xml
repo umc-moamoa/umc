@@ -39,7 +39,7 @@
                     android:layout_marginStart="20dp"
                     android:background="@android:color/transparent"
                     android:fontFamily="@font/roboto_medium"
-                    android:hint="아이디"
+                    android:hint="이메일"
                     android:textSize="14sp" />
 
             </androidx.cardview.widget.CardView>

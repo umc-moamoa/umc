@@ -87,7 +87,7 @@ class SettingActivity : AppCompatActivity(), UserSettingView {
     private fun quitUser() {
         val authService = AuthService()
         authService.setUserSettingView(this)
-        authService.deleteUser(getJwt().toString())
+        authService.deleteUser(getAccessToken().toString(), getRefreshToken().toString())
     }
 
     private fun logoutUser() {
@@ -113,5 +113,15 @@ class SettingActivity : AppCompatActivity(), UserSettingView {
 
     override fun onUserDeleteFailure() {
         Log.d("userDelete: ", "quit-fail")
+    }
+
+    private fun getAccessToken(): String? {
+        val spf = getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf!!.getString("accessToken", "")
+    }
+
+    private fun getRefreshToken(): String? {
+        val spf = getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf!!.getString("refreshToken", "")
     }
 }

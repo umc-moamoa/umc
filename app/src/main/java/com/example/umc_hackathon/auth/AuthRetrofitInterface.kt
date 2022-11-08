@@ -10,6 +10,9 @@ interface AuthRetrofitInterface {
     @POST("/auth/login")
     fun login(@Body user:User): Call<LoginResponse>
 
+    @POST("/auth/kakaoLogin")
+    fun kakaoLogin(@Query("accessToken") param: String): Call<LoginResponse>
+
     @GET("/users")
     fun userInfo(
         @Header("x-access-token") accessToken: String,
