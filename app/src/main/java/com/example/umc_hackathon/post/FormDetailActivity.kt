@@ -102,7 +102,7 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenVie
     private fun likePost() {
         val postService = PostService()
         postService.setPostDetailView(this)
-        postService.likePost(postId, getJwt().toString())
+        postService.likePost(postId, getAccessToken().toString(), getRefreshToken().toString())
     }
 
     private fun dislikePost() {

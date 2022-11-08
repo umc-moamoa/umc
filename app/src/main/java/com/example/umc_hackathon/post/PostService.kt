@@ -118,10 +118,10 @@ class PostService {
         })
     }
 
-    fun getInterestSurveyList(jwt: String) {
+    fun getInterestSurveyList(accessToken: String, refreshToken: String) {
         val postService = getRetrofit().create(PostRetrofitInterface::class.java)
 
-        postService.getInterestSurveyList(jwt).enqueue(object: Callback<PostListResponse> {
+        postService.getInterestSurveyList(accessToken, refreshToken).enqueue(object: Callback<PostListResponse> {
             override fun onResponse(call: Call<PostListResponse>, response: Response<PostListResponse>) {
                 if(response.body() != null) {
                     Log.d("getInterestSurveyList()", " / " + response.body())
@@ -215,10 +215,10 @@ class PostService {
         Log.d("getPostDetail() / ", " / PostService에서 메소드")
     }
 
-    fun likePost(postId: Long, jwt: String) {
+    fun likePost(postId: Long, accessToken: String, refreshToken: String) {
         val postService = getRetrofit().create(PostRetrofitInterface::class.java)
 
-        postService.likePost(postId, jwt).enqueue(object: Callback<LikeResponse> {
+        postService.likePost(postId, accessToken, refreshToken).enqueue(object: Callback<LikeResponse> {
             override fun onResponse(call: Call<LikeResponse>, response: Response<LikeResponse>) {
                 if(response.body() != null) {
                     Log.d("getLikePost()", " / " + response.body())

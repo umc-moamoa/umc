@@ -23,7 +23,8 @@ interface PostRetrofitInterface {
     // 관심있는 설문조사
     @GET("/users/interest")
     fun getInterestSurveyList(
-        @Header("x-access-token") jwt: String
+        @Header("x-access-token") jwt: String,
+        @Header("REFRESH-TOKEN") refreshToken: String
     ): Call<PostListResponse>
 
     // 참여한 설문조사
@@ -50,7 +51,8 @@ interface PostRetrofitInterface {
     @POST("/posts/interest/{postId}")
     fun likePost(
         @Path("postId") postId: Long,
-        @Header("x-access-token") jwt: String
+        @Header("x-access-token") accessToken: String,
+        @Header("REFRESH-TOKEN") refreshToken: String
     ): Call<LikeResponse>
 
     @DELETE("/posts/interest/{postId}")
