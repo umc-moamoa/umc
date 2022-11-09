@@ -189,46 +189,70 @@ class AuthService {
                     Log.d("emailSend-success", response.toString())
 
                     val response: EmailResponse = response.body()!!
-                    when(val code = response.code) {
-//                        1000 ->
+                    when(response.code) {
+                        1000 -> joinCheckView.onEmailSendSuccess()
+                        else -> joinCheckView.onEmailSendFailure()
                     }
                 }
             }
 
             override fun onFailure(call: Call<EmailResponse>, t: Throwable) {
-                TODO("Not yet implemented")
+                Log.d("email-send-fail", t.message.toString())
             }
 
         })
     }
 
-        fun deleteUser(accessToken: String, refreshToken: String) {
-            val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
+    fun emailCertificate(code : String) {
+        val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
 
-            authService.deleteUser(accessToken, refreshToken)
-                .enqueue(object : Callback<UserDeleteResponse> {
-                    override fun onResponse(
-                        call: Call<UserDeleteResponse>,
-                        response: Response<UserDeleteResponse>
-                    ) {
-                        if (response.body() != null) {
-                            Log.d("USERINFO/성공", response.toString())
+        authService.emailCertificate(code).enqueue(object : Callback<EmailResponse>{
+            override fun onResponse(call: Call<EmailResponse>, response: Response<EmailResponse>) {
+                if(response.body() != null) {
+                    Log.d("emailCert-success", response.toString())
 
-                            val resp: UserDeleteResponse = response.body()!!
-                            when (val code = resp.code) {
-                                1000 -> userSettingView.onUserDeleteSuccess()
-                                else -> userSettingView.onUserDeleteFailure()
+                    val response: EmailResponse = response.body()!!
+                    when(response.code) {
+                        1000 -> joinCheckView.onEmailCertificateSuccess()
+                        else -> joinCheckView.onEmailCertificateFailure(response.code)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<EmailResponse>, t: Throwable) {
+                Log.d("email-cert-fail", t.message.toString())
+            }
+
+        })
+    }
+
+            fun deleteUser(accessToken: String, refreshToken: String) {
+                val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
+
+                authService.deleteUser(accessToken, refreshToken)
+                    .enqueue(object : Callback<UserDeleteResponse> {
+                        override fun onResponse(
+                            call: Call<UserDeleteResponse>,
+                            response: Response<UserDeleteResponse>
+                        ) {
+                            if (response.body() != null) {
+                                Log.d("USERINFO/성공", response.toString())
+
+                                val resp: UserDeleteResponse = response.body()!!
+                                when (val code = resp.code) {
+                                    1000 -> userSettingView.onUserDeleteSuccess()
+                                    else -> userSettingView.onUserDeleteFailure()
+                                }
                             }
                         }
-                    }
 
-                    override fun onFailure(call: Call<UserDeleteResponse>, t: Throwable) {
-                        Log.d("USERINFO/실패", t.message.toString())
-                    }
-                })
+                        override fun onFailure(call: Call<UserDeleteResponse>, t: Throwable) {
+                            Log.d("USERINFO/실패", t.message.toString())
+                        }
+                    })
 
-            Log.d("service/userInfo()", "메소드")
-        }
+                Log.d("service/userInfo()", "메소드")
+            }
 
 
         // Access Token 재발급

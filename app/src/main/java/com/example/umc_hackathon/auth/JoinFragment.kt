@@ -25,6 +25,12 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView {
             joinIdCheck()
         }
 
+        //이메일 인증 전송
+        //이메일 인증번호 체크
+        binding.joinEmailCertificateCheckCv.setOnClickListener {
+            emailCertificate()
+        }
+
         binding.joinNicknameDuplicateCheckEt.setOnClickListener {
             joinNickCheck()
         }
@@ -98,6 +104,14 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView {
         authService.emailSend(getUser().id)
     }
 
+    private fun emailCertificate() {
+        val authService = AuthService()
+        authService.setJoinCheckView(this)
+
+        val code: String = binding.joinEmailCertificateCheckEt.text.toString()
+        authService.emailCertificate(code)
+    }
+
     private fun joinNickCheck() {
         val authService = AuthService()
         authService.setJoinCheckView(this)
@@ -106,11 +120,33 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView {
 
     override fun onJoinIdCheckSuccess() {
         Toast.makeText(activity, "아이디 중복 확인에 성공했습니다", Toast.LENGTH_SHORT).show()
+        //이메일 발송하도록 수정
     }
 
     override fun onJoinIdCheckFailure() {
         Toast.makeText(activity, "아이디 중복 확인에 실패했습니다", Toast.LENGTH_SHORT).show()
         binding.joinSubmitBtn.isEnabled = false
+    }
+
+    override fun onEmailSendSuccess() {
+        Toast.makeText(activity, "이메일 전송 완료", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onEmailSendFailure() {
+        Toast.makeText(activity, "이메일 전송에 실패했습니다", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onEmailCertificateSuccess() {
+        Toast.makeText(activity, "이메일 인증에 성공했습니다", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onEmailCertificateFailure(code: Int) {
+        if (code == 2063) {
+            Toast.makeText(activity, "인증번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show()
+        }
+        else {
+            Toast.makeText(activity, "이메일 인증에 실패했습니다", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onJoinNickCheckSuccess() {
