@@ -22,7 +22,6 @@ import com.kakao.sdk.user.UserApiClient
 class LoginFragment : Fragment(), LoginView {
 
     private lateinit var binding: FragmentLoginBinding
-    private var authService = AuthService()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentLoginBinding.inflate(layoutInflater)
@@ -66,12 +65,17 @@ class LoginFragment : Fragment(), LoginView {
 
     private fun kakao_login() {
 
+        val authService = AuthService()
+        authService.setLoginView(this)
+
         // 카카오톡으로 로그인 할 수 없어 카카오계정으로 로그인할 경우 사용됨
         val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
             if (error != null) {
                 Log.d("카카오계정으로 로그인 실패", error.toString())
+                Toast.makeText(activity, "카카오 계정 연결에 실패했습니다.", Toast.LENGTH_SHORT).show()
             } else if (token != null) {
                 Log.d("카카오계정으로 로그인 성공", token.accessToken)
+                authService.kakaoLogin(token.accessToken)
             }
         }
 
