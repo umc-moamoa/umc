@@ -10,13 +10,16 @@ interface AuthRetrofitInterface {
     @POST("/auth/login")
     fun login(@Body user:User): Call<LoginResponse>
 
+    @POST("/auth/kakaoLogin")
+    fun kakaoLogin(@Query("accessToken") param: String): Call<LoginResponse>
+
     @GET("/users")
     fun userInfo(
         @Header("x-access-token") accessToken: String,
         @Header("REFRESH-TOKEN") refreshToken: String
     ): Call<UserInfoResponse>
 
-    @DELETE("/user")
+    @DELETE("/users")
     fun deleteUser(
         @Header("x-access-token") accessToken: String,
         @Header("REFRESH-TOKEN") refreshToken: String
@@ -24,6 +27,12 @@ interface AuthRetrofitInterface {
 
     @GET("/users/id/{id}")
     fun joinIdCheck(@Path("id") id: String): Call<JoinCheckResponse>
+
+    @GET("/email/send")
+    fun emailSend(@Body email:String): Call<EmailResponse>
+
+    @POST("/email/auth")
+    fun emailCertificate(@Body certifiedCode:String): Call<EmailResponse>
 
     @GET("/users/nick/{nick}")
     fun joinNickCheck(

@@ -9,10 +9,12 @@ import androidx.core.content.ContextCompat
 import com.example.umc_hackathon.R
 import com.example.umc_hackathon.databinding.ActivityAuthBinding
 import com.example.umc_hackathon.post.MainActivity
+import com.kakao.sdk.common.util.Utility
 
 class AuthActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityAuthBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +29,9 @@ class AuthActivity : AppCompatActivity() {
         }
 
         initTransactionEvent()
+
+//        val keyHash = Utility.getKeyHash(this)
+//        Log.d("Hash", keyHash)
     }
 
     private fun initTransactionEvent() {

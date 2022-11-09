@@ -3,6 +3,10 @@ package com.example.umc_hackathon.survey
 import com.google.gson.annotations.SerializedName
 
 data class FormInputRequest(
-    @SerializedName("postId") val postId: Long,
-    @SerializedName("postDetailResults") val postDetailResults: List<String>
+    @SerializedName("postId") var postId: Long,
+    @SerializedName("postDetailResults") var postDetailResults: List<Answer>
+)
+
+class Answer(
+    var detailId: Long, var answer: String
 )

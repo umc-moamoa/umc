@@ -45,7 +45,7 @@
                     android:layout_gravity="center"
                     android:background="@android:color/transparent"
                     android:fontFamily="@font/roboto_medium"
-                    android:hint="아이디"
+                    android:hint="이메일"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -108,6 +108,24 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/setting_tabs_ll" />
+
+
+        <Button
+            android:id="@+id/login_kakao_btn"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="2dp"
+            android:background="@drawable/category_selected"
+            android:fontFamily="@font/roboto_bold"
+            android:text="카카오 로그인"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/setting_tabs_ll" />
+
 
     </LinearLayout>
 

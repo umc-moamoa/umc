@@ -31,6 +31,10 @@ class AuthService {
         this.joinCheckView = joinCheckView
     }
 
+    fun setEmailView(emailView: JoinCheckView) {
+        this.joinCheckView = joinCheckView
+    }
+
     fun setUserSettingView(userSettingView: UserSettingView){
         this.userSettingView = userSettingView
     }
@@ -85,6 +89,29 @@ class AuthService {
         })
 
         Log.d("LOGIN()/", "메소드")
+    }
+
+    fun kakaoLogin(accessToken: String) {
+        val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
+
+        authService.kakaoLogin(accessToken).enqueue(object : Callback<LoginResponse> {
+            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                if(response.body() != null) {
+                    Log.d("kakao-login-success", response.toString())
+
+                    val resp: LoginResponse = response.body()!!
+                    when (val code = resp.code) {
+                        1000 -> loginView.onLoginSuccess(code, resp.result!!)
+                        else -> loginView.onLoginFailure(code)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                Log.d("KAKAO-LOGIN/FAILURE", t.message.toString())
+            }
+
+        })
     }
 
     fun userInfo(accessToken: String, refreshToken: String) {
@@ -153,51 +180,81 @@ class AuthService {
         Log.d("JOINCHECK()/", "메소드")
     }
 
-    fun deleteUser(accessToken: String, refreshToken: String) {
+    fun emailSend(email : String) {
         val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
 
-        authService.deleteUser(accessToken, refreshToken).enqueue(object : Callback<UserDeleteResponse> {
-            override fun onResponse(call: Call<UserDeleteResponse>, response: Response<UserDeleteResponse>) {
+        authService.emailSend(email).enqueue(object : Callback<EmailResponse>{
+            override fun onResponse(call: Call<EmailResponse>, response: Response<EmailResponse>) {
                 if(response.body() != null) {
-                    Log.d("USERINFO/성공", response.toString())
+                    Log.d("emailSend-success", response.toString())
 
-                    val resp: UserDeleteResponse = response.body()!!
-                    when(val code = resp.code) {
-                        1000 -> userSettingView.onUserDeleteSuccess()
-                        else -> userSettingView.onUserDeleteFailure()
+                    val response: EmailResponse = response.body()!!
+                    when(val code = response.code) {
+//                        1000 ->
                     }
                 }
             }
 
-            override fun onFailure(call: Call<UserDeleteResponse>, t: Throwable) {
-                Log.d("USERINFO/실패", t.message.toString())
+            override fun onFailure(call: Call<EmailResponse>, t: Throwable) {
+                TODO("Not yet implemented")
             }
-        })
 
-        Log.d("service/userInfo()", "메소드")
+        })
     }
 
-    // Access Token 재발급
-    fun getReAccessToken(accessToken: String, refreshToken: String) {
-        val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
+        fun deleteUser(accessToken: String, refreshToken: String) {
+            val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
 
-        authService.getReAccessToken(accessToken, refreshToken).enqueue(object : Callback<ReAccessTokenResponse> {
-            override fun onResponse(call: Call<ReAccessTokenResponse>, response: Response<ReAccessTokenResponse>) {
-                if(response.body() != null) {
-                    Log.d("getReAccessToken/성공", response.toString())
+            authService.deleteUser(accessToken, refreshToken)
+                .enqueue(object : Callback<UserDeleteResponse> {
+                    override fun onResponse(
+                        call: Call<UserDeleteResponse>,
+                        response: Response<UserDeleteResponse>
+                    ) {
+                        if (response.body() != null) {
+                            Log.d("USERINFO/성공", response.toString())
 
-                    val resp: ReAccessTokenResponse = response.body()!!
-                    when(val code = resp.code) {
-                        1000 -> reAccessTokenView.onGetReAccessTokenSuccess(resp)
-                        else -> reAccessTokenView.onGetReAccessTokenFailure()
+                            val resp: UserDeleteResponse = response.body()!!
+                            when (val code = resp.code) {
+                                1000 -> userSettingView.onUserDeleteSuccess()
+                                else -> userSettingView.onUserDeleteFailure()
+                            }
+                        }
                     }
-                }
-            }
 
-            override fun onFailure(call: Call<ReAccessTokenResponse>, t: Throwable) {
-                Log.d("getReAccessToken/실패", t.message.toString())
-            }
-        })
-    }
+                    override fun onFailure(call: Call<UserDeleteResponse>, t: Throwable) {
+                        Log.d("USERINFO/실패", t.message.toString())
+                    }
+                })
 
+            Log.d("service/userInfo()", "메소드")
+        }
+
+
+        // Access Token 재발급
+        fun getReAccessToken(accessToken: String, refreshToken: String) {
+            val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
+
+            authService.getReAccessToken(accessToken, refreshToken)
+                .enqueue(object : Callback<ReAccessTokenResponse> {
+                    override fun onResponse(
+                        call: Call<ReAccessTokenResponse>,
+                        response: Response<ReAccessTokenResponse>
+                    ) {
+                        if (response.body() != null) {
+                            Log.d("getReAccessToken/성공", response.toString())
+
+                            val resp: ReAccessTokenResponse = response.body()!!
+                            when (val code = resp.code) {
+                                1000 -> reAccessTokenView.onGetReAccessTokenSuccess(resp)
+                                else -> reAccessTokenView.onGetReAccessTokenFailure()
+                            }
+                        }
+                    }
+
+                    override fun onFailure(call: Call<ReAccessTokenResponse>, t: Throwable) {
+                        Log.d("getReAccessToken/실패", t.message.toString())
+                    }
+                })
+        }
 }
