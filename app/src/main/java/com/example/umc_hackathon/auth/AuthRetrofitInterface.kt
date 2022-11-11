@@ -12,10 +12,11 @@ interface AuthRetrofitInterface {
 
     @GET("/users")
     fun userInfo(
-        @Header("x-access-token") jwt: String
+        @Header("x-access-token") accessToken: String,
+        @Header("REFRESH-TOKEN") refreshToken: String
     ): Call<UserInfoResponse>
 
-    @DELETE("/users")
+    @DELETE("/user")
     fun deleteUser(
         @Header("x-access-token") jwt: String
     ): Call<UserDeleteResponse>
@@ -24,5 +25,13 @@ interface AuthRetrofitInterface {
     fun joinIdCheck(@Path("id") id: String): Call<JoinCheckResponse>
 
     @GET("/users/nick/{nick}")
-    fun joinNickCheck(@Path("nick") nick: String): Call<JoinCheckResponse>
+    fun joinNickCheck(
+        @Path("nick") nick: String
+    ): Call<JoinCheckResponse>
+
+    @GET("/auth/refresh")
+    fun getReAccessToken(
+        @Header("x-access-token") accessToken: String,
+        @Header("REFRESH-TOKEN") refreshToken: String
+    ): Call<ReAccessTokenResponse>
 }

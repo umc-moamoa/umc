@@ -1,32 +1,17 @@
 package com.example.umc_hackathon.post
 
-import android.app.Activity
-import android.app.AppComponentFactory
-import android.app.Application
-import android.content.Context
 import android.content.Intent
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getColor
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.umc_hackathon.FormDetailActivity
 import com.example.umc_hackathon.R
-import com.example.umc_hackathon.databinding.BoardListItemBinding
 
 class FormListRAdapter(val postList: List<PostList>): RecyclerView.Adapter<FormListRAdapter.MyViewHolder>() {
-
-    private lateinit var binding: BoardListItemBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.board_list_item, parent, false)
@@ -56,20 +41,10 @@ class FormListRAdapter(val postList: List<PostList>): RecyclerView.Adapter<FormL
             }
             else {
                 holder.dday.text = "D - " + postList[position].dday.toString()
-                holder.dday.setTextColor(Color.parseColor("#9b9999"))
-                holder.title.setTextColor(Color.parseColor("#9b9999"))
-                holder.qCount.setTextColor(Color.parseColor("#9b9999"))
-                holder.point.setTextColor(Color.parseColor("#9b9999"))
             }
         }
         else {
-            holder.dday.text = "마감됨"
-            holder.dday.setTextColor(Color.parseColor("#9b9999"))
-            holder.title.setTextColor(Color.parseColor("#9b9999"))
-            holder.qCount.setTextColor(Color.parseColor("#9b9999"))
-            holder.point.setTextColor(Color.parseColor("#9b9999"))
-            //val drawable : Drawable? = ContextCompat.getDrawable(holder.ll?.context!!, R.drawable.background)
-            //holder.ll.background. = drawable//.draw(Canvas())
+            holder.dday.text = "마감"
         }
         holder.title.text = postList[position].title
         holder.qCount.text = postList[position].qcount.toString() + "개의 항목"
@@ -81,8 +56,6 @@ class FormListRAdapter(val postList: List<PostList>): RecyclerView.Adapter<FormL
         val qCount: TextView = itemView.findViewById(R.id.board_list_item_count_tv)
         val point: TextView = itemView.findViewById(R.id.board_list_item_coin_tv)
         val dday: TextView = itemView.findViewById(R.id.board_list_item_deadline_tv)
-        val cv: CardView = itemView.findViewById(R.id.board_list_item_cv)
-        val ll: LinearLayout = itemView.findViewById(R.id.board_list_item_ll)
     }
 
 }

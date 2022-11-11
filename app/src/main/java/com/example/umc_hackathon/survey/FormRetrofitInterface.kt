@@ -19,4 +19,11 @@ interface FormRetrofitInterface {
         @Path("postId") postId: Long,
         @Header("x-access-token") jwt: String
     ): Call<FormDetailResponse>
+
+    // 설문조사 수정하기
+    @PATCH("/posts")
+    fun formModify (
+        @Body modifyRequest: ModifyRequest,
+        @Header("x-access-token") jwt: String
+    ): Call<ModifyResponse>
 }

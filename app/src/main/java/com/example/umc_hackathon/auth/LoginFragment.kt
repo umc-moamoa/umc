@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
 import com.example.umc_hackathon.R
 import com.example.umc_hackathon.databinding.FragmentFormListBrandBinding
 import com.example.umc_hackathon.databinding.FragmentLoginBinding
@@ -28,16 +29,29 @@ class LoginFragment : Fragment(), LoginView {
         return binding.root
     }
 
-    private fun getJwt(): String? {
+    private fun getAccessToken(): String? {
         val spf = activity!!.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-        return spf!!.getString("jwt", "")
+        return spf!!.getString("accessToken", "")
     }
 
-    private fun saveJwt(jwt: String) {
+    private fun saveAccessToken(accessToken: String) {
         val spf = activity!!.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
         val editor = spf.edit()
 
-        editor.putString("jwt", jwt)
+        editor.putString("accessToken", accessToken)
+        editor.apply()
+    }
+
+    private fun getRefreshToken(): String? {
+        val spf = activity!!.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf!!.getString("refreshToken", "")
+    }
+
+    private fun saveRefreshToken(refreshToken: String) {
+        val spf = activity!!.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        val editor = spf.edit()
+
+        editor.putString("refreshToken", refreshToken)
         editor.apply()
     }
 
@@ -71,7 +85,12 @@ class LoginFragment : Fragment(), LoginView {
                 startActivity(intent)
                 activity!!.finish()
 
-                saveJwt(result.jwt)
+                saveAccessToken(result.accessToken)
+                saveRefreshToken(result.refreshToken)
+
+                Log.d("로그인: 액세스 토근", getAccessToken().toString())
+                Log.d("로그인: 리프레시 토근", getRefreshToken().toString())
+
                 onStart()
             }
         }

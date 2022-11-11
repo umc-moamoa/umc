@@ -35,7 +35,7 @@ class MySurveyActivity : AppCompatActivity(), MySurveyView {
     private fun getMySurvey() {
         val postService = PostService()
         postService.setMySurveyView(this)
-        postService.getMySurvey(getJwt().toString())
+        postService.getMySurvey(getAccessToken().toString(), getRefreshToken().toString())
 
         Log.d("getMySurvey", " / InterestSurveyActivity에서 메소드")
     }
@@ -43,6 +43,16 @@ class MySurveyActivity : AppCompatActivity(), MySurveyView {
     private fun getJwt(): String? {
         val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
         return spf!!.getString("jwt", "")
+    }
+
+    private fun getAccessToken(): String? {
+        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf!!.getString("accessToken", "")
+    }
+
+    private fun getRefreshToken(): String? {
+        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf!!.getString("refreshToken", "")
     }
 
     override fun onGetMySurveyViewSuccess(mySurveyList: MySurveyResponse) {

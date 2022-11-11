@@ -39,7 +39,7 @@
                     android:layout_marginStart="20dp"
                     android:background="@android:color/transparent"
                     android:fontFamily="@font/roboto_medium"
-                    android:hint="아이디"
+                    android:hint="이메일"
                     android:textSize="14sp" />
 
             </androidx.cardview.widget.CardView>
@@ -61,7 +61,6 @@
                     android:background="@android:color/transparent"
                     android:fontFamily="@font/roboto_medium"
                     android:gravity="center"
-                    android:visibility="visible"
                     android:hint="중복확인"
                     android:textSize="14sp" />
 
@@ -132,7 +131,6 @@
                     android:background="@android:color/transparent"
                     android:fontFamily="@font/roboto_medium"
                     android:gravity="center"
-                    android:visibility="visible"
                     android:hint="중복확인"
                     android:textSize="14sp" />
 
@@ -179,6 +177,14 @@
 
         </androidx.cardview.widget.CardView>
 
+        <TextView
+            android:id="@+id/join_password_limit_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:text="영문, 숫자, 특수문자를 조합해 7-15자를 입력해주세요"
+            android:textSize="10sp" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/setting_quit_cv"
             android:layout_width="match_parent"
@@ -201,6 +207,15 @@
                 android:textSize="14sp" />
 
         </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/join_password_check_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:visibility="invisible"
+            android:text="비밀번호 일치 확인"
+            android:textSize="10sp" />
 
         <Button
             android:id="@+id/join_submit_btn"

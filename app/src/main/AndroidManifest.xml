@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Umc_hackathon"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".survey.ModifyActivity"
+            android:exported="false" />
+        <activity
             android:name=".auth.AuthActivity"
             android:exported="false" />
         <activity
@@ -54,8 +57,7 @@
             android:exported="false" />
         <activity
             android:name=".post.MainActivity"
-            android:exported="false"></activity>
-
+            android:exported="false" />
         <activity
             android:name=".auth.JoinActivity"
             android:exported="false" />

@@ -1,17 +1,14 @@
 package com.example.umc_hackathon.auth
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.umc_hackathon.R
+import androidx.fragment.app.Fragment
 import com.example.umc_hackathon.databinding.FragmentJoinBinding
-import com.example.umc_hackathon.databinding.FragmentLoginBinding
-import com.example.umc_hackathon.post.MainActivity
+import java.util.regex.Pattern
 
 class JoinFragment : Fragment(), JoinView, JoinCheckView {
 
@@ -31,6 +28,26 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView {
 
         binding.joinSubmitBtn.setOnClickListener {
             join()
+        }
+
+        binding.joinPasswordEt.setOnClickListener {
+            if(isRegularPW(binding.joinPasswordEt.text.toString()) == true) {
+                binding.joinPasswordLimitTv.text = "올바른 비밀번호 입니다."
+            }
+            else {
+                binding.joinPasswordLimitTv.text = "올바른 비밀번호가 아닙니다."
+            }
+        }
+
+        binding.joinPasswordCheckEt.setOnClickListener{
+            if(binding.joinPasswordEt.text.toString() == binding.joinPasswordCheckEt.text.toString()) {
+                binding.joinPasswordCheckTv.text = "비밀번호가 일치합니다"
+                binding.joinPasswordCheckTv.visibility = View.VISIBLE
+            }
+            else {
+                binding.joinPasswordCheckTv.text = "비밀번호가 일치하지 않습니다"
+                binding.joinPasswordCheckTv.visibility = View.VISIBLE
+            }
         }
 
         return binding.root
@@ -54,6 +71,11 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView {
 
         if(binding.joinNicknameEt.text.toString().isEmpty()) {
             Toast.makeText(activity, "닉네임을 입력해주세요", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if(isRegularPW(binding.joinPasswordEt.text.toString()) == false) {
+            Toast.makeText(activity, "올바른 비밀번호가 아닙니다", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -128,4 +150,12 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView {
         binding.joinSubmitBtn.isEnabled = false
     }
 
+    private fun isRegularPW(password: String): Boolean {
+        val pwPattern = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?^&.])[A-Za-z[0-9]$@$!%*#?^&.]{6,15}$"
+        val pattern = Pattern.compile(pwPattern)
+        val matcher = pattern.matcher(pwPattern)
+        Log.d("Match", matcher.find().toString())
+
+        return (Pattern.matches(pwPattern, password))
+    }
 }

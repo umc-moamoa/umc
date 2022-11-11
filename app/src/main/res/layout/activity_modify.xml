@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".survey.ModifyActivity">
+
+    <ImageView
+        android:id="@+id/form_modify_go_my_survey_iv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:src="@drawable/ic_arrow_left_white" />
+
+    <TextView
+        android:id="@+id/form_modify_go_my_survey_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="나의 설문 목록으로"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="17dp"
+        app:layout_constraintStart_toEndOf="@id/form_modify_go_my_survey_iv"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/round"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/form_modify_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/roboto_bold"
+            android:text="타이틀"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/form_modify_deadline_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/roboto_medium"
+            android:text="데드라인"
+            android:textColor="@color/dodger_blue"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/form_modify_title_tv"
+            app:layout_constraintTop_toBottomOf="@id/form_modify_title_tv" />
+
+        <EditText
+            android:id="@+id/form_modify_info_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/roboto_light"
+            android:text="컨텐츠"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/form_modify_deadline_tv" />
+
+        <Button
+            android:id="@+id/form_detail_modify_btn"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/category_selected"
+            android:fontFamily="@font/roboto_bold"
+            android:text="수정완료"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,7 @@
         android:id="@+id/board_list_item_ll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/list_item_style"
         android:orientation="vertical"
         android:paddingHorizontal="30dp"
         android:paddingVertical="22dp">
