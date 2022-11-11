@@ -235,12 +235,12 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenVie
     }
 
     override fun onGetReAccessTokenSuccess(res: ReAccessTokenResponse) {
-        Log.d("액세스토근", "을 재발급했습니다.")
+        Log.d("액세스토큰", "을 재발급했습니다.")
         saveAccessToken(res.result)
     }
 
     override fun onGetReAccessTokenFailure() {
-        Log.d("onGetReAccessTokenFailure()", " 실패 / ")
+        Log.d("GetReAccessTokenFail", " 실패 / ")
     }
 
 }
