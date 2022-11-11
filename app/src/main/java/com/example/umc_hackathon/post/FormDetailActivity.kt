@@ -18,6 +18,7 @@ import com.example.umc_hackathon.post.*
 import com.example.umc_hackathon.post.result.ResultActivity
 import com.example.umc_hackathon.survey.FormInputActivity
 import com.example.umc_hackathon.survey.ModifyActivity
+import com.example.umc_hackathon.survey.MyAnswerActivity
 
 class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenView {
 
@@ -47,6 +48,14 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenVie
         binding.formDetailParticipateBtn.setOnClickListener {
             val intent = Intent(this, FormInputActivity::class.java)
             intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            intent.putExtra("postId", postId)
+            startActivity(intent)
+            finish()
+        }
+
+        binding.formDetailMyAnswerBtn.setOnClickListener {
+            val intent = Intent(this, MyAnswerActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             intent.putExtra("postId", postId)
             startActivity(intent)
             finish()
@@ -170,6 +179,7 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenVie
         if(result.myPost) {
             Log.d("mypost", result.myPost.toString())
             binding.formDetailParticipateBtn.visibility = View.INVISIBLE
+            binding.formDetailMyAnswerBtn.visibility = View.INVISIBLE
             binding.formDetailResultBtn.visibility = View.VISIBLE
             binding.formDetailDislikeBtnCv.visibility = View.INVISIBLE
             binding.formDetailLikeBtnCv.visibility = View.INVISIBLE
@@ -192,6 +202,12 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenVie
                 binding.formDetailParticipateBtn.isEnabled = false
             }
         }
+
+        if(result.participation) {
+            binding.formDetailMyAnswerBtn.visibility = View.VISIBLE
+            binding.formDetailModifyBtn.visibility = View.INVISIBLE
+        }
+
         Log.d("PostDetail / ", "상세페이지를 불러오는데 성공했습니다")
     }
 

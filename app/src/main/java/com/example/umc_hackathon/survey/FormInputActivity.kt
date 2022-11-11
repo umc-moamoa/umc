@@ -3,6 +3,7 @@ package com.example.umc_hackathon.survey
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.RadioGroup
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_hackathon.FormDetailActivity
 import com.example.umc_hackathon.R
+import com.example.umc_hackathon.auth.AuthService
 import com.example.umc_hackathon.databinding.ActivityFormInputBinding
 import com.example.umc_hackathon.post.FormListActivity
 
@@ -50,21 +52,42 @@ class FormInputActivity : AppCompatActivity(), FormDetailView {
         }
     }
 
-    private fun getJwt(): String? {
+//    private fun saveAccessToken(accessToken: String) {
+//        val spf = getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+//        val editor = spf.edit()
+//
+//        editor.putString("accessToken", accessToken)
+//        editor.apply()
+//
+//        Log.d("엑세스토근", "세이브")
+//    }
+//
+//    private fun getReAccessToken() {
+//        val authService = AuthService()
+//        authService.setReAccessTokenView(this)
+//        authService.getReAccessToken(getAccessToken().toString(), getRefreshToken().toString())
+//    }
+
+    private fun getAccessToken(): String? {
         val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-        return spf!!.getString("jwt", "")
+        return spf!!.getString("accessToken", "")
+    }
+
+    private fun getRefreshToken(): String? {
+        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf!!.getString("refreshToken", "")
     }
 
     private fun getFormDetail() {
         val formService = FormService()
         formService.setFormDetailView(this)
-        formService.getFormDetail(postId, getJwt()!!)
+        formService.getFormDetail(postId, getAccessToken().toString(), getRefreshToken().toString())
     }
 
     private fun submitAnswer() {
         val formService = FormService()
         formService.setFormDetailView(this)
-        formService.submitResult(getAnswer(), getJwt()!!)
+        formService.submitResult(getAnswer(), getAccessToken().toString(), getRefreshToken().toString())
     }
 
     //적은 답 가져오기

@@ -17,14 +17,16 @@ interface FormRetrofitInterface {
     @GET("/posts/{postId}")
     fun getFormDetail(
         @Path("postId") postId: Long,
-        @Header("x-access-token") jwt: String
+        @Header("x-access-token") accessToken: String,
+        @Header("REFRESH-TOKEN") refreshToken: String
     ): Call<FormDetailResponse>
 
 
     @POST("/results")
     fun submitAnswer(
         @Body formInputRequest: FormInputRequest,
-        @Header("x-access-token") jwt: String
+        @Header("x-access-token") accessToken: String,
+        @Header("REFRESH-TOKEN") refreshToken: String
     ): Call<FormInputResponse>
 
     // 설문조사 수정하기
@@ -33,4 +35,11 @@ interface FormRetrofitInterface {
         @Body modifyRequest: ModifyRequest,
         @Header("x-access-token") jwt: String
     ): Call<ModifyResponse>
+
+    @GET("/users/answer/{postId}")
+    fun getMyAnswer(
+        @Path("postId") postId: Long,
+        @Header("x-access-token") accessToken: String,
+        @Header("REFRESH-TOKEN") refreshToken: String
+    ): Call<MyAnswerResponse>
 }

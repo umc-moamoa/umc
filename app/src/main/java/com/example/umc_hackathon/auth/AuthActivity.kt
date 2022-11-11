@@ -30,8 +30,8 @@ class AuthActivity : AppCompatActivity() {
 
         initTransactionEvent()
 
-//        val keyHash = Utility.getKeyHash(this)
-//        Log.d("Hash", keyHash)
+        val keyHash = Utility.getKeyHash(this)
+        Log.d("Hash", keyHash)
     }
 
     private fun initTransactionEvent() {
