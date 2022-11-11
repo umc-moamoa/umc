@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import com.example.umc_hackathon.R
 import com.example.umc_hackathon.databinding.ActivityAuthBinding
 import com.example.umc_hackathon.post.MainActivity
+import com.example.umc_hackathon.post.result.ResultActivity
 import com.kakao.sdk.common.util.Utility
 
 class AuthActivity : AppCompatActivity() {
@@ -32,6 +33,22 @@ class AuthActivity : AppCompatActivity() {
 
 //        val keyHash = Utility.getKeyHash(this)
 //        Log.d("Hash", keyHash)
+
+        val joinFragment = JoinFragment()
+
+        binding.loginGoSignupTv.setOnClickListener{
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.auth_fv, joinFragment)
+            transaction.commit()
+        }
+
+        binding.goFindPasswordTv.setOnClickListener {
+//            val intent = Intent(this, ResultActivity::class.java)
+//            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+//            intent.putExtra("postId", postId)
+//            intent.putExtra("postTitle", postTitle)
+//            startActivity(intent)
+        }
     }
 
     private fun initTransactionEvent() {
@@ -51,6 +68,8 @@ class AuthActivity : AppCompatActivity() {
 
             // 회원가입 추가 권유 텍스트
             binding.loginJoinLl.visibility = View.VISIBLE
+            // 비밀번호 찾기 텍스트
+            binding.findPasswordLl.visibility = View.VISIBLE
 
             val transaction = supportFragmentManager.beginTransaction()
             transaction.replace(R.id.auth_fv, loginFragment)
@@ -68,6 +87,8 @@ class AuthActivity : AppCompatActivity() {
 
             // 회원가입 추가 권유 텍스트
             binding.loginJoinLl.visibility = View.INVISIBLE
+            // 비밀번호 찾기 텍스트
+            binding.findPasswordLl.visibility = View.INVISIBLE
 
             val transaction = supportFragmentManager.beginTransaction()
             transaction.replace(R.id.auth_fv, joinFragment)
