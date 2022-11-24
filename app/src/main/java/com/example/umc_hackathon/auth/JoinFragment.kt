@@ -41,7 +41,7 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView {
         val nick: String = binding.joinNicknameEt.text.toString()
         val pwd: String = binding.joinPasswordEt.text.toString()
 
-        return User(id, nick, pwd)
+        return User(id, pwd)
     }
 
     private fun join() {
@@ -99,9 +99,11 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView {
     }
 
     private fun joinNickCheck() {
+        val nick: String = binding.joinNicknameEt.text.toString()
+
         val authService = AuthService()
         authService.setJoinCheckView(this)
-        authService.joinCheck("", getUser().nick)
+        authService.joinCheck("", nick)
     }
 
     override fun onJoinIdCheckSuccess() {

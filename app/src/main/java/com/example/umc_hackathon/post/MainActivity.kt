@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+       setContentView(binding.root)
 
         // 이벤트 리스너
         binding.mainProfileIv.setOnClickListener {

@@ -11,15 +11,15 @@ import com.example.umc_hackathon.post.*
 
 class MyPageActivity : AppCompatActivity(), UserInfoView {
 
+    private final var TAG = "MyPageActivity"
     private lateinit var binding: ActivityMyPageBinding
-//    var userId: Long = 1
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMyPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // UserInfo api 호출
+        // userInfo api 호출
         userInfo()
 
         binding.myPageGoMainLl.setOnClickListener {
@@ -62,7 +62,7 @@ class MyPageActivity : AppCompatActivity(), UserInfoView {
     }
 
     private fun userInfo() {
-        Log.d("activity/userInfo()", "메소드")
+        Log.d(TAG, "userInfo() 실행")
 
         val authService = AuthService()
         authService.setUserInfoView(this)

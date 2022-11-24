@@ -8,6 +8,8 @@ import retrofit2.Response
 
 class AuthService {
 
+    private final var TAG = "AuthService"
+
     private lateinit var joinView: JoinView
     private lateinit var loginView: LoginView
     private lateinit var userInfoView: UserInfoView
@@ -73,22 +75,22 @@ class AuthService {
         authService.login(user).enqueue(object : Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 if(response.body() != null) {
-                    Log.d("LOGIN/SUCCESS", response.toString())
+                    Log.d(TAG, "login() / onResponse() $response")
 
                     val resp: LoginResponse = response.body()!!
                     when (val code = resp.code) {
-                        1000 -> loginView.onLoginSuccess(code, resp.result!!)
+                        1000 -> loginView.onLoginSuccess(code, resp)
                         else -> loginView.onLoginFailure(code)
                     }
                 }
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                Log.d("LOGIN/FAILURE", t.message.toString())
+                Log.d(TAG, "login() / onFailure() " + t.message.toString())
             }
         })
 
-        Log.d("LOGIN()/", "메소드")
+        Log.d("TAG", "login() 메소드 실행 완료")
     }
 
     fun kakaoLogin(accessToken: String) {
@@ -101,7 +103,7 @@ class AuthService {
 
                     val resp: LoginResponse = response.body()!!
                     when (val code = resp.code) {
-                        1000 -> loginView.onLoginSuccess(code, resp.result!!)
+                        1000 -> loginView.onLoginSuccess(code, resp)
                         else -> loginView.onLoginFailure(code)
                     }
                 }
