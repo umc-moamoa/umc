@@ -1,14 +1,12 @@
 package com.example.umc_hackathon
 
-import android.content.DialogInterface
-import android.content.Intent
+import android.content.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat.startActivity
 import com.example.umc_hackathon.auth.AuthActivity
 import com.example.umc_hackathon.auth.AuthService
 import com.example.umc_hackathon.auth.ReAccessTokenResponse
@@ -98,6 +96,12 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
             intent.putExtra("postUserId", postUserId)
             startActivity(intent)
             finish()
+        }
+
+        binding.formDetailShareCv.setOnClickListener {
+            val postService = PostService()
+            postService.setPostDetailView(this)
+            postService.getShareLink(postId, getAccessToken().toString(), getRefreshToken().toString())
         }
     }
 
@@ -240,5 +244,23 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
         Toast.makeText(this, "설문 삭제를 실패했습니다.", Toast.LENGTH_SHORT).show()
         Log.d("deletePost()", " 실패 / " + result.message)
     }
+
+    override fun onGetShareLinkSuccess(result: String) {
+        Toast.makeText(this, "설문 링크를 클립보드에 복사하였습니다.", Toast.LENGTH_SHORT).show()
+        Log.d("shareLink()", result)
+
+        val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+
+        // Creates a new text clip to put on the clipboard
+        val clip: ClipData = ClipData.newPlainText("seolmunzip-url", result)
+
+        // Set the clipboard's primary clip.
+        clipboard.setPrimaryClip(clip)
+    }
+
+    override fun onGetShareLinkFailure() {
+        Toast.makeText(this, "설문 링크가 유효하지 않습니다.", Toast.LENGTH_SHORT).show()
+    }
+
 }
 

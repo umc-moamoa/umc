@@ -3,8 +3,8 @@
     <item>
         <shape>
             <gradient
-                android:startColor="@color/dodger_blue"
-                android:endColor="@color/dodger_blue"
+                android:startColor="#fee500"
+                android:endColor="#fee500"
                 android:angle="315" />
             <corners
                 android:radius="20dp" />
@@ -13,6 +13,9 @@
                 android:top="10dp"
                 android:right="10dp"
                 android:bottom="10dp" />
+            <stroke
+                android:color="#fee500"
+                android:width="1dp" />
         </shape>
     </item>
 </selector>

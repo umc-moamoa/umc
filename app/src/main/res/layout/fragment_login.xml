@@ -95,13 +95,13 @@
 
         <Button
             android:id="@+id/login_submit_btn"
-            android:layout_width="160dp"
+            android:layout_width="280dp"
             android:layout_height="40dp"
             android:layout_marginTop="65dp"
-            android:layout_marginBottom="2dp"
             android:background="@drawable/category_selected"
             android:fontFamily="@font/roboto_bold"
             android:text="로그인"
+            android:elevation="0dp"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -110,22 +110,37 @@
             app:layout_constraintTop_toBottomOf="@id/setting_tabs_ll" />
 
 
-        <Button
-            android:id="@+id/login_kakao_btn"
-            android:layout_width="160dp"
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="2dp"
-            android:background="@drawable/category_selected"
-            android:fontFamily="@font/roboto_bold"
-            android:text="카카오 로그인"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/setting_tabs_ll" />
+            app:cardCornerRadius="22dp"
+            app:cardElevation="0dp">
 
+            <Button
+                android:id="@+id/login_kakao_btn"
+                android:layout_width="280dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/kakao_btn"
+                android:fontFamily="@font/roboto_bold"
+                android:text="카카오 로그인"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/setting_tabs_ll" />
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_kakao"
+                android:layout_gravity="center_vertical"
+                android:elevation="3dp"
+                android:layout_marginLeft="20dp"/>
+
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 

@@ -61,6 +61,11 @@ class MyPageActivity : AppCompatActivity(), UserInfoView {
         }
     }
 
+    override fun onStop() {
+        super.onStop()
+        userInfo()
+    }
+
     private fun userInfo() {
         Log.d(TAG, "userInfo() 실행")
 
@@ -115,5 +120,6 @@ class MyPageActivity : AppCompatActivity(), UserInfoView {
         val intent = Intent(this, AuthActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
+        finish()
     }
 }

@@ -135,8 +135,8 @@ class LoginFragment : Fragment(), LoginView {
                 startActivity(intent)
                 requireActivity().finish()
 
-                saveAccessToken(result.result)
-                //saveRefreshToken(result.refreshToken)
+                saveAccessToken(result.result.accessToken)
+                saveRefreshToken(result.result.refreshToken)
 
                 Log.d("로그인: 액세스 토근", getAccessToken().toString())
 //                Log.d("로그인: 리프레시 토근", getRefreshToken().toString())

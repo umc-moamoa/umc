@@ -1,8 +1,8 @@
 package com.example.umc_hackathon.post
 
 import android.util.Log
-import com.example.umc_hackathon.auth.ReAccessTokenView
 import com.example.umc_hackathon.getRetrofit
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -281,6 +281,32 @@ class PostService {
         })
     }
 
+    // 설문 링크 공유
+    fun getShareLink(postId: Long, accessToken: String, refreshToken: String) {
+        val postService = getRetrofit().create(PostRetrofitInterface::class.java)
+
+        postService.getShareLink(postId, accessToken, refreshToken).enqueue(object: Callback<UrlResponse>{
+            override fun onResponse(
+                call: Call<UrlResponse>,
+                response: Response<UrlResponse>
+            ) {
+                Log.d("getShareLink-success", response.body()!!.message)
+
+                if (response.body() != null) {
+                    postDetailView.onGetShareLinkSuccess(response.body()!!.result.url)
+                }
+                else {
+                    postDetailView.onGetShareLinkFailure()
+                }
+            }
+
+            override fun onFailure(call: Call<UrlResponse>, t: Throwable) {
+                Log.d("getShareLink-fail", t.message.toString())
+            }
+
+        })
+    }
+
     fun getRecentMyPoint(accessToken: String, refreshToken: String) {
         val postService = getRetrofit().create(PostRetrofitInterface::class.java)
 
@@ -335,4 +361,5 @@ class PostService {
             }
         })
     }
+
 }

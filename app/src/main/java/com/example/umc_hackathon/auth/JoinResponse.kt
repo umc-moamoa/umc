@@ -10,6 +10,7 @@ data class JoinResponse (
 )
 
 data class JoinResult (
-    @SerializedName("jwt") val jwt: String,
-    @SerializedName("userId") val userId: Long
+    @SerializedName("userId") val userId: Long,
+    @SerializedName("accessToken") val accessToken: String,
+    @SerializedName("refreshToken") val refreshToken: String
 )
