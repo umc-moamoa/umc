@@ -262,14 +262,5 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView {
         Toast.makeText(this, "설문 링크가 유효하지 않습니다.", Toast.LENGTH_SHORT).show()
     }
 
-    override fun onGetReAccessTokenSuccess(res: ReAccessTokenResponse) {
-        Log.d("액세스토큰", "을 재발급했습니다.")
-        saveAccessToken(res.result)
-    }
-
-    override fun onGetReAccessTokenFailure() {
-        Log.d("GetReAccessTokenFail", " 실패 / ")
-    }
-
 }
 

@@ -100,7 +100,7 @@ class SettingActivity : AppCompatActivity(), UserSettingView {
         val nickNameSpf = getSharedPreferences("nickName", MODE_PRIVATE)
         val nickNameEditor = nickNameSpf.edit()
         nickNameEditor.remove("nickName")
-        nickNameEditor.commit().
+        nickNameEditor.commit()
 
         val intent = Intent(this, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
