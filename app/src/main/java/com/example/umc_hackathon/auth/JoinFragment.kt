@@ -1,13 +1,17 @@
 package com.example.umc_hackathon.auth
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
+import com.example.umc_hackathon.R
 import com.example.umc_hackathon.databinding.FragmentJoinBinding
+import com.example.umc_hackathon.databinding.FragmentLoginBinding
+import com.example.umc_hackathon.post.MainActivity
 import java.util.regex.Pattern
 
 class JoinFragment : Fragment(), JoinView, JoinCheckView {
@@ -20,6 +24,17 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView {
         // joinCheck
         binding.joinIdDuplicateCheckCv.setOnClickListener {
             joinIdCheck()
+        }
+
+        //이메일 인증 전송
+//        binding.joinIdDuplicateCheckEt.setOnClickListener {
+//            joinIdCheck()
+//            emailSend()
+//        }
+
+        //이메일 인증번호 체크
+        binding.joinEmailCertificateCheckCv.setOnClickListener {
+            emailCertificate()
         }
 
         binding.joinNicknameDuplicateCheckCv.setOnClickListener {
@@ -53,12 +68,12 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView {
         return binding.root
     }
 
-    private fun getUser(): User {
+    private fun getUser(): UserSign {
         val id: String = binding.joinIdEt.text.toString()
         val nick: String = binding.joinNicknameEt.text.toString()
         val pwd: String = binding.joinPasswordEt.text.toString()
 
-        return User(id, nick, pwd)
+        return UserSign(id, nick, pwd)
     }
 
     private fun join() {
@@ -114,10 +129,25 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView {
         authService.joinCheck(getUser().id, "")
     }
 
-    private fun joinNickCheck() {
+    private fun emailSend() {
         val authService = AuthService()
         authService.setJoinCheckView(this)
-        authService.joinCheck("", getUser().nick)
+        authService.emailSend(getUser().id)
+    }
+
+    private fun emailCertificate() {
+        val authService = AuthService()
+        authService.setJoinCheckView(this)
+
+        val code: String = binding.joinEmailCertificateCheckEt.text.toString()
+        authService.emailCertificate(code)
+    }
+
+    private fun joinNickCheck() {
+        val nick: String = binding.joinNicknameEt.text.toString()
+        val authService = AuthService()
+        authService.setJoinCheckView(this)
+        authService.joinCheck("", nick)
     }
 
     override fun onJoinIdCheckSuccess() {
@@ -125,6 +155,7 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView {
         binding.joinIdDuplicateCheckYesIv.visibility = View.VISIBLE
         binding.joinIdDuplicateCheckNoIv.visibility = View.INVISIBLE
         Toast.makeText(activity, "아이디 중복 확인에 성공했습니다", Toast.LENGTH_SHORT).show()
+        //이메일 발송하도록 수정
     }
 
     override fun onJoinIdCheckFailure() {
@@ -133,6 +164,27 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView {
         binding.joinIdDuplicateCheckNoIv.visibility = View.VISIBLE
         Toast.makeText(activity, "아이디 중복 확인에 실패했습니다", Toast.LENGTH_SHORT).show()
         binding.joinSubmitBtn.isEnabled = false
+    }
+
+    override fun onEmailSendSuccess() {
+        Toast.makeText(activity, "이메일 전송 완료", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onEmailSendFailure() {
+        Toast.makeText(activity, "이메일 전송에 실패했습니다", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onEmailCertificateSuccess() {
+        Toast.makeText(activity, "이메일 인증에 성공했습니다", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onEmailCertificateFailure(code: Int) {
+        if (code == 2063) {
+            Toast.makeText(activity, "인증번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show()
+        }
+        else {
+            Toast.makeText(activity, "이메일 인증에 실패했습니다", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onJoinNickCheckSuccess() {
@@ -158,4 +210,5 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView {
 
         return (Pattern.matches(pwPattern, password))
     }
+
 }

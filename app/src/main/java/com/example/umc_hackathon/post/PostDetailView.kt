@@ -1,5 +1,8 @@
 package com.example.umc_hackathon.post
 
+import okhttp3.ResponseBody
+import retrofit2.Response
+
 interface PostDetailView {
     fun onGetPostDetailSuccess(result: PostDetailResult)
     fun onGetPostDetailFailure(result: PostDetailResponse)
@@ -12,4 +15,7 @@ interface PostDetailView {
 
     fun onDeleteSuccess()
     fun onDeleteFailure(result: StringResultResponse)
+
+    fun onGetShareLinkSuccess(result: String)
+    fun onGetShareLinkFailure()
 }

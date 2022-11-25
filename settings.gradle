@@ -12,6 +12,7 @@ dependencyResolutionManagement {
         mavenCentral()
         jcenter()
         maven {url "https://jitpack.io"} //pie chart
+        maven { url 'https://devrepo.kakao.com/nexus/content/groups/public/' } //kakao login
     }
 }
 rootProject.name = "umc_hackathon"

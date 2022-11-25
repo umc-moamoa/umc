@@ -35,14 +35,19 @@ class ParticipatedSurveyActivity : AppCompatActivity(), ParticipatedSurveyView {
     private fun getParticipatedSurvey() {
         val postService = PostService()
         postService.setParticipatedSurveyView(this)
-        postService.getParticipatedSurvey(getJwt().toString())
+        postService.getParticipatedSurvey(getAccessToken().toString(), getRefreshToken().toString())
 
         Log.d("getParticipatedSurvey", " / ParticipatedActivity에서 메소드")
     }
 
-    private fun getJwt(): String? {
+    private fun getAccessToken(): String? {
         val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-        return spf!!.getString("jwt", "")
+        return spf!!.getString("accessToken", "")
+    }
+
+    private fun getRefreshToken(): String? {
+        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf!!.getString("refreshToken", "")
     }
 
     override fun onGetParticipatedSurveySuccess(postList: PostListResponse) {

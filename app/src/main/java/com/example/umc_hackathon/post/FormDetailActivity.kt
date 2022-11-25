@@ -1,14 +1,12 @@
 package com.example.umc_hackathon
 
-import android.content.DialogInterface
-import android.content.Intent
+import android.content.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat.startActivity
 import com.example.umc_hackathon.auth.AuthActivity
 import com.example.umc_hackathon.auth.AuthService
 import com.example.umc_hackathon.auth.ReAccessTokenResponse
@@ -18,9 +16,11 @@ import com.example.umc_hackathon.post.*
 import com.example.umc_hackathon.post.result.ResultActivity
 import com.example.umc_hackathon.survey.FormInputActivity
 import com.example.umc_hackathon.survey.ModifyActivity
+import com.example.umc_hackathon.survey.MyAnswerActivity
 
-class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenView {
+class FormDetailActivity : AppCompatActivity(), PostDetailView {
 
+    private final var TAG = "FormDetailActivity"
     private var postId: Long = 0L
     private lateinit var postTitle: String
     private var postDeadline: Int = 0
@@ -35,7 +35,7 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenVie
 
         if(intent.hasExtra("list_item_post_id")) {
             postId = intent.getLongExtra("list_item_post_id", postId)
-            Log.d("postId", " : " + postId)
+            Log.d(TAG, "postId : $postId")
             getPostDetail()
         }
 
@@ -47,6 +47,14 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenVie
         binding.formDetailParticipateBtn.setOnClickListener {
             val intent = Intent(this, FormInputActivity::class.java)
             intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            intent.putExtra("postId", postId)
+            startActivity(intent)
+            finish()
+        }
+
+        binding.formDetailMyAnswerBtn.setOnClickListener {
+            val intent = Intent(this, MyAnswerActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             intent.putExtra("postId", postId)
             startActivity(intent)
             finish()
@@ -89,6 +97,12 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenVie
             startActivity(intent)
             finish()
         }
+
+        binding.formDetailShareCv.setOnClickListener {
+            val postService = PostService()
+            postService.setPostDetailView(this)
+            postService.getShareLink(postId, getAccessToken().toString(), getRefreshToken().toString())
+        }
     }
 
     private fun getPostDetail() {
@@ -108,13 +122,13 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenVie
     private fun dislikePost() {
         val postService = PostService()
         postService.setPostDetailView(this)
-        postService.dislikePost(postId, getJwt().toString())
+        postService.dislikePost(postId, getAccessToken().toString(), getRefreshToken().toString())
     }
 
     private fun deletePost() {
         val postService = PostService()
         postService.setPostDetailView(this)
-        postService.deletePost(postId, getJwt().toString())
+        postService.deletePost(postId, getAccessToken().toString(), getRefreshToken().toString())
     }
 
     private fun saveAccessToken(accessToken: String) {
@@ -125,17 +139,6 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenVie
         editor.apply()
 
         Log.d("엑세스토근", "세이브")
-    }
-
-    private fun getReAccessToken() {
-        val authService = AuthService()
-        authService.setReAccessTokenView(this)
-        authService.getReAccessToken(getAccessToken().toString(), getRefreshToken().toString())
-    }
-
-    private fun getJwt(): String? {
-        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-        return spf!!.getString("jwt", "")
     }
 
     private fun getAccessToken(): String? {
@@ -175,6 +178,7 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenVie
         if(result.myPost) {
             Log.d("mypost", result.myPost.toString())
             binding.formDetailParticipateBtn.visibility = View.INVISIBLE
+            binding.formDetailMyAnswerBtn.visibility = View.INVISIBLE
             binding.formDetailResultBtn.visibility = View.VISIBLE
             binding.formDetailDislikeBtnCv.visibility = View.INVISIBLE
             binding.formDetailLikeBtnCv.visibility = View.INVISIBLE
@@ -197,19 +201,21 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenVie
                 binding.formDetailParticipateBtn.isEnabled = false
             }
         }
+
+        if(result.participation) {
+            binding.formDetailMyAnswerBtn.visibility = View.VISIBLE
+            binding.formDetailModifyBtn.visibility = View.INVISIBLE
+        }
+
         Log.d("PostDetail / ", "상세페이지를 불러오는데 성공했습니다")
     }
 
     override fun onGetPostDetailFailure(result: PostDetailResponse) {
         Log.d("PostDetail / ", "상세페이지를 불러오는데 실패했습니다" + result.code)
 
-        if(result.code == 2002) {
-            getReAccessToken()
-        } else {
-            val intent = Intent(this, AuthActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+        val intent = Intent(this, AuthActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     override fun onLikeSuccess() {
@@ -239,13 +245,21 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenVie
         Log.d("deletePost()", " 실패 / " + result.message)
     }
 
-    override fun onGetReAccessTokenSuccess(res: ReAccessTokenResponse) {
-        Log.d("액세스토근", "을 재발급했습니다.")
-        saveAccessToken(res.result)
+    override fun onGetShareLinkSuccess(result: String) {
+        Toast.makeText(this, "설문 링크를 클립보드에 복사하였습니다.", Toast.LENGTH_SHORT).show()
+        Log.d("shareLink()", result)
+
+        val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+
+        // Creates a new text clip to put on the clipboard
+        val clip: ClipData = ClipData.newPlainText("seolmunzip-url", result)
+
+        // Set the clipboard's primary clip.
+        clipboard.setPrimaryClip(clip)
     }
 
-    override fun onGetReAccessTokenFailure() {
-        Log.d("onGetReAccessTokenFailure()", " 실패 / ")
+    override fun onGetShareLinkFailure() {
+        Toast.makeText(this, "설문 링크가 유효하지 않습니다.", Toast.LENGTH_SHORT).show()
     }
 
 }

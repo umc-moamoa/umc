@@ -5,10 +5,13 @@ import retrofit2.http.*
 
 interface AuthRetrofitInterface {
     @POST("/users")
-    fun join(@Body user:User): Call<JoinResponse>
+    fun join(@Body user:UserSign): Call<JoinResponse>
 
-    @POST("/auth/login")
+    @POST("/auth/android-login")
     fun login(@Body user:User): Call<LoginResponse>
+
+    @POST("/auth/kakaoLogin")
+    fun kakaoLogin(@Query("accessToken") param: String): Call<LoginResponse>
 
     @GET("/users")
     fun userInfo(
@@ -16,13 +19,20 @@ interface AuthRetrofitInterface {
         @Header("REFRESH-TOKEN") refreshToken: String
     ): Call<UserInfoResponse>
 
-    @DELETE("/user")
+    @DELETE("/users")
     fun deleteUser(
-        @Header("x-access-token") jwt: String
+        @Header("x-access-token") accessToken: String,
+        @Header("REFRESH-TOKEN") refreshToken: String
     ): Call<UserDeleteResponse>
 
     @GET("/users/id/{id}")
     fun joinIdCheck(@Path("id") id: String): Call<JoinCheckResponse>
+
+    @GET("/email/send")
+    fun emailSend(@Query("email") email:String): Call<EmailResponse>
+
+    @POST("/email/auth")
+    fun emailCertificate(@Body certifiedCode:String): Call<EmailResponse>
 
     @GET("/users/nick/{nick}")
     fun joinNickCheck(

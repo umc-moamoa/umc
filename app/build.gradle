@@ -39,9 +39,11 @@ android {
 }
 
 dependencies {
+    implementation "com.kakao.sdk:v2-user:2.11.2" // 카카오 로그인
+    implementation "com.kakao.sdk:v2-share:2.11.2" // 메시지(카카오톡 공유)
+
     //pie chart
     implementation 'com.github.PhilJay:MpAndroidChart:v3.0.2'
-
     implementation 'org.conscrypt:conscrypt-android:2.5.0'
 
     //okHttp

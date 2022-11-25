@@ -6,10 +6,13 @@ import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.umc_hackathon.auth.AuthService
 import com.example.umc_hackathon.auth.MyPageActivity
+import com.example.umc_hackathon.auth.ReAccessTokenResponse
+import com.example.umc_hackathon.auth.ReAccessTokenView
 import com.example.umc_hackathon.databinding.ActivityMySurveyBinding
 
-class MySurveyActivity : AppCompatActivity(), MySurveyView {
+class MySurveyActivity : AppCompatActivity(), MySurveyView, ReAccessTokenView {
 
     private lateinit var binding: ActivityMySurveyBinding
 
@@ -40,9 +43,20 @@ class MySurveyActivity : AppCompatActivity(), MySurveyView {
         Log.d("getMySurvey", " / InterestSurveyActivity에서 메소드")
     }
 
-    private fun getJwt(): String? {
-        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-        return spf!!.getString("jwt", "")
+    private fun saveAccessToken(accessToken: String) {
+        val spf = getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        val editor = spf.edit()
+
+        editor.putString("accessToken", accessToken)
+        editor.apply()
+
+        Log.d("엑세스토근", "세이브")
+    }
+
+    private fun getReAccessToken() {
+        val authService = AuthService()
+        authService.setReAccessTokenView(this)
+        authService.getReAccessToken(getAccessToken().toString(), getRefreshToken().toString())
     }
 
     private fun getAccessToken(): String? {
@@ -61,7 +75,19 @@ class MySurveyActivity : AppCompatActivity(), MySurveyView {
 
     }
 
-    override fun onGetMySurveyViewFailure() {
-        Log.d("나의 설문조사 / ", "나의 설문조사 폼 목록을 불러오는데 실패했습니다")
+    override fun onGetMySurveyViewFailure(mySurveyList: MySurveyResponse) {
+        Log.d("나의 설문조사" , "실패했습니다 " + mySurveyList.code)
+
+        if(mySurveyList.code == 2002) {
+            getReAccessToken()
+        }
+    }
+
+    override fun onGetReAccessTokenSuccess(res: ReAccessTokenResponse) {
+        Log.d("액세서 코톤", "재발급성공했습다")
+    }
+
+    override fun onGetReAccessTokenFailure() {
+        Log.d("액세스 코튼", "재발급 실패했습니다")
     }
 }
