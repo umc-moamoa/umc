@@ -20,8 +20,9 @@ import com.example.umc_hackathon.survey.FormInputActivity
 import com.example.umc_hackathon.survey.ModifyActivity
 import com.example.umc_hackathon.survey.MyAnswerActivity
 
-class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenView {
+class FormDetailActivity : AppCompatActivity(), PostDetailView {
 
+    private final var TAG = "FormDetailActivity"
     private var postId: Long = 0L
     private lateinit var postTitle: String
     private var postDeadline: Int = 0
@@ -36,7 +37,7 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenVie
 
         if(intent.hasExtra("list_item_post_id")) {
             postId = intent.getLongExtra("list_item_post_id", postId)
-            Log.d("postId", " : " + postId)
+            Log.d(TAG, "postId : $postId")
             getPostDetail()
         }
 
@@ -136,12 +137,6 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenVie
         Log.d("엑세스토근", "세이브")
     }
 
-    private fun getReAccessToken() {
-        val authService = AuthService()
-        authService.setReAccessTokenView(this)
-        authService.getReAccessToken(getAccessToken().toString(), getRefreshToken().toString())
-    }
-
     private fun getAccessToken(): String? {
         val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
         return spf!!.getString("accessToken", "")
@@ -214,13 +209,9 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenVie
     override fun onGetPostDetailFailure(result: PostDetailResponse) {
         Log.d("PostDetail / ", "상세페이지를 불러오는데 실패했습니다" + result.code)
 
-        if(result.code == 2002) {
-            getReAccessToken()
-        } else {
-            val intent = Intent(this, AuthActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+        val intent = Intent(this, AuthActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     override fun onLikeSuccess() {
@@ -249,15 +240,5 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenVie
         Toast.makeText(this, "설문 삭제를 실패했습니다.", Toast.LENGTH_SHORT).show()
         Log.d("deletePost()", " 실패 / " + result.message)
     }
-
-    override fun onGetReAccessTokenSuccess(res: ReAccessTokenResponse) {
-        Log.d("액세스토근", "을 재발급했습니다.")
-        saveAccessToken(res.result)
-    }
-
-    override fun onGetReAccessTokenFailure() {
-        Log.d("onGetReAccessTokenFailure()", " 실패 / ")
-    }
-
 }
 

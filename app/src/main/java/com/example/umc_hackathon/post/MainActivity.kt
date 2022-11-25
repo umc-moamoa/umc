@@ -19,11 +19,11 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-       setContentView(binding.root)
+        setContentView(binding.root)
 
         // 이벤트 리스너
         binding.mainProfileIv.setOnClickListener {
-            if (getRefreshToken().isNullOrBlank()) {
+            if (getAccessToken().isNullOrBlank()) {
                 val intent = Intent(this, AuthActivity::class.java)
                 intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
                 startActivity(intent)

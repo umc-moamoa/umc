@@ -19,8 +19,9 @@ class FormInputActivity : AppCompatActivity(), FormDetailView {
 
     private lateinit var binding: ActivityFormInputBinding
     private var postId: Long = 0L
-    private lateinit var formDetailResponse: FormDetailResponse
+    private lateinit var formResp: FormDetailResponse
     private lateinit var answer: Answer
+    private lateinit var formInputRequest: FormInputRequest
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -92,41 +93,22 @@ class FormInputActivity : AppCompatActivity(), FormDetailView {
 
     //적은 답 가져오기
     private fun getAnswer(): FormInputRequest {
-        lateinit var formInputRequest: FormInputRequest
-        var answerList: MutableList<Answer> = arrayListOf()
+        val questionList: List<FormDetail> = formResp.result
 
-        val questionList: List<FormDetail> = formDetailResponse.result
-
-        for (i in questionList.indices) {
-            when (questionList[i].format) {
-                1 -> {
-                    val radioGroup: RadioGroup = findViewById(R.id.question_input_item_rg)
-                    answer.answer = radioGroup.checkedRadioButtonId.toString()
-                }
-                2 -> {
-                    val checkBox: CheckBox = findViewById(R.id.question_input_item_cb)
-                    if (checkBox.isChecked) {
-                        answer.answer = checkBox.id.toString()
-                    }
-                }
-                3 -> {
-                    val short: EditText = findViewById(R.id.question_input_short_answer_et)
-                    answer.answer = short.text.toString()
-                }
-                else -> {
-                    val long: EditText = findViewById(R.id.question_input_long_answer_et)
-                    answer.answer = long.text.toString()
-                }
+        for(i in questionList.indices) {
+            Log.d("getAnswer()", "포맷은 " + questionList[i].format)
+            if(questionList[i].format == 1) {
+                val answer = findViewById<RadioGroup>(R.id.question_input_item_rg).checkedRadioButtonId
+                Log.d("포맷이 1일때", " " + answer + "체크됨")
             }
-            answer.detailId = i.toLong()
-            answerList.add(answer)
         }
-        formInputRequest.postId = postId
-        formInputRequest.postDetailResults = answerList
+
+
         return formInputRequest
     }
 
     override fun onFormDetailSuccess(formDetailResponse: FormDetailResponse) {
+        formResp = formDetailResponse
         binding.formInputRv.adapter = FormDetailRAdapter(formDetailResponse.result)
         Toast.makeText(this, "설문 조사 문항 불러오기에 성공했습니다", Toast.LENGTH_SHORT).show()
     }

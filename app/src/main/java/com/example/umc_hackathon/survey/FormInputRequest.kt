@@ -7,6 +7,7 @@ data class FormInputRequest(
     @SerializedName("postDetailResults") var postDetailResults: List<Answer>
 )
 
-class Answer(
-    var detailId: Long, var answer: String
+data class Answer(
+    var detailId: Long,
+    var answer: List<String>
 )
