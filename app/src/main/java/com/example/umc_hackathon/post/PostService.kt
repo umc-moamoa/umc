@@ -2,7 +2,16 @@ package com.example.umc_hackathon.post
 
 import android.util.Log
 import com.example.umc_hackathon.getRetrofit
-import okhttp3.ResponseBody
+import com.example.umc_hackathon.my.survey.InterestSurveyListView
+import com.example.umc_hackathon.my.point.MyPointResponse
+import com.example.umc_hackathon.my.point.MyPointView
+import com.example.umc_hackathon.my.survey.MySurveyResponse
+import com.example.umc_hackathon.my.survey.MySurveyView
+import com.example.umc_hackathon.my.survey.ParticipatedSurveyView
+import com.example.umc_hackathon.post.detail.PostDetailResponse
+import com.example.umc_hackathon.post.list.PostListResponse
+import com.example.umc_hackathon.post.detail.PostDetailView
+import com.example.umc_hackathon.post.list.PostListView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

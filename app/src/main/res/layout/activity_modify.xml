@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".survey.ModifyActivity">
+    tools:context=".post.modify.ModifyActivity">
 
     <ImageView
         android:id="@+id/form_modify_go_my_survey_iv"

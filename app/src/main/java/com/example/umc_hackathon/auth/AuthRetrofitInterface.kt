@@ -1,14 +1,15 @@
 package com.example.umc_hackathon.auth
 
+import com.example.umc_hackathon.auth.dto.*
 import retrofit2.Call
 import retrofit2.http.*
 
 interface AuthRetrofitInterface {
     @POST("/users")
-    fun join(@Body user:User): Call<JoinResponse>
+    fun join(@Body user: User): Call<JoinResponse>
 
     @POST("/auth/android-login")
-    fun login(@Body user:User): Call<LoginResponse>
+    fun login(@Body user: User): Call<LoginResponse>
 
     @POST("/auth/kakaoLogin")
     fun kakaoLogin(@Query("accessToken") param: String): Call<LoginResponse>
@@ -32,7 +33,10 @@ interface AuthRetrofitInterface {
     fun emailSend(@Query("email") email:String): Call<EmailResponse>
 
     @POST("/email/auth")
-    fun emailCertificate(@Body certifiedCode:String): Call<EmailResponse>
+    fun emailCertificate(
+        @Header("certifiedCode") certifiedCode: String,
+        @Query("certifiedCode") code: String
+    ): Call<EmailResponse>
 
     @GET("/users/nick/{nick}")
     fun joinNickCheck(

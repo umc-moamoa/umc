@@ -1,6 +1,8 @@
 package com.example.umc_hackathon.auth
 
 import android.util.Log
+import com.example.umc_hackathon.auth.dto.*
+import com.example.umc_hackathon.auth.view.*
 import com.example.umc_hackathon.getRetrofit
 import retrofit2.Call
 import retrofit2.Callback
@@ -192,7 +194,7 @@ class AuthService {
 
                     val response: EmailResponse = response.body()!!
                     when(response.code) {
-                        1000 -> joinCheckView.onEmailSendSuccess()
+                        1000 -> joinCheckView.onEmailSendSuccess(response.result)
                         else -> joinCheckView.onEmailSendFailure()
                     }
                 }
@@ -205,10 +207,10 @@ class AuthService {
         })
     }
 
-    fun emailCertificate(code : String) {
+    fun emailCertificate(code : String, etCode : String) {
         val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
 
-        authService.emailCertificate(code).enqueue(object : Callback<EmailResponse>{
+        authService.emailCertificate(code, etCode).enqueue(object : Callback<EmailResponse>{
             override fun onResponse(call: Call<EmailResponse>, response: Response<EmailResponse>) {
                 if(response.body() != null) {
                     Log.d("emailCert-success", response.toString())

@@ -3,14 +3,10 @@ package com.example.umc_hackathon.auth
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.core.content.ContextCompat
 import com.example.umc_hackathon.R
 import com.example.umc_hackathon.databinding.ActivityAuthBinding
 import com.example.umc_hackathon.post.MainActivity
-import com.example.umc_hackathon.post.result.ResultActivity
-import com.kakao.sdk.common.util.Utility
 
 class AuthActivity : AppCompatActivity() {
 

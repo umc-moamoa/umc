@@ -4,8 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.example.umc_hackathon.auth.view.UserSettingView
 import com.example.umc_hackathon.databinding.DialogSettingBinding
 import com.example.umc_hackathon.databinding.ActivitySettingBinding
+import com.example.umc_hackathon.my.CustomDialog
+import com.example.umc_hackathon.my.MyPageActivity
 import com.example.umc_hackathon.post.MainActivity
 
 class SettingActivity : AppCompatActivity(), UserSettingView {
