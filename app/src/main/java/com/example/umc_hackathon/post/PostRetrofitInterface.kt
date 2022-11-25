@@ -2,6 +2,7 @@ package com.example.umc_hackathon.post
 
 import com.example.umc_hackathon.post.result.DetailIdResponse
 import com.example.umc_hackathon.post.result.ResultResponse
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
@@ -86,7 +87,7 @@ interface PostRetrofitInterface {
         @Path("postId") postId: Long,
         @Header("x-access-token") accessToken: String,
         @Header("REFRESH-TOKEN") refreshToken: String
-    ): Call<Response<String>>
+    ): Call<UrlResponse>
 
     // 포인트 내역 조회
     @GET("/users/point/recent")

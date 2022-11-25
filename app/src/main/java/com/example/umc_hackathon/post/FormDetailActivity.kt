@@ -1,14 +1,12 @@
 package com.example.umc_hackathon
 
-import android.content.DialogInterface
-import android.content.Intent
+import android.content.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat.startActivity
 import com.example.umc_hackathon.auth.AuthActivity
 import com.example.umc_hackathon.auth.AuthService
 import com.example.umc_hackathon.auth.ReAccessTokenResponse
@@ -18,7 +16,6 @@ import com.example.umc_hackathon.post.*
 import com.example.umc_hackathon.post.result.ResultActivity
 import com.example.umc_hackathon.survey.FormInputActivity
 import com.example.umc_hackathon.survey.ModifyActivity
-import retrofit2.Response
 
 class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenView {
 
@@ -241,9 +238,17 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenVie
         Log.d("deletePost()", " 실패 / " + result.message)
     }
 
-    override fun onGetShareLinkSuccess(result: Response<String>) {
-        Toast.makeText(this, "설문 링크 복사 완료", Toast.LENGTH_SHORT).show()
-        Log.d("shareLink()", result.toString())
+    override fun onGetShareLinkSuccess(result: String) {
+        Toast.makeText(this, "설문 링크를 클립보드에 복사하였습니다.", Toast.LENGTH_SHORT).show()
+        Log.d("shareLink()", result)
+
+        val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+
+        // Creates a new text clip to put on the clipboard
+        val clip: ClipData = ClipData.newPlainText("seolmunzip-url", result)
+
+        // Set the clipboard's primary clip.
+        clipboard.setPrimaryClip(clip)
     }
 
     override fun onGetShareLinkFailure() {
