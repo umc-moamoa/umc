@@ -199,9 +199,9 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
         }
     }
 
-    private fun getJwt(): String? {
-        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-        return spf!!.getString("jwt", "")
+    private fun getAccessToken(): String? {
+        val spf = getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf!!.getString("accessToken", "")
     }
 
     private fun getForm(): FormCreateRequest {
@@ -243,7 +243,7 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
     private fun formCreate() {
         val formService = FormService()
         formService.setFormCreateView(this)
-        formService.formCreate(getForm(), getJwt()!!)
+        formService.formCreate(getForm(), getAccessToken()!!)
     }
 
     override fun onFormCreateSuccess() {

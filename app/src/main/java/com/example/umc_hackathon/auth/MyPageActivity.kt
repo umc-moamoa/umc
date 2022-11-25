@@ -11,15 +11,15 @@ import com.example.umc_hackathon.post.*
 
 class MyPageActivity : AppCompatActivity(), UserInfoView {
 
+    private final var TAG = "MyPageActivity"
     private lateinit var binding: ActivityMyPageBinding
-//    var userId: Long = 1
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMyPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // UserInfo api 호출
+        // userInfo api 호출
         userInfo()
 
         binding.myPageGoMainLl.setOnClickListener {
@@ -67,16 +67,11 @@ class MyPageActivity : AppCompatActivity(), UserInfoView {
     }
 
     private fun userInfo() {
-        Log.d("activity/userInfo()", "메소드")
+        Log.d(TAG, "userInfo() 실행")
 
         val authService = AuthService()
         authService.setUserInfoView(this)
         authService.userInfo(getAccessToken().toString(), getRefreshToken().toString())
-    }
-
-    private fun getJwt(): String? {
-        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-        return spf!!.getString("jwt", "")
     }
 
     private fun getAccessToken(): String? {
@@ -109,9 +104,21 @@ class MyPageActivity : AppCompatActivity(), UserInfoView {
     }
 
     override fun onUserInfoFailure(code: Int) {
-//        Toast.makeText(this, "회원정보 불러오기에 실패했습니다", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "회원정보 불러오기에 실패했습니다", Toast.LENGTH_SHORT).show()
+
+        val authSpf = getSharedPreferences("auth", MODE_PRIVATE)
+        val authEditor = authSpf.edit()
+        authEditor.remove("accessToken")
+        authEditor.remove("refreshToken")
+        authEditor.commit()
+
+        val nickNameSpf = getSharedPreferences("nickName", MODE_PRIVATE)
+        val nickNameEditor = nickNameSpf.edit()
+        nickNameEditor.remove("nickName")
+        nickNameEditor.commit()
+
         val intent = Intent(this, AuthActivity::class.java)
-        intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
         finish()
     }

@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
 
         // 이벤트 리스너
         binding.mainProfileIv.setOnClickListener {
-            if (getRefreshToken().isNullOrBlank()) {
+            if (getAccessToken().isNullOrBlank()) {
                 val intent = Intent(this, AuthActivity::class.java)
                 intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
                 startActivity(intent)

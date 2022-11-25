@@ -95,12 +95,12 @@ class SettingActivity : AppCompatActivity(), UserSettingView {
         val authEditor = authSpf.edit()
         authEditor.remove("accessToken")
         authEditor.remove("refreshToken")
-        authEditor.apply()
+        authEditor.commit()
 
         val nickNameSpf = getSharedPreferences("nickName", MODE_PRIVATE)
         val nickNameEditor = nickNameSpf.edit()
         nickNameEditor.remove("nickName")
-        nickNameEditor.apply()
+        nickNameEditor.commit().
 
         val intent = Intent(this, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP

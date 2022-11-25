@@ -21,6 +21,8 @@ import com.kakao.sdk.user.UserApiClient
 
 class LoginFragment : Fragment(), LoginView {
 
+
+    private final var TAG = "LoginFragment"
     private lateinit var binding: FragmentLoginBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -104,9 +106,9 @@ class LoginFragment : Fragment(), LoginView {
     }
 
     private fun login() {
-        Log.d("LOGIN()", "메소드")
+        Log.d(TAG, "login() 실행")
 
-        if(binding.loginIdEt.text.toString().isEmpty()) {
+       if(binding.loginIdEt.text.toString().isEmpty()) {
             Toast.makeText(activity, "아이디를 입력해주세요", Toast.LENGTH_SHORT).show()
             return
         }
@@ -117,15 +119,15 @@ class LoginFragment : Fragment(), LoginView {
         }
 
         val id = binding.loginIdEt.text.toString()
-        val password = binding.loginPasswordEt.text.toString()
+        val pwd = binding.loginPasswordEt.text.toString()
 
         val authService = AuthService()
         authService.setLoginView(this)
-        authService.login(User(id, "", password))
+        authService.login(User(id, pwd))
     }
 
     // LoginView 상속
-    override fun onLoginSuccess(code: Int, result: LoginResult) {
+    override fun onLoginSuccess(code: Int, result: LoginResponse) {
         when(code) {
             1000 -> {
                 val intent = Intent(activity, MyPageActivity::class.java)
@@ -133,11 +135,11 @@ class LoginFragment : Fragment(), LoginView {
                 startActivity(intent)
                 requireActivity().finish()
 
-                saveAccessToken(result.accessToken)
-                saveRefreshToken(result.refreshToken)
+                saveAccessToken(result.result)
+                //saveRefreshToken(result.refreshToken)
 
                 Log.d("로그인: 액세스 토근", getAccessToken().toString())
-                Log.d("로그인: 리프레시 토근", getRefreshToken().toString())
+//                Log.d("로그인: 리프레시 토근", getRefreshToken().toString())
 
                 onStart()
             }

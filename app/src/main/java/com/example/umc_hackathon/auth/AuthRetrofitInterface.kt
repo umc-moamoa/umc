@@ -7,7 +7,7 @@ interface AuthRetrofitInterface {
     @POST("/users")
     fun join(@Body user:User): Call<JoinResponse>
 
-    @POST("/auth/login")
+    @POST("/auth/android-login")
     fun login(@Body user:User): Call<LoginResponse>
 
     @POST("/auth/kakaoLogin")

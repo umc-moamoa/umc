@@ -12,6 +12,7 @@ class FormService {
     private lateinit var formCreateView: FormCreateView
     private lateinit var formDetailView: FormDetailView
     private lateinit var modifyView: ModifyView
+    private lateinit var myAnswerView: MyAnswerView
 
     fun setFormCreateView(formCreateView: FormCreateView) {
         this.formCreateView = formCreateView
@@ -23,6 +24,10 @@ class FormService {
 
     fun setModifyView(modifyView: ModifyView) {
         this.modifyView = modifyView
+    }
+
+    fun setMyAnswerView(myAnswerView: MyAnswerView) {
+        this.myAnswerView = myAnswerView
     }
 
     fun formCreate(formCreateRequest: FormCreateRequest, jwt: String) {
@@ -47,10 +52,10 @@ class FormService {
         })
     }
 
-    fun getFormDetail(postId: Long, jwt: String) {
+    fun getFormDetail(postId: Long, accessToken: String, refreshToken: String) {
         val formService = getRetrofit().create(FormRetrofitInterface::class.java)
 
-        formService.getFormDetail(postId, jwt).enqueue(object: Callback<FormDetailResponse> {
+        formService.getFormDetail(postId, accessToken, refreshToken).enqueue(object: Callback<FormDetailResponse> {
             override fun onResponse(call: Call<FormDetailResponse>, response: Response<FormDetailResponse>) {
                 if(response.body() != null) {
                     Log.d("getFormDetail()", response.body().toString())
@@ -91,10 +96,10 @@ class FormService {
         })
     }
 
-    fun submitResult(formInputRequest: FormInputRequest, jwt: String) {
+    fun submitResult(formInputRequest: FormInputRequest, accessToken: String, refreshToken: String) {
         val formService = getRetrofit().create(FormRetrofitInterface::class.java)
 
-        formService.submitAnswer(formInputRequest, jwt).enqueue(object : Callback<FormInputResponse> {
+        formService.submitAnswer(formInputRequest, accessToken, refreshToken).enqueue(object : Callback<FormInputResponse> {
             override fun onResponse(call: Call<FormInputResponse>, response: Response<FormInputResponse>) {
                 if(response.isSuccessful) {
                     Log.d("submit-success", response.body().toString())
@@ -111,6 +116,28 @@ class FormService {
                 Log.d("submit-fail", t.message.toString())
             }
 
+        })
+    }
+
+    fun getMyAnswer(postId: Long, accessToken: String, refreshToken: String) {
+        val formService = getRetrofit().create(FormRetrofitInterface::class.java)
+
+        formService.getMyAnswer(postId, accessToken, refreshToken).enqueue(object: Callback<MyAnswerResponse> {
+            override fun onResponse(call: Call<MyAnswerResponse>, response: Response<MyAnswerResponse>) {
+                if(response.isSuccessful) {
+                    Log.d("getMyAnswer-success", response.body().toString())
+                    val myAnswerResponse: MyAnswerResponse = response.body()!!
+
+                    when(myAnswerResponse.code) {
+                        1000 -> myAnswerView.onGetMyAnswerSuccess(myAnswerResponse)
+                        else -> myAnswerView.onGetMyAnswerFailure()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<MyAnswerResponse>, t: Throwable) {
+                Log.d("getMyAnswer-fail", t.message.toString())
+            }
         })
     }
 }

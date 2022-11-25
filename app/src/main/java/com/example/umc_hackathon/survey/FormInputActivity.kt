@@ -3,6 +3,7 @@ package com.example.umc_hackathon.survey
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.RadioGroup
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_hackathon.FormDetailActivity
 import com.example.umc_hackathon.R
+import com.example.umc_hackathon.auth.AuthService
 import com.example.umc_hackathon.databinding.ActivityFormInputBinding
 import com.example.umc_hackathon.post.FormListActivity
 
@@ -17,8 +19,9 @@ class FormInputActivity : AppCompatActivity(), FormDetailView {
 
     private lateinit var binding: ActivityFormInputBinding
     private var postId: Long = 0L
-    private lateinit var formDetailResponse: FormDetailResponse
+    private lateinit var formResp: FormDetailResponse
     private lateinit var answer: Answer
+    private lateinit var formInputRequest: FormInputRequest
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,60 +53,62 @@ class FormInputActivity : AppCompatActivity(), FormDetailView {
         }
     }
 
-    private fun getJwt(): String? {
+//    private fun saveAccessToken(accessToken: String) {
+//        val spf = getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+//        val editor = spf.edit()
+//
+//        editor.putString("accessToken", accessToken)
+//        editor.apply()
+//
+//        Log.d("엑세스토근", "세이브")
+//    }
+//
+//    private fun getReAccessToken() {
+//        val authService = AuthService()
+//        authService.setReAccessTokenView(this)
+//        authService.getReAccessToken(getAccessToken().toString(), getRefreshToken().toString())
+//    }
+
+    private fun getAccessToken(): String? {
         val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-        return spf!!.getString("jwt", "")
+        return spf!!.getString("accessToken", "")
+    }
+
+    private fun getRefreshToken(): String? {
+        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf!!.getString("refreshToken", "")
     }
 
     private fun getFormDetail() {
         val formService = FormService()
         formService.setFormDetailView(this)
-        formService.getFormDetail(postId, getJwt()!!)
+        formService.getFormDetail(postId, getAccessToken().toString(), getRefreshToken().toString())
     }
 
     private fun submitAnswer() {
         val formService = FormService()
         formService.setFormDetailView(this)
-        formService.submitResult(getAnswer(), getJwt()!!)
+        formService.submitResult(getAnswer(), getAccessToken().toString(), getRefreshToken().toString())
     }
 
     //적은 답 가져오기
     private fun getAnswer(): FormInputRequest {
-        lateinit var formInputRequest: FormInputRequest
-        var answerList: MutableList<Answer> = arrayListOf()
+        val questionList: List<FormDetail> = formResp.result
 
-        val questionList: List<FormDetail> = formDetailResponse.result
-
-        for (i in questionList.indices) {
-            when (questionList[i].format) {
-                1 -> {
-                    val radioGroup: RadioGroup = findViewById(R.id.question_input_item_rg)
-                    answer.answer = radioGroup.checkedRadioButtonId.toString()
-                }
-                2 -> {
-                    val checkBox: CheckBox = findViewById(R.id.question_input_item_cb)
-                    if (checkBox.isChecked) {
-                        answer.answer = checkBox.id.toString()
-                    }
-                }
-                3 -> {
-                    val short: EditText = findViewById(R.id.question_input_short_answer_et)
-                    answer.answer = short.text.toString()
-                }
-                else -> {
-                    val long: EditText = findViewById(R.id.question_input_long_answer_et)
-                    answer.answer = long.text.toString()
-                }
+        for(i in questionList.indices) {
+            Log.d("getAnswer()", "포맷은 " + questionList[i].format)
+            if(questionList[i].format == 1) {
+                val answer = findViewById<RadioGroup>(R.id.question_input_item_rg).checkedRadioButtonId
+                Log.d("포맷이 1일때", " " + answer + "체크됨")
             }
-            answer.detailId = i.toLong()
-            answerList.add(answer)
         }
-        formInputRequest.postId = postId
-        formInputRequest.postDetailResults = answerList
+
+
         return formInputRequest
     }
 
     override fun onFormDetailSuccess(formDetailResponse: FormDetailResponse) {
+        formResp = formDetailResponse
         binding.formInputRv.adapter = FormDetailRAdapter(formDetailResponse.result)
         Toast.makeText(this, "설문 조사 문항 불러오기에 성공했습니다", Toast.LENGTH_SHORT).show()
     }
