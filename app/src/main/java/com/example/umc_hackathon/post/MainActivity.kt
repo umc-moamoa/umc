@@ -6,11 +6,12 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ScrollView
-import androidx.core.content.ContextCompat.startActivity
-import com.example.umc_hackathon.FormDetailActivity
 import com.example.umc_hackathon.auth.AuthActivity
-import com.example.umc_hackathon.auth.MyPageActivity
+import com.example.umc_hackathon.my.MyPageActivity
 import com.example.umc_hackathon.databinding.ActivityMainBinding
+import com.example.umc_hackathon.post.detail.PostDetailActivity
+import com.example.umc_hackathon.post.list.FormListActivity
+import com.example.umc_hackathon.post.list.PostListResponse
 
 class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
 
@@ -132,7 +133,7 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
             binding.mainPopularFirstPointTv.text = postList.result[0].point.toString() + "P"
 
             binding.mainPopularFirstFolderView.setOnClickListener {
-                val intent = Intent(this, FormDetailActivity::class.java)
+                val intent = Intent(this, PostDetailActivity::class.java)
                 intent.putExtra("list_item_post_id", postList.result[0].postId)
                 Log.d("list_item_post_id", postList.result[0].postId.toString());
                 startActivity(intent)
@@ -161,7 +162,7 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
             binding.mainPopularFirstPointTv.text = postList.result[0].point.toString() + "P"
 
             binding.mainPopularFirstFolderView.setOnClickListener {
-                val intent = Intent(this, FormDetailActivity::class.java)
+                val intent = Intent(this, PostDetailActivity::class.java)
                 intent.putExtra("list_item_post_id", postList.result[0].postId)
                 Log.d("list_item_post_id", postList.result[0].postId.toString());
                 startActivity(intent)
@@ -177,7 +178,7 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
             }
             binding.mainSecondPointTv.text = postList.result[1].point.toString() + "P"
             binding.mainSecondFolderView.setOnClickListener {
-                val intent = Intent(this, FormDetailActivity::class.java)
+                val intent = Intent(this, PostDetailActivity::class.java)
                 intent.putExtra("list_item_post_id", postList.result[1].postId)
                 Log.d("list_item_post_id", postList.result[1].postId.toString());
                 startActivity(intent)
@@ -201,7 +202,7 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
             binding.mainPopularFirstPointTv.text = postList.result[0].point.toString() + "P"
 
             binding.mainPopularFirstFolderView.setOnClickListener {
-                val intent = Intent(this, FormDetailActivity::class.java)
+                val intent = Intent(this, PostDetailActivity::class.java)
                 intent.putExtra("list_item_post_id", postList.result[0].postId)
                 Log.d("list_item_post_id", postList.result[0].postId.toString());
                 startActivity(intent)
@@ -217,7 +218,7 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
             }
             binding.mainSecondPointTv.text = postList.result[1].point.toString() + "P"
             binding.mainSecondFolderView.setOnClickListener {
-                val intent = Intent(this, FormDetailActivity::class.java)
+                val intent = Intent(this, PostDetailActivity::class.java)
                 intent.putExtra("list_item_post_id", postList.result[1].postId)
                 Log.d("list_item_post_id", postList.result[1].postId.toString());
                 startActivity(intent)
@@ -233,7 +234,7 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
             }
             binding.mainThirdPointTv.text = postList.result[2].point.toString() + "P"
             binding.mainThirdFolderView.setOnClickListener {
-                val intent = Intent(this, FormDetailActivity::class.java)
+                val intent = Intent(this, PostDetailActivity::class.java)
                 intent.putExtra("list_item_post_id", postList.result[2].postId)
                 Log.d("list_item_post_id", postList.result[2].postId.toString());
                 startActivity(intent)
@@ -279,7 +280,7 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
             // 상세 페이지로 intent
             binding.mainWaitingSurveyItemLl1.setOnClickListener {
 //          val currentPosition: Int = postList[adapterPosition].postId //수정!!!!!! postId로 받아오기
-                val intent = Intent(this, FormDetailActivity::class.java)
+                val intent = Intent(this, PostDetailActivity::class.java)
                 intent.putExtra("list_item_post_id", postList.result[0].postId)
                 Log.d("list_item_my_survey_id", postList.result[0].postId.toString());
                 startActivity(intent)
@@ -309,7 +310,7 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
             // 상세 페이지로 intent
             binding.mainWaitingSurveyItemLl1.setOnClickListener {
 //          val currentPosition: Int = postList[adapterPosition].postId //수정!!!!!! postId로 받아오기
-                val intent = Intent(this, FormDetailActivity::class.java)
+                val intent = Intent(this, PostDetailActivity::class.java)
                 intent.putExtra("list_item_post_id", postList.result[0].postId)
                 Log.d("list_item_my_survey_id", postList.result[0].postId.toString());
                 startActivity(intent)
@@ -327,7 +328,7 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
             // 상세 페이지로 intent
             binding.mainWaitingSurveyItemLl2.setOnClickListener {
 //          val currentPosition: Int = postList[adapterPosition].postId //수정!!!!!! postId로 받아오기
-                val intent = Intent(this, FormDetailActivity::class.java)
+                val intent = Intent(this, PostDetailActivity::class.java)
                 intent.putExtra("list_item_post_id", postList.result[1].postId)
                 Log.d("list_item_my_survey_id", postList.result[1].postId.toString());
                 startActivity(intent)
@@ -352,7 +353,7 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
             // 상세 페이지로 intent
             binding.mainWaitingSurveyItemLl1.setOnClickListener {
 //          val currentPosition: Int = postList[adapterPosition].postId //수정!!!!!! postId로 받아오기
-                val intent = Intent(this, FormDetailActivity::class.java)
+                val intent = Intent(this, PostDetailActivity::class.java)
                 intent.putExtra("list_item_post_id", postList.result[0].postId)
                 Log.d("list_item_my_survey_id", postList.result[0].postId.toString());
                 startActivity(intent)
@@ -370,7 +371,7 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
             // 상세 페이지로 intent
             binding.mainWaitingSurveyItemLl2.setOnClickListener {
 //          val currentPosition: Int = postList[adapterPosition].postId //수정!!!!!! postId로 받아오기
-                val intent = Intent(this, FormDetailActivity::class.java)
+                val intent = Intent(this, PostDetailActivity::class.java)
                 intent.putExtra("list_item_post_id", postList.result[1].postId)
                 Log.d("list_item_my_survey_id", postList.result[1].postId.toString());
                 startActivity(intent)
@@ -388,7 +389,7 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
             // 상세 페이지로 intent
             binding.mainWaitingSurveyItemLl3.setOnClickListener {
 //          val currentPosition: Int = postList[adapterPosition].postId //수정!!!!!! postId로 받아오기
-                val intent = Intent(this, FormDetailActivity::class.java)
+                val intent = Intent(this, PostDetailActivity::class.java)
                 intent.putExtra("list_item_post_id", postList.result[2].postId)
                 Log.d("list_item_my_survey_id", postList.result[2].postId.toString());
                 startActivity(intent)

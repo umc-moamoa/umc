@@ -1,6 +1,5 @@
 package com.example.umc_hackathon.survey
 
-import com.example.umc_hackathon.post.PostDetailResult
 import com.google.gson.annotations.SerializedName
 import java.util.*
 

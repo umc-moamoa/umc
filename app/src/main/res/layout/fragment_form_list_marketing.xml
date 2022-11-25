@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".post.FormListMarketing">
+    tools:context=".post.list.FormListMarketing">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragment_marketing_rv"

@@ -1,10 +1,12 @@
 package com.example.umc_hackathon.post
 
-import com.example.umc_hackathon.post.result.DetailIdResponse
-import com.example.umc_hackathon.post.result.ResultResponse
-import okhttp3.ResponseBody
+import com.example.umc_hackathon.my.survey.MySurveyResponse
+import com.example.umc_hackathon.my.point.MyPointResponse
+import com.example.umc_hackathon.post.detail.PostDetailResponse
+import com.example.umc_hackathon.post.list.PostListResponse
+import com.example.umc_hackathon.survey.result.DetailIdResponse
+import com.example.umc_hackathon.survey.result.ResultResponse
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.http.*
 
 interface PostRetrofitInterface {
