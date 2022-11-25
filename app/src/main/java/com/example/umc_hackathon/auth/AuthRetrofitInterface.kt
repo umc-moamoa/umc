@@ -6,7 +6,7 @@ import retrofit2.http.*
 
 interface AuthRetrofitInterface {
     @POST("/users")
-    fun join(@Body user: User): Call<JoinResponse>
+    fun join(@Body user:UserSign): Call<JoinResponse>
 
     @POST("/auth/android-login")
     fun login(@Body user: User): Call<LoginResponse>

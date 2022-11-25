@@ -16,6 +16,7 @@ class AuthService {
     private lateinit var loginView: LoginView
     private lateinit var userInfoView: UserInfoView
     private lateinit var joinCheckView: JoinCheckView
+    private lateinit var nickCheckView: NickCheckView
     private lateinit var userSettingView: UserSettingView
     private lateinit var reAccessTokenView: ReAccessTokenView
 
@@ -34,6 +35,10 @@ class AuthService {
     fun setJoinCheckView(joinCheckView: JoinCheckView) {
         this.joinCheckView = joinCheckView
     }
+    
+    fun setNickCheckView(nickCheckView: NickCheckView) {
+        this.nickCheckView = nickCheckView
+    }
 
     fun setEmailView(emailView: JoinCheckView) {
         this.joinCheckView = joinCheckView
@@ -47,7 +52,7 @@ class AuthService {
         this.reAccessTokenView = reAccessTokenView
     }
 
-    fun join(user: User) {
+    fun join(user: UserSign) {
         val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
 
         authService.join(user).enqueue(object: Callback<JoinResponse> {
@@ -184,6 +189,29 @@ class AuthService {
         Log.d("JOINCHECK()/", "메소드")
     }
 
+    fun nickCheck(nick: String) {
+        val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
+
+        authService.joinNickCheck(nick).enqueue(object: Callback<JoinCheckResponse> {
+            override fun onResponse(call: Call<JoinCheckResponse>, response: Response<JoinCheckResponse>) {
+                if(response.body() != null) {
+                    Log.d("NICKNAMECHECK/SUCCESS", response.toString())
+
+                    val resp: JoinCheckResponse = response.body()!!
+                    when(resp.code) {
+                        1000 -> nickCheckView.onNickCheckSuccess()
+                        else -> nickCheckView.onNickCheckFailure()
+                    }
+                }
+            }
+            override fun onFailure(call: Call<JoinCheckResponse>, t: Throwable) {
+                Log.d("JOINNICKCHECK/FAILURE", t.message.toString())
+            }
+        })
+
+        Log.d("NICKCHECK()/", "메소드")
+    }
+
     fun emailSend(email : String) {
         val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
 
@@ -199,7 +227,6 @@ class AuthService {
                     }
                 }
             }
-
             override fun onFailure(call: Call<EmailResponse>, t: Throwable) {
                 Log.d("email-send-fail", t.message.toString())
             }

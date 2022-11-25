@@ -6,3 +6,9 @@ data class User(
     @SerializedName("email") var id: String,
     @SerializedName("pwd") var pwd: String
 )
+
+data class UserSign(
+    @SerializedName("email") var id: String,
+    @SerializedName("nick") var nick: String,
+    @SerializedName("pwd") var pwd: String
+)

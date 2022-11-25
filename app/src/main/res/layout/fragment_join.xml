@@ -9,6 +9,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
     <LinearLayout
         android:id="@+id/join_input_ll"
         android:layout_width="match_parent"
@@ -58,7 +59,7 @@
                 app:cardElevation="0dp">
 
                 <TextView
-                    android:id="@+id/join_id_duplicate_check_et"
+                    android:id="@+id/join_id_duplicate_check_tv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
@@ -66,6 +67,22 @@
                     android:gravity="center"
                     android:hint="중복확인"
                     android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/join_id_duplicate_check_yes_iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:visibility="invisible"
+                    android:src="@drawable/ic_sign_up_check" />
+
+                <ImageView
+                    android:id="@+id/join_id_duplicate_check_no_iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:visibility="invisible"
+                    android:src="@drawable/ic_sign_up_no" />
 
             </androidx.cardview.widget.CardView>
 
@@ -197,7 +214,7 @@
                 app:cardElevation="0dp">
 
                 <TextView
-                    android:id="@+id/join_nickname_duplicate_check_et"
+                    android:id="@+id/join_nickname_duplicate_check_tv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
@@ -205,6 +222,22 @@
                     android:gravity="center"
                     android:hint="중복확인"
                     android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/join_nickname_duplicate_check_yes_iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:visibility="invisible"
+                    android:src="@drawable/ic_sign_up_check" />
+
+                <ImageView
+                    android:id="@+id/join_nickname_duplicate_check_no_iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:visibility="invisible"
+                    android:src="@drawable/ic_sign_up_no" />
 
             </androidx.cardview.widget.CardView>
 
@@ -233,6 +266,14 @@
 
         </androidx.cardview.widget.CardView>
 
+        <TextView
+            android:id="@+id/join_password_limit_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:text="영문, 숫자, 특수문자를 조합해 7-15자를 입력해주세요"
+            android:textSize="10sp" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/setting_quit_cv"
             android:layout_width="match_parent"
@@ -255,6 +296,15 @@
                 android:textSize="14sp" />
 
         </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/join_password_check_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:visibility="invisible"
+            android:text="비밀번호 일치 확인"
+            android:textSize="10sp" />
 
         <Button
             android:id="@+id/join_submit_btn"
