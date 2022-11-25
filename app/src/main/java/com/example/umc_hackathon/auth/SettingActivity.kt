@@ -76,6 +76,7 @@ class SettingActivity : AppCompatActivity(), UserSettingView {
 //            dialog.setPositiveButton("네", dialogListener)
 //            dialog.setNegativeButton("아니요", null)
 //            dialog.show()
+
         }
 
         binding.settingChangeCv.setOnClickListener {

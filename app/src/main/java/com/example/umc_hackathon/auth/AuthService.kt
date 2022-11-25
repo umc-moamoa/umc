@@ -33,7 +33,7 @@ class AuthService {
     fun setJoinCheckView(joinCheckView: JoinCheckView) {
         this.joinCheckView = joinCheckView
     }
-
+    
     fun setNickCheckView(nickCheckView: NickCheckView) {
         this.nickCheckView = nickCheckView
     }
@@ -202,7 +202,6 @@ class AuthService {
                     }
                 }
             }
-
             override fun onFailure(call: Call<JoinCheckResponse>, t: Throwable) {
                 Log.d("JOINNICKCHECK/FAILURE", t.message.toString())
             }
@@ -226,7 +225,6 @@ class AuthService {
                     }
                 }
             }
-
             override fun onFailure(call: Call<EmailResponse>, t: Throwable) {
                 Log.d("email-send-fail", t.message.toString())
             }

@@ -93,7 +93,7 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView {
             Toast.makeText(activity, "올바른 비밀번호가 아닙니다", Toast.LENGTH_SHORT).show()
             return
         }
-
+        
         if(binding.joinPasswordEt.text.toString() != binding.joinPasswordCheckEt.text.toString()) {
             Toast.makeText(activity, "비밀번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show()
             return
@@ -210,5 +210,4 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView {
 
         return (Pattern.matches(pwPattern, password))
     }
-
 }
