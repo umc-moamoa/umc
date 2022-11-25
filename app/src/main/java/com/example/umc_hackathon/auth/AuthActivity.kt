@@ -40,6 +40,14 @@ class AuthActivity : AppCompatActivity() {
             val transaction = supportFragmentManager.beginTransaction()
             transaction.replace(R.id.auth_fv, joinFragment)
             transaction.commit()
+
+            // 로그인 하러 가기 텍스트
+            binding.loginGoLoginLl.visibility = View.VISIBLE
+
+            // 회원가입 추가 권유 텍스트
+            binding.loginJoinLl.visibility = View.INVISIBLE
+            // 비밀번호 찾기 텍스트
+            binding.findPasswordLl.visibility = View.INVISIBLE
         }
 
         binding.goFindPasswordTv.setOnClickListener {
@@ -57,42 +65,48 @@ class AuthActivity : AppCompatActivity() {
 
         supportFragmentManager.beginTransaction().add(R.id.auth_fv, loginFragment).commit()
 
-        binding.authLoginCategoryBtn.setOnClickListener {
+        binding.loginGoLoginTv.setOnClickListener {
             // 버튼색
-            binding.authLoginCategoryBtn.setBackgroundResource(R.drawable.category_selected)
-            binding.authJoinCategoryBtn.setBackgroundResource(R.drawable.category_unselected)
+//            binding.authLoginCategoryBtn.setBackgroundResource(R.drawable.category_selected)
+//            binding.authJoinCategoryBtn.setBackgroundResource(R.drawable.category_unselected)
 
             // 글자색
-            binding.authLoginCategoryBtn.setTextColor(ContextCompat.getColor(applicationContext, R.color.white))
-            binding.authJoinCategoryBtn.setTextColor(ContextCompat.getColor(applicationContext, R.color.unselected_color))
+//            binding.authLoginCategoryBtn.setTextColor(ContextCompat.getColor(applicationContext, R.color.white))
+//            binding.authJoinCategoryBtn.setTextColor(ContextCompat.getColor(applicationContext, R.color.unselected_color))
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.auth_fv, loginFragment)
+            transaction.commit()
+
+            // 로그인 하러 가기 텍스트
+            binding.loginGoLoginLl.visibility = View.INVISIBLE
 
             // 회원가입 추가 권유 텍스트
             binding.loginJoinLl.visibility = View.VISIBLE
             // 비밀번호 찾기 텍스트
             binding.findPasswordLl.visibility = View.VISIBLE
 
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.auth_fv, loginFragment)
-            transaction.commit()
         }
 
-        binding.authJoinCategoryBtn.setOnClickListener {
+        binding.loginGoSignupTv.setOnClickListener {
             // 버튼색
-            binding.authLoginCategoryBtn.setBackgroundResource(R.drawable.category_unselected)
-            binding.authJoinCategoryBtn.setBackgroundResource(R.drawable.category_selected)
+//            binding.authLoginCategoryBtn.setBackgroundResource(R.drawable.category_unselected)
+//            binding.authJoinCategoryBtn.setBackgroundResource(R.drawable.category_selected)
 
             // 글자색
-            binding.authLoginCategoryBtn.setTextColor(ContextCompat.getColor(applicationContext, R.color.unselected_color))
-            binding.authJoinCategoryBtn.setTextColor(ContextCompat.getColor(applicationContext, R.color.white))
+//            binding.authLoginCategoryBtn.setTextColor(ContextCompat.getColor(applicationContext, R.color.unselected_color))
+//            binding.authJoinCategoryBtn.setTextColor(ContextCompat.getColor(applicationContext, R.color.white))
+
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.auth_fv, joinFragment)
+            transaction.commit()
+
+            // 로그인 하러 가기 텍스트
+            binding.loginGoLoginLl.visibility = View.VISIBLE
 
             // 회원가입 추가 권유 텍스트
             binding.loginJoinLl.visibility = View.INVISIBLE
             // 비밀번호 찾기 텍스트
             binding.findPasswordLl.visibility = View.INVISIBLE
-
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.auth_fv, joinFragment)
-            transaction.commit()
         }
     }
 }

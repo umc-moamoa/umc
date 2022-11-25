@@ -98,10 +98,10 @@
             android:layout_width="280dp"
             android:layout_height="40dp"
             android:layout_marginTop="65dp"
-            android:layout_marginBottom="2dp"
             android:background="@drawable/category_selected"
             android:fontFamily="@font/roboto_bold"
             android:text="로그인"
+            android:elevation="0dp"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -112,14 +112,15 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="22dp"
+            app:cardElevation="0dp">
 
             <Button
                 android:id="@+id/login_kakao_btn"
                 android:layout_width="280dp"
-                android:layout_height="40dp"
-                android:layout_marginBottom="2dp"
+                android:layout_height="match_parent"
                 android:background="@drawable/kakao_btn"
                 android:fontFamily="@font/roboto_bold"
                 android:text="카카오 로그인"

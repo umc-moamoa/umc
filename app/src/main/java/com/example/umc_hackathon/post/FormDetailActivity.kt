@@ -18,6 +18,7 @@ import com.example.umc_hackathon.post.*
 import com.example.umc_hackathon.post.result.ResultActivity
 import com.example.umc_hackathon.survey.FormInputActivity
 import com.example.umc_hackathon.survey.ModifyActivity
+import retrofit2.Response
 
 class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenView {
 
@@ -88,6 +89,12 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenVie
             intent.putExtra("postUserId", postUserId)
             startActivity(intent)
             finish()
+        }
+
+        binding.formDetailShareCv.setOnClickListener {
+            val postService = PostService()
+            postService.setPostDetailView(this)
+            postService.getShareLink(postId, getAccessToken().toString(), getRefreshToken().toString())
         }
     }
 
@@ -232,6 +239,15 @@ class FormDetailActivity : AppCompatActivity(), PostDetailView, ReAccessTokenVie
     override fun onDeleteFailure(result: StringResultResponse) {
         Toast.makeText(this, "설문 삭제를 실패했습니다.", Toast.LENGTH_SHORT).show()
         Log.d("deletePost()", " 실패 / " + result.message)
+    }
+
+    override fun onGetShareLinkSuccess(result: Response<String>) {
+        Toast.makeText(this, "설문 링크 복사 완료", Toast.LENGTH_SHORT).show()
+        Log.d("shareLink()", result.toString())
+    }
+
+    override fun onGetShareLinkFailure() {
+        Toast.makeText(this, "설문 링크가 유효하지 않습니다.", Toast.LENGTH_SHORT).show()
     }
 
     override fun onGetReAccessTokenSuccess(res: ReAccessTokenResponse) {

@@ -61,6 +61,11 @@ class MyPageActivity : AppCompatActivity(), UserInfoView {
         }
     }
 
+    override fun onStop() {
+        super.onStop()
+        userInfo()
+    }
+
     private fun userInfo() {
         Log.d("activity/userInfo()", "메소드")
 
@@ -104,6 +109,10 @@ class MyPageActivity : AppCompatActivity(), UserInfoView {
     }
 
     override fun onUserInfoFailure(code: Int) {
-        Toast.makeText(this, "회원정보 불러오기에 실패했습니다", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(this, "회원정보 불러오기에 실패했습니다", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, AuthActivity::class.java)
+        intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+        startActivity(intent)
+        finish()
     }
 }

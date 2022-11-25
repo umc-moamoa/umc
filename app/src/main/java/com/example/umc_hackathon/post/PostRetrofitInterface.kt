@@ -3,6 +3,7 @@ package com.example.umc_hackathon.post
 import com.example.umc_hackathon.post.result.DetailIdResponse
 import com.example.umc_hackathon.post.result.ResultResponse
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
 interface PostRetrofitInterface {
@@ -79,6 +80,13 @@ interface PostRetrofitInterface {
         @Header("x-access-token") accessToken: String,
         @Header("REFRESH-TOKEN") refreshToken: String
     ): Call<StringResultResponse> //같은 형식이라 공유해서 사용
+
+    @GET("/posts/content/{postId}/share")
+    fun getShareLink(
+        @Path("postId") postId: Long,
+        @Header("x-access-token") accessToken: String,
+        @Header("REFRESH-TOKEN") refreshToken: String
+    ): Call<Response<String>>
 
     // 포인트 내역 조회
     @GET("/users/point/recent")

@@ -26,6 +26,11 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView {
         }
 
         //이메일 인증 전송
+//        binding.joinIdDuplicateCheckEt.setOnClickListener {
+//            joinIdCheck()
+//            emailSend()
+//        }
+
         //이메일 인증번호 체크
         binding.joinEmailCertificateCheckCv.setOnClickListener {
             emailCertificate()

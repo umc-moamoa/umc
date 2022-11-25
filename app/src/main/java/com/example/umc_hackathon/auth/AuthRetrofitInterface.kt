@@ -29,7 +29,7 @@ interface AuthRetrofitInterface {
     fun joinIdCheck(@Path("id") id: String): Call<JoinCheckResponse>
 
     @GET("/email/send")
-    fun emailSend(@Body email:String): Call<EmailResponse>
+    fun emailSend(@Query("email") email:String): Call<EmailResponse>
 
     @POST("/email/auth")
     fun emailCertificate(@Body certifiedCode:String): Call<EmailResponse>

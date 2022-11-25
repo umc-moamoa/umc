@@ -93,13 +93,14 @@ class SettingActivity : AppCompatActivity(), UserSettingView {
     private fun logoutUser() {
         val authSpf = getSharedPreferences("auth", MODE_PRIVATE)
         val authEditor = authSpf.edit()
-        authEditor.remove("jwt")
-        authEditor.commit()
+        authEditor.remove("accessToken")
+        authEditor.remove("refreshToken")
+        authEditor.apply()
 
         val nickNameSpf = getSharedPreferences("nickName", MODE_PRIVATE)
         val nickNameEditor = nickNameSpf.edit()
         nickNameEditor.remove("nickName")
-        nickNameEditor.commit()
+        nickNameEditor.apply()
 
         val intent = Intent(this, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
