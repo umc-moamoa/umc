@@ -2,6 +2,7 @@ package com.example.umc_hackathon.auth
 
 import android.util.Log
 import com.example.umc_hackathon.getRetrofit
+import com.example.umc_hackathon.survey.ModifyResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,6 +18,7 @@ class AuthService {
     private lateinit var nickCheckView: NickCheckView
     private lateinit var userSettingView: UserSettingView
     private lateinit var reAccessTokenView: ReAccessTokenView
+    private lateinit var nickChangeView: NickChangeView
 
     fun setJoinView(joinView: JoinView) {
         this.joinView = joinView
@@ -48,6 +50,10 @@ class AuthService {
 
     fun setReAccessTokenView(reAccessTokenView: ReAccessTokenView) {
         this.reAccessTokenView = reAccessTokenView
+    }
+
+    fun setNickChangeView(nickChangeView: NickChangeView) {
+        this.nickChangeView = nickChangeView
     }
 
     fun join(user: UserSign) {
@@ -310,4 +316,31 @@ class AuthService {
                     }
                 })
         }
+
+    // Nick Change
+    fun nickChange(nickChangeRequest: NickChangeRequest, accessToken: String, refreshToken: String) {
+        val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
+
+        authService.nickChange(nickChangeRequest, accessToken, refreshToken)
+            .enqueue(object : Callback<NickChangeResponse> {
+                override fun onResponse(
+                    call: Call<NickChangeResponse>,
+                    response: Response<NickChangeResponse>
+                ) {
+                    if(response.body() != null) {
+                        Log.d("nickChange()", response.body().toString())
+
+                        val resp: NickChangeResponse = response.body()!!
+                        when(val code = resp.code) {
+                            1000 -> nickChangeView.onNickChangeSuccess(resp)
+                            else -> nickChangeView.onNickChangeFailure()
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<NickChangeResponse>, t: Throwable) {
+                    Log.d("nickChange() 실패", t.message.toString())
+                }
+            })
+    }
 }

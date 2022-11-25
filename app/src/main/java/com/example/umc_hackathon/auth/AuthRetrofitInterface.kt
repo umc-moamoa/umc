@@ -1,5 +1,7 @@
 package com.example.umc_hackathon.auth
 
+import com.example.umc_hackathon.survey.ModifyRequest
+import com.example.umc_hackathon.survey.ModifyResponse
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -44,4 +46,12 @@ interface AuthRetrofitInterface {
         @Header("x-access-token") accessToken: String,
         @Header("REFRESH-TOKEN") refreshToken: String
     ): Call<ReAccessTokenResponse>
+
+    // 닉네임 수정하기
+    @PATCH("/users/nick")
+    fun nickChange (
+        @Body nickChangeRequest: NickChangeRequest,
+        @Header("x-access-token") accessToken: String,
+        @Header("REFRESH-TOKEN") refreshToken: String
+    ): Call<NickChangeResponse>
 }

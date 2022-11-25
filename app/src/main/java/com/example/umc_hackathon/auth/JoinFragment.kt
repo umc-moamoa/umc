@@ -109,6 +109,12 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView {
         binding.joinNicknameEt.setText("")
         binding.joinPasswordEt.setText("")
         binding.joinPasswordCheckEt.setText("")
+        binding.joinIdDuplicateCheckTv.visibility = View.VISIBLE
+        binding.joinIdDuplicateCheckYesIv.visibility = View.INVISIBLE
+        binding.joinIdDuplicateCheckNoIv.visibility = View.INVISIBLE
+        binding.joinNicknameDuplicateCheckTv.visibility = View.VISIBLE
+        binding.joinNicknameDuplicateCheckYesIv.visibility = View.INVISIBLE
+        binding.joinNicknameDuplicateCheckNoIv.visibility = View.INVISIBLE
     }
 
     // JoinView 상속
