@@ -10,7 +10,7 @@ data class JoinResponse (
 )
 
 data class JoinResult (
-    @SerializedName("userId") val userId: Long,
     @SerializedName("accessToken") val accessToken: String,
-    @SerializedName("refreshToken") val refreshToken: String
+    @SerializedName("refreshToken") val refreshToken: String,
+    @SerializedName("userId") val userId: Long
 )

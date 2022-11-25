@@ -14,6 +14,9 @@
         android:theme="@style/Theme.Umc_hackathon"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".auth.NicknameChangeActivity"
+            android:exported="false" />
+        <activity
             android:name=".survey.MyAnswerActivity"
             android:exported="false" />
         <activity
