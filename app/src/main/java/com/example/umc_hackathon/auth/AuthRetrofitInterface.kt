@@ -49,4 +49,9 @@ interface AuthRetrofitInterface {
         @Header("x-access-token") accessToken: String,
         @Header("REFRESH-TOKEN") refreshToken: String
     ): Call<ReAccessTokenResponse>
+
+    @POST("/users/pwd")
+    fun changePassword(
+        @Body user: User
+    ): Call<JoinResponse>
 }

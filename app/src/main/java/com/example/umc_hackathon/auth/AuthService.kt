@@ -17,6 +17,8 @@ class AuthService {
     private lateinit var loginView: LoginView
     private lateinit var userInfoView: UserInfoView
     private lateinit var joinCheckView: JoinCheckView
+    private lateinit var emailView: EmailView
+    private lateinit var passwordView: PasswordView
     private lateinit var nickCheckView: NickCheckView
     private lateinit var userSettingView: UserSettingView
     private lateinit var reAccessTokenView: ReAccessTokenView
@@ -41,8 +43,12 @@ class AuthService {
         this.nickCheckView = nickCheckView
     }
 
-    fun setEmailView(emailView: JoinCheckView) {
-        this.joinCheckView = joinCheckView
+    fun setEmailView(emailView: EmailView) {
+        this.emailView = emailView
+    }
+
+    fun setPasswordView(passwordView: PasswordView) {
+        this.passwordView = passwordView
     }
 
     fun setUserSettingView(userSettingView: UserSettingView){
@@ -223,8 +229,8 @@ class AuthService {
 
                     val response: EmailResponse = response.body()!!
                     when(response.code) {
-                        1000 -> joinCheckView.onEmailSendSuccess(response.result)
-                        else -> joinCheckView.onEmailSendFailure()
+                        1000 -> emailView.onEmailSendSuccess(response.result)
+                        else -> emailView.onEmailSendFailure()
                     }
                 }
             }
@@ -245,8 +251,8 @@ class AuthService {
 
                     val response: EmailResponse = response.body()!!
                     when(response.code) {
-                        1000 -> joinCheckView.onEmailCertificateSuccess()
-                        else -> joinCheckView.onEmailCertificateFailure(response.code)
+                        1000 -> emailView.onEmailCertificateSuccess()
+                        else -> emailView.onEmailCertificateFailure(response.code)
                     }
                 }
             }
@@ -313,4 +319,26 @@ class AuthService {
                     }
                 })
         }
+
+    fun changePassword(user: User) {
+        val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
+
+        authService.changePassword(user).enqueue(object: Callback<JoinResponse> {
+            override fun onResponse(call: Call<JoinResponse>, response: Response<JoinResponse>) {
+                if(response.body() != null) {
+                    Log.d("CHANGE-PASSWORD/SUCCESS", response.toString())
+
+                    val resp: JoinResponse = response.body()!!
+                    when(resp.code) {
+                        1000 -> passwordView.changePasswordSuccess()
+                        else -> passwordView.changePasswordFailure()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<JoinResponse>, t: Throwable) {
+                Log.d("CHANGE-PASSWORD/FAILURE", t.message.toString())
+            }
+        })
+    }
 }

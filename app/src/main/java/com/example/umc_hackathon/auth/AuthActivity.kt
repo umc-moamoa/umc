@@ -31,6 +31,7 @@ class AuthActivity : AppCompatActivity() {
 //        Log.d("Hash", keyHash)
 
         val joinFragment = JoinFragment()
+        val passwordFragment = PasswordFragment()
 
         binding.loginGoSignupTv.setOnClickListener{
             val transaction = supportFragmentManager.beginTransaction()
@@ -47,11 +48,17 @@ class AuthActivity : AppCompatActivity() {
         }
 
         binding.goFindPasswordTv.setOnClickListener {
-//            val intent = Intent(this, ResultActivity::class.java)
-//            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
-//            intent.putExtra("postId", postId)
-//            intent.putExtra("postTitle", postTitle)
-//            startActivity(intent)
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.auth_fv, passwordFragment)
+            transaction.commit()
+
+            // 로그인 하러 가기 텍스트
+            binding.loginGoLoginLl.visibility = View.VISIBLE
+
+            // 회원가입 추가 권유 텍스트
+            binding.loginJoinLl.visibility = View.INVISIBLE
+            // 비밀번호 찾기 텍스트
+            binding.findPasswordLl.visibility = View.INVISIBLE
         }
     }
 
