@@ -60,7 +60,6 @@ class NicknameChangeActivity : AppCompatActivity(), NickCheckView, NickChangeVie
             Toast.makeText(this, "닉네임을 입력해주세요", Toast.LENGTH_SHORT).show()
             return
         }
-
         val authService = AuthService()
         authService.setNickChangeView(this)
         authService.nickChange(getNickChange() ,getAccessToken().toString(), getRefreshToken().toString())
