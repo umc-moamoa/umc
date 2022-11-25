@@ -4,6 +4,7 @@ import android.util.Log
 import com.example.umc_hackathon.auth.dto.*
 import com.example.umc_hackathon.auth.view.*
 import com.example.umc_hackathon.getRetrofit
+import com.example.umc_hackathon.post.StringResultResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -79,12 +80,12 @@ class AuthService {
     fun login(user: User) {
         val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
 
-        authService.login(user).enqueue(object : Callback<LoginResponse> {
-            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+        authService.login(user).enqueue(object : Callback<StringResultResponse> {
+            override fun onResponse(call: Call<StringResultResponse>, response: Response<StringResultResponse>) {
                 if(response.body() != null) {
                     Log.d(TAG, "login() / onResponse() $response")
 
-                    val resp: LoginResponse = response.body()!!
+                    val resp: StringResultResponse = response.body()!!
                     when (val code = resp.code) {
                         1000 -> loginView.onLoginSuccess(code, resp)
                         else -> loginView.onLoginFailure(code)
@@ -92,7 +93,7 @@ class AuthService {
                 }
             }
 
-            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+            override fun onFailure(call: Call<StringResultResponse>, t: Throwable) {
                 Log.d(TAG, "login() / onFailure() " + t.message.toString())
             }
         })
@@ -110,7 +111,7 @@ class AuthService {
 
                     val resp: LoginResponse = response.body()!!
                     when (val code = resp.code) {
-                        1000 -> loginView.onLoginSuccess(code, resp)
+                        1000 -> loginView.onKakaoLoginSuccess(code, resp)
                         else -> loginView.onLoginFailure(code)
                     }
                 }

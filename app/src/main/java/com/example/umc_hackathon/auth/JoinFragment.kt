@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.umc_hackathon.auth.dto.User
+import com.example.umc_hackathon.auth.dto.UserSign
 import com.example.umc_hackathon.auth.view.JoinCheckView
 import com.example.umc_hackathon.auth.view.JoinView
 import com.example.umc_hackathon.databinding.FragmentJoinBinding
@@ -24,7 +25,7 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView {
         binding = FragmentJoinBinding.inflate(layoutInflater)
 
         //이메일 중복 체크
-        binding.joinIdDuplicateCheckEt.setOnClickListener {
+        binding.joinIdDuplicateCheckCv.setOnClickListener {
             joinIdCheck()
         }
 
@@ -39,7 +40,7 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView {
         }
 
         //닉네임 중복 체크
-        binding.joinNicknameDuplicateCheckEt.setOnClickListener {
+        binding.joinNicknameDuplicateCheckCv.setOnClickListener {
             joinNickCheck()
         }
 
