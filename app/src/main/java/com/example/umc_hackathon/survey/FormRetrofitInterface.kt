@@ -10,7 +10,7 @@ interface FormRetrofitInterface {
     @POST("/posts")
     fun formCreate (
         @Body formCreateRequest: FormCreateRequest,
-        @Header("x-access-token") jwt: String
+        @Header("x-access-token") accessToken: String
     ): Call<FormCreateResponse>
 
     // 설문조사 문항 확인하기

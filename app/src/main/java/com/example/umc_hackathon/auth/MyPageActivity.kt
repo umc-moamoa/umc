@@ -100,5 +100,20 @@ class MyPageActivity : AppCompatActivity(), UserInfoView {
 
     override fun onUserInfoFailure(code: Int) {
         Toast.makeText(this, "회원정보 불러오기에 실패했습니다", Toast.LENGTH_SHORT).show()
+
+        val authSpf = getSharedPreferences("auth", MODE_PRIVATE)
+        val authEditor = authSpf.edit()
+        authEditor.remove("accessToken")
+        authEditor.remove("refreshToken")
+        authEditor.commit()
+
+        val nickNameSpf = getSharedPreferences("nickName", MODE_PRIVATE)
+        val nickNameEditor = nickNameSpf.edit()
+        nickNameEditor.remove("nickName")
+        nickNameEditor.commit()
+
+        val intent = Intent(this, AuthActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
     }
 }
