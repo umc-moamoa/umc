@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.Toast
 import com.example.umc_hackathon.R
 import com.example.umc_hackathon.databinding.ActivityNicknameChangeBinding
-import com.example.umc_hackathon.survey.ModifyRequest
+import com.example.umc_hackathon.my.MyPageActivity
 
 class NicknameChangeActivity : AppCompatActivity(), NickCheckView, NickChangeView {
 
@@ -60,6 +60,7 @@ class NicknameChangeActivity : AppCompatActivity(), NickCheckView, NickChangeVie
             Toast.makeText(this, "닉네임을 입력해주세요", Toast.LENGTH_SHORT).show()
             return
         }
+
         val authService = AuthService()
         authService.setNickChangeView(this)
         authService.nickChange(getNickChange() ,getAccessToken().toString(), getRefreshToken().toString())
@@ -92,7 +93,7 @@ class NicknameChangeActivity : AppCompatActivity(), NickCheckView, NickChangeVie
 
     override fun onNickChangeSuccess(resp: NickChangeResponse) {
         Toast.makeText(this, "닉네임 변경에 성공했습니다", Toast.LENGTH_SHORT).show()
-        val intent = Intent(this, MyPageActivity::class.java)
+        val intent = Intent(this,  MyPageActivity::class.java)
         intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
         startActivity(intent)
     }

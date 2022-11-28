@@ -1,6 +1,5 @@
 package com.example.umc_hackathon.auth
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,7 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.umc_hackathon.R
+import com.example.umc_hackathon.auth.dto.User
+import com.example.umc_hackathon.auth.dto.UserSign
+import com.example.umc_hackathon.auth.view.JoinCheckView
+import com.example.umc_hackathon.auth.view.JoinView
 import com.example.umc_hackathon.databinding.FragmentJoinBinding
 import com.example.umc_hackathon.databinding.FragmentLoginBinding
 import com.example.umc_hackathon.post.MainActivity
@@ -17,30 +19,32 @@ import java.util.regex.Pattern
 class JoinFragment : Fragment(), JoinView, JoinCheckView {
 
     private lateinit var binding: FragmentJoinBinding
+    private lateinit var code: String
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentJoinBinding.inflate(layoutInflater)
 
-        // joinCheck
+        //이메일 중복 체크
         binding.joinIdDuplicateCheckCv.setOnClickListener {
             joinIdCheck()
         }
 
         //이메일 인증 전송
-//        binding.joinIdDuplicateCheckEt.setOnClickListener {
-//            joinIdCheck()
-//            emailSend()
-//        }
+        binding.joinEmailSendCv.setOnClickListener {
+            emailSend()
+        }
 
         //이메일 인증번호 체크
         binding.joinEmailCertificateCheckCv.setOnClickListener {
             emailCertificate()
         }
 
+        //닉네임 중복 체크
         binding.joinNicknameDuplicateCheckCv.setOnClickListener {
             joinNickCheck()
         }
 
+        //회원가입
         binding.joinSubmitBtn.setOnClickListener {
             join()
         }
@@ -93,7 +97,7 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView {
             Toast.makeText(activity, "올바른 비밀번호가 아닙니다", Toast.LENGTH_SHORT).show()
             return
         }
-        
+
         if(binding.joinPasswordEt.text.toString() != binding.joinPasswordCheckEt.text.toString()) {
             Toast.makeText(activity, "비밀번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show()
             return
@@ -145,8 +149,8 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView {
         val authService = AuthService()
         authService.setJoinCheckView(this)
 
-        val code: String = binding.joinEmailCertificateCheckEt.text.toString()
-        authService.emailCertificate(code)
+        val etCode: String = binding.joinEmailCertificateEt.text.toString()
+        authService.emailCertificate(code, etCode)
     }
 
     private fun joinNickCheck() {
@@ -172,8 +176,9 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView {
         binding.joinSubmitBtn.isEnabled = false
     }
 
-    override fun onEmailSendSuccess() {
+    override fun onEmailSendSuccess(result: String) {
         Toast.makeText(activity, "이메일 전송 완료", Toast.LENGTH_SHORT).show()
+        code = result
     }
 
     override fun onEmailSendFailure() {
