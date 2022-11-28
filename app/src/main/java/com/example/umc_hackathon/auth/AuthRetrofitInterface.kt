@@ -49,4 +49,12 @@ interface AuthRetrofitInterface {
         @Header("x-access-token") accessToken: String,
         @Header("REFRESH-TOKEN") refreshToken: String
     ): Call<ReAccessTokenResponse>
+
+    // 닉네임 수정하기
+    @PATCH("/users/nick")
+    fun nickChange (
+        @Body nickChangeRequest: NickChangeRequest,
+        @Header("x-access-token") accessToken: String,
+        @Header("REFRESH-TOKEN") refreshToken: String
+    ): Call<NickChangeResponse>
 }
