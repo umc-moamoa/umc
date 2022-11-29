@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.ContextCompat
+import androidx.core.view.get
 import androidx.core.view.size
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
@@ -41,6 +42,7 @@ class FormDetailRAdapter(val questionList: List<FormDetail>): RecyclerView.Adapt
             val radioGroup: RadioGroup = RadioGroup(holder.itemView.context)
             holder.answerLayout.addView(radioGroup)
 
+
             for(i in 0 until iCount) {
                 val radioButton: RadioButton = RadioButton(holder.itemView.context)
                 radioButton.text = questionList[position].items[i]
@@ -53,11 +55,11 @@ class FormDetailRAdapter(val questionList: List<FormDetail>): RecyclerView.Adapt
                     qCount += radioGroup.size
                 }
 
-                Log.d("아이템 개수(단독선택)", (position + 1).toString() + "번재 문제 " + radioGroup.size.toString() + "개 중에 " + (i - qCount) + "번 답변" )
+                Log.d("라디오 버튼 선택", (position + 1).toString() + "번재 문제 : " + radioGroup.size.toString() + "개 중에 " + (i - qCount) + "번 답변 선택" + radioGroup[i])
             }
 
-            Log.d("아이템 개수(단독선택)", iCount.toString())
-            Log.d("아이템 아이디(단독선택)", iId.toString())
+            Log.d("라디오 버튼 선택", "질문 개수 : $iCount")
+            Log.d("라디오 버튼 선택", "질문 아이디 : $iId")
         } else if(questionList[position].format == 2) {
             val iId = questionList[position].postDetailId
 
@@ -67,8 +69,9 @@ class FormDetailRAdapter(val questionList: List<FormDetail>): RecyclerView.Adapt
                 holder.answerLayout.addView(checkBox)
             }
 
-            Log.d("아이템 개수(복수선택)", iCount.toString())
-            Log.d("아이템 아이디(복수선택)", iId.toString())
+
+            Log.d("체크박스 선택", "질문 개수 : $iCount")
+            Log.d("체크박스 선택", "질문 아이디 : $iId")
         } else if (questionList[position].format == 3) {
             val iId = questionList[position].postDetailId
             val editText: EditText = EditText(holder.itemView.context)
@@ -82,8 +85,8 @@ class FormDetailRAdapter(val questionList: List<FormDetail>): RecyclerView.Adapt
                 val answer = editText.text.toString()
             }
 
-            Log.d("아이템 내용(단답)", questionList[position].question)
-            Log.d("아이템 아이디(단답)", iId.toString())
+            Log.d("단답형", "질문 : " + questionList[position].question)
+            Log.d("단답형", "질문 아이디 : $iId")
         } else if (questionList[position].format == 4) {
             val iId = questionList[position].postDetailId
             val editText: EditText = EditText(holder.itemView.context)
@@ -97,8 +100,8 @@ class FormDetailRAdapter(val questionList: List<FormDetail>): RecyclerView.Adapt
                 val answer = editText.text.toString()
             }
 
-            Log.d("아이템 내용(서술)", questionList[position].question)
-            Log.d("아이템 아이디(서술)", iId.toString())
+            Log.d("서술형", "질문 : " + questionList[position].question)
+            Log.d("서술형", "질문 아이디 : $iId")
         }
     }
 
