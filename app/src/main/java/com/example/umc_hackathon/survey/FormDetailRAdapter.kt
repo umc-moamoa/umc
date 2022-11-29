@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.ContextCompat
+import androidx.core.view.size
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
 import com.example.umc_hackathon.R
@@ -46,6 +47,14 @@ class FormDetailRAdapter(val questionList: List<FormDetail>): RecyclerView.Adapt
                 radioGroup.addView(radioButton)
             }
 
+            radioGroup.setOnCheckedChangeListener { radioGroup, i ->
+                var qCount = 0
+                for (i in 0 until position) {
+                    qCount += radioGroup.size
+                }
+
+                Log.d("아이템 개수(단독선택)", (position + 1).toString() + "번재 문제 " + radioGroup.size.toString() + "개 중에 " + (i - qCount) + "번 답변" )
+            }
 
             Log.d("아이템 개수(단독선택)", iCount.toString())
             Log.d("아이템 아이디(단독선택)", iId.toString())
@@ -73,7 +82,7 @@ class FormDetailRAdapter(val questionList: List<FormDetail>): RecyclerView.Adapt
                 val answer = editText.text.toString()
             }
 
-            Log.d("아이템 내용(단답)", editText.text.toString())
+            Log.d("아이템 내용(단답)", questionList[position].question)
             Log.d("아이템 아이디(단답)", iId.toString())
         } else if (questionList[position].format == 4) {
             val iId = questionList[position].postDetailId
@@ -88,7 +97,7 @@ class FormDetailRAdapter(val questionList: List<FormDetail>): RecyclerView.Adapt
                 val answer = editText.text.toString()
             }
 
-            Log.d("아이템 내용(서술)", editText.text.toString())
+            Log.d("아이템 내용(서술)", questionList[position].question)
             Log.d("아이템 아이디(서술)", iId.toString())
         }
     }
