@@ -69,7 +69,7 @@ class ModifyActivity : AppCompatActivity(), ModifyView {
 
     private fun getJwt(): String? {
         val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-        return spf!!.getString("jwt", "")
+        return spf!!.getString("accessToken", "")
     }
 
     private fun getModifiedForm(): ModifyRequest {

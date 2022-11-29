@@ -53,22 +53,6 @@ class FormInputActivity : AppCompatActivity(), FormDetailView {
         }
     }
 
-//    private fun saveAccessToken(accessToken: String) {
-//        val spf = getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-//        val editor = spf.edit()
-//
-//        editor.putString("accessToken", accessToken)
-//        editor.apply()
-//
-//        Log.d("엑세스토근", "세이브")
-//    }
-//
-//    private fun getReAccessToken() {
-//        val authService = AuthService()
-//        authService.setReAccessTokenView(this)
-//        authService.getReAccessToken(getAccessToken().toString(), getRefreshToken().toString())
-//    }
-
     private fun getAccessToken(): String? {
         val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
         return spf!!.getString("accessToken", "")
@@ -95,13 +79,6 @@ class FormInputActivity : AppCompatActivity(), FormDetailView {
     private fun getAnswer(): FormInputRequest {
         val questionList: List<FormDetail> = formResp.result
 
-        for(i in questionList.indices) {
-            Log.d("getAnswer()", "포맷은 " + questionList[i].format)
-            if(questionList[i].format == 1) {
-                val answer = findViewById<RadioGroup>(R.id.question_input_item_rg).checkedRadioButtonId
-                Log.d("포맷이 1일때", " " + answer + "체크됨")
-            }
-        }
 
 
         return formInputRequest
