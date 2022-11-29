@@ -1,7 +1,12 @@
 package com.example.umc_hackathon.survey
 
-import com.example.umc_hackathon.post.LikeResponse
-import com.example.umc_hackathon.post.PostDetailResponse
+import com.example.umc_hackathon.my.survey.MyAnswerResponse
+import com.example.umc_hackathon.post.modify.ModifyRequest
+import com.example.umc_hackathon.post.modify.ModifyResponse
+import com.example.umc_hackathon.survey.create.FormCreateRequest
+import com.example.umc_hackathon.survey.create.FormCreateResponse
+import com.example.umc_hackathon.survey.participate.FormInputRequest
+import com.example.umc_hackathon.survey.participate.FormInputResponse
 import retrofit2.Call
 import retrofit2.http.*
 

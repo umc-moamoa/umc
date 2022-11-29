@@ -17,7 +17,7 @@
             android:name=".auth.NicknameChangeActivity"
             android:exported="false" />
         <activity
-            android:name=".survey.MyAnswerActivity"
+            android:name=".my.survey.MyAnswerActivity"
             android:exported="false" />
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".survey.ModifyActivity"
+            android:name=".post.modify.ModifyActivity"
             android:exported="false" />
         <activity
             android:name=".auth.AuthActivity"
@@ -50,7 +50,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".post.result.ResultActivity"
+            android:name="com.example.umc_hackathon.survey.result.ResultActivity"
             android:exported="false" />
         <activity
             android:name=".survey.QuestionItemActivity"
@@ -59,37 +59,37 @@
             android:name=".survey.DialogOptionItemActivity"
             android:exported="false" />
         <activity
-            android:name=".post.MySurveyActivity"
+            android:name=".my.survey.MySurveyActivity"
             android:exported="false" />
         <activity
-            android:name=".post.ParticipatedSurveyActivity"
+            android:name=".my.survey.ParticipatedSurveyActivity"
             android:exported="false" />
         <activity
-            android:name=".post.InterestSurveyActivity"
+            android:name=".my.survey.InterestSurveyActivity"
             android:exported="false" />
         <activity
-            android:name=".post.MyPointActivity"
+            android:name=".my.point.MyPointActivity"
             android:exported="false" />
         <activity
             android:name=".auth.SettingActivity"
             android:exported="false" />
         <activity
-            android:name=".auth.MyPageActivity"
+            android:name=".my.MyPageActivity"
             android:exported="false" />
         <activity
             android:name=".post.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".survey.FormCreateActivity"
+            android:name=".survey.create.FormCreateActivity"
             android:exported="false" />
         <activity
-            android:name=".survey.FormInputActivity"
+            android:name=".survey.participate.FormInputActivity"
             android:exported="false" />
         <activity
-            android:name=".FormDetailActivity"
+            android:name=".post.detail.PostDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".post.FormListActivity"
+            android:name=".post.list.FormListActivity"
             android:exported="false" />
     </application>
 

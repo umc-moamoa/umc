@@ -1,6 +1,5 @@
 package com.example.umc_hackathon.auth
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -10,10 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.startActivity
-import com.example.umc_hackathon.R
-import com.example.umc_hackathon.databinding.FragmentFormListBrandBinding
+import com.example.umc_hackathon.auth.dto.LoginResponse
+import com.example.umc_hackathon.auth.dto.User
+import com.example.umc_hackathon.auth.view.LoginView
 import com.example.umc_hackathon.databinding.FragmentLoginBinding
+import com.example.umc_hackathon.my.MyPageActivity
+import com.example.umc_hackathon.post.StringResultResponse
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
@@ -122,16 +123,15 @@ class LoginFragment : Fragment(), LoginView {
     }
 
     // LoginView 상속
-    override fun onLoginSuccess(code: Int, result: LoginResponse) {
+    override fun onLoginSuccess(code: Int, result: StringResultResponse) {
         when(code) {
             1000 -> {
                 val intent = Intent(activity, MyPageActivity::class.java)
-                intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+//                intent.addFlags (Intent.FLAG_ACTIITY_NO_ANIMATION)
                 startActivity(intent)
                 requireActivity().finish()
 
                 saveAccessToken(result.result)
-                saveRefreshToken(result.result)
 
                 Log.d("로그인: 액세스 토근", getAccessToken().toString())
 
@@ -160,5 +160,21 @@ class LoginFragment : Fragment(), LoginView {
             }
         }
     }
+
+    override fun onKakaoLoginSuccess(code: Int, result: LoginResponse) {
+        when(code) {
+            1000 -> {
+                val intent = Intent(activity, MyPageActivity::class.java)
+                startActivity(intent)
+                requireActivity().finish()
+
+                saveAccessToken(result.result.accessToken)
+                Log.d("로그인: 액세스 토근", getAccessToken().toString())
+
+                onStart()
+            }
+        }
+    }
+
 
 }
