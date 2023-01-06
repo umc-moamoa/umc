@@ -4,22 +4,18 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_hackathon.post.detail.PostDetailActivity
-import com.example.umc_hackathon.R
 import com.example.umc_hackathon.databinding.ActivityFormInputBinding
 import com.example.umc_hackathon.post.list.FormListActivity
 import com.example.umc_hackathon.survey.*
 
-class FormInputActivity : AppCompatActivity(), FormDetailView {
+class FormInputActivity : AppCompatActivity(), FormDetailView, FormInputItem {
 
     private lateinit var binding: ActivityFormInputBinding
     private var postId: Long = 0L
-    private lateinit var formResp: FormDetailResponse
-    private lateinit var answer: Answer
-    private lateinit var formInputRequest: FormInputRequest
+    private var answerList: ArrayList<ArrayList<ArrayList<String>>> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,16 +71,12 @@ class FormInputActivity : AppCompatActivity(), FormDetailView {
 
     //적은 답 가져오기
     private fun getAnswer(): FormInputRequest {
-        val questionList: List<FormDetail> = formResp.result
-
-
-
-        return formInputRequest
+        return FormInputRequest(postId, answerList)
     }
 
     override fun onFormDetailSuccess(formDetailResponse: FormDetailResponse) {
-        formResp = formDetailResponse
-        binding.formInputRv.adapter = FormDetailRAdapter(formDetailResponse.result)
+//        formResp = formDetailResponse
+        binding.formInputRv.adapter = FormDetailRAdapter(formDetailResponse.result, this)
         Toast.makeText(this, "설문 조사 문항 불러오기에 성공했습니다", Toast.LENGTH_SHORT).show()
     }
 
@@ -93,10 +85,36 @@ class FormInputActivity : AppCompatActivity(), FormDetailView {
     }
 
     override fun onFormSubmitSucess() {
-        TODO("Not yet implemented")
+        val intent = Intent(this, PostDetailActivity::class.java)
+        intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+        startActivity(intent)
+        finish()
+
+        Toast.makeText(this, "답변 등록을 성공했습니다", Toast.LENGTH_SHORT).show()
     }
 
     override fun onFormSubitFailure() {
-        TODO("Not yet implemented")
+        val intent = Intent(this, PostDetailActivity::class.java)
+        intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+        startActivity(intent)
+        finish()
+
+        Toast.makeText(this, "답변 등록을 실패했습니다", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onInputItem(answer: ArrayList<ArrayList<String>>) {
+        // 리스트에서 해당 아이템 아이디에 해당하는 요소를 검색해서
+        // 있으면, answer로 바꾸고
+        // 없으면, 추가한다
+        for(i in 0 until answerList.size) {
+            if(answer[0] == answerList[i][0]) {
+                answerList[i] = answer
+                Log.d("현재까지 추가된 answerList(있는 아이템) :", answerList.toString())
+                return
+            }
+        }
+
+        answerList.add(answer)
+        Log.d("현재까지 추가된 answerList(새로운 아이템) :", answerList.toString())
     }
 }
