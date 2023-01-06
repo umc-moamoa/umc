@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_hackathon.post.detail.PostDetailActivity
 import com.example.umc_hackathon.databinding.ActivityFormInputBinding
+import com.example.umc_hackathon.my.survey.ParticipatedSurveyActivity
 import com.example.umc_hackathon.post.list.FormListActivity
 import com.example.umc_hackathon.survey.*
 
@@ -85,7 +86,7 @@ class FormInputActivity : AppCompatActivity(), FormDetailView, FormInputItem {
     }
 
     override fun onFormSubmitSucess() {
-        val intent = Intent(this, PostDetailActivity::class.java)
+        val intent = Intent(this, ParticipatedSurveyActivity::class.java)
         intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
         startActivity(intent)
         finish()
