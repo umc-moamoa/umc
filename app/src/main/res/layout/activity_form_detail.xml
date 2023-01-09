@@ -40,7 +40,6 @@
         android:layout_height="match_parent"
         android:layout_marginTop="70dp"
         android:background="@drawable/round"
-        android:paddingHorizontal="40dp"
         android:paddingVertical="60dp"
         android:text="text"
         android:textColor="@color/black"
@@ -52,6 +51,7 @@
             android:id="@+id/form_detail_title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
             android:fontFamily="@font/roboto_bold"
             android:text=""
             android:textColor="@color/black"
@@ -63,6 +63,7 @@
             android:id="@+id/form_detail_item_count_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/roboto_medium"
             android:text=""
@@ -88,6 +89,7 @@
             android:id="@+id/form_detail_info_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
             android:layout_marginTop="30dp"
             android:fontFamily="@font/roboto_light"
             android:text=""
@@ -101,6 +103,7 @@
             android:id="@+id/form_detail_dislikeBtn_cv"
             android:layout_width="60dp"
             android:layout_height="30dp"
+            android:layout_marginLeft="40dp"
             android:layout_marginTop="40dp"
             android:backgroundTint="@color/pale_grey"
             app:cardCornerRadius="15dp"
@@ -132,6 +135,7 @@
             android:id="@+id/form_detail_likeBtn_cv"
             android:layout_width="60dp"
             android:layout_height="30dp"
+            android:layout_marginLeft="40dp"
             android:layout_marginTop="40dp"
             app:cardCornerRadius="15dp"
             app:cardElevation="8dp"
@@ -161,31 +165,32 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/form_detail_share_cv"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="40dp"
+            android:layout_width="31dp"
+            android:layout_height="31dp"
             android:layout_marginStart="15dp"
-            app:layout_constraintStart_toEndOf="@id/form_detail_likeBtn_cv"
-            app:layout_constraintTop_toBottomOf="@id/form_detail_info_tv"
+            android:layout_marginTop="40dp"
             app:cardCornerRadius="50dp"
-            app:cardElevation="8dp">
+            app:cardElevation="8dp"
+            app:layout_constraintStart_toEndOf="@id/form_detail_likeBtn_cv"
+            app:layout_constraintTop_toBottomOf="@id/form_detail_info_tv">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_share"
                 android:layout_gravity="center"
-                android:elevation="3dp"/>
+                android:elevation="3dp"
+                android:src="@drawable/ic_share" />
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:layout_width="31dp"
             android:layout_height="31dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/form_detail_dislikeBtn_cv"
             android:elevation="8dp"
-            app:cardCornerRadius="50dp">
+            app:cardCornerRadius="50dp"
+            android:layout_marginRight="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/form_detail_dislikeBtn_cv">
 
             <ImageView
                 android:id="@+id/form_detail_delete_btn"
@@ -194,6 +199,7 @@
                 android:background="@drawable/ic_form_delete_btn" />
 
         </androidx.cardview.widget.CardView>
+
         <Button
             android:id="@+id/form_detail_participate_btn"
             android:layout_width="160dp"
