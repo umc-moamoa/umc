@@ -31,7 +31,7 @@
                 android:id="@+id/form_result_go_form_main_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="마이페이지"
+                android:text="목록으로"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
 

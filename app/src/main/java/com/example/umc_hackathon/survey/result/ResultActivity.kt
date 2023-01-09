@@ -1,5 +1,6 @@
 package com.example.umc_hackathon.survey.result
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,8 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_hackathon.R
 import com.example.umc_hackathon.databinding.ActivityResultBinding
+import com.example.umc_hackathon.my.MyPageActivity
+import com.example.umc_hackathon.my.survey.MySurveyActivity
 import com.example.umc_hackathon.survey.AnswerRAdapter
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.PieChart
@@ -50,6 +53,13 @@ class ResultActivity : AppCompatActivity(), ResultView {
         }
         binding.resultAnswerRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.resultAnswerRv.setHasFixedSize(true)
+
+        binding.formResultGoFormMainLl.setOnClickListener {
+            val intent = Intent(this, MySurveyActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+            finish()
+        }
 
         binding.formResultNextBtn.setOnClickListener {
             pos++
