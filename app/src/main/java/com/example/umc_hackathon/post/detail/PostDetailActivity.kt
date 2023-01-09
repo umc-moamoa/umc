@@ -62,9 +62,11 @@ class PostDetailActivity : AppCompatActivity(), PostDetailView {
         binding.formDetailLikeBtnCv.setOnClickListener {
             dislikePost()
         }
+
         binding.formDetailDislikeBtnCv.setOnClickListener {
             likePost()
         }
+
         binding.formDetailDeleteBtn.setOnClickListener {
             AlertDialog.Builder(this).run {
                 setTitle("설문을 삭제하시겠습니까?")
@@ -130,16 +132,6 @@ class PostDetailActivity : AppCompatActivity(), PostDetailView {
         postService.deletePost(postId, getAccessToken().toString(), getRefreshToken().toString())
     }
 
-    private fun saveAccessToken(accessToken: String) {
-        val spf = getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-        val editor = spf.edit()
-
-        editor.putString("accessToken", accessToken)
-        editor.apply()
-
-        Log.d("엑세스토근", "세이브")
-    }
-
     private fun getAccessToken(): String? {
         val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
         return spf!!.getString("accessToken", "")
@@ -161,29 +153,34 @@ class PostDetailActivity : AppCompatActivity(), PostDetailView {
         binding.formDetailItemCountTv.text = result.qCount.toString() + "개의 항목"
 
         if (result.status == "ACTIVE") {
-            binding.formDetailModifyBtn.visibility = View.VISIBLE
+//            binding.formDetailModifyBtn.visibility = View.VISIBLE
+            binding.formDetailParticipateBtn.visibility = View.VISIBLE
 
             if (result.dday == 0) {
                 binding.formDetailItemDeadlineTv.text = "D - DAY"
-            }
-            else {
+            } else {
                 binding.formDetailItemDeadlineTv.text = "D - " + result.dday.toString()
             }
         }
         else {
             binding.formDetailItemDeadlineTv.text = "마감"
+            binding.formDetailParticipateBtn.visibility = View.INVISIBLE
         }
 
+        Log.d("My Post", result.myPost.toString())
+
         if(result.myPost) {
-            Log.d("mypost", result.myPost.toString())
             binding.formDetailParticipateBtn.visibility = View.INVISIBLE
             binding.formDetailMyAnswerBtn.visibility = View.INVISIBLE
             binding.formDetailResultBtn.visibility = View.VISIBLE
             binding.formDetailDislikeBtnCv.visibility = View.INVISIBLE
             binding.formDetailLikeBtnCv.visibility = View.INVISIBLE
             binding.formDetailDeleteBtn.visibility = View.VISIBLE
+            binding.formDetailModifyBtn.visibility = View.VISIBLE
         }
         else {
+            binding.formDetailModifyBtn.visibility = View.INVISIBLE
+
             if(result.like) {
                 Log.d("like", result.like.toString())
                 binding.formDetailLikeBtnCv.visibility = View.VISIBLE
