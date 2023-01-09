@@ -25,8 +25,6 @@ class MyAnswerActivity : AppCompatActivity(), MyAnswerView {
         binding.formMyAnswerRv.setHasFixedSize(true)
         getMyAnswer()
 
-
-        // Event Listener
         binding.formMyAnswerCloseBtn.setOnClickListener {
             val intent = Intent(this, ParticipatedSurveyActivity::class.java)
             intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)

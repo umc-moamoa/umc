@@ -171,9 +171,8 @@ class PostDetailActivity : AppCompatActivity(), PostDetailView {
 
         if(result.myPost) {
             binding.formDetailParticipateBtn.visibility = View.INVISIBLE
-            binding.formDetailMyAnswerBtn.visibility = View.INVISIBLE
             binding.formDetailResultBtn.visibility = View.VISIBLE
-            binding.formDetailDislikeBtnCv.visibility = View.INVISIBLE
+            binding.formDetailDislikeBtnCv.visibility = View.VISIBLE
             binding.formDetailLikeBtnCv.visibility = View.INVISIBLE
             binding.formDetailDeleteBtn.visibility = View.VISIBLE
             binding.formDetailModifyBtn.visibility = View.VISIBLE
@@ -201,6 +200,10 @@ class PostDetailActivity : AppCompatActivity(), PostDetailView {
         if(result.participation) {
             binding.formDetailMyAnswerBtn.visibility = View.VISIBLE
             binding.formDetailModifyBtn.visibility = View.INVISIBLE
+
+            if(result.myPost) {
+                binding.formDetailMyAnswerBtn.visibility = View.INVISIBLE
+            }
         }
 
         Log.d("PostDetail / ", "상세페이지를 불러오는데 성공했습니다")
