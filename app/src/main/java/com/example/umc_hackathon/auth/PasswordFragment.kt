@@ -1,5 +1,6 @@
 package com.example.umc_hackathon.auth
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -13,6 +14,7 @@ import com.example.umc_hackathon.auth.view.EmailView
 import com.example.umc_hackathon.auth.view.JoinCheckView
 import com.example.umc_hackathon.auth.view.PasswordView
 import com.example.umc_hackathon.databinding.FragmentPasswordBinding
+import com.example.umc_hackathon.post.list.FormListActivity
 import java.util.regex.Pattern
 
 class PasswordFragment : Fragment(), EmailView, PasswordView {
@@ -71,7 +73,6 @@ class PasswordFragment : Fragment(), EmailView, PasswordView {
 
         return binding.root
     }
-
 
     private fun clearInputText() {
         binding.emailEt.setText("")
@@ -135,6 +136,11 @@ class PasswordFragment : Fragment(), EmailView, PasswordView {
     override fun changePasswordSuccess() {
         Toast.makeText(activity, "비밀번호 변경에 성공했습니다", Toast.LENGTH_SHORT).show()
         clearInputText()
+
+        val intent = Intent(activity, AuthActivity::class.java)
+        intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+        startActivity(intent)
+
     }
 
     override fun changePasswordFailure() {
