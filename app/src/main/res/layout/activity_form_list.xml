@@ -126,6 +126,14 @@
 
     <View
         android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:background="@drawable/transparent_top"
+        app:layout_constraintTop_toTopOf="@id/form_list_fv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/transparent_bottom"
         app:layout_constraintBottom_toBottomOf="@id/form_list_fv"
