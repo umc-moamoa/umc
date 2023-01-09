@@ -259,7 +259,6 @@ class AuthService {
             override fun onFailure(call: Call<EmailResponse>, t: Throwable) {
                 Log.d("email-cert-fail", t.message.toString())
             }
-
         })
     }
 
@@ -291,7 +290,6 @@ class AuthService {
         Log.d("service/userInfo()", "메소드")
     }
 
-    // Access Token 재발급
     fun getReAccessToken(accessToken: String, refreshToken: String) {
         val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
 
