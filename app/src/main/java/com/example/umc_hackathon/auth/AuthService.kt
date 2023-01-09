@@ -17,6 +17,8 @@ class AuthService {
     private lateinit var loginView: LoginView
     private lateinit var userInfoView: UserInfoView
     private lateinit var joinCheckView: JoinCheckView
+    private lateinit var emailView: EmailView
+    private lateinit var passwordView: PasswordView
     private lateinit var nickCheckView: NickCheckView
     private lateinit var userSettingView: UserSettingView
     private lateinit var reAccessTokenView: ReAccessTokenView
@@ -42,8 +44,12 @@ class AuthService {
         this.nickCheckView = nickCheckView
     }
 
-    fun setEmailView(emailView: JoinCheckView) {
-        this.joinCheckView = joinCheckView
+    fun setEmailView(emailView: EmailView) {
+        this.emailView = emailView
+    }
+
+    fun setPasswordView(passwordView: PasswordView) {
+        this.passwordView = passwordView
     }
 
     fun setUserSettingView(userSettingView: UserSettingView){
@@ -228,8 +234,8 @@ class AuthService {
 
                     val response: EmailResponse = response.body()!!
                     when(response.code) {
-                        1000 -> joinCheckView.onEmailSendSuccess(response.result)
-                        else -> joinCheckView.onEmailSendFailure()
+                        1000 -> emailView.onEmailSendSuccess(response.result)
+                        else -> emailView.onEmailSendFailure()
                     }
                 }
             }
@@ -250,8 +256,8 @@ class AuthService {
 
                     val response: EmailResponse = response.body()!!
                     when(response.code) {
-                        1000 -> joinCheckView.onEmailCertificateSuccess()
-                        else -> joinCheckView.onEmailCertificateFailure(response.code)
+                        1000 -> emailView.onEmailCertificateSuccess()
+                        else -> emailView.onEmailCertificateFailure(response.code)
                     }
                 }
             }
@@ -262,58 +268,81 @@ class AuthService {
         })
     }
 
-    fun deleteUser(accessToken: String, refreshToken: String) {
-        val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
+            fun deleteUser(accessToken: String, refreshToken: String) {
+                val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
 
-        authService.deleteUser(accessToken, refreshToken)
-            .enqueue(object : Callback<UserDeleteResponse> {
-                override fun onResponse(
-                    call: Call<UserDeleteResponse>,
-                    response: Response<UserDeleteResponse>
-                ) {
-                    if (response.body() != null) {
-                        Log.d("USERINFO/성공", response.toString())
+                authService.deleteUser(accessToken, refreshToken)
+                    .enqueue(object : Callback<UserDeleteResponse> {
+                        override fun onResponse(
+                            call: Call<UserDeleteResponse>,
+                            response: Response<UserDeleteResponse>
+                        ) {
+                            if (response.body() != null) {
+                                Log.d("USERINFO/성공", response.toString())
 
-                        val resp: UserDeleteResponse = response.body()!!
-                        when (val code = resp.code) {
-                            1000 -> userSettingView.onUserDeleteSuccess()
-                            else -> userSettingView.onUserDeleteFailure()
+                                val resp: UserDeleteResponse = response.body()!!
+                                when (val code = resp.code) {
+                                    1000 -> userSettingView.onUserDeleteSuccess()
+                                    else -> userSettingView.onUserDeleteFailure()
+                                }
+                            }
+                        }
+
+                        override fun onFailure(call: Call<UserDeleteResponse>, t: Throwable) {
+                            Log.d("USERINFO/실패", t.message.toString())
+                        }
+                    })
+
+                Log.d("service/userInfo()", "메소드")
+            }
+
+
+        // Access Token 재발급
+        fun getReAccessToken(accessToken: String, refreshToken: String) {
+            val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
+
+            authService.getReAccessToken(accessToken, refreshToken)
+                .enqueue(object : Callback<ReAccessTokenResponse> {
+                    override fun onResponse(
+                        call: Call<ReAccessTokenResponse>,
+                        response: Response<ReAccessTokenResponse>
+                    ) {
+                        if (response.body() != null) {
+                            Log.d("getReAccessToken/성공", response.toString())
+
+                            val resp: ReAccessTokenResponse = response.body()!!
+                            when (val code = resp.code) {
+                                1000 -> reAccessTokenView.onGetReAccessTokenSuccess(resp)
+                                else -> reAccessTokenView.onGetReAccessTokenFailure()
+                            }
                         }
                     }
-                }
 
-                override fun onFailure(call: Call<UserDeleteResponse>, t: Throwable) {
-                    Log.d("USERINFO/실패", t.message.toString())
-                }
-            })
-
-        Log.d("service/userInfo()", "메소드")
-    }
-
-    fun getReAccessToken(accessToken: String, refreshToken: String) {
+                    override fun onFailure(call: Call<ReAccessTokenResponse>, t: Throwable) {
+                        Log.d("getReAccessToken/실패", t.message.toString())
+                    }
+                })
+        }
+    fun changePassword(user: User) {
         val authService = getRetrofit().create(AuthRetrofitInterface::class.java)
 
-        authService.getReAccessToken(accessToken, refreshToken)
-            .enqueue(object : Callback<ReAccessTokenResponse> {
-                override fun onResponse(
-                    call: Call<ReAccessTokenResponse>,
-                    response: Response<ReAccessTokenResponse>
-                ) {
-                    if (response.body() != null) {
-                        Log.d("getReAccessToken/성공", response.toString())
+        authService.changePassword(user).enqueue(object: Callback<JoinResponse> {
+            override fun onResponse(call: Call<JoinResponse>, response: Response<JoinResponse>) {
+                if(response.body() != null) {
+                    Log.d("CHANGE-PASSWORD/SUCCESS", response.toString())
 
-                        val resp: ReAccessTokenResponse = response.body()!!
-                        when (val code = resp.code) {
-                            1000 -> reAccessTokenView.onGetReAccessTokenSuccess(resp)
-                            else -> reAccessTokenView.onGetReAccessTokenFailure()
-                        }
+                    val resp: JoinResponse = response.body()!!
+                    when(resp.code) {
+                        1000 -> passwordView.changePasswordSuccess()
+                        else -> passwordView.changePasswordFailure()
                     }
                 }
+            }
 
-                override fun onFailure(call: Call<ReAccessTokenResponse>, t: Throwable) {
-                    Log.d("getReAccessToken/실패", t.message.toString())
-                }
-            })
+            override fun onFailure(call: Call<JoinResponse>, t: Throwable) {
+                Log.d("CHANGE-PASSWORD/FAILURE", t.message.toString())
+            }
+        })
     }
 
     // Nick Change

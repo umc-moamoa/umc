@@ -50,6 +50,11 @@ interface AuthRetrofitInterface {
         @Header("REFRESH-TOKEN") refreshToken: String
     ): Call<ReAccessTokenResponse>
 
+    @POST("/users/pwd")
+    fun changePassword(
+        @Body user: User
+    ): Call<JoinResponse>
+
     // 닉네임 수정하기
     @PATCH("/users/nick")
     fun nickChange (

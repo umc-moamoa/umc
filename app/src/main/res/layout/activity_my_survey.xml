@@ -41,11 +41,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="18dp"
         android:fontFamily="@font/roboto_bold"
         android:text="나의 설문조사"
         android:textColor="@color/black"
-        android:textSize="22sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/my_survey_go_my_page_ll" />
 
@@ -53,7 +53,7 @@
         android:id="@+id/my_survey_rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:clipToPadding="false"
         android:paddingTop="10dp"
         tools:listitem="@layout/board_my_survey_item"

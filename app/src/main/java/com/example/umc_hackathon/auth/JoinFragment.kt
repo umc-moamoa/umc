@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.umc_hackathon.auth.dto.User
 import com.example.umc_hackathon.auth.dto.UserSign
+import com.example.umc_hackathon.auth.view.EmailView
 import com.example.umc_hackathon.auth.view.JoinCheckView
 import com.example.umc_hackathon.auth.view.JoinView
 import com.example.umc_hackathon.databinding.FragmentJoinBinding
@@ -16,7 +17,7 @@ import com.example.umc_hackathon.databinding.FragmentLoginBinding
 import com.example.umc_hackathon.post.MainActivity
 import java.util.regex.Pattern
 
-class JoinFragment : Fragment(), JoinView, JoinCheckView {
+class JoinFragment : Fragment(), JoinView, JoinCheckView, EmailView {
 
     private lateinit var binding: FragmentJoinBinding
     private lateinit var code: String
@@ -141,13 +142,13 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView {
 
     private fun emailSend() {
         val authService = AuthService()
-        authService.setJoinCheckView(this)
+        authService.setEmailView(this)
         authService.emailSend(getUser().id)
     }
 
     private fun emailCertificate() {
         val authService = AuthService()
-        authService.setJoinCheckView(this)
+        authService.setEmailView(this)
 
         val etCode: String = binding.joinEmailCertificateEt.text.toString()
         authService.emailCertificate(code, etCode)
