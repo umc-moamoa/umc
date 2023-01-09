@@ -43,16 +43,6 @@ class MySurveyActivity : AppCompatActivity(), MySurveyView, ReAccessTokenView {
         Log.d("getMySurvey", " / InterestSurveyActivity에서 메소드")
     }
 
-    private fun saveAccessToken(accessToken: String) {
-        val spf = getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-        val editor = spf.edit()
-
-        editor.putString("accessToken", accessToken)
-        editor.apply()
-
-        Log.d("엑세스토근", "세이브")
-    }
-
     private fun getReAccessToken() {
         val authService = AuthService()
         authService.setReAccessTokenView(this)
