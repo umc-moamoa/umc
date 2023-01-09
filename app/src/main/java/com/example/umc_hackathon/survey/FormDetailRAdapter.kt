@@ -1,20 +1,17 @@
 package com.example.umc_hackathon.survey
 
-import android.content.Context
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.core.content.ContextCompat
-import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
 import com.example.umc_hackathon.R
+import com.example.umc_hackathon.survey.participate.FormInputItem
 
-// 설문 조사 문항 확인
-class FormDetailRAdapter(val questionList: List<FormDetail>): RecyclerView.Adapter<FormDetailRAdapter.MyViewHolder> () {
+class FormDetailRAdapter(private val questionList: List<FormDetail>, private val formInputItem: FormInputItem): RecyclerView.Adapter<FormDetailRAdapter.MyViewHolder> () {
+
+    private var tag= "FormDetailRAdapter"
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.activity_question_input_item, parent, false)
@@ -26,85 +23,108 @@ class FormDetailRAdapter(val questionList: List<FormDetail>): RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        Log.d("FormDetailRAdapter", "onBindViewHolder() called / position: $position")
-        holder.title.text = (position + 1).toString() + "번. " + questionList[position].question
+        Log.d(tag, "onBindViewHolder() position: $position")
+        holder.title.text = (position + 1).toString() + "번 " + questionList[position].question
 
-        // 질문 유형에 따라 다르게 보이기
-        if(questionList[position].format == 1) {
-            lateinit var radioButton: RadioButton
+        val iCount = questionList[position].items.size
 
-            for(i in 0 until questionList[position].items.size) {
-                Log.d("${questionList[position].items[i]}", questionList[position].items[i])
+        // 질문 유형(객관식, 주관식)에 따라 다르게 보이기
+        when(questionList[position].format) {
+            1 -> {
+                val radioGroup = RadioGroup(holder.itemView.context)
+                holder.answerLayout.addView(radioGroup)
 
-                radioButton = RadioButton(holder.itemView.context)
-                radioButton.text = questionList[position].items[i]
-                holder.optionRg.addView(radioButton)
+                for (i in 0 until iCount) {
+                    val radioButton = RadioButton(holder.itemView.context)
+                    radioButton.id = i + 1
+                    radioButton.text = questionList[position].items[i]
+                    radioGroup.addView(radioButton)
+
+                    var answerId: ArrayList<String> = arrayListOf()
+                    answerId.add(questionList[position].postDetailId.toString())
+                    var answerList: ArrayList<String> = arrayListOf()
+
+                    radioButton.setOnClickListener {
+                        answerList.add(radioButton.id.toString())
+                        var answer: ArrayList<ArrayList<String>> = arrayListOf(answerId, answerList)
+                        Log.d("선택한 답변", answer.toString())
+                        formInputItem.onInputItem(answer)
+                    }
+                }
             }
+            2 -> {
+                var checkList: ArrayList<String> = arrayListOf()
 
-            holder.optionRg.visibility = View.VISIBLE
-            holder.optionCb.visibility = View.GONE
-            holder.optionShort.visibility = View.GONE
-            holder.optionLong.visibility = View.GONE
-//
-//            holder.optionRg.setOnCheckedChangeListener { radioGroup, i ->
-//                Log.d("radiogroup", "포지션: " + position + " ," + i.toString() + "번 선택")
-//            }
+                for(i in 0 until iCount) {
+                    var answerId: ArrayList<String> = arrayListOf()
+                    var answerList: ArrayList<String>
+                    val checkBox = CheckBox(holder.itemView.context)
+                    checkBox.text = questionList[position].items[i]
+                    holder.answerLayout.addView(checkBox)
 
-        } else if(questionList[position].format == 2) {
-            for(i in 0 until questionList[position].items.size) {
-                Log.d("${questionList[position].items[i]}", questionList[position].items[i])
+                    answerId.add(questionList[position].postDetailId.toString())
+                    checkBox.setOnCheckedChangeListener { compoundButton, b ->
+                        if(compoundButton.isChecked) {
+                            checkList.add(checkBox.text.toString())
+                            Log.d("체크리스트", checkList.toString())
+                        } else {
+                            checkList.remove(checkBox.text.toString())
+                            Log.d("체크리스트", checkList.toString())
+                        }
+                        answerList = checkList
 
-                val checkBox: CheckBox = CheckBox(holder.itemView.context)
-                checkBox.text = questionList[position].items[i]
-//                holder.optionCb.(checkBox)
-                checkBox.id = "cb".toInt() + i //id int형??
+                        var answer: ArrayList<ArrayList<String>> = arrayListOf(answerId, answerList)
+                        Log.d("선택한 답변", answer.toString())
+                        formInputItem.onInputItem(answer)
+                    }
+                }
             }
+            3 -> {
+                val editText = EditText(holder.itemView.context)
+                val button = Button(holder.itemView.context)
 
-            holder.optionRg.visibility = View.GONE
-            holder.optionCb.visibility = View.VISIBLE
-            holder.optionShort.visibility = View.GONE
-            holder.optionLong.visibility = View.GONE
+                button.text = "답변 저장"
+                holder.answerLayout.addView(editText)
+                holder.answerLayout.addView(button)
 
-//            holder.optionCb.setOnCheckedChangeListener { compoundButton, b ->
-//                Log.d("checkbox", b.toString() + "선택")
-//            }
+                var answerId: ArrayList<String> = arrayListOf()
+                answerId.add(questionList[position].postDetailId.toString())
+                var answerList: ArrayList<String>
 
-        } else if (questionList[position].format == 3) {
-            holder.optionRg.visibility = View.GONE
-            holder.optionCb.visibility = View.GONE
-            holder.optionShort.visibility = View.VISIBLE
-            holder.optionLong.visibility = View.GONE
-//
-//            holder.optionShort.addTextChangedListener(object: TextWatcher {
-//                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//                    TODO("Not yet implemented")
-//                }
-//
-//                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//                    TODO("Not yet implemented")
-//                    Log.d("숏", p0.toString())
-//                }
-//
-//                override fun afterTextChanged(p0: Editable?) {
-//                    TODO("Not yet implemented")
-//                }
-//
-//            }
-//            )
-        } else if (questionList[position].format == 4) {
-            holder.optionRg.visibility = View.GONE
-            holder.optionCb.visibility = View.GONE
-            holder.optionShort.visibility = View.GONE
-            holder.optionLong.visibility = View.VISIBLE
+                button.setOnClickListener {
+                    answerList = arrayListOf(editText.text.toString())
+
+                    var answer: ArrayList<ArrayList<String>> = arrayListOf(answerId, answerList)
+                    Log.d("선택한 답변", answer.toString())
+                    formInputItem.onInputItem(answer)
+                }
+            }
+            4 -> {
+                val editText = EditText(holder.itemView.context)
+                val button = Button(holder.itemView.context)
+
+                button.text = "답변 저장"
+                holder.answerLayout.addView(editText)
+                holder.answerLayout.addView(button)
+
+                var answerId: ArrayList<String> = arrayListOf()
+                answerId.add(questionList[position].postDetailId.toString())
+                var answerList: ArrayList<String>
+
+                button.setOnClickListener {
+                    answerList = arrayListOf(editText.text.toString())
+                    var answer: ArrayList<ArrayList<String>> = arrayListOf(answerId, answerList)
+                    Log.d("선택한 답변", answer.toString())
+
+                    formInputItem.onInputItem(answer)
+                }
+            }
         }
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title = itemView.findViewById<TextView>(R.id.question_input_item_tv)
-        val optionRg = itemView.findViewById<RadioGroup>(R.id.question_input_item_rg)
-        val optionCb = itemView.findViewById<CheckBox>(R.id.question_input_item_cb)
-        val optionShort = itemView.findViewById<EditText>(R.id.question_input_short_answer_et)
-        val optionLong = itemView.findViewById<EditText>(R.id.question_input_long_answer_et)
+        val title: TextView = itemView.findViewById(R.id.question_input_item_tv)
+        val answerLayout: LinearLayout = itemView.findViewById(R.id.question_input_item_ll)
     }
 
 }

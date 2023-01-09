@@ -53,11 +53,6 @@ class LoginFragment : Fragment(), LoginView {
         editor.apply()
     }
 
-    private fun getRefreshToken(): String? {
-        val spf = requireActivity().getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-        return spf!!.getString("refreshToken", "")
-    }
-
     private fun saveRefreshToken(refreshToken: String) {
         val spf = requireActivity().getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
         val editor = spf.edit()
@@ -137,10 +132,8 @@ class LoginFragment : Fragment(), LoginView {
                 requireActivity().finish()
 
                 saveAccessToken(result.result)
-//                saveRefreshToken(result.result)
 
                 Log.d("로그인: 액세스 토근", getAccessToken().toString())
-//                Log.d("로그인: 리프레시 토근", getRefreshToken().toString())
 
                 onStart()
             }

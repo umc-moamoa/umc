@@ -211,34 +211,6 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
         val formContent: String = binding.formCreateContentEt.text.toString()
         val formDeadline: String = binding.formCreateDateEt.text.toString()
 
-//        val postDetails: ArrayList<ArrayList<String>> = arrayListOf()
-
-//        for(i in 0 until createRAdapter.itemCount) {
-//            postDetail = arrayListOf() // 초기화
-//
-//            if(questionList[i].type == "객관식(택1)") {
-//                postDetail.add("1")
-//                postDetail.add(questionList[i].title)
-//                for(j in 0 until questionList[i].option!!.size) {
-//                    postDetail.add(questionList[i].option!![j].question)
-//                }
-//            } else if (questionList[i].type == "객관식(복수선택)") {
-//                postDetail.add("2")
-//                postDetail.add(questionList[i].title)
-//                for(j in 0 until questionList[i].option!!.size) {
-//                    postDetail.add(questionList[i].option!![j].question)
-//                }
-//            } else if (questionList[i].type == "단답형") {
-//                postDetail.add("3")
-//                postDetail.add(questionList[i].title)
-//            } else if (questionList[i].type == "서술형") {
-//                postDetail.add("4")
-//                postDetail.add(questionList[i].title)
-//            }
-//
-//            postDetails.add(postDetail)
-//        }
-
         return FormCreateRequest(categoryId, shortCount, longCount, formTitle, formContent, formDeadline, postDetails)
     }
 

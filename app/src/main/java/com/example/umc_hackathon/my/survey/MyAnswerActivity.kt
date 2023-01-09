@@ -52,7 +52,7 @@ class MyAnswerActivity : AppCompatActivity(), MyAnswerView {
     }
 
     override fun onGetMyAnswerSuccess(myAnswerResponse: MyAnswerResponse) {
-        binding.formMyAnswerRv.adapter = MyAnswerRAdapter(myAnswerResponse.result.getUserResultRes)
+        binding.formMyAnswerRv.adapter = MyAnswerRAdapter(myAnswerResponse.result)
     }
 
     override fun onGetMyAnswerFailure() {

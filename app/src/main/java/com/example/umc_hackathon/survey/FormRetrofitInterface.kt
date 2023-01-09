@@ -38,7 +38,7 @@ interface FormRetrofitInterface {
     @PATCH("/posts")
     fun formModify (
         @Body modifyRequest: ModifyRequest,
-        @Header("x-access-token") jwt: String
+        @Header("x-access-token") accessToken: String
     ): Call<ModifyResponse>
 
     @GET("/users/answer/{postId}")

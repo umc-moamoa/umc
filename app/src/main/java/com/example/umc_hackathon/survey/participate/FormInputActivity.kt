@@ -4,22 +4,19 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_hackathon.post.detail.PostDetailActivity
-import com.example.umc_hackathon.R
 import com.example.umc_hackathon.databinding.ActivityFormInputBinding
+import com.example.umc_hackathon.my.survey.ParticipatedSurveyActivity
 import com.example.umc_hackathon.post.list.FormListActivity
 import com.example.umc_hackathon.survey.*
 
-class FormInputActivity : AppCompatActivity(), FormDetailView {
+class FormInputActivity : AppCompatActivity(), FormDetailView, FormInputItem {
 
     private lateinit var binding: ActivityFormInputBinding
     private var postId: Long = 0L
-    private lateinit var formResp: FormDetailResponse
-    private lateinit var answer: Answer
-    private lateinit var formInputRequest: FormInputRequest
+    private var answerList: ArrayList<ArrayList<ArrayList<String>>> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,22 +48,6 @@ class FormInputActivity : AppCompatActivity(), FormDetailView {
         }
     }
 
-//    private fun saveAccessToken(accessToken: String) {
-//        val spf = getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-//        val editor = spf.edit()
-//
-//        editor.putString("accessToken", accessToken)
-//        editor.apply()
-//
-//        Log.d("엑세스토근", "세이브")
-//    }
-//
-//    private fun getReAccessToken() {
-//        val authService = AuthService()
-//        authService.setReAccessTokenView(this)
-//        authService.getReAccessToken(getAccessToken().toString(), getRefreshToken().toString())
-//    }
-
     private fun getAccessToken(): String? {
         val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
         return spf!!.getString("accessToken", "")
@@ -91,23 +72,12 @@ class FormInputActivity : AppCompatActivity(), FormDetailView {
 
     //적은 답 가져오기
     private fun getAnswer(): FormInputRequest {
-        val questionList: List<FormDetail> = formResp.result
-
-        for(i in questionList.indices) {
-            Log.d("getAnswer()", "포맷은 " + questionList[i].format)
-            if(questionList[i].format == 1) {
-                val answer = findViewById<RadioGroup>(R.id.question_input_item_rg).checkedRadioButtonId
-                Log.d("포맷이 1일때", " " + answer + "체크됨")
-            }
-        }
-
-
-        return formInputRequest
+        return FormInputRequest(postId, answerList)
     }
 
     override fun onFormDetailSuccess(formDetailResponse: FormDetailResponse) {
-        formResp = formDetailResponse
-        binding.formInputRv.adapter = FormDetailRAdapter(formDetailResponse.result)
+//        formResp = formDetailResponse
+        binding.formInputRv.adapter = FormDetailRAdapter(formDetailResponse.result, this)
         Toast.makeText(this, "설문 조사 문항 불러오기에 성공했습니다", Toast.LENGTH_SHORT).show()
     }
 
@@ -116,10 +86,36 @@ class FormInputActivity : AppCompatActivity(), FormDetailView {
     }
 
     override fun onFormSubmitSucess() {
-        TODO("Not yet implemented")
+        val intent = Intent(this, ParticipatedSurveyActivity::class.java)
+        intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+        startActivity(intent)
+        finish()
+
+        Toast.makeText(this, "답변 등록을 성공했습니다", Toast.LENGTH_SHORT).show()
     }
 
     override fun onFormSubitFailure() {
-        TODO("Not yet implemented")
+        val intent = Intent(this, PostDetailActivity::class.java)
+        intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+        startActivity(intent)
+        finish()
+
+        Toast.makeText(this, "답변 등록을 실패했습니다", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onInputItem(answer: ArrayList<ArrayList<String>>) {
+        // 리스트에서 해당 아이템 아이디에 해당하는 요소를 검색해서
+        // 있으면, answer로 바꾸고
+        // 없으면, 추가한다
+        for(i in 0 until answerList.size) {
+            if(answer[0] == answerList[i][0]) {
+                answerList[i] = answer
+                Log.d("현재까지 추가된 answerList(있는 아이템) :", answerList.toString())
+                return
+            }
+        }
+
+        answerList.add(answer)
+        Log.d("현재까지 추가된 answerList(새로운 아이템) :", answerList.toString())
     }
 }
