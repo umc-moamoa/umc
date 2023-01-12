@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.net.ssl.HostnameVerifier
 import javax.net.ssl.HttpsURLConnection
 
-const val BASE_URL = "http://seolmunzip.shop:9000" //추후 수정
+const val BASE_URL = "http://seolmunzip.shop:9000"
 //http://seolmunzip.shop:9000
 //http://3.36.252.208:9000
 

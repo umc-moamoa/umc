@@ -47,7 +47,7 @@ class FormDetailRAdapter(private val questionList: List<FormDetail>, private val
                     radioButton.setOnClickListener {
                         answerList.add(radioButton.id.toString())
                         var answer: ArrayList<ArrayList<String>> = arrayListOf(answerId, answerList)
-                        Log.d("선택한 답변", answer.toString())
+                        Log.d("선택한 답변", answer.toString() + radioButton.id.toString())
                         formInputItem.onInputItem(answer)
                     }
                 }
@@ -65,16 +65,16 @@ class FormDetailRAdapter(private val questionList: List<FormDetail>, private val
                     answerId.add(questionList[position].postDetailId.toString())
                     checkBox.setOnCheckedChangeListener { compoundButton, b ->
                         if(compoundButton.isChecked) {
-                            checkList.add(checkBox.text.toString())
+                            checkList.add((i + 1).toString())
                             Log.d("체크리스트", checkList.toString())
                         } else {
-                            checkList.remove(checkBox.text.toString())
+                            checkList.remove((i + 1).toString())
                             Log.d("체크리스트", checkList.toString())
                         }
                         answerList = checkList
 
                         var answer: ArrayList<ArrayList<String>> = arrayListOf(answerId, answerList)
-                        Log.d("선택한 답변", answer.toString())
+                        Log.d("선택한 답변", answer.toString() + i + "번째 옵션")
                         formInputItem.onInputItem(answer)
                     }
                 }

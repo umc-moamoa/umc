@@ -23,6 +23,10 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
         setContentView(binding.root)
 
         // 이벤트 리스너
+        binding.mainTitleTv.setOnClickListener {
+            onRestart()
+        }
+
         binding.mainProfileIv.setOnClickListener {
             if (getAccessToken().isNullOrBlank()) {
                 val intent = Intent(this, AuthActivity::class.java)

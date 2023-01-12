@@ -15,7 +15,6 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_hackathon.R
 import com.example.umc_hackathon.databinding.ActivityResultBinding
-import com.example.umc_hackathon.my.MyPageActivity
 import com.example.umc_hackathon.my.survey.MySurveyActivity
 import com.example.umc_hackathon.survey.AnswerRAdapter
 import com.github.mikephil.charting.animation.Easing
