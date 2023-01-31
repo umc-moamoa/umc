@@ -16,6 +16,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_hackathon.R
 import com.example.umc_hackathon.databinding.ActivityResultBinding
 import com.example.umc_hackathon.my.survey.MySurveyActivity
+import com.example.umc_hackathon.my.survey.MySurveyList
+import com.example.umc_hackathon.my.survey.MySurveyResponse
+import com.example.umc_hackathon.my.survey.MySurveyView
+import com.example.umc_hackathon.post.PostService
 import com.example.umc_hackathon.survey.AnswerRAdapter
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.PieChart
@@ -26,7 +30,7 @@ import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.github.mikephil.charting.utils.MPPointF
 
-class ResultActivity : AppCompatActivity(), ResultView {
+class ResultActivity : AppCompatActivity(), ResultView, MySurveyView {
 
     private var postId: Long = 0L
     private var postTitle: String = ""
@@ -41,6 +45,7 @@ class ResultActivity : AppCompatActivity(), ResultView {
 
         binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        getResponseCount()
 
         if(intent.hasExtra("postId")) {
             postId = intent.getLongExtra("postId", postId)
@@ -71,7 +76,6 @@ class ResultActivity : AppCompatActivity(), ResultView {
         }
     }
 
-
     private fun getResultDetail(postId: Long) {
         val resultService = ResultService()
         resultService.setResultView(this)
@@ -91,9 +95,27 @@ class ResultActivity : AppCompatActivity(), ResultView {
 //        }
     }
 
+    private fun getResponseCount() {
+        val postService = PostService()
+        postService.setMySurveyView(this)
+        postService.getMySurvey(getAccessToken().toString(), getRefreshToken().toString())
+
+        Log.d("getResponseCount", " / ResultActivity 에서 메소드")
+    }
+
+    private fun getAccessToken(): String? {
+        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf!!.getString("accessToken", "")
+    }
+
+    private fun getRefreshToken(): String? {
+        val spf = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf!!.getString("refreshToken", "")
+    }
+
     override fun onGetResultSuccess(detailResult: DetailResult) {
         binding.formResultQuestionTv.text = detailResult.question
-        binding.formResultCountTv.text = detailResult.res.size.toString() + "명 응답"
+//        binding.formResultCountTv.text = detailResult.res.size.toString() + "명 응답"
 
         if(detailResult.format == 1 || detailResult.format == 2) { //객관식
             binding.pieChart.visibility = View.VISIBLE
@@ -222,6 +244,20 @@ class ResultActivity : AppCompatActivity(), ResultView {
         resCardView?.addView(one)
 
         binding.root.addView(resCardView)
+    }
+
+    override fun onGetMySurveyViewSuccess(mySurveyList: MySurveyResponse) {
+        for(i in mySurveyList.result) {
+            if (i.postId == postId) {
+                binding.formResultCountTv.text = i.postResultCount.toString() + "명 응답"
+                Log.d("포스트 아이디", "postId : " + i.postId.toString() + " postResultCount : " + i.postResultCount + " 이 게시글의 posId : " + postId.toString())
+            }
+        }
+        Toast.makeText(this, "나의 설문조사 응답 명수 가져오기", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onGetMySurveyViewFailure(mySurveyList: MySurveyResponse) {
+        TODO("Not yet implemented")
     }
 
 }
