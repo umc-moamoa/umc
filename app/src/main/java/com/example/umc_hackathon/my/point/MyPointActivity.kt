@@ -11,6 +11,7 @@ import com.example.umc_hackathon.auth.*
 import com.example.umc_hackathon.auth.dto.ReAccessTokenResponse
 import com.example.umc_hackathon.auth.view.ReAccessTokenView
 import com.example.umc_hackathon.databinding.ActivityMyPointBinding
+import com.example.umc_hackathon.my.CustomDialog
 import com.example.umc_hackathon.my.MyPageActivity
 import com.example.umc_hackathon.post.PostService
 
@@ -36,6 +37,11 @@ class MyPointActivity : AppCompatActivity(), MyPointView, ReAccessTokenView {
             intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
             finish()
+        }
+
+        binding.myPointInfo.setOnClickListener {
+            val dialog = CustomDialog(this)
+            dialog.pointInfoViews()
         }
 
         // 정렬 스피너

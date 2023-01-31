@@ -93,10 +93,19 @@
                     android:id="@+id/my_point_total_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
                     android:fontFamily="@font/roboto_medium"
                     android:text="2400P"
                     android:textColor="@color/white"
                     android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/my_point_info"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_info" />
 
             </LinearLayout>
 

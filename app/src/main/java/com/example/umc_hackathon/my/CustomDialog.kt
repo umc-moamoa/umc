@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable
 import android.view.WindowManager
 import com.example.umc_hackathon.R
 import kotlinx.android.synthetic.main.dialog_logout.*
+import kotlinx.android.synthetic.main.dialog_point.*
 import kotlinx.android.synthetic.main.dialog_setting.*
 
 class CustomDialog(
@@ -67,6 +68,19 @@ class CustomDialog(
             dialog.dismiss()
         }
 
+    }
+
+    fun pointInfoViews(){
+        // 뒤로가기 버튼, 빈 화면 터치를 통해 dialog가 사라지지 않도록
+        dialog.setContentView(R.layout.dialog_point)
+        dialog.window!!.setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setCancelable(false)
+        dialog.show()
+
+        dialog.dialog_point_no_iv.setOnClickListener {
+            dialog.dismiss()
+        }
     }
 
 
