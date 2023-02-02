@@ -16,6 +16,7 @@ import com.example.umc_hackathon.survey.result.ResultActivity
 import com.example.umc_hackathon.survey.participate.FormInputActivity
 import com.example.umc_hackathon.post.modify.ModifyActivity
 import com.example.umc_hackathon.my.survey.MyAnswerActivity
+import kotlin.math.absoluteValue
 
 class PostDetailActivity : AppCompatActivity(), PostDetailView {
 
@@ -158,8 +159,10 @@ class PostDetailActivity : AppCompatActivity(), PostDetailView {
 
             if (result.dday == 0) {
                 binding.formDetailItemDeadlineTv.text = "D - DAY"
-            } else {
+            } else if (result.dday > 0) {
                 binding.formDetailItemDeadlineTv.text = "D - " + result.dday.toString()
+            } else {
+                binding.formDetailItemDeadlineTv.text = "D + " + result.dday.absoluteValue.toString()
             }
         }
         else {
@@ -179,6 +182,7 @@ class PostDetailActivity : AppCompatActivity(), PostDetailView {
         }
         else {
             binding.formDetailModifyBtn.visibility = View.INVISIBLE
+            binding.formDetailDeleteBtn.visibility = View.INVISIBLE
 
             if(result.like) {
                 Log.d("like", result.like.toString())
@@ -203,6 +207,7 @@ class PostDetailActivity : AppCompatActivity(), PostDetailView {
 
             if(result.myPost) {
                 binding.formDetailMyAnswerBtn.visibility = View.INVISIBLE
+                binding.formDetailModifyBtn.visibility = View.VISIBLE
             }
         }
 

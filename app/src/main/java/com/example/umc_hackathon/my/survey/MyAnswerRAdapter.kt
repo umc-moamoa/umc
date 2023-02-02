@@ -25,7 +25,7 @@ class MyAnswerRAdapter(private val myAnswerList: List<MyAnswer>): RecyclerView.A
         Log.d("haha", itemCount.toString())
         if(itemCount > 0) {
             Log.d("hahaha", myAnswerList[position].result.toString())
-            holder.myAnswerTv.text = position.toString() + "번: " + myAnswerList[position].result
+            holder.myAnswerTv.text = (position+1).toString() + "번: " + myAnswerList[position].result
         }
     }
 

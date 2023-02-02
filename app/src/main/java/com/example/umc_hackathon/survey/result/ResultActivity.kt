@@ -253,7 +253,7 @@ class ResultActivity : AppCompatActivity(), ResultView, MySurveyView {
                 Log.d("포스트 아이디", "postId : " + i.postId.toString() + " postResultCount : " + i.postResultCount + " 이 게시글의 posId : " + postId.toString())
             }
         }
-        Toast.makeText(this, "나의 설문조사 응답 명수 가져오기", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(this, "나의 설문조사 응답 명수 가져오기", Toast.LENGTH_SHORT).show()
     }
 
     override fun onGetMySurveyViewFailure(mySurveyList: MySurveyResponse) {

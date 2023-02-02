@@ -54,6 +54,6 @@ class MyAnswerActivity : AppCompatActivity(), MyAnswerView {
     }
 
     override fun onGetMyAnswerFailure() {
-        Toast.makeText(this, "나의 답변 보기/ 답변 불러오기 실패;;", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "나의 답변 불러오기 실패", Toast.LENGTH_SHORT).show()
     }
 }
