@@ -56,15 +56,29 @@
 
         </LinearLayout>
 
+        <Button
+            android:id="@+id/main_form_create_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dialog_btn_background"
+            android:paddingHorizontal="20dp"
+            android:text="설문 작성하러 가기"
+            app:layout_constraintTop_toBottomOf="@id/main_title_ll"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/main_popular_survey_ll"
+            android:layout_marginVertical="10dp" />
+"
+
         <LinearLayout
             android:id="@+id/main_popular_survey_ll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginTop="30dp"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_title_ll">
+            app:layout_constraintTop_toBottomOf="@+id/main_form_create_btn">
 
             <LinearLayout
                 android:id="@+id/main_popular_survey_title_ll"
@@ -345,7 +359,7 @@
         <LinearLayout
             android:id="@+id/main_waiting_survey_list_ll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="35dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -367,7 +381,7 @@
             <LinearLayout
                 android:id="@+id/main_waiting_survey_ll"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginTop="18dp"
                 android:orientation="vertical">
 

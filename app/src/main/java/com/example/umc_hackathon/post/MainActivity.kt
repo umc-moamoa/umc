@@ -12,6 +12,7 @@ import com.example.umc_hackathon.databinding.ActivityMainBinding
 import com.example.umc_hackathon.post.detail.PostDetailActivity
 import com.example.umc_hackathon.post.list.FormListActivity
 import com.example.umc_hackathon.post.list.PostListResponse
+import com.example.umc_hackathon.survey.create.FormCreateActivity
 
 class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
 
@@ -25,6 +26,12 @@ class MainActivity : AppCompatActivity(), WaitingSurveyView, PopularSurveyView {
         // 이벤트 리스너
         binding.mainTitleTv.setOnClickListener {
             onRestart()
+        }
+
+        binding.mainFormCreateBtn.setOnClickListener {
+            val intent = Intent(this, FormCreateActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
         }
 
         binding.mainProfileIv.setOnClickListener {
