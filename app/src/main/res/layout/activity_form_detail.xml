@@ -184,6 +184,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/form_detail_delete_cv"
             android:layout_width="31dp"
             android:layout_height="31dp"
             android:elevation="8dp"

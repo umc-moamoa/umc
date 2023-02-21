@@ -85,22 +85,18 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView, EmailView {
         Log.d("JOIN()", "메소드")
 
         if(binding.joinIdEt.text.toString().isEmpty()) {
-            Toast.makeText(activity, "아이디를 입력해주세요", Toast.LENGTH_SHORT).show()
             return
         }
 
         if(binding.joinNicknameEt.text.toString().isEmpty()) {
-            Toast.makeText(activity, "닉네임을 입력해주세요", Toast.LENGTH_SHORT).show()
             return
         }
 
         if(isRegularPW(binding.joinPasswordEt.text.toString()) == false) {
-            Toast.makeText(activity, "올바른 비밀번호가 아닙니다", Toast.LENGTH_SHORT).show()
             return
         }
 
         if(binding.joinPasswordEt.text.toString() != binding.joinPasswordCheckEt.text.toString()) {
-            Toast.makeText(activity, "비밀번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -125,12 +121,10 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView, EmailView {
 
     // JoinView 상속
     override fun onJoinSuccess() {
-        Toast.makeText(activity, "회원가입에 성공했습니다", Toast.LENGTH_SHORT).show()
         clearInputText()
     }
 
     override fun onJoinFailure() {
-        Toast.makeText(activity, "회원가입에 실패했습니다", Toast.LENGTH_SHORT).show()
         clearInputText()
     }
 
@@ -166,7 +160,6 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView, EmailView {
         binding.joinIdDuplicateCheckTv.visibility = View.INVISIBLE
         binding.joinIdDuplicateCheckYesIv.visibility = View.VISIBLE
         binding.joinIdDuplicateCheckNoIv.visibility = View.INVISIBLE
-        Toast.makeText(activity, "아이디 중복 확인에 성공했습니다", Toast.LENGTH_SHORT).show()
         //이메일 발송하도록 수정
     }
 
@@ -174,7 +167,6 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView, EmailView {
         binding.joinIdDuplicateCheckTv.visibility = View.INVISIBLE
         binding.joinIdDuplicateCheckYesIv.visibility = View.INVISIBLE
         binding.joinIdDuplicateCheckNoIv.visibility = View.VISIBLE
-        Toast.makeText(activity, "아이디 중복 확인에 실패했습니다", Toast.LENGTH_SHORT).show()
         binding.joinSubmitBtn.isEnabled = false
     }
 
@@ -204,14 +196,12 @@ class JoinFragment : Fragment(), JoinView, JoinCheckView, EmailView {
         binding.joinNicknameDuplicateCheckTv.visibility = View.INVISIBLE
         binding.joinNicknameDuplicateCheckYesIv.visibility = View.VISIBLE
         binding.joinNicknameDuplicateCheckNoIv.visibility = View.INVISIBLE
-        Toast.makeText(activity, "닉네임 중복 확인에 성공했습니다", Toast.LENGTH_SHORT).show()
     }
 
     override fun onJoinNickCheckFailure() {
         binding.joinNicknameDuplicateCheckTv.visibility = View.INVISIBLE
         binding.joinNicknameDuplicateCheckYesIv.visibility = View.INVISIBLE
         binding.joinNicknameDuplicateCheckNoIv.visibility = View.VISIBLE
-        Toast.makeText(activity, "닉네임 중복 확인에 실패했습니다", Toast.LENGTH_SHORT).show()
         binding.joinSubmitBtn.isEnabled = false
     }
 

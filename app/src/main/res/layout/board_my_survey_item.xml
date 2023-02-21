@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:fontFamily="@font/roboto_bold"
-            android:text="음식 배달 플랫폼에 대한 소비자 인식"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="14sp" />
 
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:fontFamily="@font/roboto_light"
-                android:text="11개의 항목  l"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="11sp" />
 
@@ -58,7 +58,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="3dp"
                 android:fontFamily="@font/roboto_medium"
-                android:text="D - DAY"
+                android:text=""
                 android:textColor="@color/dodger_blue"
                 android:textSize="11sp" />
 
@@ -84,7 +84,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_medium"
-                android:text="300P"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="11sp" />
 
@@ -110,7 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_medium"
-                android:text="6명 참여"
+                android:text=""
                 android:textColor="@color/dodger_blue"
                 android:textSize="11sp" />
 

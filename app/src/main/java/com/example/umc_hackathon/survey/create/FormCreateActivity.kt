@@ -221,7 +221,6 @@ class FormCreateActivity : AppCompatActivity(), FormCreateView {
     }
 
     override fun onFormCreateSuccess() {
-        Toast.makeText(this, "설문 등록에 성공했습니다", Toast.LENGTH_SHORT).show()
     }
 
     override fun onFormCreateFailure(code: Int) {

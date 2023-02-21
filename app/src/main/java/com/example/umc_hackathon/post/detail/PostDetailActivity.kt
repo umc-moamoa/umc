@@ -177,11 +177,13 @@ class PostDetailActivity : AppCompatActivity(), PostDetailView {
             binding.formDetailResultBtn.visibility = View.VISIBLE
             binding.formDetailDislikeBtnCv.visibility = View.VISIBLE
             binding.formDetailLikeBtnCv.visibility = View.INVISIBLE
+            binding.formDetailDeleteCv.visibility = View.VISIBLE
             binding.formDetailDeleteBtn.visibility = View.VISIBLE
             binding.formDetailModifyBtn.visibility = View.VISIBLE
         }
         else {
             binding.formDetailModifyBtn.visibility = View.INVISIBLE
+            binding.formDetailDeleteCv.visibility = View.INVISIBLE
             binding.formDetailDeleteBtn.visibility = View.INVISIBLE
 
             if(result.like) {
@@ -241,7 +243,6 @@ class PostDetailActivity : AppCompatActivity(), PostDetailView {
     }
 
     override fun onDeleteSuccess() {
-        Toast.makeText(this, "설문 삭제를 성공했습니다.", Toast.LENGTH_SHORT).show()
     }
 
     override fun onDeleteFailure(result: StringResultResponse) {
