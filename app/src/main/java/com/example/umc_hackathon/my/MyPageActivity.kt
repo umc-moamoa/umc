@@ -37,6 +37,12 @@ class MyPageActivity : AppCompatActivity(), UserInfoView {
             finish()
         }
 
+
+        binding.myPointInfo.setOnClickListener {
+            val dialog = CustomDialog(this)
+            dialog.pointInfoViews()
+        }
+
         binding.myPageSettingIv.setOnClickListener {
             val intent = Intent(this, SettingActivity::class.java)
             intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)

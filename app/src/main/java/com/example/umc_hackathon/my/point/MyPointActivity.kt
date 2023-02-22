@@ -39,10 +39,6 @@ class MyPointActivity : AppCompatActivity(), MyPointView, ReAccessTokenView {
             finish()
         }
 
-        binding.myPointInfo.setOnClickListener {
-            val dialog = CustomDialog(this)
-            dialog.pointInfoViews()
-        }
 
         // 정렬 스피너
         val sortList = listOf("최신순", "오래된순")

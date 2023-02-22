@@ -337,6 +337,152 @@
 
                     </FrameLayout>
 
+                    <FrameLayout
+                        android:layout_width="138dp"
+                        android:layout_height="118dp"
+                        android:layout_marginEnd="20dp">
+
+                        <View
+                            android:id="@+id/main_fourth_folder_view"
+                            android:layout_width="138dp"
+                            android:layout_height="118dp"
+                            android:layout_marginEnd="10dp"
+                            android:background="@drawable/ic_file_blue" />
+
+                        <LinearLayout
+                            android:id="@+id/main_fourth_folder_ll"
+                            android:layout_width="138dp"
+                            android:layout_height="118dp"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="12dp"
+                            android:paddingTop="30dp">
+
+                            <TextView
+                                android:id="@+id/main_fourth_title_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="38dp"
+                                android:layout_marginBottom="5dp"
+                                android:fontFamily="@font/roboto_bold"
+                                android:text="네 번째로 인기있는 설문조사입니다."
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/main_fourth_count_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_light"
+                                android:text="11개의 항목"
+                                android:textColor="@color/black"
+                                android:textSize="11sp" />
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:orientation="horizontal"
+                                android:paddingEnd="12dp">
+
+                                <TextView
+                                    android:id="@+id/main_fourth_deadline_tv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:text="D - 10"
+                                    android:textColor="@color/dodger_blue"
+                                    android:textSize="11sp" />
+
+                                <TextView
+                                    android:id="@+id/main_fourth_point_tv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:gravity="right"
+                                    android:text="300P"
+                                    android:textColor="#525252"
+                                    android:textSize="9sp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="138dp"
+                        android:layout_height="118dp"
+                        android:layout_marginEnd="20dp">
+
+                        <View
+                            android:id="@+id/main_fifth_folder_view"
+                            android:layout_width="138dp"
+                            android:layout_height="118dp"
+                            android:layout_marginEnd="10dp"
+                            android:background="@drawable/ic_folder_white" />
+
+                        <LinearLayout
+                            android:id="@+id/main_fifth_folder_ll"
+                            android:layout_width="138dp"
+                            android:layout_height="118dp"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="12dp"
+                            android:paddingTop="30dp">
+
+                            <TextView
+                                android:id="@+id/main_fifth_title_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="38dp"
+                                android:layout_marginBottom="5dp"
+                                android:fontFamily="@font/roboto_bold"
+                                android:text="다섯 번째로 인기있는 설문조사입니다."
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/main_fifth_count_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_light"
+                                android:text="11개의 항목"
+                                android:textColor="@color/black"
+                                android:textSize="11sp" />
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:orientation="horizontal"
+                                android:paddingEnd="12dp">
+
+                                <TextView
+                                    android:id="@+id/main_fifth_deadline_tv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:text="D - 10"
+                                    android:textColor="@color/dodger_blue"
+                                    android:textSize="11sp" />
+
+                                <TextView
+                                    android:id="@+id/main_fifth_point_tv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:gravity="right"
+                                    android:text="300P"
+                                    android:textColor="#525252"
+                                    android:textSize="9sp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </FrameLayout>
+
                 </LinearLayout>
 
             </HorizontalScrollView>
