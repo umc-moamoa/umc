@@ -147,11 +147,9 @@ class LoginFragment : Fragment(), LoginView {
                 onStart()
             }
             4000 -> {
-                Toast.makeText(activity, "데이터베이스 연결에 실패하였습니다", Toast.LENGTH_SHORT).show()
                 onStart()
             }
             4011 -> {
-                Toast.makeText(activity, "비밀번호 암호화에 실패했습니다", Toast.LENGTH_SHORT).show()
                 onStart()
             }
             else -> {

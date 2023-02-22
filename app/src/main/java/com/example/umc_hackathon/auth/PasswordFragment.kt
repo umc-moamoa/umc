@@ -134,7 +134,6 @@ class PasswordFragment : Fragment(), EmailView, PasswordView {
     }
 
     override fun changePasswordSuccess() {
-        Toast.makeText(activity, "비밀번호 변경에 성공했습니다", Toast.LENGTH_SHORT).show()
         clearInputText()
 
         val intent = Intent(activity, AuthActivity::class.java)

@@ -78,11 +78,9 @@ class FormInputActivity : AppCompatActivity(), FormDetailView, FormInputItem {
     override fun onFormDetailSuccess(formDetailResponse: FormDetailResponse) {
 //        formResp = formDetailResponse
         binding.formInputRv.adapter = FormDetailRAdapter(formDetailResponse.result, this)
-        Toast.makeText(this, "설문 조사 문항 불러오기에 성공했습니다", Toast.LENGTH_SHORT).show()
     }
 
     override fun onFormDetailFailure() {
-        Toast.makeText(this, "설문 조사 문항 불러오기에 실패했습니다", Toast.LENGTH_SHORT).show()
     }
 
     override fun onFormSubmitSucess() {
@@ -90,8 +88,6 @@ class FormInputActivity : AppCompatActivity(), FormDetailView, FormInputItem {
         intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
         startActivity(intent)
         finish()
-
-        Toast.makeText(this, "답변 등록을 성공했습니다", Toast.LENGTH_SHORT).show()
     }
 
     override fun onFormSubitFailure() {
@@ -110,12 +106,12 @@ class FormInputActivity : AppCompatActivity(), FormDetailView, FormInputItem {
         for(i in 0 until answerList.size) {
             if(answer[0] == answerList[i][0]) {
                 answerList[i] = answer
-                Log.d("현재까지 추가된 answerList(있는 아이템) :", answerList.toString())
+                Log.d("현재까지 추가된 있는 아이템 :", answerList.toString())
                 return
             }
         }
 
         answerList.add(answer)
-        Log.d("현재까지 추가된 answerList(새로운 아이템) :", answerList.toString())
+        Log.d("현재까지 추가된 새로운 아이템 :", answerList.toString())
     }
 }

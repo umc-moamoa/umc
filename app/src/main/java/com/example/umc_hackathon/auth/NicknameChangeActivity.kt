@@ -29,10 +29,8 @@ class NicknameChangeActivity : AppCompatActivity(), NickCheckView, NickChangeVie
         binding.nicknameChangeBtn.setOnClickListener {
             if(flag == true)
                 nickChange()
-            else {
-                Toast.makeText(this, "닉네임 변경에 실패했습니다", Toast.LENGTH_SHORT).show()
+            else
                 clearInputText()
-            }
         }
 
         binding.nicknameChangeCancelBtn.setOnClickListener {
@@ -57,7 +55,6 @@ class NicknameChangeActivity : AppCompatActivity(), NickCheckView, NickChangeVie
         Log.d("NICKCHANGE()", "메소드")
 
         if(binding.nicknameChangeEt.text.toString().isEmpty()) {
-            Toast.makeText(this, "닉네임을 입력해주세요", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -77,7 +74,6 @@ class NicknameChangeActivity : AppCompatActivity(), NickCheckView, NickChangeVie
         binding.nicknameChangeDuplicateCheckTv.visibility = View.INVISIBLE
         binding.nicknameChangeDuplicateCheckYesIv.visibility = View.VISIBLE
         binding.nicknameChangeDuplicateCheckNoIv.visibility = View.INVISIBLE
-        Toast.makeText(this, "닉네임 중복 확인에 성공했습니다", Toast.LENGTH_SHORT).show()
 
         flag = true
     }
@@ -86,13 +82,11 @@ class NicknameChangeActivity : AppCompatActivity(), NickCheckView, NickChangeVie
         binding.nicknameChangeDuplicateCheckTv.visibility = View.INVISIBLE
         binding.nicknameChangeDuplicateCheckYesIv.visibility = View.INVISIBLE
         binding.nicknameChangeDuplicateCheckNoIv.visibility = View.VISIBLE
-        Toast.makeText(this, "닉네임 중복 확인에 실패했습니다", Toast.LENGTH_SHORT).show()
 
         flag = false
     }
 
     override fun onNickChangeSuccess(resp: NickChangeResponse) {
-        Toast.makeText(this, "닉네임 변경에 성공했습니다", Toast.LENGTH_SHORT).show()
         val intent = Intent(this,  MyPageActivity::class.java)
         intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
         startActivity(intent)
