@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.umc_hackathon">
+    package="com.umc.seolmunzip">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".SeolmunZipApplication"
+        android:name="com.umc.seolmunzip.SeolmunZipApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -14,10 +14,10 @@
         android:theme="@style/Theme.Umc_hackathon"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".auth.NicknameChangeActivity"
+            android:name="com.umc.seolmunzip.auth.NicknameChangeActivity"
             android:exported="false" />
         <activity
-            android:name=".my.survey.MyAnswerActivity"
+            android:name="com.umc.seolmunzip.my.survey.MyAnswerActivity"
             android:exported="false" />
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
@@ -34,13 +34,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".post.modify.ModifyActivity"
+            android:name="com.umc.seolmunzip.post.modify.ModifyActivity"
             android:exported="false" />
         <activity
-            android:name=".auth.AuthActivity"
+            android:name="com.umc.seolmunzip.auth.AuthActivity"
             android:exported="false" />
         <activity
-            android:name=".StartActivity"
+            android:name="com.umc.seolmunzip.StartActivity"
             android:exported="true"
             android:theme="@style/Theme.Design.Light.NoActionBar">
             <intent-filter>
@@ -50,46 +50,46 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.umc_hackathon.survey.result.ResultActivity"
+            android:name="com.umc.seolmunzip.survey.result.ResultActivity"
             android:exported="false" />
         <activity
-            android:name=".survey.QuestionItemActivity"
+            android:name="com.umc.seolmunzip.survey.QuestionItemActivity"
             android:exported="false" />
         <activity
-            android:name=".survey.DialogOptionItemActivity"
+            android:name="com.umc.seolmunzip.survey.DialogOptionItemActivity"
             android:exported="false" />
         <activity
-            android:name=".my.survey.MySurveyActivity"
+            android:name="com.umc.seolmunzip.my.survey.MySurveyActivity"
             android:exported="false" />
         <activity
-            android:name=".my.survey.ParticipatedSurveyActivity"
+            android:name="com.umc.seolmunzip.my.survey.ParticipatedSurveyActivity"
             android:exported="false" />
         <activity
-            android:name=".my.survey.InterestSurveyActivity"
+            android:name="com.umc.seolmunzip.my.survey.InterestSurveyActivity"
             android:exported="false" />
         <activity
-            android:name=".my.point.MyPointActivity"
+            android:name="com.umc.seolmunzip.my.point.MyPointActivity"
             android:exported="false" />
         <activity
-            android:name=".auth.SettingActivity"
+            android:name="com.umc.seolmunzip.auth.SettingActivity"
             android:exported="false" />
         <activity
-            android:name=".my.MyPageActivity"
+            android:name="com.umc.seolmunzip.my.MyPageActivity"
             android:exported="false" />
         <activity
-            android:name=".post.MainActivity"
+            android:name="com.umc.seolmunzip.post.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".survey.create.FormCreateActivity"
+            android:name="com.umc.seolmunzip.survey.create.FormCreateActivity"
             android:exported="false" />
         <activity
-            android:name=".survey.participate.FormInputActivity"
+            android:name="com.umc.seolmunzip.survey.participate.FormInputActivity"
             android:exported="false" />
         <activity
-            android:name=".post.detail.PostDetailActivity"
+            android:name="com.umc.seolmunzip.post.detail.PostDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".post.list.FormListActivity"
+            android:name="com.umc.seolmunzip.post.list.FormListActivity"
             android:exported="false" />
     </application>
 
