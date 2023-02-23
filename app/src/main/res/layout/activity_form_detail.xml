@@ -105,7 +105,7 @@
             android:layout_height="30dp"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="40dp"
-            android:backgroundTint="@color/pale_grey"
+            android:backgroundTint="@color/white"
             app:cardCornerRadius="15dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/form_detail_info_tv">

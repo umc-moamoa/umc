@@ -518,7 +518,7 @@
                 android:id="@+id/main_waiting_survey_ll"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
